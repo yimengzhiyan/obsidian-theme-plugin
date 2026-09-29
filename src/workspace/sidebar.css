@@ -1,0 +1,4 @@
+.workspace-split.mod-left-split,
+.workspace-split.mod-right-split {
+  background-color: var(--theme-bg-sidebar);
+}

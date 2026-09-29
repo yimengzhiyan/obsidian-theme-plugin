@@ -1,0 +1,20 @@
+:root {
+  --theme-radius-xs: 2px;
+  --theme-radius-sm: 4px;
+  --theme-radius-md: 8px;
+  --theme-radius-lg: 12px;
+  --theme-radius-xl: 18px;
+
+  --theme-space-xs: 0.25rem;
+  --theme-space-sm: 0.5rem;
+  --theme-space-md: 1rem;
+  --theme-space-lg: 1.5rem;
+  --theme-space-xl: 2rem;
+
+  --theme-transition-fast: 100ms ease;
+  --theme-transition-normal: 180ms ease;
+  --theme-transition-slow: 280ms ease;
+
+  --theme-content-width: 700px;
+  --theme-line-height: 1.7;
+}

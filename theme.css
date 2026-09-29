@@ -1,0 +1,241 @@
+/*
+ * GENERATED FILE
+ * Do not edit theme.css directly.
+ * Edit files under src/ instead.
+ */
+
+/* Source: settings/style-settings.css */
+/* @settings
+
+name: Obsidian Fusion Theme
+id: obsidian-fusion-theme
+settings:
+  -
+    id: oft-appearance
+    title: Appearance
+    type: heading
+    level: 2
+    collapsed: false
+  -
+    id: theme-accent
+    title: Accent color
+    description: Primary interactive color used by the theme.
+    type: variable-color
+    format: hex
+    default: '#6750a4'
+  -
+    id: theme-radius-md
+    title: Border radius
+    description: Default radius for controls and surfaces.
+    type: variable-number-slider
+    default: 8
+    min: 0
+    max: 20
+    step: 1
+    format: px
+  -
+    id: oft-typography
+    title: Typography
+    type: heading
+    level: 2
+    collapsed: true
+  -
+    id: theme-line-height
+    title: Line height
+    description: Reading line height for editor and preview.
+    type: variable-number-slider
+    default: 1.7
+    min: 1.2
+    max: 2.2
+    step: 0.05
+  -
+    id: oft-layout
+    title: Layout
+    type: heading
+    level: 2
+    collapsed: true
+  -
+    id: theme-content-width
+    title: Content width
+    description: Maximum readable line width.
+    type: variable-number-slider
+    default: 700
+    min: 480
+    max: 1200
+    step: 20
+    format: px
+
+*/
+
+/* Source: src/base/variables.css */
+:root {
+  --theme-radius-xs: 2px;
+  --theme-radius-sm: 4px;
+  --theme-radius-md: 8px;
+  --theme-radius-lg: 12px;
+  --theme-radius-xl: 18px;
+
+  --theme-space-xs: 0.25rem;
+  --theme-space-sm: 0.5rem;
+  --theme-space-md: 1rem;
+  --theme-space-lg: 1.5rem;
+  --theme-space-xl: 2rem;
+
+  --theme-transition-fast: 100ms ease;
+  --theme-transition-normal: 180ms ease;
+  --theme-transition-slow: 280ms ease;
+
+  --theme-content-width: 700px;
+  --theme-line-height: 1.7;
+}
+
+/* Source: src/base/colors.css */
+body {
+  --background-primary: var(--theme-bg-primary);
+  --background-primary-alt: var(--theme-bg-card);
+  --background-secondary: var(--theme-bg-secondary);
+  --background-secondary-alt: var(--theme-bg-sidebar);
+  --background-modifier-hover: var(--theme-hover-bg);
+  --background-modifier-active-hover: var(--theme-active-bg);
+  --background-modifier-border: var(--theme-border);
+  --background-modifier-border-hover: var(--theme-border-hover);
+  --background-modifier-border-focus: var(--theme-border-active);
+
+  --text-normal: var(--theme-text-normal);
+  --text-muted: var(--theme-text-muted);
+  --text-faint: var(--theme-text-faint);
+  --text-on-accent: var(--theme-text-on-accent);
+  --text-accent: var(--theme-accent);
+  --text-accent-hover: var(--theme-accent-hover);
+
+  --interactive-accent: var(--theme-accent);
+  --interactive-accent-hover: var(--theme-accent-hover);
+  --interactive-normal: var(--theme-bg-card);
+  --interactive-hover: var(--theme-hover-bg);
+
+  --link-color: var(--theme-link);
+  --link-color-hover: var(--theme-link-hover);
+  --link-external-color: var(--theme-link-external);
+  --link-unresolved-color: var(--theme-link-unresolved);
+
+  --code-background: var(--theme-code-bg);
+  --code-normal: var(--theme-code-text);
+  --file-line-width: var(--theme-content-width);
+}
+
+/* Source: src/base/light.css */
+.theme-light {
+  --theme-bg-primary: #ffffff;
+  --theme-bg-secondary: #f5f5f7;
+  --theme-bg-sidebar: #f1f1f4;
+  --theme-bg-card: #fafafd;
+  --theme-bg-hover: #ececf1;
+  --theme-bg-active: #e4def3;
+
+  --theme-text-normal: #242329;
+  --theme-text-muted: #68666f;
+  --theme-text-faint: #96939d;
+  --theme-text-on-accent: #ffffff;
+
+  --theme-accent: #6750a4;
+  --theme-accent-hover: #57428f;
+  --theme-active-bg: #e4def3;
+  --theme-active-text: #38266b;
+  --theme-hover-bg: #ececf1;
+  --theme-indicator: #6750a4;
+
+  --theme-border: #dedce3;
+  --theme-border-hover: #c5c1cb;
+  --theme-border-active: #6750a4;
+
+  --theme-link: #5a43a0;
+  --theme-link-hover: #3f2b7f;
+  --theme-link-external: #386a8f;
+  --theme-link-unresolved: #a14a5c;
+
+  --theme-code-bg: #f1eff5;
+  --theme-code-text: #34303d;
+}
+
+/* Source: src/base/dark.css */
+.theme-dark {
+  --theme-bg-primary: #202024;
+  --theme-bg-secondary: #19191c;
+  --theme-bg-sidebar: #17171a;
+  --theme-bg-card: #28282d;
+  --theme-bg-hover: #303037;
+  --theme-bg-active: #3b334f;
+
+  --theme-text-normal: #e9e7ed;
+  --theme-text-muted: #aaa7b1;
+  --theme-text-faint: #77747f;
+  --theme-text-on-accent: #ffffff;
+
+  --theme-accent: #b9a1ff;
+  --theme-accent-hover: #c8b5ff;
+  --theme-active-bg: #3b334f;
+  --theme-active-text: #ded2ff;
+  --theme-hover-bg: #303037;
+  --theme-indicator: #b9a1ff;
+
+  --theme-border: #39383f;
+  --theme-border-hover: #52505a;
+  --theme-border-active: #b9a1ff;
+
+  --theme-link: #c1adff;
+  --theme-link-hover: #d4c6ff;
+  --theme-link-external: #7fc6e8;
+  --theme-link-unresolved: #e28a9a;
+
+  --theme-code-bg: #2b2931;
+  --theme-code-text: #e2dee9;
+}
+
+/* Source: src/base/typography.css */
+body {
+  --font-text-theme: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-interface-theme: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+.markdown-source-view.mod-cm6 .cm-scroller,
+.markdown-preview-view {
+  line-height: var(--theme-line-height);
+}
+
+/* Source: src/workspace/tabs.css */
+.workspace-tab-header {
+  border-radius: var(--theme-radius-sm);
+  transition:
+    background-color var(--theme-transition-fast),
+    color var(--theme-transition-fast);
+}
+
+.workspace-tab-header.is-active {
+  color: var(--theme-active-text);
+}
+
+/* Source: src/workspace/sidebar.css */
+.workspace-split.mod-left-split,
+.workspace-split.mod-right-split {
+  background-color: var(--theme-bg-sidebar);
+}
+
+/* Source: src/workspace/ribbon.css */
+.workspace-ribbon {
+  background-color: var(--theme-bg-sidebar);
+  border-color: var(--theme-border);
+}
+
+/* Source: src/workspace/statusbar.css */
+.status-bar {
+  background-color: var(--theme-bg-secondary);
+  border-color: var(--theme-border);
+  color: var(--theme-text-muted);
+}
+
+/* Source: src/workspace/scrollbar.css */
+body {
+  --scrollbar-bg: transparent;
+  --scrollbar-thumb-bg: var(--theme-border-hover);
+  --scrollbar-active-thumb-bg: var(--theme-border-active);
+}

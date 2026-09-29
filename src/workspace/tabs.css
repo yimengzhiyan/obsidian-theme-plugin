@@ -1,0 +1,10 @@
+.workspace-tab-header {
+  border-radius: var(--theme-radius-sm);
+  transition:
+    background-color var(--theme-transition-fast),
+    color var(--theme-transition-fast);
+}
+
+.workspace-tab-header.is-active {
+  color: var(--theme-active-text);
+}

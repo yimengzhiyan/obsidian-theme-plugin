@@ -1,0 +1,61 @@
+/* @settings
+
+name: Obsidian Fusion Theme
+id: obsidian-fusion-theme
+settings:
+  -
+    id: oft-appearance
+    title: Appearance
+    type: heading
+    level: 2
+    collapsed: false
+  -
+    id: theme-accent
+    title: Accent color
+    description: Primary interactive color used by the theme.
+    type: variable-color
+    format: hex
+    default: '#6750a4'
+  -
+    id: theme-radius-md
+    title: Border radius
+    description: Default radius for controls and surfaces.
+    type: variable-number-slider
+    default: 8
+    min: 0
+    max: 20
+    step: 1
+    format: px
+  -
+    id: oft-typography
+    title: Typography
+    type: heading
+    level: 2
+    collapsed: true
+  -
+    id: theme-line-height
+    title: Line height
+    description: Reading line height for editor and preview.
+    type: variable-number-slider
+    default: 1.7
+    min: 1.2
+    max: 2.2
+    step: 0.05
+  -
+    id: oft-layout
+    title: Layout
+    type: heading
+    level: 2
+    collapsed: true
+  -
+    id: theme-content-width
+    title: Content width
+    description: Maximum readable line width.
+    type: variable-number-slider
+    default: 700
+    min: 480
+    max: 1200
+    step: 20
+    format: px
+
+*/

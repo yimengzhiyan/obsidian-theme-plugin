@@ -1,0 +1,32 @@
+.theme-dark {
+  --theme-bg-primary: #202024;
+  --theme-bg-secondary: #19191c;
+  --theme-bg-sidebar: #17171a;
+  --theme-bg-card: #28282d;
+  --theme-bg-hover: #303037;
+  --theme-bg-active: #3b334f;
+
+  --theme-text-normal: #e9e7ed;
+  --theme-text-muted: #aaa7b1;
+  --theme-text-faint: #77747f;
+  --theme-text-on-accent: #ffffff;
+
+  --theme-accent: #b9a1ff;
+  --theme-accent-hover: #c8b5ff;
+  --theme-active-bg: #3b334f;
+  --theme-active-text: #ded2ff;
+  --theme-hover-bg: #303037;
+  --theme-indicator: #b9a1ff;
+
+  --theme-border: #39383f;
+  --theme-border-hover: #52505a;
+  --theme-border-active: #b9a1ff;
+
+  --theme-link: #c1adff;
+  --theme-link-hover: #d4c6ff;
+  --theme-link-external: #7fc6e8;
+  --theme-link-unresolved: #e28a9a;
+
+  --theme-code-bg: #2b2931;
+  --theme-code-text: #e2dee9;
+}

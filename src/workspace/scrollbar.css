@@ -1,0 +1,5 @@
+body {
+  --scrollbar-bg: transparent;
+  --scrollbar-thumb-bg: var(--theme-border-hover);
+  --scrollbar-active-thumb-bg: var(--theme-border-active);
+}
