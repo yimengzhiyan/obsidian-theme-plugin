@@ -55,9 +55,9 @@ settings:
     level: 2
     collapsed: true
   -
-    id: theme-content-width
+    id: theme-reading-width
     title: Content width
-    description: Maximum readable line width.
+    description: Maximum line width when Obsidian's readable line length is enabled.
     type: variable-number-slider
     default: 700
     min: 480
@@ -85,21 +85,33 @@ settings:
   --theme-transition-normal: 180ms ease;
   --theme-transition-slow: 280ms ease;
 
-  --theme-content-width: 700px;
+  --theme-font-interface: system-ui, sans-serif;
+  --theme-font-text: system-ui, sans-serif;
+  --theme-font-monospace: ui-monospace, monospace;
   --theme-line-height: 1.7;
+  --theme-reading-width: 700px;
+}
+
+body {
+  --radius-s: var(--theme-radius-sm);
+  --radius-m: var(--theme-radius-md);
+  --radius-l: var(--theme-radius-lg);
+  --radius-xl: var(--theme-radius-xl);
 }
 
 /* Source: src/base/colors.css */
 body {
   --background-primary: var(--theme-bg-primary);
   --background-primary-alt: var(--theme-bg-card);
-  --background-secondary: var(--theme-bg-secondary);
-  --background-secondary-alt: var(--theme-bg-sidebar);
+  --background-secondary: var(--theme-bg-sidebar);
+  --background-secondary-alt: var(--theme-bg-secondary);
   --background-modifier-hover: var(--theme-hover-bg);
   --background-modifier-active-hover: var(--theme-active-bg);
   --background-modifier-border: var(--theme-border);
   --background-modifier-border-hover: var(--theme-border-hover);
   --background-modifier-border-focus: var(--theme-border-active);
+  --divider-color: var(--theme-border);
+  --divider-color-hover: var(--theme-border-hover);
 
   --text-normal: var(--theme-text-normal);
   --text-muted: var(--theme-text-muted);
@@ -108,6 +120,9 @@ body {
   --text-accent: var(--theme-accent);
   --text-accent-hover: var(--theme-accent-hover);
 
+  --color-accent: var(--theme-accent);
+  --color-accent-1: var(--theme-accent-hover);
+  --color-accent-2: var(--theme-accent-hover);
   --interactive-accent: var(--theme-accent);
   --interactive-accent-hover: var(--theme-accent-hover);
   --interactive-normal: var(--theme-bg-card);
@@ -116,11 +131,11 @@ body {
   --link-color: var(--theme-link);
   --link-color-hover: var(--theme-link-hover);
   --link-external-color: var(--theme-link-external);
+  --link-external-color-hover: var(--theme-link-hover);
   --link-unresolved-color: var(--theme-link-unresolved);
 
   --code-background: var(--theme-code-bg);
   --code-normal: var(--theme-code-text);
-  --file-line-width: var(--theme-content-width);
 }
 
 /* Source: src/base/light.css */
@@ -138,15 +153,15 @@ body {
   --theme-text-on-accent: #ffffff;
 
   --theme-accent: #6750a4;
-  --theme-accent-hover: #57428f;
-  --theme-active-bg: #e4def3;
-  --theme-active-text: #38266b;
-  --theme-hover-bg: #ececf1;
-  --theme-indicator: #6750a4;
+  --theme-accent-hover: color-mix(in oklch, var(--theme-accent) 88%, black);
+  --theme-active-bg: var(--theme-bg-active);
+  --theme-active-text: color-mix(in oklch, var(--theme-accent) 72%, black);
+  --theme-hover-bg: var(--theme-bg-hover);
+  --theme-indicator: var(--theme-accent);
 
   --theme-border: #dedce3;
   --theme-border-hover: #c5c1cb;
-  --theme-border-active: #6750a4;
+  --theme-border-active: var(--theme-accent);
 
   --theme-link: #5a43a0;
   --theme-link-hover: #3f2b7f;
@@ -172,15 +187,15 @@ body {
   --theme-text-on-accent: #ffffff;
 
   --theme-accent: #b9a1ff;
-  --theme-accent-hover: #c8b5ff;
-  --theme-active-bg: #3b334f;
-  --theme-active-text: #ded2ff;
-  --theme-hover-bg: #303037;
-  --theme-indicator: #b9a1ff;
+  --theme-accent-hover: color-mix(in oklch, var(--theme-accent) 88%, white);
+  --theme-active-bg: var(--theme-bg-active);
+  --theme-active-text: color-mix(in oklch, var(--theme-accent) 68%, white);
+  --theme-hover-bg: var(--theme-bg-hover);
+  --theme-indicator: var(--theme-accent);
 
   --theme-border: #39383f;
   --theme-border-hover: #52505a;
-  --theme-border-active: #b9a1ff;
+  --theme-border-active: var(--theme-accent);
 
   --theme-link: #c1adff;
   --theme-link-hover: #d4c6ff;
@@ -193,44 +208,88 @@ body {
 
 /* Source: src/base/typography.css */
 body {
-  --font-text-theme: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-  --font-interface-theme: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-}
-
-.markdown-source-view.mod-cm6 .cm-scroller,
-.markdown-preview-view {
-  line-height: var(--theme-line-height);
+  --font-interface-theme: var(--theme-font-interface);
+  --font-text-theme: var(--theme-font-text);
+  --font-monospace-theme: var(--theme-font-monospace);
+  --line-height-normal: var(--theme-line-height);
+  --file-line-width: var(--theme-reading-width);
 }
 
 /* Source: src/workspace/tabs.css */
+body {
+  --tab-background-active: var(--theme-active-bg);
+  --tab-container-background: var(--theme-bg-secondary);
+  --tab-divider-color: var(--theme-border);
+  --tab-outline-color: var(--theme-border);
+  --tab-radius: var(--theme-radius-md);
+  --tab-radius-active: var(--theme-radius-md);
+  --tab-text-color: var(--theme-text-muted);
+  --tab-text-color-active: var(--theme-active-text);
+  --tab-text-color-focused: var(--theme-text-muted);
+  --tab-text-color-focused-active: var(--theme-active-text);
+  --tab-text-color-focused-active-current: var(--theme-active-text);
+}
+
 .workspace-tab-header {
-  border-radius: var(--theme-radius-sm);
   transition:
     background-color var(--theme-transition-fast),
     color var(--theme-transition-fast);
 }
 
+.workspace-tab-header:not(.is-active):hover {
+  background-color: var(--theme-hover-bg);
+  color: var(--theme-text-normal);
+}
+
 .workspace-tab-header.is-active {
   color: var(--theme-active-text);
+  box-shadow: inset 0 -2px 0 var(--theme-indicator);
 }
 
 /* Source: src/workspace/sidebar.css */
+body {
+  --nav-item-color: var(--theme-text-muted);
+  --nav-item-color-hover: var(--theme-text-normal);
+  --nav-item-color-active: var(--theme-active-text);
+  --nav-item-color-selected: var(--theme-active-text);
+  --nav-item-background-hover: var(--theme-hover-bg);
+  --nav-item-background-active: var(--theme-active-bg);
+  --nav-item-background-selected: var(--theme-active-bg);
+}
+
 .workspace-split.mod-left-split,
 .workspace-split.mod-right-split {
   background-color: var(--theme-bg-sidebar);
 }
 
 /* Source: src/workspace/ribbon.css */
+body {
+  --ribbon-background: var(--theme-bg-sidebar);
+  --ribbon-background-collapsed: var(--theme-bg-primary);
+}
+
 .workspace-ribbon {
-  background-color: var(--theme-bg-sidebar);
-  border-color: var(--theme-border);
+  --icon-color: var(--theme-text-muted);
+  --icon-color-hover: var(--theme-text-normal);
+  --icon-color-active: var(--theme-indicator);
+  --icon-color-focused: var(--theme-indicator);
+}
+
+.workspace-ribbon .clickable-icon:hover {
+  background-color: var(--theme-hover-bg);
+}
+
+.workspace-ribbon .clickable-icon.is-active {
+  background-color: var(--theme-active-bg);
+  color: var(--theme-indicator);
 }
 
 /* Source: src/workspace/statusbar.css */
-.status-bar {
-  background-color: var(--theme-bg-secondary);
-  border-color: var(--theme-border);
-  color: var(--theme-text-muted);
+body {
+  --status-bar-background: var(--theme-bg-secondary);
+  --status-bar-border-color: var(--theme-border);
+  --status-bar-radius: var(--theme-radius-md);
+  --status-bar-text-color: var(--theme-text-muted);
 }
 
 /* Source: src/workspace/scrollbar.css */

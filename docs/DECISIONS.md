@@ -27,3 +27,12 @@ Theme manifest 使用 Obsidian 当前要求的 `name`、`author`、`version`、`
 - [Style Settings documentation](https://github.com/mgmeyers/obsidian-style-settings)
 
 当前 Working Title 保留在本地 manifest 中，但其名称不满足 Obsidian 社区目录关于不得包含 “Obsidian” 或 “Theme” 的规则；发布命名是后续明确决策，不在 Bootstrap 内擅自决定。
+
+## Decision 006 — Prefer documented Obsidian variables
+
+Foundation 层优先把 Theme Semantic Token 映射到 Obsidian 当前公开的 CSS Variables；只有官方变量不能表达必要状态时，才使用范围受限的 selector。这样可以减少对 DOM 结构和 class 细节的依赖。
+
+当前映射依据包括官方的 Colors、Typography、Radiuses、Tabs、Navigation、Ribbon、Status Bar、Scrollbar、File、Link 和 Code 变量文档。未加入已标记废弃的 RGB/HSL 派生变量；Accent 派生色使用 `color-mix(in oklch, ...)`。
+
+- [Obsidian CSS variables reference](https://docs.obsidian.md/Reference/CSS%20variables/CSS%20variables)
+- [Obsidian Colors reference](https://docs.obsidian.md/Reference/CSS%20variables/Foundations/Colors)

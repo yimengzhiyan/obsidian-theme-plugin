@@ -1,9 +1,7 @@
 body {
-  --font-text-theme: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-  --font-interface-theme: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-}
-
-.markdown-source-view.mod-cm6 .cm-scroller,
-.markdown-preview-view {
-  line-height: var(--theme-line-height);
+  --font-interface-theme: var(--theme-font-interface);
+  --font-text-theme: var(--theme-font-text);
+  --font-monospace-theme: var(--theme-font-monospace);
+  --line-height-normal: var(--theme-line-height);
+  --file-line-width: var(--theme-reading-width);
 }

@@ -1,13 +1,15 @@
 body {
   --background-primary: var(--theme-bg-primary);
   --background-primary-alt: var(--theme-bg-card);
-  --background-secondary: var(--theme-bg-secondary);
-  --background-secondary-alt: var(--theme-bg-sidebar);
+  --background-secondary: var(--theme-bg-sidebar);
+  --background-secondary-alt: var(--theme-bg-secondary);
   --background-modifier-hover: var(--theme-hover-bg);
   --background-modifier-active-hover: var(--theme-active-bg);
   --background-modifier-border: var(--theme-border);
   --background-modifier-border-hover: var(--theme-border-hover);
   --background-modifier-border-focus: var(--theme-border-active);
+  --divider-color: var(--theme-border);
+  --divider-color-hover: var(--theme-border-hover);
 
   --text-normal: var(--theme-text-normal);
   --text-muted: var(--theme-text-muted);
@@ -16,6 +18,9 @@ body {
   --text-accent: var(--theme-accent);
   --text-accent-hover: var(--theme-accent-hover);
 
+  --color-accent: var(--theme-accent);
+  --color-accent-1: var(--theme-accent-hover);
+  --color-accent-2: var(--theme-accent-hover);
   --interactive-accent: var(--theme-accent);
   --interactive-accent-hover: var(--theme-accent-hover);
   --interactive-normal: var(--theme-bg-card);
@@ -24,9 +29,9 @@ body {
   --link-color: var(--theme-link);
   --link-color-hover: var(--theme-link-hover);
   --link-external-color: var(--theme-link-external);
+  --link-external-color-hover: var(--theme-link-hover);
   --link-unresolved-color: var(--theme-link-unresolved);
 
   --code-background: var(--theme-code-bg);
   --code-normal: var(--theme-code-text);
-  --file-line-width: var(--theme-content-width);
 }

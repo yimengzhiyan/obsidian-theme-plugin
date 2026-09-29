@@ -2,44 +2,44 @@
 
 ## Current Milestone
 
-Bootstrap / V0.1 Foundation preparation
+V0.1 — Theme Foundation
 
 ## Current Branch
 
-`main`
+`codex/theme-foundation`
 
 ## Current Commit
 
-Bootstrap baseline。本文件不嵌入其所在 commit 的 hash，以避免自引用导致 hash 永远变化；使用 `git rev-parse HEAD` 获取精确值。
+Theme Foundation commit。本文件不嵌入其所在 commit 的 hash，以避免自引用导致 hash 永远变化；使用 `git rev-parse HEAD` 获取精确值。
 
 ## Completed
 
-- 本地 Git 仓库初始化，默认分支为 `main`
-- 模块化 CSS 源码、Semantic Token 骨架与 Obsidian 变量映射
-- Light / Dark 基础配色、Typography 与 Basic Workspace
-- 最小 Style Settings 配置
-- 确定性 Build 与轻量 Check
-- README、Agent 指令和长期项目上下文
+- Bootstrap baseline 已在 `main` 完成并通过 Review
+- Semantic Token contract 已覆盖颜色、圆角、间距、Motion、字体、行高和阅读宽度
+- Light / Dark 使用同一套模式 Token，并由 Accent 派生 hover、active text、indicator 和 active border
+- 已核对并映射当前公开的 Obsidian Foundation、Typography、Tabs、Navigation、Ribbon、Status Bar、Scrollbar 变量
+- Basic Workspace 已覆盖 tabs、sidebar/navigation、ribbon、status bar 和 scrollbar 的基础状态
+- 4 个 Style Settings 均通过 Theme Token 再映射至 Obsidian 变量
+- Check 已覆盖模式合同、未定义 Token、循环引用、Style Settings 链路、生成文件同步与基础 CSS 健康
 
 ## In Progress
 
-- 等待 Bootstrap baseline 的 Chat Review
+- 等待 V0.1 Theme Foundation 的 Chat Review
 
 ## Next Step
 
-Review 通过后，从 `main` 创建 `codex/theme-foundation`，再开始 V0.1 Foundation 的下一批实现。
+Review 通过后，将 `manifest.json` 和 `theme.css` 安装到真实 Obsidian Desktop，验证 Light / Dark、四个 Style Settings 和核心 Workspace 状态。
 
 ## Known Issues / Blockers
 
 - Working Title 同时包含 “Obsidian” 与 “Theme”，不符合当前社区主题目录命名规范；正式发布前必须确定合规名称。
 - manifest 的 author 当前是项目级临时署名，正式发布前需由维护者确认。
-- 尚未在 Obsidian 桌面应用内执行视觉与交互验证。
+- Linux Server 无法完成真实 Obsidian Desktop 的视觉、交互和平台差异验证。
 - 未配置 Git remote；这不阻塞本地开发。
 
 ## Validation State
 
-- `npm install`：通过（0 vulnerabilities）
-- `npm run build`：通过（从 11 个 CSS 源文件生成 `theme.css`）
-- `npm run check`：通过（manifest、关键文件、Build、CSS 基础结构）
+- Automated validation：完成；`npm run build` 和 `npm run check` 均通过
+- Check 范围：manifest、关键文件、Build、生成文件同步、Semantic Token、Light/Dark contract、Style Settings 链路和 CSS 基础健康
 - 安装产物：`manifest.json`、`theme.css`
-- 应用内验证：尚未执行
+- Real Obsidian visual validation：pending

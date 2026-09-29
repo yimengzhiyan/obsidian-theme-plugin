@@ -12,15 +12,15 @@
   --theme-text-on-accent: #ffffff;
 
   --theme-accent: #b9a1ff;
-  --theme-accent-hover: #c8b5ff;
-  --theme-active-bg: #3b334f;
-  --theme-active-text: #ded2ff;
-  --theme-hover-bg: #303037;
-  --theme-indicator: #b9a1ff;
+  --theme-accent-hover: color-mix(in oklch, var(--theme-accent) 88%, white);
+  --theme-active-bg: var(--theme-bg-active);
+  --theme-active-text: color-mix(in oklch, var(--theme-accent) 68%, white);
+  --theme-hover-bg: var(--theme-bg-hover);
+  --theme-indicator: var(--theme-accent);
 
   --theme-border: #39383f;
   --theme-border-hover: #52505a;
-  --theme-border-active: #b9a1ff;
+  --theme-border-active: var(--theme-accent);
 
   --theme-link: #c1adff;
   --theme-link-hover: #d4c6ff;

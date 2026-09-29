@@ -1,5 +1,6 @@
-.status-bar {
-  background-color: var(--theme-bg-secondary);
-  border-color: var(--theme-border);
-  color: var(--theme-text-muted);
+body {
+  --status-bar-background: var(--theme-bg-secondary);
+  --status-bar-border-color: var(--theme-border);
+  --status-bar-radius: var(--theme-radius-md);
+  --status-bar-text-color: var(--theme-text-muted);
 }

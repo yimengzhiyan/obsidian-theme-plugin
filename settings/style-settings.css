@@ -48,9 +48,9 @@ settings:
     level: 2
     collapsed: true
   -
-    id: theme-content-width
+    id: theme-reading-width
     title: Content width
-    description: Maximum readable line width.
+    description: Maximum line width when Obsidian's readable line length is enabled.
     type: variable-number-slider
     default: 700
     min: 480
