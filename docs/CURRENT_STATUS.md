@@ -21,6 +21,7 @@ Theme Foundation commit。本文件不嵌入其所在 commit 的 hash，以避�
 - Basic Workspace 已覆盖 tabs、sidebar/navigation、ribbon、status bar 和 scrollbar 的基础状态
 - 4 个 Style Settings 均通过 Theme Token 再映射至 Obsidian 变量
 - Check 已覆盖模式合同、未定义 Token、循环引用、Style Settings 链路、生成文件同步与基础 CSS 健康
+- GitHub remote 已配置为 `https://github.com/yimengzhiyan/obsidian-theme-plugin.git`；`main` 与 `codex/theme-foundation` 均已推送并设置 upstream
 
 ## In Progress
 
@@ -35,7 +36,6 @@ Review 通过后，将 `manifest.json` 和 `theme.css` 安装到真实 Obsidian 
 - Working Title 同时包含 “Obsidian” 与 “Theme”，不符合当前社区主题目录命名规范；正式发布前必须确定合规名称。
 - manifest 的 author 当前是项目级临时署名，正式发布前需由维护者确认。
 - Linux Server 无法完成真实 Obsidian Desktop 的视觉、交互和平台差异验证。
-- 未配置 Git remote；这不阻塞本地开发。
 
 ## Validation State
 
