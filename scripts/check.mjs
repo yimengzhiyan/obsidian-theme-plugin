@@ -55,6 +55,12 @@ const styleSettingTokens = [
   "theme-line-height",
   "theme-reading-width"
 ];
+const styleSettingTypes = new Map([
+  ["theme-accent", "variable-text"],
+  ["theme-radius-md", "variable-number-slider"],
+  ["theme-line-height", "variable-number-slider"],
+  ["theme-reading-width", "variable-number-slider"]
+]);
 const styleSettingMappings = new Map([
   ["theme-accent", "--color-accent: var(--theme-accent)"],
   ["theme-radius-md", "--radius-m: var(--theme-radius-md)"],
@@ -98,6 +104,19 @@ function extractThemeDeclarations(css) {
     name: match[1],
     value: match[2].trim()
   }));
+}
+
+function extractStyleSettingEntries(css) {
+  const metadata = css.match(/\/\*\s*@settings\s*([\s\S]*?)\*\//)?.[1];
+  if (!metadata) fail("Style Settings metadata block is missing.");
+
+  return metadata
+    .split(/^\s{2}-\s*$/m)
+    .slice(1)
+    .map((entry) => Object.fromEntries(
+      [...entry.matchAll(/^\s{4}([a-z][a-z0-9-]*):\s*(.*?)\s*$/gm)]
+        .map((match) => [match[1], match[2]])
+    ));
 }
 
 function assertSameTokenContract(lightCss, darkCss) {
@@ -197,12 +216,35 @@ async function validateCss() {
   assertSameTokenContract(lightCss, darkCss);
   assertNoThemeTokenCycles(declarations);
 
+  const styleSettingEntries = extractStyleSettingEntries(settingsCss);
+  const styleSettingIds = styleSettingEntries.map((entry) => entry.id).filter(Boolean);
+  const duplicateStyleSettingIds = styleSettingIds.filter((id, index) => styleSettingIds.indexOf(id) !== index);
+  if (duplicateStyleSettingIds.length) {
+    fail(`Duplicate Style Setting id: ${[...new Set(duplicateStyleSettingIds)].join(", ")}`);
+  }
+
   for (const token of styleSettingTokens) {
-    if (!settingsCss.includes(`id: ${token}`) || !definedTokens.has(`--${token}`)) {
+    const setting = styleSettingEntries.find((entry) => entry.id === token);
+    if (!setting || !definedTokens.has(`--${token}`)) {
       fail(`Style Setting does not resolve to a defined Theme Token: ${token}`);
+    }
+    if (setting.type !== styleSettingTypes.get(token)) {
+      fail(`Style Setting ${token} must use type ${styleSettingTypes.get(token)}.`);
+    }
+    if (setting.default === undefined) {
+      fail(`Style Setting ${token} must declare a default value.`);
     }
     if (!css.includes(styleSettingMappings.get(token))) {
       fail(`Style Setting Theme Token is not mapped to its Obsidian variable: ${token}`);
+    }
+  }
+
+  for (const [mode, modeCss] of [["Light", lightCss], ["Dark", darkCss]]) {
+    for (const token of ["--theme-bg-hover", "--theme-bg-active"]) {
+      const declaration = extractThemeDeclarations(modeCss).find(({ name }) => name === token);
+      if (!declaration?.value.includes("var(--theme-accent)")) {
+        fail(`${mode} ${token} must derive from --theme-accent.`);
+      }
     }
   }
 

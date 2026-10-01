@@ -19,9 +19,8 @@ settings:
   -
     id: theme-accent
     title: Accent color
-    description: Primary interactive color used by the theme.
-    type: variable-color
-    format: hex
+    description: Primary interactive color as a hex or CSS color value.
+    type: variable-text
     default: '#6750a4'
   -
     id: theme-radius-md
@@ -144,8 +143,8 @@ body {
   --theme-bg-secondary: #f5f5f7;
   --theme-bg-sidebar: #f1f1f4;
   --theme-bg-card: #fafafd;
-  --theme-bg-hover: #ececf1;
-  --theme-bg-active: #e4def3;
+  --theme-bg-hover: color-mix(in oklch, var(--theme-accent) 8%, var(--theme-bg-primary));
+  --theme-bg-active: color-mix(in oklch, var(--theme-accent) 16%, var(--theme-bg-primary));
 
   --theme-text-normal: #242329;
   --theme-text-muted: #68666f;
@@ -178,8 +177,8 @@ body {
   --theme-bg-secondary: #19191c;
   --theme-bg-sidebar: #17171a;
   --theme-bg-card: #28282d;
-  --theme-bg-hover: #303037;
-  --theme-bg-active: #3b334f;
+  --theme-bg-hover: color-mix(in oklch, var(--theme-accent) 10%, var(--theme-bg-primary));
+  --theme-bg-active: color-mix(in oklch, var(--theme-accent) 20%, var(--theme-bg-primary));
 
   --theme-text-normal: #e9e7ed;
   --theme-text-muted: #aaa7b1;

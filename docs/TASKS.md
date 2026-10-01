@@ -17,7 +17,10 @@
 
 - [x] 审阅并确定 V0.1 Token 命名、层级和覆盖策略
 - [x] 准备 Foundation Desktop 测试清单与最小安装包
-- [ ] 在真实 Obsidian 中验证 Light / Dark 与核心 workspace selector
+- [x] 完成首轮真实 Obsidian Foundation 测试并记录 Conditional Pass / Fix Required
+- [x] 修复 Accent active / hover 状态未完整进入 Semantic Token 链路的问题
+- [x] 为 Style Settings `variable-color` / Pickr `null.clone` 上游问题提供主题侧最小兼容措施
+- [ ] 在真实 Obsidian 中复测四个 Style Settings 与 Accent 联动状态
 - [x] 扩展首批 Obsidian 公共变量映射并记录兼容策略
 - [x] 建立尊重用户字体设置的 Typography Foundation；中文高级排版仍延后
 - [ ] 规划完整 Style Settings 分组，但保持逐项落地

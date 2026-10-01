@@ -23,25 +23,31 @@ Theme Foundation commit。本文件不嵌入其所在 commit 的 hash，以避�
 - Check 已覆盖模式合同、未定义 Token、循环引用、Style Settings 链路、生成文件同步与基础 CSS 健康
 - Foundation Architecture Review 已通过
 - Foundation Desktop 测试清单与最小安装包已准备完成
+- 首轮 Foundation Desktop Test 完成，结果为 Conditional Pass / Fix Required
+- Accent hover / active 背景已改为从 `--theme-accent` 派生
+- Accent 设置已避开 Style Settings 1.0.9 在 Obsidian 1.13.1 上的 `variable-color` / Pickr `null.clone` 上游兼容问题
 - GitHub remote 已配置为 `https://github.com/yimengzhiyan/obsidian-theme-plugin.git`；`main` 与 `codex/theme-foundation` 均已推送并设置 upstream
 
 ## In Progress
 
-- Foundation Desktop Visual Test pending
+- Foundation Fix 已完成自动验证；Desktop retest pending
 
 ## Next Step
 
-将 `release/foundation-test/Obsidian Fusion Theme/` 安装到真实 Obsidian Desktop，并按 `docs/FOUNDATION_TEST.md` 验证 Light / Dark、四个 Style Settings 和核心 Workspace 状态。
+重新安装 `release/foundation-test/Obsidian Fusion Theme/`，验证四个 Style Settings 无 console error，并确认 Accent 可联动 active tab、selected file、hover、indicator 和 active border。
 
 ## Known Issues / Blockers
 
 - Working Title 同时包含 “Obsidian” 与 “Theme”，不符合当前社区主题目录命名规范；正式发布前必须确定合规名称。
 - manifest 的 author 当前是项目级临时署名，正式发布前需由维护者确认。
 - Linux Server 无法完成真实 Obsidian Desktop 的视觉、交互和平台差异验证。
+- Accent 当前使用文本颜色值输入，以规避 Style Settings 1.0.9 / Obsidian 1.13.1 的上游颜色选择器问题；恢复 color picker 取决于上游修复和后续实测。
 
 ## Validation State
 
 - Automated validation：完成；`npm run build` 和 `npm run check` 均通过
 - Check 范围：manifest、关键文件、Build、生成文件同步、Semantic Token、Light/Dark contract、Style Settings 链路和 CSS 基础健康
 - Desktop 测试安装包：`release/foundation-test/Obsidian Fusion Theme/`，仅包含 `manifest.json`、`theme.css`
-- Desktop Visual Test：pending
+- 首轮 Desktop Visual Test：Conditional Pass / Fix Required
+- Foundation Fix automated validation：完成；增强后的 `npm run build` 和 `npm run check` 均通过
+- Foundation Fix Desktop retest：pending

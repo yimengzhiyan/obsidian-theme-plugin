@@ -11,6 +11,9 @@ All notable project changes will be documented in this file.
 
 ### Changed
 
+- Changed Accent input to a text-based CSS color value as a compatibility workaround for the Style Settings `variable-color` / Pickr `null.clone` issue.
+- Derived hover and active background Semantic Tokens from Accent in both Light and Dark modes.
+- Extended Foundation checks to detect duplicate setting IDs, verify setting types/defaults, and enforce Accent-derived interaction backgrounds.
 - Established the V0.1 Semantic Token contract and shared Light/Dark mode structure.
 - Expanded mappings to documented Obsidian color, typography, radius, and workspace variables.
 - Made Accent, Radius, Content Width, and Line Height settings flow through Theme Tokens.

@@ -36,3 +36,27 @@ Foundation 层优先把 Theme Semantic Token 映射到 Obsidian 当前公开的 
 
 - [Obsidian CSS variables reference](https://docs.obsidian.md/Reference/CSS%20variables/CSS%20variables)
 - [Obsidian Colors reference](https://docs.obsidian.md/Reference/CSS%20variables/Foundations/Colors)
+
+## Decision 007 — Style Settings color compatibility workaround
+
+Accent 继续直接覆盖 `--theme-accent`，但暂时使用 `variable-text` 接收 hex 或其他 CSS color 值，不使用 `variable-color` 的颜色选择器。原因是 Style Settings 1.0.9 在 Obsidian 1.13.1 上存在已确认的 Pickr `null.clone` 兼容问题；官方最小复现使用合法的 `variable-color`、`format: hex` 和带引号的 hex 默认值仍会报错。
+
+这是主题侧的最小兼容措施，不改变 Token 链路，也不增加设置。上游问题修复并经真实 Desktop 验证后，可以重新评估恢复颜色选择器。
+
+用于确认问题归属的最小复现如下；将它单独作为 Obsidian CSS snippet 加载即可，不依赖本主题：
+
+```css
+/* @settings
+name: Variable color reproduction
+id: variable-color-reproduction
+settings:
+  -
+    id: accent-color
+    title: Accent color
+    type: variable-color
+    format: hex
+    default: '#ff0000'
+*/
+```
+
+- [Style Settings Issue #216](https://github.com/community-archive/obsidian-style-settings/issues/216)

@@ -3,8 +3,8 @@
   --theme-bg-secondary: #19191c;
   --theme-bg-sidebar: #17171a;
   --theme-bg-card: #28282d;
-  --theme-bg-hover: #303037;
-  --theme-bg-active: #3b334f;
+  --theme-bg-hover: color-mix(in oklch, var(--theme-accent) 10%, var(--theme-bg-primary));
+  --theme-bg-active: color-mix(in oklch, var(--theme-accent) 20%, var(--theme-bg-primary));
 
   --theme-text-normal: #e9e7ed;
   --theme-text-muted: #aaa7b1;

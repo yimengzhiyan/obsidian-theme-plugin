@@ -1,5 +1,11 @@
 # Foundation Desktop Test
 
+## Result
+
+- Initial test: Conditional Pass / Fix Required
+- Foundation fix: implemented
+- Desktop retest: pending
+
 ## Environment
 
 - Obsidian version:
@@ -57,10 +63,13 @@
 
 # 4. Style Settings
 
+- [ ] 修改四个设置时均无 console error
+
 ## Accent Color
 
 检查：
 
+- [ ] 输入新的 hex / CSS color value 后生效
 - [ ] Active Tab
 - [ ] Hover
 - [ ] Indicator
@@ -120,5 +129,13 @@
 记录：
 
 ```text
+Initial test:
+- Style Settings variable-color triggered "Cannot read properties of null (reading 'clone')".
+- Accent did not drive every active / selected background.
 
+Foundation fix:
+- Accent input temporarily uses variable-text to avoid the upstream Pickr path.
+- Hover and active backgrounds now derive from --theme-accent.
+
+Retest the four settings and Accent state linkage in Obsidian Desktop.
 ```
