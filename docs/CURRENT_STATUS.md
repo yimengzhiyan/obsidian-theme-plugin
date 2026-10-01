@@ -21,15 +21,17 @@ Theme Foundation commit。本文件不嵌入其所在 commit 的 hash，以避�
 - Basic Workspace 已覆盖 tabs、sidebar/navigation、ribbon、status bar 和 scrollbar 的基础状态
 - 4 个 Style Settings 均通过 Theme Token 再映射至 Obsidian 变量
 - Check 已覆盖模式合同、未定义 Token、循环引用、Style Settings 链路、生成文件同步与基础 CSS 健康
+- Foundation Architecture Review 已通过
+- Foundation Desktop 测试清单与最小安装包已准备完成
 - GitHub remote 已配置为 `https://github.com/yimengzhiyan/obsidian-theme-plugin.git`；`main` 与 `codex/theme-foundation` 均已推送并设置 upstream
 
 ## In Progress
 
-- 等待 V0.1 Theme Foundation 的 Chat Review
+- Foundation Desktop Visual Test pending
 
 ## Next Step
 
-Review 通过后，将 `manifest.json` 和 `theme.css` 安装到真实 Obsidian Desktop，验证 Light / Dark、四个 Style Settings 和核心 Workspace 状态。
+将 `release/foundation-test/Obsidian Fusion Theme/` 安装到真实 Obsidian Desktop，并按 `docs/FOUNDATION_TEST.md` 验证 Light / Dark、四个 Style Settings 和核心 Workspace 状态。
 
 ## Known Issues / Blockers
 
@@ -41,5 +43,5 @@ Review 通过后，将 `manifest.json` 和 `theme.css` 安装到真实 Obsidian 
 
 - Automated validation：完成；`npm run build` 和 `npm run check` 均通过
 - Check 范围：manifest、关键文件、Build、生成文件同步、Semantic Token、Light/Dark contract、Style Settings 链路和 CSS 基础健康
-- 安装产物：`manifest.json`、`theme.css`
-- Real Obsidian visual validation：pending
+- Desktop 测试安装包：`release/foundation-test/Obsidian Fusion Theme/`，仅包含 `manifest.json`、`theme.css`
+- Desktop Visual Test：pending

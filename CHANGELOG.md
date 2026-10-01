@@ -4,6 +4,11 @@ All notable project changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- Added a Foundation Desktop test checklist for recording real Obsidian validation.
+- Added a minimal Foundation test package containing only `manifest.json` and `theme.css`.
+
 ### Changed
 
 - Established the V0.1 Semantic Token contract and shared Light/Dark mode structure.

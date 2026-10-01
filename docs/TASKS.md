@@ -16,6 +16,7 @@
 ## After Bootstrap Review
 
 - [x] 审阅并确定 V0.1 Token 命名、层级和覆盖策略
+- [x] 准备 Foundation Desktop 测试清单与最小安装包
 - [ ] 在真实 Obsidian 中验证 Light / Dark 与核心 workspace selector
 - [x] 扩展首批 Obsidian 公共变量映射并记录兼容策略
 - [x] 建立尊重用户字体设置的 Typography Foundation；中文高级排版仍延后
