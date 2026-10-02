@@ -67,6 +67,16 @@ const styleSettingMappings = new Map([
   ["theme-line-height", "--line-height-normal: var(--theme-line-height)"],
   ["theme-reading-width", "--file-line-width: var(--theme-reading-width)"]
 ]);
+const nativeControlAccentMappings = [
+  "--color-accent: var(--theme-accent)",
+  "--color-accent-1: var(--theme-accent-hover)",
+  "--color-accent-2: var(--theme-accent-hover)",
+  "--interactive-accent: var(--theme-accent)",
+  "--interactive-accent-hover: var(--theme-accent-hover)",
+  "--checkbox-marker-color: var(--theme-text-on-accent)",
+  "--checkbox-color: var(--theme-accent)",
+  "--checkbox-color-hover: var(--theme-accent-hover)"
+];
 const requiredFiles = [
   "AGENTS.md",
   "CHANGELOG.md",
@@ -182,6 +192,7 @@ async function validateCss() {
   const css = await readFile(path.join(projectRoot, "theme.css"), "utf8");
   const lightCss = await readFile(path.join(projectRoot, "src/base/light.css"), "utf8");
   const darkCss = await readFile(path.join(projectRoot, "src/base/dark.css"), "utf8");
+  const colorsCss = await readFile(path.join(projectRoot, "src/base/colors.css"), "utf8");
   const workspaceCss = await Promise.all([
     "tabs.css",
     "sidebar.css",
@@ -245,6 +256,16 @@ async function validateCss() {
       if (!declaration?.value.includes("var(--theme-accent)")) {
         fail(`${mode} ${token} must derive from --theme-accent.`);
       }
+    }
+  }
+
+  const nativeControlAccentBlock = colorsCss.match(/body\.theme-light,\s*body\.theme-dark\s*\{([\s\S]*?)\}/)?.[1];
+  if (!nativeControlAccentBlock) {
+    fail("Native control Accent mappings must use the body.theme-light/body.theme-dark selector.");
+  }
+  for (const mapping of nativeControlAccentMappings) {
+    if (!nativeControlAccentBlock.includes(mapping)) {
+      fail(`Native control Accent mapping is missing: ${mapping}`);
     }
   }
 

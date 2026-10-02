@@ -119,11 +119,6 @@ body {
   --text-accent: var(--theme-accent);
   --text-accent-hover: var(--theme-accent-hover);
 
-  --color-accent: var(--theme-accent);
-  --color-accent-1: var(--theme-accent-hover);
-  --color-accent-2: var(--theme-accent-hover);
-  --interactive-accent: var(--theme-accent);
-  --interactive-accent-hover: var(--theme-accent-hover);
   --interactive-normal: var(--theme-bg-card);
   --interactive-hover: var(--theme-hover-bg);
 
@@ -135,6 +130,19 @@ body {
 
   --code-background: var(--theme-code-bg);
   --code-normal: var(--theme-code-text);
+}
+
+body.theme-light,
+body.theme-dark {
+  --color-accent: var(--theme-accent);
+  --color-accent-1: var(--theme-accent-hover);
+  --color-accent-2: var(--theme-accent-hover);
+  --interactive-accent: var(--theme-accent);
+  --interactive-accent-hover: var(--theme-accent-hover);
+
+  --checkbox-marker-color: var(--theme-text-on-accent);
+  --checkbox-color: var(--theme-accent);
+  --checkbox-color-hover: var(--theme-accent-hover);
 }
 
 /* Source: src/base/light.css */

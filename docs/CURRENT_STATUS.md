@@ -26,15 +26,17 @@ Theme Foundation commit。本文件不嵌入其所在 commit 的 hash，以避�
 - 首轮 Foundation Desktop Test 完成，结果为 Conditional Pass / Fix Required
 - Accent hover / active 背景已改为从 `--theme-accent` 派生
 - Accent 设置已避开 Style Settings 1.0.9 在 Obsidian 1.13.1 上的 `variable-color` / Pickr `null.clone` 上游兼容问题
+- Foundation Fix Desktop QA 已通过 clone error、基础 Accent 联动、selected file、active tab、indicator 和 active border；同时识别出 Native Controls Accent 未联动问题
+- Native Controls Accent 映射已提高到 mode-specific selector，并补齐 Checkbox 公开变量；尚未进行 Desktop 复测
 - GitHub remote 已配置为 `https://github.com/yimengzhiyan/obsidian-theme-plugin.git`；`main` 与 `codex/theme-foundation` 均已推送并设置 upstream
 
 ## In Progress
 
-- Foundation Fix 已完成自动验证；Desktop retest pending
+- Native Controls Accent fix 已实现并通过自动验证；Desktop retest pending
 
 ## Next Step
 
-重新安装 `release/foundation-test/Obsidian Fusion Theme/`，验证四个 Style Settings 无 console error，并确认 Accent 可联动 active tab、selected file、hover、indicator 和 active border。
+重新安装 `release/foundation-test/Obsidian Fusion Theme/`，在 Dark mode 将 Accent 设为 `#dc2626`，复测字体大小 slider fill、已启用 toggle 和 checkbox 状态。
 
 ## Known Issues / Blockers
 
@@ -50,4 +52,6 @@ Theme Foundation commit。本文件不嵌入其所在 commit 的 hash，以避�
 - Desktop 测试安装包：`release/foundation-test/Obsidian Fusion Theme/`，仅包含 `manifest.json`、`theme.css`
 - 首轮 Desktop Visual Test：Conditional Pass / Fix Required
 - Foundation Fix automated validation：完成；增强后的 `npm run build` 和 `npm run check` 均通过
-- Foundation Fix Desktop retest：pending
+- Foundation Fix Desktop QA：NEEDS FIX；Native Controls Accent 未跟随自定义 Accent
+- Native Controls Accent fix automated validation：完成；`npm run build`、`npm run check`、`git diff --check` 均通过
+- Native Controls Accent Desktop retest：pending

@@ -11,6 +11,7 @@ All notable project changes will be documented in this file.
 
 ### Changed
 
+- Aligned native slider, toggle, and checkbox Accent states with Theme Semantic Tokens using mode-specific Obsidian variable mappings.
 - Changed Accent input to a text-based CSS color value as a compatibility workaround for the Style Settings `variable-color` / Pickr `null.clone` issue.
 - Derived hover and active background Semantic Tokens from Accent in both Light and Dark modes.
 - Extended Foundation checks to detect duplicate setting IDs, verify setting types/defaults, and enforce Accent-derived interaction backgrounds.

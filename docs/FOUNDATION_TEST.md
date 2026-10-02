@@ -3,7 +3,8 @@
 ## Result
 
 - Initial test: Conditional Pass / Fix Required
-- Foundation fix: implemented
+- Foundation fix QA: NEEDS FIX
+- Native controls Accent fix: implemented
 - Desktop retest: pending
 
 ## Environment
@@ -95,6 +96,17 @@
 
 - [ ] Paragraph spacing
 
+## Native Controls Accent
+
+- Code fix: Fixed
+- Desktop validation: Pending
+
+检查 Dark mode 与自定义 Accent：
+
+- [ ] 设置 → 外观 → 字体大小 slider fill 跟随 Accent
+- [ ] 设置 → 关于 → 已启用 toggle 跟随 Accent
+- [ ] Checkbox checked / hover 状态跟随 Accent
+
 # 5. Workspace
 
 ## Tabs
@@ -136,6 +148,15 @@ Initial test:
 Foundation fix:
 - Accent input temporarily uses variable-text to avoid the upstream Pickr path.
 - Hover and active backgrounds now derive from --theme-accent.
+
+Foundation fix Desktop QA:
+- Passed: clone error, Accent base linkage, selected file, active tab, indicator, active border.
+- Needs fix: native slider fill and enabled toggle stayed purple in Dark mode.
+
+Native controls Accent fix:
+- Native Accent mappings now use mode-specific selector specificity.
+- Checkbox Accent variables now map to Theme Semantic Tokens.
+- Desktop validation is pending; do not mark Foundation PASS yet.
 
 Retest the four settings and Accent state linkage in Obsidian Desktop.
 ```
