@@ -12,9 +12,8 @@ settings:
   -
     id: theme-accent
     title: Accent color
-    description: Primary interactive color used by the theme.
-    type: variable-color
-    format: hex
+    description: Primary interactive color as a hex or CSS color value.
+    type: variable-text
     default: '#6750a4'
   -
     id: theme-radius-md
@@ -48,9 +47,9 @@ settings:
     level: 2
     collapsed: true
   -
-    id: theme-content-width
+    id: theme-reading-width
     title: Content width
-    description: Maximum readable line width.
+    description: Maximum line width when Obsidian's readable line length is enabled.
     type: variable-number-slider
     default: 700
     min: 480

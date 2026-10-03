@@ -3,25 +3,42 @@
 ## Milestone: V0.1 Foundation
 
 - [x] **Bootstrap** — Git、项目结构、manifest、文档、Build / Check 和 baseline
-- [x] **Semantic Token (skeleton)** — 建立背景、文本、交互、边框、链接、代码、圆角、间距、过渡 Token
-- [x] **Light Theme (foundation)** — 提供基础语义值，最终视觉未定稿
-- [x] **Dark Theme (foundation)** — 提供基础语义值，最终视觉未定稿
-- [x] **Obsidian Variable Mapping (foundation)** — 映射首批公共变量
-- [x] **Typography Foundation (bootstrap)** — 字体 fallback 与基础行高；中文排版细化待办
-- [x] **Basic Workspace (bootstrap)** — Tabs、Sidebar、Ribbon、Status Bar、Scrollbar 的非侵入基础
-- [x] **Minimal Style Settings** — Accent、Radius、Content Width、Line Height
+- [x] **Semantic Token** — 确认颜色、圆角、间距、Motion、字体、行高和阅读宽度合同
+- [x] **Light Theme** — 完成基础视觉层级和 Accent 派生关系；最终视觉未定稿
+- [x] **Dark Theme** — 完成基础视觉层级和 Accent 派生关系；最终视觉未定稿
+- [x] **Obsidian Variable Mapping** — 核对并映射首批官方 Foundation、Editor 与 Workspace 变量
+- [x] **Typography Foundation** — 尊重用户字体覆盖，映射字体、基础行高和阅读宽度
+- [x] **Basic Workspace** — Tabs、Sidebar、Ribbon、Status Bar、Scrollbar 的基础状态统一
+- [x] **Minimal Style Settings** — Accent、Radius、Content Width、Line Height 均通过 Theme Token 生效
 - [x] **Build** — 无框架、确定性合并并生成 `theme.css`
-- [x] **Validation (bootstrap)** — manifest、必需文件、Build、CSS 基础结构检查
+- [x] **Validation** — manifest、生成同步、Token contract、Style Settings 链路和 CSS 基础健康检查
 
 ## After Bootstrap Review
 
-- [ ] 审阅并确定 V0.1 Token 命名、层级和覆盖策略
-- [ ] 在真实 Obsidian 中验证 Light / Dark 与核心 workspace selector
-- [ ] 扩展 Obsidian 公共变量映射并记录兼容范围
-- [ ] 设计中文友好的 Typography Foundation
+- [x] 审阅并确定 V0.1 Token 命名、层级和覆盖策略
+- [x] 准备 Foundation Desktop 测试清单与最小安装包
+- [x] 完成首轮真实 Obsidian Foundation 测试并记录 Conditional Pass / Fix Required
+- [x] 修复 Accent active / hover 状态未完整进入 Semantic Token 链路的问题
+- [x] 为 Style Settings `variable-color` / Pickr `null.clone` 上游问题提供主题侧最小兼容措施
+- [x] 在真实 Obsidian 中复测四个 Style Settings 与 Accent 联动状态
+- [x] 扩展首批 Obsidian 公共变量映射并记录兼容策略
+- [x] 建立尊重用户字体设置的 Typography Foundation；中文高级排版仍延后
+
+## Future / Non-blocking Follow-up
+
 - [ ] 规划完整 Style Settings 分组，但保持逐项落地
 - [ ] 增加适度的官方 Stylelint 校验（评估依赖成本后决定）
 
 ## Explicitly deferred
 
 Auto Hide、Card Layout、完整 Rainbow Folder、Focus Mode、高级 Callout / Table、Canvas、Graph、高级 Animation、Preset System、Seamless Embed、Companion Plugin。
+
+## Foundation Exit Gate
+
+- [x] Automated Build / Check / generated output validation
+- [x] Style Settings Desktop QA：Accent、Border Radius、Content Width、Line Height、restart persistence
+- [x] Accent / Workspace Desktop QA：Active Tab、Selected File、Indicator、Active Border
+- [x] Native Controls Desktop QA：Slider active fill、enabled Toggle；Checkbox N/A 且不阻塞
+- [x] Regression PASS
+- [x] V0.1 Foundation Desktop Validation PASS
+- [ ] Merge `codex/theme-foundation` → `main`（等待 PR Review）

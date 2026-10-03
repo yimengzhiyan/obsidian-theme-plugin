@@ -15,6 +15,16 @@
   --theme-transition-normal: 180ms ease;
   --theme-transition-slow: 280ms ease;
 
-  --theme-content-width: 700px;
+  --theme-font-interface: system-ui, sans-serif;
+  --theme-font-text: system-ui, sans-serif;
+  --theme-font-monospace: ui-monospace, monospace;
   --theme-line-height: 1.7;
+  --theme-reading-width: 700px;
+}
+
+body {
+  --radius-s: var(--theme-radius-sm);
+  --radius-m: var(--theme-radius-md);
+  --radius-l: var(--theme-radius-lg);
+  --radius-xl: var(--theme-radius-xl);
 }

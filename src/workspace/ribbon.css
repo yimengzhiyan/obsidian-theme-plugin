@@ -1,4 +1,20 @@
+body {
+  --ribbon-background: var(--theme-bg-sidebar);
+  --ribbon-background-collapsed: var(--theme-bg-primary);
+}
+
 .workspace-ribbon {
-  background-color: var(--theme-bg-sidebar);
-  border-color: var(--theme-border);
+  --icon-color: var(--theme-text-muted);
+  --icon-color-hover: var(--theme-text-normal);
+  --icon-color-active: var(--theme-indicator);
+  --icon-color-focused: var(--theme-indicator);
+}
+
+.workspace-ribbon .clickable-icon:hover {
+  background-color: var(--theme-hover-bg);
+}
+
+.workspace-ribbon .clickable-icon.is-active {
+  background-color: var(--theme-active-bg);
+  color: var(--theme-indicator);
 }

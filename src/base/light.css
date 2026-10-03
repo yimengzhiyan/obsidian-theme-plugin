@@ -3,8 +3,8 @@
   --theme-bg-secondary: #f5f5f7;
   --theme-bg-sidebar: #f1f1f4;
   --theme-bg-card: #fafafd;
-  --theme-bg-hover: #ececf1;
-  --theme-bg-active: #e4def3;
+  --theme-bg-hover: color-mix(in oklch, var(--theme-accent) 8%, var(--theme-bg-primary));
+  --theme-bg-active: color-mix(in oklch, var(--theme-accent) 16%, var(--theme-bg-primary));
 
   --theme-text-normal: #242329;
   --theme-text-muted: #68666f;
@@ -12,15 +12,15 @@
   --theme-text-on-accent: #ffffff;
 
   --theme-accent: #6750a4;
-  --theme-accent-hover: #57428f;
-  --theme-active-bg: #e4def3;
-  --theme-active-text: #38266b;
-  --theme-hover-bg: #ececf1;
-  --theme-indicator: #6750a4;
+  --theme-accent-hover: color-mix(in oklch, var(--theme-accent) 88%, black);
+  --theme-active-bg: var(--theme-bg-active);
+  --theme-active-text: color-mix(in oklch, var(--theme-accent) 72%, black);
+  --theme-hover-bg: var(--theme-bg-hover);
+  --theme-indicator: var(--theme-accent);
 
   --theme-border: #dedce3;
   --theme-border-hover: #c5c1cb;
-  --theme-border-active: #6750a4;
+  --theme-border-active: var(--theme-accent);
 
   --theme-link: #5a43a0;
   --theme-link-hover: #3f2b7f;

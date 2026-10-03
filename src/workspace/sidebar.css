@@ -1,3 +1,13 @@
+body {
+  --nav-item-color: var(--theme-text-muted);
+  --nav-item-color-hover: var(--theme-text-normal);
+  --nav-item-color-active: var(--theme-active-text);
+  --nav-item-color-selected: var(--theme-active-text);
+  --nav-item-background-hover: var(--theme-hover-bg);
+  --nav-item-background-active: var(--theme-active-bg);
+  --nav-item-background-selected: var(--theme-active-bg);
+}
+
 .workspace-split.mod-left-split,
 .workspace-split.mod-right-split {
   background-color: var(--theme-bg-sidebar);
