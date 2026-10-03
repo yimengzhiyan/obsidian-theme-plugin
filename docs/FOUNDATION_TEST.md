@@ -3,7 +3,7 @@
 ## Result
 
 - Initial test: Conditional Pass / Fix Required
-- Foundation fix QA: PASS
+- Foundation fix QA: NEEDS FIX (historical; native controls Accent issue identified)
 - Native controls Accent fix: implemented
 - Desktop retest: PASS
 - V0.1 Foundation Desktop Validation: PASS
