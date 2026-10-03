@@ -60,3 +60,11 @@ settings:
 ```
 
 - [Style Settings Issue #216](https://github.com/community-archive/obsidian-style-settings/issues/216)
+
+## Decision 008 — Phase 2 remains token-first
+
+Phase 2 必须建立在已经合并的 V0.1 Foundation 上。新增视觉能力时，先判断是否需要扩展 Semantic Token，再优先映射到 Obsidian public CSS variables；只有公共变量无法表达必要状态时，才使用范围受限的 selector。
+
+不允许在多个组件中复制散落的 hardcoded color。Component-specific token 只有在存在明确、可复用的组件语义时才增加，避免提前制造庞大 Token 系统。Auto Hide、Card Layout、Focus Mode、Advanced Rainbow Folder、Canvas、Graph、Advanced Animation、Preset System、Seamless Embed 和 Companion Plugin 继续 deferred。
+
+本决策只确定 Phase 2 的实现顺序与边界，不预先确定具体颜色值或最终 UI 设计。
