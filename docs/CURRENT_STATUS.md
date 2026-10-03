@@ -2,15 +2,19 @@
 
 ## Current Milestone
 
-V0.1 — Theme Foundation（Complete / Pending merge to `main`）
+Phase 2 — Appearance & Core Components（Planning）
+
+## Foundation
+
+V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Branch
 
-`codex/theme-foundation`
+`codex/phase-2-planning`
 
 ## Current Commit
 
-Theme Foundation commit。本文件不嵌入其所在 commit 的 hash，以避免自引用导致 hash 永远变化；使用 `git rev-parse HEAD` 获取精确值。
+Phase 2 planning commit。本文件不嵌入其所在 commit 的 hash，以避免自引用导致 hash 永远变化；使用 `git rev-parse HEAD` 获取精确值。
 
 ## Completed
 
@@ -31,15 +35,19 @@ Theme Foundation commit。本文件不嵌入其所在 commit 的 hash，以避�
 - Obsidian 1.13.7 / Windows 25H2 Build 26200 最终 Desktop QA PASS
 - Slider active fill 与 enabled toggle 在 Light / Dark 下均随红、蓝、绿 Accent 即时变化；原紫色残留已消失
 - Slider thumb 已确认为中性控件部分，不属于 Accent linkage blocker；Checkbox 无独立测试入口，记录为 N/A，不阻塞 Foundation
+- Foundation exit gate 已全部完成，V0.1 Desktop Validation PASS
+- PR #1 `feat: establish V0.1 theme foundation` 已通过 merge commit 合并到 `main`
+- Foundation merge commit：`f8e37f459589ec37a1f8cf5a2dd9f305b9a3a1b9`
 - GitHub remote 已配置为 `https://github.com/yimengzhiyan/obsidian-theme-plugin.git`；`main` 与 `codex/theme-foundation` 均已推送并设置 upstream
 
 ## In Progress
 
-- V0.1 Foundation 已满足合并条件，等待 PR Review
+- P2.0 Planning：确定 Phase 2 scope、Token expansion boundary、module order、QA strategy 和 implementation branch strategy
+- Phase 2 implementation 尚未开始
 
 ## Next Step
 
-准备并 Review `codex/theme-foundation` → `main` 的 PR。不要在 Foundation 合并前开始 Phase 2。
+完成 Phase 2 scope、模块顺序和首批 implementation task 的 Chat Review；Review 通过后再创建功能分支。
 
 ## Known Issues / Blockers
 
@@ -60,3 +68,4 @@ Theme Foundation commit。本文件不嵌入其所在 commit 的 hash，以避�
 - Theme 与 release 测试包 hash：一致
 - Regression：PASS
 - V0.1 Foundation Desktop Validation：PASS
+- PR #1：MERGED；merge commit `f8e37f459589ec37a1f8cf5a2dd9f305b9a3a1b9`

@@ -31,7 +31,7 @@
 
 ## Explicitly deferred
 
-Auto Hide、Card Layout、完整 Rainbow Folder、Focus Mode、高级 Callout / Table、Canvas、Graph、高级 Animation、Preset System、Seamless Embed、Companion Plugin。
+Auto Hide system、Card Layout、Focus Mode、Advanced Rainbow Folder、Canvas、Graph、Advanced Animation、Preset System、Seamless Embed、Companion Plugin。
 
 ## Foundation Exit Gate
 
@@ -41,4 +41,16 @@ Auto Hide、Card Layout、完整 Rainbow Folder、Focus Mode、高级 Callout / 
 - [x] Native Controls Desktop QA：Slider active fill、enabled Toggle；Checkbox N/A 且不阻塞
 - [x] Regression PASS
 - [x] V0.1 Foundation Desktop Validation PASS
-- [ ] Merge `codex/theme-foundation` → `main`（等待 PR Review）
+- [x] Merge `codex/theme-foundation` → `main` via PR #1（merge commit `f8e37f459589ec37a1f8cf5a2dd9f305b9a3a1b9`）
+
+## Milestone: Phase 2 — Appearance & Core Components
+
+- [x] **V0.1 Foundation merged** — Foundation exit gate 完成并进入 `main`
+- [ ] **P2.0 Planning（In Progress）** — 确定 scope、Token expansion boundary、module order、QA strategy 和 implementation branch strategy
+- [ ] **P2.1 Appearance Token Expansion** — 规划 background、text、accent、border、interactive、active / selected 与 component-neutral surface 层级；先扩展 Design System，不先写具体组件
+- [ ] **P2.2 Typography** — 规划 heading sizes、bold、italic、inline code、line height、paragraph spacing、first-line indent、reading width、letter / word spacing；不得强制覆盖用户字体设置
+- [ ] **P2.3 Links / Tags / Highlight** — 规划 inline links、tags 与 highlight / mark
+- [ ] **P2.4 Code / Quote / Table** — 规划 code block、blockquote 与 table 的基础样式
+- [ ] **P2.5 Callout** — 独立规划 Callout，避免与基础 Markdown block components 混入同一次提交
+- [ ] **P2.6 Navigation / File Explorer** — 规划 file / folder typography、selected / hover states、folder weight、wrapping 与基础层级；Rainbow Folder 只预留接口和规划，不实现高级版本
+- [ ] **P2.7 Desktop QA / Regression** — 每批组件遵循 Build → Check → Desktop QA → Review → Merge，不等待 Phase 2 全部完成后再测试
