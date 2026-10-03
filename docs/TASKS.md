@@ -46,9 +46,9 @@ Auto Hide system、Card Layout、Focus Mode、Advanced Rainbow Folder、Canvas�
 ## Milestone: Phase 2 — Appearance & Core Components
 
 - [x] **V0.1 Foundation merged** — Foundation exit gate 完成并进入 `main`
-- [ ] **P2.0 Planning（In Progress）** — 确定 scope、Token expansion boundary、module order、QA strategy 和 implementation branch strategy
-- [ ] **P2.1 Appearance Token Expansion** — 规划 background、text、accent、border、interactive、active / selected 与 component-neutral surface 层级；先扩展 Design System，不先写具体组件
-- [ ] **P2.2 Typography** — 规划 heading sizes、bold、italic、inline code、line height、paragraph spacing、first-line indent、reading width、letter / word spacing；不得强制覆盖用户字体设置
+- [x] **P2.0 Planning** — Chat Review PASS；规划状态经 PR #2 合并到 `main`
+- [x] **P2.1 Appearance Token Gap Audit / Contract Freeze** — audit completed；无需新增 global Semantic Tokens，现有 Foundation contract 继续作为依据；详见 [Token audit](APPEARANCE_TOKEN_AUDIT.md)
+- [ ] **P2.2 Typography（Next active task: pending Chat design review; implementation not started）** — 规划 heading sizes、bold、italic、inline code、line height、paragraph spacing、first-line indent、reading width、letter / word spacing；不得强制覆盖用户字体设置
 - [ ] **P2.3 Links / Tags / Highlight** — 规划 inline links、tags 与 highlight / mark
 - [ ] **P2.4 Code / Quote / Table** — 规划 code block、blockquote 与 table 的基础样式
 - [ ] **P2.5 Callout** — 独立规划 Callout，避免与基础 Markdown block components 混入同一次提交

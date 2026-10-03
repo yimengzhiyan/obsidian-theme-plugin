@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-Phase 2 — Appearance & Core Components（Planning）
+Phase 2 — Appearance & Core Components：P2.1 Token Gap Audit complete
 
 ## Foundation
 
@@ -10,11 +10,11 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Branch
 
-`codex/phase-2-planning`
+`codex/p2-1-token-audit`
 
 ## Current Commit
 
-Phase 2 planning commit。本文件不嵌入其所在 commit 的 hash，以避免自引用导致 hash 永远变化；使用 `git rev-parse HEAD` 获取精确值。
+P2.1 Token audit commit。本文件不嵌入其所在 commit 的 hash，以避免自引用导致 hash 永远变化；使用 `git rev-parse HEAD` 获取精确值。
 
 ## Completed
 
@@ -38,16 +38,18 @@ Phase 2 planning commit。本文件不嵌入其所在 commit 的 hash，以避�
 - Foundation exit gate 已全部完成，V0.1 Desktop Validation PASS
 - PR #1 `feat: establish V0.1 theme foundation` 已通过 merge commit 合并到 `main`
 - Foundation merge commit：`f8e37f459589ec37a1f8cf5a2dd9f305b9a3a1b9`
+- P2.0 Planning Chat Review PASS；PR #2 已合并，merge commit 为 `f2f26e23edc7c216d0348c7823f9b98ccc1d281e`
+- P2.1 Token Gap Audit / Contract Freeze complete；无需新增 global Semantic Tokens，现有 Foundation contract 保持不变；详见 [Token audit](APPEARANCE_TOKEN_AUDIT.md)
 - GitHub remote 已配置为 `https://github.com/yimengzhiyan/obsidian-theme-plugin.git`；`main` 与 `codex/theme-foundation` 均已推送并设置 upstream
 
 ## In Progress
 
-- P2.0 Planning：确定 Phase 2 scope、Token expansion boundary、module order、QA strategy 和 implementation branch strategy
-- Phase 2 implementation 尚未开始
+- P2.2 Typography 为下一项 active task，仅等待 Chat design review；implementation not started
+- P2.1 audit 文档已完成，等待提交后的 Review；Phase 2 功能实现尚未开始
 
 ## Next Step
 
-完成 Phase 2 scope、模块顺序和首批 implementation task 的 Chat Review；Review 通过后再创建功能分支。
+P2.2 Typography — pending Chat design review。先确定设计与范围，再授权实现。
 
 ## Known Issues / Blockers
 
