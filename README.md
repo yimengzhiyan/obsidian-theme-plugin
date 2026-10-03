@@ -6,7 +6,7 @@
 
 ## 当前状态
 
-当前里程碑是 **Bootstrap / V0.1 Foundation preparation**。仓库已提供语义色彩 Token 骨架、浅色/深色基础值、少量工作区样式、最小 Style Settings 配置，以及可重复执行的 CSS Build / Check。高级功能尚未实现。
+**V0.1 Theme Foundation 已完成并通过真实 Obsidian Desktop QA，当前等待从 `codex/theme-foundation` 合并到 `main`。** 仓库已提供语义色彩 Token、浅色/深色合同、Obsidian 公共变量映射、基础工作区样式、四项 Style Settings，以及可重复执行的 CSS Build / Check。高级功能尚未实现。
 
 ## 安装
 

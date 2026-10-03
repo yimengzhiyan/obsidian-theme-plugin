@@ -21,6 +21,11 @@ All notable project changes will be documented in this file.
 - Replaced forced font families with system-level theme fallbacks that preserve Obsidian user overrides.
 - Strengthened Foundation checks for generated output, token contracts, references, cycles, and CSS health.
 
+### Validated
+
+- Passed V0.1 Foundation Desktop QA on Obsidian 1.13.7 / Windows 25H2 Build 26200, including all four Style Settings, Accent / Workspace states, native Slider and Toggle Accent linkage, restart persistence, and regression checks.
+- Recorded Checkbox as N/A because the Desktop test environment had no independent validation target; its public Accent mappings remain covered by automated checks.
+
 ## [0.1.0] - 2026-09-29
 
 ### Added

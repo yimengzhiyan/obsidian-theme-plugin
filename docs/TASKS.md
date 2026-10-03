@@ -20,12 +20,25 @@
 - [x] 完成首轮真实 Obsidian Foundation 测试并记录 Conditional Pass / Fix Required
 - [x] 修复 Accent active / hover 状态未完整进入 Semantic Token 链路的问题
 - [x] 为 Style Settings `variable-color` / Pickr `null.clone` 上游问题提供主题侧最小兼容措施
-- [ ] 在真实 Obsidian 中复测四个 Style Settings 与 Accent 联动状态
+- [x] 在真实 Obsidian 中复测四个 Style Settings 与 Accent 联动状态
 - [x] 扩展首批 Obsidian 公共变量映射并记录兼容策略
 - [x] 建立尊重用户字体设置的 Typography Foundation；中文高级排版仍延后
+
+## Future / Non-blocking Follow-up
+
 - [ ] 规划完整 Style Settings 分组，但保持逐项落地
 - [ ] 增加适度的官方 Stylelint 校验（评估依赖成本后决定）
 
 ## Explicitly deferred
 
 Auto Hide、Card Layout、完整 Rainbow Folder、Focus Mode、高级 Callout / Table、Canvas、Graph、高级 Animation、Preset System、Seamless Embed、Companion Plugin。
+
+## Foundation Exit Gate
+
+- [x] Automated Build / Check / generated output validation
+- [x] Style Settings Desktop QA：Accent、Border Radius、Content Width、Line Height、restart persistence
+- [x] Accent / Workspace Desktop QA：Active Tab、Selected File、Indicator、Active Border
+- [x] Native Controls Desktop QA：Slider active fill、enabled Toggle；Checkbox N/A 且不阻塞
+- [x] Regression PASS
+- [x] V0.1 Foundation Desktop Validation PASS
+- [ ] Merge `codex/theme-foundation` → `main`（等待 PR Review）

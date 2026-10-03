@@ -3,22 +3,24 @@
 ## Result
 
 - Initial test: Conditional Pass / Fix Required
-- Foundation fix QA: NEEDS FIX
+- Foundation fix QA: PASS
 - Native controls Accent fix: implemented
-- Desktop retest: pending
+- Desktop retest: PASS
+- V0.1 Foundation Desktop Validation: PASS
 
 ## Environment
 
-- Obsidian version:
-- OS:
-- Theme version:
-- Commit:
+- Obsidian version: 1.13.7
+- OS: Windows 25H2 Build 26200
+- Theme version: 0.1.0 (`Obsidian Fusion Theme`)
+- Commit: `6f2ba42eb38020eaca9c6d2793269f90428dd101`
+- Installed `theme.css` and release test package hash: identical
 
 # 1. Installation
 
-- [ ] `manifest.json` 可识别
-- [ ] `theme.css` 正常加载
-- [ ] Theme 出现在 设置 → 外观 → 主题
+- [x] `manifest.json` 可识别
+- [x] `theme.css` 正常加载
+- [x] Theme 出现在 设置 → 外观 → 主题
 
 问题记录：
 
@@ -64,48 +66,54 @@
 
 # 4. Style Settings
 
-- [ ] 修改四个设置时均无 console error
+- [x] 修改四个设置时均无 console error
+- [x] Restart persistence
+- [x] `null.clone` error 未出现
 
 ## Accent Color
 
 检查：
 
-- [ ] 输入新的 hex / CSS color value 后生效
-- [ ] Active Tab
-- [ ] Hover
-- [ ] Indicator
-- [ ] Border
+- [x] 输入新的 hex / CSS color value 后生效
+- [x] Active Tab
+- [x] Hover
+- [x] Indicator
+- [x] Border
+- [x] Selected File
 
 ## Border Radius
 
 检查：
 
-- [ ] Tabs
-- [ ] UI Card
-- [ ] Status Bar
+- [x] Tabs
+- [x] UI Card
+- [x] Status Bar
 
 ## Content Width
 
 检查：
 
-- [ ] Reading View
+- [x] Reading View
 
 ## Line Height
 
 检查：
 
-- [ ] Paragraph spacing
+- [x] Paragraph spacing
 
 ## Native Controls Accent
 
 - Code fix: Fixed
-- Desktop validation: Pending
+- Desktop validation: PASS
 
 检查 Dark mode 与自定义 Accent：
 
-- [ ] 设置 → 外观 → 字体大小 slider fill 跟随 Accent
-- [ ] 设置 → 关于 → 已启用 toggle 跟随 Accent
-- [ ] Checkbox checked / hover 状态跟随 Accent
+- [x] 设置 → 外观 → 字体大小 slider active fill 跟随 Accent
+- [x] Slider 在 Light / Dark 下随红、蓝、绿 Accent 即时变化
+- [x] 设置 → 关于 → 已启用 toggle 跟随 Accent
+- [x] Toggle 在 Light / Dark 下无固定紫色残留
+- Slider thumb 保持白色中性控件，不属于 Accent linkage failure
+- Checkbox：N/A — Desktop 测试环境无独立可验证入口；公共 Accent mappings 由 automated check 覆盖
 
 # 5. Workspace
 
@@ -156,7 +164,11 @@ Foundation fix Desktop QA:
 Native controls Accent fix:
 - Native Accent mappings now use mode-specific selector specificity.
 - Checkbox Accent variables now map to Theme Semantic Tokens.
-- Desktop validation is pending; do not mark Foundation PASS yet.
+- Slider active fill follows red, blue, and green Accent immediately in Light and Dark modes.
+- Enabled toggle follows Accent in Light and Dark modes; the fixed purple residue is gone.
+- White slider thumb is a neutral control part and is not an Accent linkage blocker.
+- Checkbox is N/A in this Desktop environment and is not a Foundation blocker; automated mapping checks pass.
 
-Retest the four settings and Accent state linkage in Obsidian Desktop.
+Final regression: PASS.
+V0.1 Foundation Desktop Validation: PASS.
 ```

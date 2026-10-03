@@ -1,11 +1,11 @@
 # AI Handoff
 
 - **项目**：模块化 Obsidian CSS Theme；`Obsidian Fusion Theme` 只是 Working Title。
-- **当前阶段**：V0.1 Foundation Fix Desktop QA 为 NEEDS FIX；Native Controls Accent 修复已实现并通过自动验证，等待 Desktop retest。
+- **当前阶段**：V0.1 Theme Foundation 已通过最终 Desktop QA，等待将 `codex/theme-foundation` 合并到 `main`。
 - **架构**：编辑 `src/**/*.css` 与 `settings/**/*.css`，通过 `scripts/build.mjs` 按稳定顺序生成根目录 `theme.css`。
 - **原则**：Semantic Design Token 优先；同时支持 Light / Dark；Style Settings 可选；不使用 Community Plugin runtime；不直接复制 Composer / Border。
-- **现状**：clone error、基础 Accent 联动、selected file、active tab、indicator 和 active border 已通过 Desktop QA。Native slider fill 与 enabled toggle 曾被 Dark mode 原生 Accent 覆盖；相关映射已提高 specificity，并补齐 Checkbox 变量。
-- **立即下一步**：用测试包在 Dark mode、Accent `#dc2626` 下复测 slider fill、enabled toggle 和 checkbox；不要提前标记 Desktop PASS。
+- **现状**：Semantic Tokens、Light/Dark、公共变量映射、基础 Workspace、四项 Style Settings、兼容 workaround 和 Native Controls Accent 均已通过 Foundation exit gate。Slider thumb 保持中性，不属于 Accent linkage；Checkbox 在 Desktop 环境中无独立测试入口，记录为 N/A，公开映射由自动检查覆盖。
+- **立即下一步**：Review 并合并 `codex/theme-foundation` → `main`；合并前后都不要提前开始 Phase 2。
 - **限制**：本阶段不做 Auto Hide、Card、Rainbow Folder、Focus、Canvas、Graph、Preset 等高级功能。
-- **验证**：首轮真实 Desktop Test 已完成；修复后的自动验证和 Desktop retest 状态见 `docs/CURRENT_STATUS.md`。不要直接修改 `theme.css`。
+- **验证**：Obsidian 1.13.7 / Windows 25H2 Build 26200 最终 Desktop QA PASS；Build、Check、生成同步与 release hash 均通过。不要直接修改 `theme.css`。
 - **发布前事项**：Working Title 不符合当前 Obsidian 社区目录的命名约束，且维护者署名仍需确认。
