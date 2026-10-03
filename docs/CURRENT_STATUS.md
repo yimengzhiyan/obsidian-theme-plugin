@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-Phase 2 — Appearance & Core Components：P2.1 Token Gap Audit complete
+Phase 2 — Appearance & Core Components：P2.2 Core Typography implementation / pending Desktop QA
 
 ## Foundation
 
@@ -10,11 +10,11 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Branch
 
-`codex/p2-1-token-audit`
+`codex/p2-2-typography-core`
 
 ## Current Commit
 
-P2.1 Token audit commit。本文件不嵌入其所在 commit 的 hash，以避免自引用导致 hash 永远变化；使用 `git rev-parse HEAD` 获取精确值。
+P2.2 Core Typography commit。本文件不嵌入其所在 commit 的 hash，以避免自引用导致 hash 永远变化；使用 `git rev-parse HEAD` 获取精确值。
 
 ## Completed
 
@@ -40,16 +40,19 @@ P2.1 Token audit commit。本文件不嵌入其所在 commit 的 hash，以避�
 - Foundation merge commit：`f8e37f459589ec37a1f8cf5a2dd9f305b9a3a1b9`
 - P2.0 Planning Chat Review PASS；PR #2 已合并，merge commit 为 `f2f26e23edc7c216d0348c7823f9b98ccc1d281e`
 - P2.1 Token Gap Audit / Contract Freeze complete；无需新增 global Semantic Tokens，现有 Foundation contract 保持不变；详见 [Token audit](APPEARANCE_TOKEN_AUDIT.md)
+- P2.1 经 PR #3 合并至 `main`，merge commit 为 `412dafc2c2c225cd6fe16922c0e2761c58c4d516`
+- P2.2 Core Typography Chat Design Review APPROVED；H1–H6 与基础 spacing、bold / italic 公共变量实现完成，无新增 Semantic Token / Style Setting / scoped selector
+- 针对性 Core Typography contract check 与 [Typography Desktop QA checklist](TYPOGRAPHY_TEST.md) 已建立
 - GitHub remote 已配置为 `https://github.com/yimengzhiyan/obsidian-theme-plugin.git`；`main` 与 `codex/theme-foundation` 均已推送并设置 upstream
 
 ## In Progress
 
-- P2.2 Typography 为下一项 active task，仅等待 Chat design review；implementation not started
-- P2.1 audit 文档已完成，等待提交后的 Review；Phase 2 功能实现尚未开始
+- P2.2 Core Typography implementation complete；Chat code review 与真实 Desktop QA pending，整个 P2.2 未标记最终完成
+- First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-P2.2 Typography — pending Chat design review。先确定设计与范围，再授权实现。
+Chat code review → Desktop QA。核对 Light / Dark、Editing / Reading 层级与用户字体保留，并回归四个已有 Style Settings；不开始 P2.3。
 
 ## Known Issues / Blockers
 
@@ -71,3 +74,6 @@ P2.2 Typography — pending Chat design review。先确定设计与范围，再�
 - Regression：PASS
 - V0.1 Foundation Desktop Validation：PASS
 - PR #1：MERGED；merge commit `f8e37f459589ec37a1f8cf5a2dd9f305b9a3a1b9`
+- P2.2 Automated validation：`npm run build`、`npm run check`、`git diff --check` 均 PASS；Core Typography 合同检查接受有效源码，并在内存验证中拒绝 11 个越界变体
+- P2.2 Real Obsidian Desktop QA：pending；V0.1 PASS 不代表 P2.2 视觉验证已完成
+- 现有 release/foundation-test 包保留 V0.1 baseline；P2.2 QA 使用本分支根目录安装文件并记录 hash
