@@ -307,12 +307,17 @@ function assertCoreTypographyContract(source) {
   const blank = '.cm-line:not([class*="HyperMD-"]):is(:empty, :has(> br:only-child))';
   const blankLine = `${editor} ${blank}`;
   const approvedSpacingRules = [
-    [blankLine, "line-height: var(--p-spacing); min-height: var(--p-spacing);"],
-    [`${blankLine}:has(+ .cm-line.HyperMD-header)`, "line-height: var(--heading-spacing); min-height: var(--heading-spacing);"],
-    [`${editor} .cm-line.HyperMD-header + ${blank}:has(+ .cm-line.HyperMD-header)`, "line-height: var(--p-spacing); min-height: var(--p-spacing);"]
+    [blankLine, "line-height: var(--theme-space-sm); min-height: var(--theme-space-sm);"],
+    [`${blankLine}:has(+ .cm-line.HyperMD-header)`, "line-height: var(--theme-space-lg); min-height: var(--theme-space-lg);"],
+    [`${editor} .cm-line.HyperMD-header + ${blank}:has(+ .cm-line.HyperMD-header)`, "line-height: var(--theme-space-sm); min-height: var(--theme-space-sm);"]
   ];
   for (const [index, [selector, declaration]] of approvedSpacingRules.entries()) {
     const rule = rules[index + 1];
+    // View-scoped public spacing can resolve to zero in Source Mode.
+    // This restriction applies only to the approved editor exceptions, not body.
+    if (/var\(\s*--(?:p|heading)-spacing\b/.test(rule[2])) {
+      fail("Editor blank-line rules must consume Theme spacing directly, not view-scoped public spacing.");
+    }
     if (rule[1].trim().replace(/\s+/g, " ") !== selector ||
         rule[2].replace(/\s+/g, "") !== declaration.replace(/\s+/g, "")) {
       fail(`Core Typography editor spacing rule ${index + 1} must match its approved contract.`);

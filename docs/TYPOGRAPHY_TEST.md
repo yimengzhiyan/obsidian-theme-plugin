@@ -2,12 +2,13 @@
 
 ## Result
 
-- Implementation: core hierarchy complete; refined editor spacing fix implemented
+- Implementation: core hierarchy complete; final Semantic Token spacing fix implemented
 - Automated validation: recorded in CURRENT_STATUS
 - Chat fix review: pending
 - Desktop QA Round 1: NEEDS FIX — sole blocker: Editing / Reading paragraph and heading vertical spacing parity
 - Desktop QA Round 2: NEEDS FIX — Live Preview ordinary paragraph parity fixed; Source blank-line usability and consecutive-heading spacing remain blockers
-- Desktop QA Round 3: pending (focused retest below)
+- Desktop QA Round 3: NEEDS FIX — only blocker: Source blank lines collapse under runtime `--p-spacing: 0rem`
+- Desktop QA Round 4 final focused retest: pending
 - No Desktop PASS is inferred from automated checks. Complete this checklist before deciding the P2.2 exit result.
 
 ## Environment
@@ -49,36 +50,49 @@ CodeMirror keeps Markdown blank lines as real `.cm-line` elements, whereas Readi
 
 The refined fix recognizes both empty `.cm-line` and `br`-only lines. Each ordinary blank line receives `line-height` and `min-height` from `--p-spacing`. The last blank line before a heading uses `--heading-spacing`, except a single blank line directly between two headings reverts to `--p-spacing`. HyperMD lines remain excluded as targets. No margin, padding, hiding, heading-line styling or Reading View changes are introduced.
 
-## Desktop QA Round 3 — pending
+## Desktop QA Round 3 — recorded results
 
-- Correct branch: `codex/p2-2-typography-core`; tested commit: pending
-- Desktop root SHA-256: pending
-- Desktop installed SHA-256: pending
-- Root / installed match: pending (required); no comparison to another machine's SHA required
+- Tested branch: `codex/p2-2-typography-core`; commit: `2fc98fa38b2469ad68cc6332efff00a12309fe9b`
+- Round 3 artifact hashes: not supplied in this report; do not infer values
+- Selector matching: PASS; DOM structure: understood
+- Consecutive heading spacing: PASS; Live Preview ordinary spacing: PASS
+- Source blank-line rendering: FAIL; sole remaining blocker
 
-Run the focused checks in Light and Dark, Live Preview and Source, with 16px body text / Content Width 500 at Line Height 2.0 and 1.5. Keep Reading View as the reference. Record measured spacing and any residual differences; do not infer PASS from the CSS contract.
+Actual Source DOM contains `<div class="cm-line" dir="ltr"><br></div>`; double blank lines are two separate matching elements. Both the br-only and combined blank selectors match. Computed `--p-spacing` is `0rem`, so `line-height`, `min-height` and height are all `0px`. This is a Source-scoped public-variable override, not selector failure.
 
-- [ ] Live Preview ordinary paragraph spacing remains close to Reading at both line heights
-- [ ] Source single blank line is visible; double blank lines are larger; caret navigation remains normal (pixel-perfect Reading parity not required)
-- [ ] Paragraph → H2 spacing does not regress
-- [ ] H2 → H3, H3 → H4, H4 → H5 and H5 → H6 spacing approaches Reading, without the previous ≈17–19px extra gap
-- [ ] Live Preview tested at both line heights in both color modes
-- [ ] Source mode tested at both line heights in both color modes
-- [ ] Reading View spacing remains unchanged
-- [ ] Focused paragraph / consecutive-heading spacing and Source usability accepted
-- [ ] Multiple blank lines and caret navigation remain usable
+The final fix preserves all three selectors and the body public-variable contract. Only scoped declarations change: generic and heading→heading blank lines consume `--theme-space-sm`; paragraph→heading consumes `--theme-space-lg`. Each rule sets both line-height and min-height. No new Token, Setting or editor hack is added.
 
-Minimal regression for the scoped exception:
+## Desktop QA Round 4 — final focused retest pending
 
-- [ ] Lists, including nested lists / blank lines
-- [ ] Code blocks, including blank lines / widgets
-- [ ] Callouts
-- [ ] Tables / widgets
-- [ ] Inline code
-- [ ] Bold / Italic inside Links
-- [ ] No unintended change to quote blocks, embeds or heading lines
+- [ ] Correct branch `codex/p2-2-typography-core` and final fix commit (record tested commit)
+- [ ] Desktop root SHA == installed SHA (record both; no cross-machine fixed SHA requirement)
 
-The checklist below remains the original full-test template. Recorded Round 1 / Round 2 PASS coverage is retained; Round 3 requires only the focused retest and minimal regressions above, unless a new failure appears.
+Test Source blank-line behavior using:
+
+```markdown
+Paragraph A.
+
+Paragraph B.
+
+
+Paragraph C.
+```
+
+- [ ] One blank line visible; two blank lines visibly larger
+- [ ] Each blank line has non-zero height; DevTools line-height / min-height / height > 0
+- [ ] Caret location distinguishable; Enter / Backspace and ↑ / ↓ normal
+- [ ] Live Preview ordinary paragraph still PASS
+- [ ] Paragraph → H2, H2 → H3 and H3 → H6 still PASS
+- [ ] Reading View unchanged
+- [ ] Special block smoke test: Lists, Blockquote, Code Block, Callout, Table
+
+Use the existing 16px body / width 500, Line Height 2.0 / 1.5 test conditions. Record results rather than inferring Desktop PASS from automated checks.
+
+### Round 4 exit policy
+
+This is the final CSS fix attempt for P2.2 Source spacing. If Round 4 PASS, record P2.2 Core Typography Desktop QA PASS in a subsequent final docs update → PR task. If Round 4 NEEDS FIX, stop and report for Chat to choose accepting the Source spacing limitation or withdrawing Source normalization. Do not automatically add selectors / CSS hacks or attempt a Round 5 fix.
+
+The checklist below remains the original full-test template. Historical PASS coverage is retained; Round 4 requires only the final focused checks above, unless a new failure appears.
 
 ## Light Mode
 
@@ -153,5 +167,6 @@ First-line indent remains off (no theme indentation rule). Letter spacing and wo
 
 - Round 1 blocker: Editing / Reading paragraph and heading vertical spacing parity (approximately 64px / 40px paragraph rhythm)
 - Round 2: NEEDS FIX; ordinary Live Preview paragraph parity fixed; Source usability and consecutive-heading spacing remain blockers
-- Refined spacing fix: implemented; Chat fix review pending
-- Round 3 result: pending focused Desktop retest; P2.2 is not complete
+- Round 3: NEEDS FIX; selectors confirmed correct, Source public spacing override collapses blank lines
+- Final Semantic Token spacing fix: implemented; Chat final fix review pending
+- Round 4: pending final focused Desktop retest; P2.2 is not complete

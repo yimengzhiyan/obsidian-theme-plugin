@@ -48,7 +48,7 @@ Auto Hide system、Card Layout、Focus Mode、Advanced Rainbow Folder、Canvas�
 - [x] **V0.1 Foundation merged** — Foundation exit gate 完成并进入 `main`
 - [x] **P2.0 Planning** — Chat Review PASS；规划状态经 PR #2 合并到 `main`
 - [x] **P2.1 Appearance Token Gap Audit / Contract Freeze** — audit completed；无需新增 global Semantic Tokens，现有 Foundation contract 继续作为依据；详见 [Token audit](APPEARANCE_TOKEN_AUDIT.md)
-- [ ] **P2.2 Core Typography — refined spacing fix implemented / pending Round 3 focused Desktop retest** — Round 2 NEEDS FIX；Live Preview ordinary paragraph parity 已修复，剩余 Source 空行可见性与连续 heading spacing。三条获准的编辑器规则已实现，公共变量与其余已 PASS 设计保留；Chat fix review → Round 3 focused Desktop retest，详见 [Desktop checklist](TYPOGRAPHY_TEST.md)
+- [ ] **P2.2 Core Typography — final Semantic Token spacing fix implemented / pending Round 4 final focused Desktop retest** — Round 3 NEEDS FIX；selectors、连续 heading / Live Preview spacing 已 PASS，唯一 blocker 为 Source `--p-spacing: 0rem` 覆盖。三条 scoped rules 改为消费已有 Theme spacing Tokens，body / selectors 不变；Chat final fix review → Round 4。若仍失败则停止交由 Chat 决策，不自动 Round 5，详见 [Desktop checklist](TYPOGRAPHY_TEST.md)
 - [ ] **P2.3 Links / Tags / Highlight** — 规划 inline links、tags 与 highlight / mark
 - [ ] **P2.4 Code / Quote / Table** — 规划 code block、blockquote 与 table 的基础样式
 - [ ] **P2.5 Callout** — 独立规划 Callout，避免与基础 Markdown block components 混入同一次提交

@@ -260,26 +260,27 @@ body {
 }
 
 /* CodeMirror retains blank Markdown lines; rendered paragraphs use spacing instead.
- * Normalize only ordinary blank editor lines, excluding special HyperMD blocks. */
+ * Normalize only ordinary blank editor lines, excluding special HyperMD blocks.
+ * Consume Theme spacing directly: Source scope can override --p-spacing to zero. */
 .markdown-source-view.mod-cm6
   .cm-line:not([class*="HyperMD-"]):is(:empty, :has(> br:only-child)) {
-  line-height: var(--p-spacing);
-  min-height: var(--p-spacing);
+  line-height: var(--theme-space-sm);
+  min-height: var(--theme-space-sm);
 }
 
 /* A blank line immediately before a heading uses the heading spacing contract. */
 .markdown-source-view.mod-cm6
   .cm-line:not([class*="HyperMD-"]):is(:empty, :has(> br:only-child)):has(+ .cm-line.HyperMD-header) {
-  line-height: var(--heading-spacing);
-  min-height: var(--heading-spacing);
+  line-height: var(--theme-space-lg);
+  min-height: var(--theme-space-lg);
 }
 
 /* Between consecutive headings, avoid repeating the full heading spacing. */
 .markdown-source-view.mod-cm6
   .cm-line.HyperMD-header
   + .cm-line:not([class*="HyperMD-"]):is(:empty, :has(> br:only-child)):has(+ .cm-line.HyperMD-header) {
-  line-height: var(--p-spacing);
-  min-height: var(--p-spacing);
+  line-height: var(--theme-space-sm);
+  min-height: var(--theme-space-sm);
 }
 
 /* Source: src/workspace/tabs.css */
