@@ -262,14 +262,24 @@ body {
 /* CodeMirror retains blank Markdown lines; rendered paragraphs use spacing instead.
  * Normalize only ordinary blank editor lines, excluding special HyperMD blocks. */
 .markdown-source-view.mod-cm6
-  .cm-line:not([class*="HyperMD-"]):has(> br:only-child) {
+  .cm-line:not([class*="HyperMD-"]):is(:empty, :has(> br:only-child)) {
   line-height: var(--p-spacing);
+  min-height: var(--p-spacing);
 }
 
 /* A blank line immediately before a heading uses the heading spacing contract. */
 .markdown-source-view.mod-cm6
-  .cm-line:not([class*="HyperMD-"]):has(> br:only-child):has(+ .cm-line.HyperMD-header) {
+  .cm-line:not([class*="HyperMD-"]):is(:empty, :has(> br:only-child)):has(+ .cm-line.HyperMD-header) {
   line-height: var(--heading-spacing);
+  min-height: var(--heading-spacing);
+}
+
+/* Between consecutive headings, avoid repeating the full heading spacing. */
+.markdown-source-view.mod-cm6
+  .cm-line.HyperMD-header
+  + .cm-line:not([class*="HyperMD-"]):is(:empty, :has(> br:only-child)):has(+ .cm-line.HyperMD-header) {
+  line-height: var(--p-spacing);
+  min-height: var(--p-spacing);
 }
 
 /* Source: src/workspace/tabs.css */

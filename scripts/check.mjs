@@ -297,16 +297,19 @@ function assertCoreTypographyContract(source) {
   const css = source.replace(/\/\*[\s\S]*?\*\//g, "").trim();
   const rulePattern = /([^{}]+)\{([^{}]*)\}/g;
   const rules = [...css.matchAll(rulePattern)];
-  if (rules.length !== 3 || css.replace(rulePattern, "").trim() || rules[0][1].trim() !== "body") {
-    fail("Core Typography must contain the body contract and exactly two approved editor blank-line rules.");
+  if (rules.length !== 4 || css.replace(rulePattern, "").trim() || rules[0][1].trim() !== "body") {
+    fail("Core Typography must contain the body contract and exactly three approved editor blank-line rules.");
   }
   const block = rules[0][2];
 
   // Exact selectors, declarations and source order keep this exception narrowly scoped.
-  const blankLine = '.markdown-source-view.mod-cm6 .cm-line:not([class*="HyperMD-"]):has(> br:only-child)';
+  const editor = '.markdown-source-view.mod-cm6';
+  const blank = '.cm-line:not([class*="HyperMD-"]):is(:empty, :has(> br:only-child))';
+  const blankLine = `${editor} ${blank}`;
   const approvedSpacingRules = [
-    [blankLine, "line-height: var(--p-spacing);"],
-    [`${blankLine}:has(+ .cm-line.HyperMD-header)`, "line-height: var(--heading-spacing);"]
+    [blankLine, "line-height: var(--p-spacing); min-height: var(--p-spacing);"],
+    [`${blankLine}:has(+ .cm-line.HyperMD-header)`, "line-height: var(--heading-spacing); min-height: var(--heading-spacing);"],
+    [`${editor} .cm-line.HyperMD-header + ${blank}:has(+ .cm-line.HyperMD-header)`, "line-height: var(--p-spacing); min-height: var(--p-spacing);"]
   ];
   for (const [index, [selector, declaration]] of approvedSpacingRules.entries()) {
     const rule = rules[index + 1];
