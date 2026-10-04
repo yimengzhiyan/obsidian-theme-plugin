@@ -2,23 +2,66 @@
 
 ## Result
 
-- Implementation: complete
+- Implementation: core hierarchy complete; editor spacing parity fix implemented
 - Automated validation: recorded in CURRENT_STATUS
-- Chat code review: pending
-- Real Obsidian Desktop QA: pending
+- Chat fix review: pending
+- Desktop QA Round 1: NEEDS FIX — sole blocker: Editing / Reading paragraph and heading vertical spacing parity
+- Desktop QA Round 2: pending (focused retest below)
 - No Desktop PASS is inferred from automated checks. Complete this checklist before deciding the P2.2 exit result.
 
 ## Environment
 
-- Obsidian version: pending
-- Windows version / build: pending
-- Tested commit: pending (record `git rev-parse HEAD`)
-- Test package `theme.css` SHA-256: pending
-- Installed `theme.css` SHA-256: pending
-- Style Settings version: pending
-- Text / Interface / Monospace user fonts: pending
+- Obsidian version: 1.13.7
+- Installer version: 1.10.6
+- Windows version / build: 25H2 Build 26200.8737
+- Round 1 reported tested commit: `c4b1910b5f52e9cdf3c5994f69355dc97d324786`
+- Round 1 reported artifact SHA-256: `C45050AA1FEA1B9AC2FD4B346CAC2EBE2FD162A5B4F963A7B864BA5C35FC1675`
+- Round 1 root / installed hash equality: reported by Desktop QA
+- Repository baseline `theme.css` SHA-256 at that commit: `a91e18e464ae8c62a763d093f86637f261d41de02a04a2f3d0c5f9552057b411`
+- Artifact provenance: the reported Desktop hash differs from the repository baseline; cause unconfirmed. Do not assume byte-identical artifacts across environments. Record both actual hashes again for Round 2.
+- Style Settings version: 1.0.9
+- User text size: 16px; Line Height: 2.0 (also reproduced at 1.5); Content Width: 500
+- Text / Interface / Monospace user font preservation: PASS; exact font names not supplied
 
 Use the current branch's generated root `theme.css` with root `manifest.json`. The existing `release/foundation-test/` package is the V0.1 baseline and has not been updated for this task. Record the exact tested artifact hash and confirm it matches the installed file; a new Typography package is not created in this implementation task.
+
+## Desktop QA Round 1 — recorded results
+
+- NEEDS FIX: Editing / Reading paragraph and heading spacing parity. At 16px body text, Line Height 2.0 and Content Width 500, observed paragraph rhythm was Editing approximately 64px versus Reading approximately 40px.
+- The same issue persisted at Line Height 1.5, in Light / Dark and Live Preview / Source modes.
+- PASS: H1–H6 hierarchy, Light / Dark, Bold / Italic, Bold / Italic inside Links, all three user font choices, user text size, Line Height and Content Width settings, Accent and Radius regressions, Tabs / Navigation, restart persistence, absence of `null.clone`, and Inline / Block Code regression.
+- Reading View is the parity reference. Preserve its variables and selectors, and retain all already-passing Typography design.
+
+CodeMirror keeps Markdown blank lines as real `.cm-line` elements, whereas Reading View represents spacing through rendered paragraphs / headings. A full-height blank editor line adds space beyond the text line height; public spacing variables alone cannot normalize that DOM difference. The fix sets ordinary blank editor line height to `--p-spacing`, or `--heading-spacing` when immediately preceding a heading. It excludes lines with HyperMD classes, does not style the heading itself, and adds no Reading View rule or `!important`.
+
+## Desktop QA Round 2 — pending
+
+- Tested fix commit: pending
+- Prepared repository fix `theme.css` SHA-256: `33b781a091afc7f917b48be8428f64df1a028f13bdf8becd0994e7decef07e29` (automated artifact, not a Desktop result)
+- Root / installed `theme.css` SHA-256: pending; confirm equality before retesting
+- Environment changes from Round 1: pending
+
+Run the focused checks in Light and Dark, Live Preview and Source, with 16px body text / Content Width 500 at Line Height 2.0 and 1.5. Keep Reading View as the reference. Record measured spacing and any residual differences; do not infer PASS from the CSS contract.
+
+- [ ] Ordinary paragraph blank-line spacing matches the Reading reference
+- [ ] Blank line immediately before H1–H6 uses heading spacing
+- [ ] Live Preview tested at both line heights in both color modes
+- [ ] Source mode tested at both line heights in both color modes
+- [ ] Reading View spacing remains unchanged
+- [ ] Editing / Reading paragraph and heading spacing parity accepted
+- [ ] Multiple blank lines and caret navigation remain usable
+
+Minimal regression for the scoped exception:
+
+- [ ] Lists, including nested lists / blank lines
+- [ ] Code blocks, including blank lines / widgets
+- [ ] Callouts
+- [ ] Tables / widgets
+- [ ] Inline code
+- [ ] Bold / Italic inside Links
+- [ ] No unintended change to quote blocks, embeds or heading lines
+
+The checklist below remains the original full-test template. The Round 1 summary records the reported PASS coverage; Round 2 requires only the focused retest and minimal regressions above, unless a new failure appears.
 
 ## Light Mode
 
@@ -91,7 +134,7 @@ First-line indent remains off (no theme indentation rule). Letter spacing and wo
 
 ## Issues and final decision
 
-- Issues / reproduction steps: pending
-- Editing / Reading differences: pending
-- Regression result: pending
-- Final Desktop QA result: pending
+- Round 1 blocker: Editing / Reading paragraph and heading vertical spacing parity (approximately 64px / 40px paragraph rhythm)
+- Spacing fix: implemented; Chat fix review pending
+- Round 2 differences / regression result: pending
+- Final Desktop QA result: pending focused Desktop retest; P2.2 is not complete

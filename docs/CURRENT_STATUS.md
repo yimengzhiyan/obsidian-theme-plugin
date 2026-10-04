@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-Phase 2 — Appearance & Core Components：P2.2 Core Typography implementation / pending Desktop QA
+Phase 2 — Appearance & Core Components：P2.2 Core Typography spacing fix implemented / pending Desktop retest
 
 ## Foundation
 
@@ -41,21 +41,25 @@ P2.2 Core Typography commit。本文件不嵌入其所在 commit 的 hash，以�
 - P2.0 Planning Chat Review PASS；PR #2 已合并，merge commit 为 `f2f26e23edc7c216d0348c7823f9b98ccc1d281e`
 - P2.1 Token Gap Audit / Contract Freeze complete；无需新增 global Semantic Tokens，现有 Foundation contract 保持不变；详见 [Token audit](APPEARANCE_TOKEN_AUDIT.md)
 - P2.1 经 PR #3 合并至 `main`，merge commit 为 `412dafc2c2c225cd6fe16922c0e2761c58c4d516`
-- P2.2 Core Typography Chat Design Review APPROVED；H1–H6 与基础 spacing、bold / italic 公共变量实现完成，无新增 Semantic Token / Style Setting / scoped selector
+- P2.2 Core Typography Chat Design Review APPROVED；初始 H1–H6 与基础 spacing、bold / italic 公共变量实现完成，无新增 Semantic Token / Style Setting
+- Desktop QA Round 1：NEEDS FIX；唯一 blocker 为 Editing / Reading vertical spacing parity，其余提供的测试结果均 PASS
+- 编辑器空行 spacing fix 已实现：两条精确 scoped rules，仅修正普通 Markdown blank lines；body 公共变量合同及已 PASS 设计保持不变
 - 针对性 Core Typography contract check 与 [Typography Desktop QA checklist](TYPOGRAPHY_TEST.md) 已建立
 - GitHub remote 已配置为 `https://github.com/yimengzhiyan/obsidian-theme-plugin.git`；`main` 与 `codex/theme-foundation` 均已推送并设置 upstream
 
 ## In Progress
 
-- P2.2 Core Typography implementation complete；Chat code review 与真实 Desktop QA pending，整个 P2.2 未标记最终完成
+- P2.2 spacing fix implemented；Chat fix review 与 focused Desktop retest pending，整个 P2.2 未标记最终完成
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-Chat code review → Desktop QA。核对 Light / Dark、Editing / Reading 层级与用户字体保留，并回归四个已有 Style Settings；不开始 P2.3。
+Chat fix review → focused Desktop retest。复测 paragraph / heading spacing、Live Preview / Source、Light / Dark、Line Height 2.0 / 1.5，并最小回归特殊块；不开始 P2.3。
 
 ## Known Issues / Blockers
 
+- P2.2 Round 1 blocker：Editing / Reading vertical spacing parity（Editing ~64px / Reading ~40px）；修复已实现，真实 Round 2 验证 pending
+- Round 1 报告 artifact hash 与仓库基线 hash 不同，原因未确认；详见 TYPOGRAPHY_TEST，Round 2 必须重新核对实际安装 artifact
 - Working Title 同时包含 “Obsidian” 与 “Theme”，不符合当前社区主题目录命名规范；正式发布前必须确定合规名称。
 - manifest 的 author 当前是项目级临时署名，正式发布前需由维护者确认。
 - Accent 当前使用文本颜色值输入，以规避 Style Settings 1.0.9 / Obsidian 1.13.1 的上游颜色选择器问题；恢复 color picker 取决于上游修复和后续实测。
@@ -74,6 +78,6 @@ Chat code review → Desktop QA。核对 Light / Dark、Editing / Reading 层级
 - Regression：PASS
 - V0.1 Foundation Desktop Validation：PASS
 - PR #1：MERGED；merge commit `f8e37f459589ec37a1f8cf5a2dd9f305b9a3a1b9`
-- P2.2 Automated validation：`npm run build`、`npm run check`、`git diff --check` 均 PASS；Core Typography 合同检查接受有效源码，并在内存验证中拒绝 11 个越界变体
-- P2.2 Real Obsidian Desktop QA：pending；V0.1 PASS 不代表 P2.2 视觉验证已完成
+- P2.2 spacing fix Automated validation：Build / Check / diff-check PASS；有效源码通过，17 个内存负向变体均被拒绝（含所有十项要求案例），原 body 合同保持不变
+- P2.2 Desktop QA Round 1：NEEDS FIX（历史结果）；Round 2：pending，不能自动判定 PASS
 - 现有 release/foundation-test 包保留 V0.1 baseline；P2.2 QA 使用本分支根目录安装文件并记录 hash

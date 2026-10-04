@@ -259,6 +259,19 @@ body {
   --italic-color: var(--theme-text-normal);
 }
 
+/* CodeMirror retains blank Markdown lines; rendered paragraphs use spacing instead.
+ * Normalize only ordinary blank editor lines, excluding special HyperMD blocks. */
+.markdown-source-view.mod-cm6
+  .cm-line:not([class*="HyperMD-"]):has(> br:only-child) {
+  line-height: var(--p-spacing);
+}
+
+/* A blank line immediately before a heading uses the heading spacing contract. */
+.markdown-source-view.mod-cm6
+  .cm-line:not([class*="HyperMD-"]):has(> br:only-child):has(+ .cm-line.HyperMD-header) {
+  line-height: var(--heading-spacing);
+}
+
 /* Source: src/workspace/tabs.css */
 body {
   --tab-background-active: var(--theme-active-bg);
