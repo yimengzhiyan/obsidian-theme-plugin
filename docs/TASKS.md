@@ -48,7 +48,7 @@ Auto Hide system、Card Layout、Focus Mode、Advanced Rainbow Folder、Canvas�
 - [x] **V0.1 Foundation merged** — Foundation exit gate 完成并进入 `main`
 - [x] **P2.0 Planning** — Chat Review PASS；规划状态经 PR #2 合并到 `main`
 - [x] **P2.1 Appearance Token Gap Audit / Contract Freeze** — audit completed；无需新增 global Semantic Tokens，现有 Foundation contract 继续作为依据；详见 [Token audit](APPEARANCE_TOKEN_AUDIT.md)
-- [ ] **P2.2 Core Typography — exit adjustment implemented / pending final exit verification** — Round 4 NEEDS FIX：Source visual height 恢复但 ↑ / ↓ 跳行。已按产品决策撤回 Source normalization，三条规则仅限 Live Preview，保留已 PASS parity；Source 使用原生编辑行为，视觉 parity 不再是 gate。不是 Round 5 调参；若 Source 仍跳行则停止 CSS 修改，详见 [Desktop checklist](TYPOGRAPHY_TEST.md)
+- [x] **P2.2 Core Typography — complete / Desktop QA PASS / ready for PR merge** — Chat Design Review PASS、implementation complete、Final Desktop Exit Verification PASS；Live Preview-only normalization 保留，Source 原生导航 / caret / Enter / Backspace 恢复。最终 Source behavior decision 已记录，Rounds 1–4 历史保留；详见 [Desktop QA](TYPOGRAPHY_TEST.md)
 - [ ] **P2.3 Links / Tags / Highlight** — 规划 inline links、tags 与 highlight / mark
 - [ ] **P2.4 Code / Quote / Table** — 规划 code block、blockquote 与 table 的基础样式
 - [ ] **P2.5 Callout** — 独立规划 Callout，避免与基础 Markdown block components 混入同一次提交

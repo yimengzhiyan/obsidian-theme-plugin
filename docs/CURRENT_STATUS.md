@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-Phase 2 — Appearance & Core Components：P2.2 exit adjustment implemented: spacing normalization scoped to Live Preview; Source Mode restored to native editing behavior by withdrawing theme normalization; pending final exit verification
+Phase 2 — Appearance & Core Components：P2.2 Core Typography complete / Desktop QA PASS / pending PR merge
 
 ## Foundation
 
@@ -49,22 +49,25 @@ P2.2 Core Typography commit。本文件不嵌入其所在 commit 的 hash，以�
 - 最终 spacing fix 已实现：三条规则直接消费既有 `--theme-space-sm` / `--theme-space-lg`，移除 scoped public spacing 依赖；body / selectors 完全不变
 - Round 4 NEEDS FIX：Source 空行高度 8px，单双三空行 8 / 16 / 24px、Enter / Backspace PASS，但 ↑ / ↓ 从 45 跳到 47 而非 46
 - Exit scope correction 已实现：三条规则仅增加 `.is-live-preview` scope，撤回 Source normalization；原 body、spacing declarations 与已 PASS 设计不变
+- P2.2 Final Desktop Exit Verification PASS（tested commit `b7060e36186b73a6fd4a84e89ce601a20369986b`）：Source ↑ / ↓、每个真实空行可进入、caret / Enter / Backspace 均 PASS
+- Live Preview ordinary spacing 在 Line Height 2.0 / 1.5、paragraph → H2 与 consecutive headings H2 → H6 PASS；Reading View 与 Lists / Blockquote / Code Block / Callout / Table regression PASS
+- P2.2 无新增 Semantic Tokens / Style Settings；最终环境与 root / installed matching SHA 详见 TYPOGRAPHY_TEST
 - 针对性 Core Typography contract check 与 [Typography Desktop QA checklist](TYPOGRAPHY_TEST.md) 已建立
 - GitHub remote 已配置为 `https://github.com/yimengzhiyan/obsidian-theme-plugin.git`；`main` 与 `codex/theme-foundation` 均已推送并设置 upstream
 
 ## In Progress
 
-- P2.2 exit adjustment implemented / final Desktop exit verification pending；整个 P2.2 未标记最终完成
+- P2.2 PR review / merge pending；implementation 与真实 Desktop QA 已完成
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-Final exit verification：Source ↑ / ↓ 逐行移动、每个真实空行可进入、caret / Enter / Backspace 正常；Live Preview previous PASS、Reading 与特殊块保持。满足则可在后续任务记录 P2.2 PASS；若 Source 仍跳行，停止 CSS 修改并单独归因 Obsidian / CodeMirror。不开始 P2.3，不进行 Round 5 styling attempt。
+Create / review / merge P2.2 PR。合并完成前不开始 P2.3；本任务不 merge。
 
 ## Known Issues / Blockers
 
 - Known decision：Source Mode visual rhythm may differ from Reading View；这是为保留原生 caret / keyboard navigation 而主动接受的 scope decision，不是 unresolved visual blocker
-- Final exit verification pending：撤回 Source normalization 后导航恢复尚需真实 Desktop 确认
+- P2.2 无已知 blocker；撤回 Source normalization 后导航已由真实 Desktop 验证恢复
 - Desktop artifact gate：正确 branch / commit、root hash == installed hash；Round 2 已一致，不要求其他机器固定 SHA 相等
 - Working Title 同时包含 “Obsidian” 与 “Theme”，不符合当前社区主题目录命名规范；正式发布前必须确定合规名称。
 - manifest 的 author 当前是项目级临时署名，正式发布前需由维护者确认。
@@ -85,5 +88,6 @@ Final exit verification：Source ↑ / ↓ 逐行移动、每个真实空行可�
 - V0.1 Foundation Desktop Validation：PASS
 - PR #1：MERGED；merge commit `f8e37f459589ec37a1f8cf5a2dd9f305b9a3a1b9`
 - P2.2 exit adjustment Automated validation：Build / Check / diff-check PASS；body / declarations 不变，严格检查三条 Live Preview-only selectors 与顺序；12 项内存负向变体均被拒绝
-- P2.2 Desktop QA Round 1–4：NEEDS FIX（历史结果）；final exit verification pending，不能自动判定 PASS
+- P2.2 Desktop QA Round 1–4：NEEDS FIX（历史结果保留）；Final Exit Verification PASS（真实 Desktop），P2.2 Core Typography Desktop QA PASS
+- 本次 docs-only validation：Build / Check / diff-check PASS；implementation / generated theme.css unchanged
 - 现有 release/foundation-test 包保留 V0.1 baseline；P2.2 QA 使用本分支根目录安装文件并记录 hash

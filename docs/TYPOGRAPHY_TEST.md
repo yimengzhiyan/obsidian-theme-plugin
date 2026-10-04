@@ -4,13 +4,13 @@
 
 - Implementation: exit scope correction implemented; spacing normalization limited to Live Preview, Source normalization withdrawn
 - Automated validation: recorded in CURRENT_STATUS
-- Chat fix review: pending
+- PR review / merge: pending
 - Desktop QA Round 1: NEEDS FIX — sole blocker: Editing / Reading paragraph and heading vertical spacing parity
 - Desktop QA Round 2: NEEDS FIX — Live Preview ordinary paragraph parity fixed; Source blank-line usability and consecutive-heading spacing remain blockers
 - Desktop QA Round 3: NEEDS FIX — only blocker: Source blank lines collapse under runtime `--p-spacing: 0rem`
 - Desktop QA Round 4: NEEDS FIX — Source visual geometry restored, but ↑ / ↓ navigation skips real blank lines
-- Final exit verification: pending (not a Round 5 styling attempt)
-- No Desktop PASS is inferred from automated checks. Complete this checklist before deciding the P2.2 exit result.
+- Final Exit Verification: PASS (real Desktop QA; not a Round 5 styling attempt)
+- P2.2 Core Typography Desktop QA: PASS; no blocker found
 
 ## Environment
 
@@ -78,10 +78,14 @@ Source visual spacing parity is no longer a P2.2 exit requirement. Source Mode r
 
 This is an intentional scope decision following real QA, not an unresolved visual blocker. Faithful Markdown editing and stable caret / keyboard navigation take priority over Source visual parity. The three existing rules now require `.is-live-preview`; declarations, body contract and all passed Typography design are unchanged. No Source reset, extra selector or caret hack is added. This is a withdrawal of Source normalization, not a Round 5 CSS tuning attempt.
 
-## Final exit verification — pending
+## Final Exit Verification — PASS
 
-- [ ] Correct branch `codex/p2-2-typography-core` and exit scope-correction commit (record tested commit)
-- [ ] Desktop root SHA == installed SHA (record both; no cross-machine fixed SHA requirement)
+- Environment: Obsidian 1.13.7 / Installer 1.10.6 / Windows 25H2 Build 26200.8737 / Style Settings 1.0.9
+- Tested branch: `codex/p2-2-typography-core`
+- Tested commit: `b7060e36186b73a6fd4a84e89ce601a20369986b`
+- Root SHA-256: `287F100EB13B6FFF038378D885381B452E09F540F47249BA4FCDCF2BF60F9A15`
+- Installed SHA-256: `287F100EB13B6FFF038378D885381B452E09F540F47249BA4FCDCF2BF60F9A15`
+- Match: YES; no cross-machine fixed SHA requirement
 
 Test Source blank-line behavior using:
 
@@ -94,21 +98,23 @@ Paragraph B.
 Paragraph C.
 ```
 
-- [ ] Source ↑ / ↓ moves line by line; every real blank Markdown line is reachable
-- [ ] Source caret normal; Enter and Backspace normal
-- [ ] Record native Source visual rhythm without requiring equality to Reading / Live Preview
-- [ ] Live Preview ordinary paragraph still PASS
-- [ ] Paragraph → H2, H2 → H3 and H3 → H6 still PASS
-- [ ] Reading View unchanged
-- [ ] Special block smoke test: Lists, Blockquote, Code Block, Callout, Table
+- [x] Source ↓ navigation PASS
+- [x] Source ↑ navigation PASS
+- [x] Every real blank Markdown line reachable PASS
+- [x] Caret PASS; Enter PASS; Backspace PASS
+- [x] Source native visual rhythm recorded: approximately 32px blank editor lines at Line Height 2.0; intentional difference from Reading accepted
+- [x] Live Preview ordinary paragraph PASS at Line Height 2.0 / 1.5
+- [x] Paragraph → H2 PASS; consecutive headings H2 → H6 PASS
+- [x] Reading View PASS, no regression
+- [x] Lists PASS; Blockquote PASS; Code Block PASS; Callout PASS; Table PASS
 
-Use the existing 16px body / width 500, Line Height 2.0 / 1.5 test conditions. Record results rather than inferring Desktop PASS from automated checks.
+Final verification used the existing 16px body / width 500, Line Height 2.0 / 1.5 test conditions. Results above are supplied real Desktop QA, not inferred from automated checks.
 
 ### Final exit gate
 
-Source native keyboard / navigation restored + previous Live Preview PASS retained + Reading unchanged + special blocks PASS permits P2.2 Core Typography PASS, even if Source vertical rhythm differs. Do not mark PASS before Desktop verification. If Source navigation still skips lines after withdrawing normalization, stop without further CSS changes; separately investigate Obsidian / CodeMirror rather than treating it as a P2.2 theme spacing fix.
+Source native keyboard / navigation restored + previous Live Preview PASS retained + Reading unchanged + special blocks PASS: exit gate satisfied. P2.2 Core Typography Desktop QA = PASS. Accepted limitation / design decision: Source Mode vertical rhythm may differ from Reading View; this intentionally preserves native editing behavior, and Source visual parity is NOT an exit requirement.
 
-The checklist below remains the original full-test template. Rounds 1–4 history and previous PASS coverage are retained; final exit verification requires only the focused checks above.
+The checklist below remains the original full-test template, not additional pending exit gates. Rounds 1–4 history and previous PASS coverage are retained; final focused exit verification above is complete.
 
 ## Light Mode
 
@@ -186,4 +192,5 @@ First-line indent remains off (no theme indentation rule). Letter spacing and wo
 - Round 3: NEEDS FIX; selectors confirmed correct, Source public spacing override collapses blank lines
 - Round 4: NEEDS FIX; Source ↑ / ↓ navigation skips real blank lines despite restored visual height
 - Exit scope correction: implemented; Live Preview normalization retained, Source normalization withdrawn by product decision
-- Final exit verification: pending; P2.2 is not complete, no Round 5 styling attempt
+- Final Exit Verification: PASS; no blocker found; P2.2 complete / ready for PR review and merge
+- P2.2 Core Typography Desktop QA = PASS; native Source rhythm intentionally accepted, no Round 5 styling attempt
