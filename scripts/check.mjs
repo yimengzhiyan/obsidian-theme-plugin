@@ -193,6 +193,8 @@ async function validateCss() {
   const lightCss = await readFile(path.join(projectRoot, "src/base/light.css"), "utf8");
   const darkCss = await readFile(path.join(projectRoot, "src/base/dark.css"), "utf8");
   const colorsCss = await readFile(path.join(projectRoot, "src/base/colors.css"), "utf8");
+  const typographyCss = await readFile(path.join(projectRoot, "src/base/typography.css"), "utf8");
+  assertCoreTypographyContract(typographyCss);
   const workspaceCss = await Promise.all([
     "tabs.css",
     "sidebar.css",
@@ -290,6 +292,84 @@ async function validateCss() {
   if (depth !== 0) fail("theme.css contains unmatched braces.");
 }
 
+// A small contract check for the approved Core Typography scope, not a CSS linter.
+function assertCoreTypographyContract(source) {
+  const css = source.replace(/\/\*[\s\S]*?\*\//g, "").trim();
+  const rulePattern = /([^{}]+)\{([^{}]*)\}/g;
+  const rules = [...css.matchAll(rulePattern)];
+  if (rules.length !== 4 || css.replace(rulePattern, "").trim() || rules[0][1].trim() !== "body") {
+    fail("Core Typography must contain the body contract and exactly three approved Live Preview blank-line rules.");
+  }
+  const block = rules[0][2];
+
+  // Exact selectors, declarations and source order keep this exception narrowly scoped.
+  const editor = '.markdown-source-view.mod-cm6.is-live-preview';
+  const blank = '.cm-line:not([class*="HyperMD-"]):is(:empty, :has(> br:only-child))';
+  const blankLine = `${editor} ${blank}`;
+  const approvedSpacingRules = [
+    [blankLine, "line-height: var(--theme-space-sm); min-height: var(--theme-space-sm);"],
+    [`${blankLine}:has(+ .cm-line.HyperMD-header)`, "line-height: var(--theme-space-lg); min-height: var(--theme-space-lg);"],
+    [`${editor} .cm-line.HyperMD-header + ${blank}:has(+ .cm-line.HyperMD-header)`, "line-height: var(--theme-space-sm); min-height: var(--theme-space-sm);"]
+  ];
+  for (const [index, [selector, declaration]] of approvedSpacingRules.entries()) {
+    const rule = rules[index + 1];
+    const actualSelector = rule[1].trim().replace(/\s+/g, " ");
+    // Source must retain native line geometry; no generic editor or Source rule.
+    if (!actualSelector.startsWith(`${editor} `)) {
+      fail("Typography blank-line rules must target Live Preview only, never Source Mode.");
+    }
+    // Public spacing may be view-scoped; retain direct Theme spacing consumption.
+    // This restriction applies only to the approved Live Preview exceptions, not body.
+    if (/var\(\s*--(?:p|heading)-spacing\b/.test(rule[2])) {
+      fail("Editor blank-line rules must consume Theme spacing directly, not view-scoped public spacing.");
+    }
+    if (actualSelector !== selector ||
+        rule[2].replace(/\s+/g, "") !== declaration.replace(/\s+/g, "")) {
+      fail(`Core Typography editor spacing rule ${index + 1} must match its approved contract.`);
+    }
+  }
+
+  const expected = new Map([
+    ["--font-interface-theme", "var(--theme-font-interface)"],
+    ["--font-text-theme", "var(--theme-font-text)"],
+    ["--font-monospace-theme", "var(--theme-font-monospace)"],
+    ["--line-height-normal", "var(--theme-line-height)"],
+    ["--file-line-width", "var(--theme-reading-width)"],
+    ["--heading-formatting", "var(--theme-text-faint)"],
+    ["--heading-spacing", "var(--theme-space-lg)"],
+    ["--p-spacing", "var(--theme-space-sm)"],
+    ["--bold-modifier", "200"],
+    ["--bold-color", "var(--theme-text-normal)"],
+    ["--italic-color", "var(--theme-text-normal)"]
+  ]);
+  const sizes = ["1.75em", "1.50em", "1.30em", "1.15em", "1.05em", "1.00em"];
+  const weights = ["bold", "bold", "semibold", "semibold", "medium", "medium"];
+  const lineHeights = ["1.20", "1.25", "1.30", "1.30", "1.30", "1.30"];
+  for (let index = 0; index < 6; index += 1) {
+    const heading = `--h${index + 1}`;
+    expected.set(`${heading}-color`, "var(--theme-text-normal)");
+    expected.set(`${heading}-size`, sizes[index]);
+    expected.set(`${heading}-weight`, `var(--font-${weights[index]})`);
+    expected.set(`${heading}-line-height`, lineHeights[index]);
+  }
+
+  const found = new Set();
+  for (const declaration of block.split(";").map((part) => part.trim()).filter(Boolean)) {
+    const match = declaration.match(/^(--[a-z0-9-]+)\s*:\s*(.+)$/s);
+    if (!match) fail("Core Typography must contain only public variable declarations.");
+    const [, name, value] = match;
+    // An allowlist also rejects new Theme Tokens, hard-coded colors, font overrides,
+    // deferred properties and !important, including duplicate overriding declarations.
+    if (!expected.has(name) || expected.get(name) !== value.trim() || found.has(name)) {
+      fail(`Core Typography has an unapproved or duplicate declaration: ${name}.`);
+    }
+    found.add(name);
+  }
+  for (const name of expected.keys()) {
+    if (!found.has(name)) fail(`Core Typography public variable is missing: ${name}.`);
+  }
+}
+
 async function check() {
   for (const relativePath of requiredFiles) {
     try {
@@ -318,7 +398,7 @@ async function check() {
   }
 
   await validateCss();
-  console.log("Check passed: manifest, generated CSS, Semantic Tokens, theme modes, Style Settings, and Foundation CSS are valid.");
+  console.log("Check passed: manifest, generated CSS, Semantic Tokens, theme modes, Style Settings, Foundation CSS, and Core Typography are valid.");
 }
 
 check().catch((error) => {

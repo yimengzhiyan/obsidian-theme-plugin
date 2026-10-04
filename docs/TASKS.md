@@ -48,9 +48,13 @@ Auto Hide system、Card Layout、Focus Mode、Advanced Rainbow Folder、Canvas�
 - [x] **V0.1 Foundation merged** — Foundation exit gate 完成并进入 `main`
 - [x] **P2.0 Planning** — Chat Review PASS；规划状态经 PR #2 合并到 `main`
 - [x] **P2.1 Appearance Token Gap Audit / Contract Freeze** — audit completed；无需新增 global Semantic Tokens，现有 Foundation contract 继续作为依据；详见 [Token audit](APPEARANCE_TOKEN_AUDIT.md)
-- [ ] **P2.2 Typography（Next active task: pending Chat design review; implementation not started）** — 规划 heading sizes、bold、italic、inline code、line height、paragraph spacing、first-line indent、reading width、letter / word spacing；不得强制覆盖用户字体设置
+- [x] **P2.2 Core Typography — complete / Desktop QA PASS / ready for PR merge** — Chat Design Review PASS、implementation complete、Final Desktop Exit Verification PASS；Live Preview-only normalization 保留，Source 原生导航 / caret / Enter / Backspace 恢复。最终 Source behavior decision 已记录，Rounds 1–4 历史保留；详见 [Desktop QA](TYPOGRAPHY_TEST.md)
 - [ ] **P2.3 Links / Tags / Highlight** — 规划 inline links、tags 与 highlight / mark
 - [ ] **P2.4 Code / Quote / Table** — 规划 code block、blockquote 与 table 的基础样式
 - [ ] **P2.5 Callout** — 独立规划 Callout，避免与基础 Markdown block components 混入同一次提交
 - [ ] **P2.6 Navigation / File Explorer** — 规划 file / folder typography、selected / hover states、folder weight、wrapping 与基础层级；Rainbow Folder 只预留接口和规划，不实现高级版本
 - [ ] **P2.7 Desktop QA / Regression** — 每批组件遵循 Build → Check → Desktop QA → Review → Merge，不等待 Phase 2 全部完成后再测试
+
+### P2.2 follow-up deferred
+
+First-line indent（默认 off）、letter spacing、word spacing、granular heading settings、bold / italic settings。Core Typography Desktop QA 后再评估是否需要；当前未实现。Inline Code 的视觉设计与 Code tuning 留给 P2.4。

@@ -4,4 +4,65 @@ body {
   --font-monospace-theme: var(--theme-font-monospace);
   --line-height-normal: var(--theme-line-height);
   --file-line-width: var(--theme-reading-width);
+
+  /* Public typography variables preserve Obsidian's user font choices. */
+  --heading-formatting: var(--theme-text-faint);
+  --heading-spacing: var(--theme-space-lg);
+  --p-spacing: var(--theme-space-sm);
+
+  --h1-color: var(--theme-text-normal);
+  --h2-color: var(--theme-text-normal);
+  --h3-color: var(--theme-text-normal);
+  --h4-color: var(--theme-text-normal);
+  --h5-color: var(--theme-text-normal);
+  --h6-color: var(--theme-text-normal);
+
+  --h1-size: 1.75em;
+  --h2-size: 1.50em;
+  --h3-size: 1.30em;
+  --h4-size: 1.15em;
+  --h5-size: 1.05em;
+  --h6-size: 1.00em;
+
+  --h1-weight: var(--font-bold);
+  --h2-weight: var(--font-bold);
+  --h3-weight: var(--font-semibold);
+  --h4-weight: var(--font-semibold);
+  --h5-weight: var(--font-medium);
+  --h6-weight: var(--font-medium);
+
+  --h1-line-height: 1.20;
+  --h2-line-height: 1.25;
+  --h3-line-height: 1.30;
+  --h4-line-height: 1.30;
+  --h5-line-height: 1.30;
+  --h6-line-height: 1.30;
+
+  --bold-modifier: 200;
+  --bold-color: var(--theme-text-normal);
+  --italic-color: var(--theme-text-normal);
+}
+
+/* CodeMirror retains blank Markdown lines; rendered paragraphs use spacing instead.
+ * Normalize only Live Preview blank lines, excluding special HyperMD blocks.
+ * Source Mode retains native line geometry for caret and keyboard navigation. */
+.markdown-source-view.mod-cm6.is-live-preview
+  .cm-line:not([class*="HyperMD-"]):is(:empty, :has(> br:only-child)) {
+  line-height: var(--theme-space-sm);
+  min-height: var(--theme-space-sm);
+}
+
+/* A blank line immediately before a heading uses the heading spacing contract. */
+.markdown-source-view.mod-cm6.is-live-preview
+  .cm-line:not([class*="HyperMD-"]):is(:empty, :has(> br:only-child)):has(+ .cm-line.HyperMD-header) {
+  line-height: var(--theme-space-lg);
+  min-height: var(--theme-space-lg);
+}
+
+/* Between consecutive headings, avoid repeating the full heading spacing. */
+.markdown-source-view.mod-cm6.is-live-preview
+  .cm-line.HyperMD-header
+  + .cm-line:not([class*="HyperMD-"]):is(:empty, :has(> br:only-child)):has(+ .cm-line.HyperMD-header) {
+  line-height: var(--theme-space-sm);
+  min-height: var(--theme-space-sm);
 }
