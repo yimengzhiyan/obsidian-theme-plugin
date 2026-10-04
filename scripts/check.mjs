@@ -298,12 +298,12 @@ function assertCoreTypographyContract(source) {
   const rulePattern = /([^{}]+)\{([^{}]*)\}/g;
   const rules = [...css.matchAll(rulePattern)];
   if (rules.length !== 4 || css.replace(rulePattern, "").trim() || rules[0][1].trim() !== "body") {
-    fail("Core Typography must contain the body contract and exactly three approved editor blank-line rules.");
+    fail("Core Typography must contain the body contract and exactly three approved Live Preview blank-line rules.");
   }
   const block = rules[0][2];
 
   // Exact selectors, declarations and source order keep this exception narrowly scoped.
-  const editor = '.markdown-source-view.mod-cm6';
+  const editor = '.markdown-source-view.mod-cm6.is-live-preview';
   const blank = '.cm-line:not([class*="HyperMD-"]):is(:empty, :has(> br:only-child))';
   const blankLine = `${editor} ${blank}`;
   const approvedSpacingRules = [
@@ -313,12 +313,17 @@ function assertCoreTypographyContract(source) {
   ];
   for (const [index, [selector, declaration]] of approvedSpacingRules.entries()) {
     const rule = rules[index + 1];
-    // View-scoped public spacing can resolve to zero in Source Mode.
-    // This restriction applies only to the approved editor exceptions, not body.
+    const actualSelector = rule[1].trim().replace(/\s+/g, " ");
+    // Source must retain native line geometry; no generic editor or Source rule.
+    if (!actualSelector.startsWith(`${editor} `)) {
+      fail("Typography blank-line rules must target Live Preview only, never Source Mode.");
+    }
+    // Public spacing may be view-scoped; retain direct Theme spacing consumption.
+    // This restriction applies only to the approved Live Preview exceptions, not body.
     if (/var\(\s*--(?:p|heading)-spacing\b/.test(rule[2])) {
       fail("Editor blank-line rules must consume Theme spacing directly, not view-scoped public spacing.");
     }
-    if (rule[1].trim().replace(/\s+/g, " ") !== selector ||
+    if (actualSelector !== selector ||
         rule[2].replace(/\s+/g, "") !== declaration.replace(/\s+/g, "")) {
       fail(`Core Typography editor spacing rule ${index + 1} must match its approved contract.`);
     }

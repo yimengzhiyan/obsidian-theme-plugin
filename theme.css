@@ -260,23 +260,23 @@ body {
 }
 
 /* CodeMirror retains blank Markdown lines; rendered paragraphs use spacing instead.
- * Normalize only ordinary blank editor lines, excluding special HyperMD blocks.
- * Consume Theme spacing directly: Source scope can override --p-spacing to zero. */
-.markdown-source-view.mod-cm6
+ * Normalize only Live Preview blank lines, excluding special HyperMD blocks.
+ * Source Mode retains native line geometry for caret and keyboard navigation. */
+.markdown-source-view.mod-cm6.is-live-preview
   .cm-line:not([class*="HyperMD-"]):is(:empty, :has(> br:only-child)) {
   line-height: var(--theme-space-sm);
   min-height: var(--theme-space-sm);
 }
 
 /* A blank line immediately before a heading uses the heading spacing contract. */
-.markdown-source-view.mod-cm6
+.markdown-source-view.mod-cm6.is-live-preview
   .cm-line:not([class*="HyperMD-"]):is(:empty, :has(> br:only-child)):has(+ .cm-line.HyperMD-header) {
   line-height: var(--theme-space-lg);
   min-height: var(--theme-space-lg);
 }
 
 /* Between consecutive headings, avoid repeating the full heading spacing. */
-.markdown-source-view.mod-cm6
+.markdown-source-view.mod-cm6.is-live-preview
   .cm-line.HyperMD-header
   + .cm-line:not([class*="HyperMD-"]):is(:empty, :has(> br:only-child)):has(+ .cm-line.HyperMD-header) {
   line-height: var(--theme-space-sm);

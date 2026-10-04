@@ -2,13 +2,14 @@
 
 ## Result
 
-- Implementation: core hierarchy complete; final Semantic Token spacing fix implemented
+- Implementation: exit scope correction implemented; spacing normalization limited to Live Preview, Source normalization withdrawn
 - Automated validation: recorded in CURRENT_STATUS
 - Chat fix review: pending
 - Desktop QA Round 1: NEEDS FIX — sole blocker: Editing / Reading paragraph and heading vertical spacing parity
 - Desktop QA Round 2: NEEDS FIX — Live Preview ordinary paragraph parity fixed; Source blank-line usability and consecutive-heading spacing remain blockers
 - Desktop QA Round 3: NEEDS FIX — only blocker: Source blank lines collapse under runtime `--p-spacing: 0rem`
-- Desktop QA Round 4 final focused retest: pending
+- Desktop QA Round 4: NEEDS FIX — Source visual geometry restored, but ↑ / ↓ navigation skips real blank lines
+- Final exit verification: pending (not a Round 5 styling attempt)
 - No Desktop PASS is inferred from automated checks. Complete this checklist before deciding the P2.2 exit result.
 
 ## Environment
@@ -62,9 +63,24 @@ Actual Source DOM contains `<div class="cm-line" dir="ltr"><br></div>`; double b
 
 The final fix preserves all three selectors and the body public-variable contract. Only scoped declarations change: generic and heading→heading blank lines consume `--theme-space-sm`; paragraph→heading consumes `--theme-space-lg`. Each rule sets both line-height and min-height. No new Token, Setting or editor hack is added.
 
-## Desktop QA Round 4 — final focused retest pending
+## Desktop QA Round 4 — recorded results
 
-- [ ] Correct branch `codex/p2-2-typography-core` and final fix commit (record tested commit)
+- Tested commit: `e1227b6d91ad85b709b39a7627d91038f04d68c8`
+- Source `--theme-space-sm = 0.5rem`; blank line line-height / min-height / height all 8px
+- Single / double / triple blank lines: 8px / 16px / 24px
+- PASS: selector, spacing Token, visual blank-line distinction, Enter / Backspace
+- FAIL: ↑ / ↓ navigation; expected 45 → 46, actual 45 → 47, skipping a real Markdown blank line
+- NEEDS FIX: restoring visual height by reducing native Source blank-line geometry caused an editing regression
+
+## Final product decision — Live Preview parity, native Source editing
+
+Source visual spacing parity is no longer a P2.2 exit requirement. Source Mode retains native Obsidian / CodeMirror blank-line geometry and editing behavior. Live Preview remains the editing surface targeted for Reading-view visual parity.
+
+This is an intentional scope decision following real QA, not an unresolved visual blocker. Faithful Markdown editing and stable caret / keyboard navigation take priority over Source visual parity. The three existing rules now require `.is-live-preview`; declarations, body contract and all passed Typography design are unchanged. No Source reset, extra selector or caret hack is added. This is a withdrawal of Source normalization, not a Round 5 CSS tuning attempt.
+
+## Final exit verification — pending
+
+- [ ] Correct branch `codex/p2-2-typography-core` and exit scope-correction commit (record tested commit)
 - [ ] Desktop root SHA == installed SHA (record both; no cross-machine fixed SHA requirement)
 
 Test Source blank-line behavior using:
@@ -78,9 +94,9 @@ Paragraph B.
 Paragraph C.
 ```
 
-- [ ] One blank line visible; two blank lines visibly larger
-- [ ] Each blank line has non-zero height; DevTools line-height / min-height / height > 0
-- [ ] Caret location distinguishable; Enter / Backspace and ↑ / ↓ normal
+- [ ] Source ↑ / ↓ moves line by line; every real blank Markdown line is reachable
+- [ ] Source caret normal; Enter and Backspace normal
+- [ ] Record native Source visual rhythm without requiring equality to Reading / Live Preview
 - [ ] Live Preview ordinary paragraph still PASS
 - [ ] Paragraph → H2, H2 → H3 and H3 → H6 still PASS
 - [ ] Reading View unchanged
@@ -88,11 +104,11 @@ Paragraph C.
 
 Use the existing 16px body / width 500, Line Height 2.0 / 1.5 test conditions. Record results rather than inferring Desktop PASS from automated checks.
 
-### Round 4 exit policy
+### Final exit gate
 
-This is the final CSS fix attempt for P2.2 Source spacing. If Round 4 PASS, record P2.2 Core Typography Desktop QA PASS in a subsequent final docs update → PR task. If Round 4 NEEDS FIX, stop and report for Chat to choose accepting the Source spacing limitation or withdrawing Source normalization. Do not automatically add selectors / CSS hacks or attempt a Round 5 fix.
+Source native keyboard / navigation restored + previous Live Preview PASS retained + Reading unchanged + special blocks PASS permits P2.2 Core Typography PASS, even if Source vertical rhythm differs. Do not mark PASS before Desktop verification. If Source navigation still skips lines after withdrawing normalization, stop without further CSS changes; separately investigate Obsidian / CodeMirror rather than treating it as a P2.2 theme spacing fix.
 
-The checklist below remains the original full-test template. Historical PASS coverage is retained; Round 4 requires only the final focused checks above, unless a new failure appears.
+The checklist below remains the original full-test template. Rounds 1–4 history and previous PASS coverage are retained; final exit verification requires only the focused checks above.
 
 ## Light Mode
 
@@ -168,5 +184,6 @@ First-line indent remains off (no theme indentation rule). Letter spacing and wo
 - Round 1 blocker: Editing / Reading paragraph and heading vertical spacing parity (approximately 64px / 40px paragraph rhythm)
 - Round 2: NEEDS FIX; ordinary Live Preview paragraph parity fixed; Source usability and consecutive-heading spacing remain blockers
 - Round 3: NEEDS FIX; selectors confirmed correct, Source public spacing override collapses blank lines
-- Final Semantic Token spacing fix: implemented; Chat final fix review pending
-- Round 4: pending final focused Desktop retest; P2.2 is not complete
+- Round 4: NEEDS FIX; Source ↑ / ↓ navigation skips real blank lines despite restored visual height
+- Exit scope correction: implemented; Live Preview normalization retained, Source normalization withdrawn by product decision
+- Final exit verification: pending; P2.2 is not complete, no Round 5 styling attempt
