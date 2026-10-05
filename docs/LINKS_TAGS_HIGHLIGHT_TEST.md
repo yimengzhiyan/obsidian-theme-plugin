@@ -2,23 +2,23 @@
 
 ## Status and artifact
 
-- Implementation: complete; Chat implementation review pending
+- Implementation: complete; Chat Review PASS; pending PR review / merge
 - Automated validation: see CURRENT_STATUS
-- Desktop QA: pending; do not infer PASS from automated checks
-- Obsidian / installer version: pending
-- OS / build: pending
-- Style Settings version: pending
+- P2.3 Links / Tags / Highlight Desktop QA: PASS (supplied real Desktop results, not inferred from automated checks)
+- Obsidian version: 1.13.7; Installer version: 1.10.6
+- OS / build: Windows 25H2 Build 26200.8737
+- Style Settings version: 1.0.9
 - Tested branch: `codex/p2-3-links-tags-highlight`
-- Tested commit: pending
-- Desktop root theme.css SHA-256: pending
-- Installed theme.css SHA-256: pending
-- Root / installed equality: pending (required; no cross-machine fixed SHA requirement)
+- Tested commit: `55742cc0fc54c85a431b7271722ce1a168fd6131`
+- Desktop root theme.css SHA-256: `20E5740E677BA59C635DCBAAAB04B7C74F5BDC2C6B80AD1B8BF92301771A1E57`
+- Installed theme.css SHA-256: `20E5740E677BA59C635DCBAAAB04B7C74F5BDC2C6B80AD1B8BF92301771A1E57`
+- Root / installed equality: YES (no cross-machine fixed SHA requirement)
 
 Install this branch's root `manifest.json` and generated `theme.css`. The existing Foundation release package remains the V0.1 baseline, not the P2.3 artifact.
 
 ## Test matrix
 
-Run each applicable check in Light / Dark and Live Preview / Source / Reading. Record per-mode results and any native differences; public variables alone do not prove visual behavior. Source retains native editing behavior, not forced Reading-view spacing parity.
+Desktop QA covered Light / Dark and Live Preview / Source / Reading. Results and accepted native differences are recorded below; public variables alone do not prove visual behavior. Source retains native editing behavior, not forced Reading-view spacing parity.
 
 ### Links
 
@@ -31,12 +31,17 @@ Paragraph with [[Existing note]], [[Missing note]] and [external link](https://e
 ## Heading with [[Existing note]] and [external link](https://example.com)
 ```
 
-- [ ] Resolved internal link preserves existing Theme link color; no default underline, hover underline
-- [ ] Unresolved internal link preserves distinct color, subdued opacity, dotted decoration and no filter
-- [ ] External link preserves existing color; no default underline, hover underline
-- [ ] Links inside normal paragraphs, bold, italic and headings remain readable
-- [ ] Light / Dark and all three views tested, including hover states
-- [ ] No custom external icons or hover animations introduced
+- [x] Resolved internal — Light / Dark PASS; resolved hover PASS — underline appears
+- [x] Unresolved — Light / Dark PASS; opacity/filter PASS — opacity 0.85 / filter none
+- [x] External — Light / Dark PASS; external hover PASS — underline appears
+- [x] Bold internal PASS; italic internal PASS; bold external PASS; italic external PASS
+- [x] Links inside heading PASS
+- [x] View matrix: Live Preview PASS; Source PASS; Reading PASS
+
+Accepted native differences:
+
+- Source Mode unresolved links retain native editor presentation/color behavior. This differs from rendered views but is readable and does not block P2.3.
+- Reading unresolved dotted decoration is mainly visible on hover. This is accepted native/public-variable behavior, not a blocker; no selector override is needed for pixel parity.
 
 ### Tags
 
@@ -44,10 +49,13 @@ Paragraph with [[Existing note]], [[Missing note]] and [external link](https://e
 #tag #project/theme #中文标签
 ```
 
-- [ ] All three tag samples identifiable as lightweight Accent pills, not oversized buttons
-- [ ] Normal / hover states in Light / Dark and all three views
-- [ ] Custom Accent changes (e.g. red, blue, green) update tag foreground, background and border immediately
-- [ ] Restore previous Accent after testing; no per-tag / rainbow styling
+- [x] Normal tag PASS; nested #project/theme PASS; Chinese tag PASS; inline tag PASS
+- [x] Hover PASS; Light / Dark PASS; Live Preview / Source / Reading PASS
+- [x] Accent propagation: red #dc2626 PASS; blue #2563eb PASS; green #16a34a PASS
+- [x] Tag text, background, border and hover background/border follow Accent
+- [x] Fixed purple residue: NONE
+
+Accent-derived lightweight tag design: PASS.
 
 ### Highlight
 
@@ -55,26 +63,29 @@ Paragraph with [[Existing note]], [[Missing note]] and [external link](https://e
 Normal text and ==Highlighted text==, including ==中文高亮 English==.
 ```
 
-- [ ] Light / Dark and all three views tested
-- [ ] Highlight remains recognizably yellow and text remains readable
-- [ ] Foreground text is not independently overridden
-- [ ] Text selection color is unchanged
+- [x] Light PASS; Dark PASS; Live Preview PASS; Source PASS; Reading PASS
+- [x] Chinese / English mixed PASS; bold highlight PASS; italic highlight PASS
+- [x] Selection PASS
+- [x] After Accent changes highlight remains yellow: PASS
+
+Highlight semantics remain independent from Accent; highlighted foreground and selection styling are not overridden by this implementation.
 
 ### Regression
 
-- [ ] P2.2 H1–H6 hierarchy retained
-- [ ] Live Preview paragraph / heading spacing retained
-- [ ] Source native blank-line keyboard navigation retained
-- [ ] Bold / Italic, including inside links, unchanged
-- [ ] Inline Code unchanged
-- [ ] Code Block unchanged
+- [x] H1–H6 PASS
+- [x] Live Preview paragraph spacing PASS; paragraph → H2 PASS; consecutive headings PASS
+- [x] Source real blank-line ↑ / ↓ navigation PASS
+- [x] Bold / Italic inside internal / external links PASS
+- [x] Inline Code PASS
+- [x] Code Block PASS
 
 ## Findings and exit result
 
-- Mode-specific observations / screenshots: pending
-- Issues / blockers: not yet assessed by Desktop QA
-- Final Desktop QA: pending
-- Next: Chat implementation review → Desktop QA → fix only if necessary → PR
+- Observations: the Source unresolved-link presentation and Reading hover-visible dotted decoration above are accepted native view behavior, not failures of the approved public-variable design
+- No blocking issue found
+- Final result: PASS
+- P2.3 Links / Tags / Highlight Desktop QA: PASS
+- Next: P2.3 PR review / merge; P2.4 not started
 
 ## Public-variable references
 
