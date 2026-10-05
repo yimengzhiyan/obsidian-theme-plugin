@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-Phase 2 — Appearance & Core Components：P2.2 Core Typography complete / Desktop QA PASS / pending PR merge
+Phase 2 — Appearance & Core Components：P2.3 Links / Tags / Highlight implementation complete / pending Chat Review and Desktop QA
 
 ## Foundation
 
@@ -10,11 +10,11 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Branch
 
-`codex/p2-2-typography-core`
+`codex/p2-3-links-tags-highlight`
 
 ## Current Commit
 
-P2.2 Core Typography commit。本文件不嵌入其所在 commit 的 hash，以避免自引用导致 hash 永远变化；使用 `git rev-parse HEAD` 获取精确值。
+P2.3 implementation commit。本文件不嵌入其所在 commit 的 hash，以避免自引用导致 hash 永远变化；使用 `git rev-parse HEAD` 获取精确值。
 
 ## Completed
 
@@ -52,22 +52,26 @@ P2.2 Core Typography commit。本文件不嵌入其所在 commit 的 hash，以�
 - P2.2 Final Desktop Exit Verification PASS（tested commit `b7060e36186b73a6fd4a84e89ce601a20369986b`）：Source ↑ / ↓、每个真实空行可进入、caret / Enter / Backspace 均 PASS
 - Live Preview ordinary spacing 在 Line Height 2.0 / 1.5、paragraph → H2 与 consecutive headings H2 → H6 PASS；Reading View 与 Lists / Blockquote / Code Block / Callout / Table regression PASS
 - P2.2 无新增 Semantic Tokens / Style Settings；最终环境与 root / installed matching SHA 详见 TYPOGRAPHY_TEST
+- PR #4 MERGED：P2.2 complete / Desktop QA PASS / merged to main；merge commit `4671678ccc2ab759a93557b36e568016d6c7367a`
+- P2.3 公共变量实现完成：保留现有 link colors，增加 link decoration、Accent-derived lightweight tags 和 yellow highlight；0 custom selectors、0 new Tokens / Settings
+- P2.3 exact contract check 与 [Desktop QA checklist](LINKS_TAGS_HIGHLIGHT_TEST.md) 已建立，P2.2 contract 保持不变
 - 针对性 Core Typography contract check 与 [Typography Desktop QA checklist](TYPOGRAPHY_TEST.md) 已建立
 - GitHub remote 已配置为 `https://github.com/yimengzhiyan/obsidian-theme-plugin.git`；`main` 与 `codex/theme-foundation` 均已推送并设置 upstream
 
 ## In Progress
 
-- P2.2 PR review / merge pending；implementation 与真实 Desktop QA 已完成
+- P2.3 implementation complete / pending Chat Review and Desktop QA，未标记最终完成
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-Create / review / merge P2.2 PR。合并完成前不开始 P2.3；本任务不 merge。
+Chat implementation review → P2.3 Desktop QA → fix only if necessary → PR。不提前创建 PR，不开始 P2.4。
 
 ## Known Issues / Blockers
 
 - Known decision：Source Mode visual rhythm may differ from Reading View；这是为保留原生 caret / keyboard navigation 而主动接受的 scope decision，不是 unresolved visual blocker
 - P2.2 无已知 blocker；撤回 Source normalization 后导航已由真实 Desktop 验证恢复
+- P2.3 Desktop QA pending；视觉结果 / 兼容问题尚未实测，不由自动检查推断 PASS
 - Desktop artifact gate：正确 branch / commit、root hash == installed hash；Round 2 已一致，不要求其他机器固定 SHA 相等
 - Working Title 同时包含 “Obsidian” 与 “Theme”，不符合当前社区主题目录命名规范；正式发布前必须确定合规名称。
 - manifest 的 author 当前是项目级临时署名，正式发布前需由维护者确认。
@@ -89,5 +93,7 @@ Create / review / merge P2.2 PR。合并完成前不开始 P2.3；本任务不 m
 - PR #1：MERGED；merge commit `f8e37f459589ec37a1f8cf5a2dd9f305b9a3a1b9`
 - P2.2 exit adjustment Automated validation：Build / Check / diff-check PASS；body / declarations 不变，严格检查三条 Live Preview-only selectors 与顺序；12 项内存负向变体均被拒绝
 - P2.2 Desktop QA Round 1–4：NEEDS FIX（历史结果保留）；Final Exit Verification PASS（真实 Desktop），P2.2 Core Typography Desktop QA PASS
-- 本次 docs-only validation：Build / Check / diff-check PASS；implementation / generated theme.css unchanged
+- P2.2 PR #4：MERGED（`4671678`）
+- P2.3 automated validation：Build / Check / diff-check PASS；15 项内存负向变体均被拒绝；generated theme.css 由 Build 生成
+- P2.3 Desktop QA：pending；使用当前分支根目录安装文件，不能使用 V0.1 release 包代表本轮 artifact
 - 现有 release/foundation-test 包保留 V0.1 baseline；P2.2 QA 使用本分支根目录安装文件并记录 hash

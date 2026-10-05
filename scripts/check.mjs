@@ -93,6 +93,7 @@ const requiredFiles = [
   "src/base/light.css",
   "src/base/dark.css",
   "src/base/typography.css",
+  "src/editor/links-tags-highlight.css",
   "src/workspace/tabs.css",
   "src/workspace/sidebar.css",
   "src/workspace/ribbon.css",
@@ -195,6 +196,8 @@ async function validateCss() {
   const colorsCss = await readFile(path.join(projectRoot, "src/base/colors.css"), "utf8");
   const typographyCss = await readFile(path.join(projectRoot, "src/base/typography.css"), "utf8");
   assertCoreTypographyContract(typographyCss);
+  const inlineCss = await readFile(path.join(projectRoot, "src/editor/links-tags-highlight.css"), "utf8");
+  assertLinksTagsHighlightContract(inlineCss);
   const workspaceCss = await Promise.all([
     "tabs.css",
     "sidebar.css",
@@ -370,6 +373,56 @@ function assertCoreTypographyContract(source) {
   }
 }
 
+// Exact public-variable contract for P2.3; not a general CSS parser.
+function assertLinksTagsHighlightContract(source) {
+  const css = source.replace(/\/\*[\s\S]*?\*\//g, "").trim();
+  const rule = css.match(/^body\s*\{([^{}]*)\}$/);
+  if (!rule) fail("P2.3 must contain exactly one body rule, without custom selectors.");
+
+  const expected = new Map([
+    ["--link-decoration", "none"],
+    ["--link-decoration-hover", "underline"],
+    ["--link-decoration-thickness", "1px"],
+    ["--link-weight", "var(--font-normal)"],
+    ["--link-unresolved-opacity", "0.85"],
+    ["--link-unresolved-filter", "none"],
+    ["--link-unresolved-decoration-style", "dotted"],
+    ["--link-unresolved-decoration-color", "color-mix(in oklch, var(--theme-link-unresolved) 55%, transparent)"],
+    ["--link-external-decoration", "none"],
+    ["--link-external-decoration-hover", "underline"],
+    ["--tag-size", "0.875em"],
+    ["--tag-color", "var(--theme-accent)"],
+    ["--tag-color-hover", "var(--theme-accent-hover)"],
+    ["--tag-decoration", "none"],
+    ["--tag-decoration-hover", "none"],
+    ["--tag-background", "color-mix(in oklch, var(--theme-accent) 10%, transparent)"],
+    ["--tag-background-hover", "color-mix(in oklch, var(--theme-accent) 16%, transparent)"],
+    ["--tag-border-color", "color-mix(in oklch, var(--theme-accent) 24%, transparent)"],
+    ["--tag-border-color-hover", "color-mix(in oklch, var(--theme-accent) 38%, transparent)"],
+    ["--tag-border-width", "1px"],
+    ["--tag-padding-x", "0.45em"],
+    ["--tag-padding-y", "0.12em"],
+    ["--tag-radius", "var(--theme-radius-xl)"],
+    ["--tag-weight", "var(--font-medium)"],
+    ["--text-highlight-bg", "color-mix(in oklch, var(--color-yellow) 32%, transparent)"]
+  ]);
+  const found = new Set();
+  for (const declaration of rule[1].split(";").map((part) => part.trim()).filter(Boolean)) {
+    const match = declaration.match(/^(--[a-z0-9-]+)\s*:\s*(.+)$/s);
+    if (!match) fail("P2.3 permits only approved public variable declarations.");
+    const [, name, value] = match;
+    // Exact values reject colors, deprecated RGB variables, new Tokens/Settings,
+    // animations, !important and extra properties without broad lint machinery.
+    if (!expected.has(name) || expected.get(name) !== value.trim().replace(/\s+/g, " ") || found.has(name)) {
+      fail(`P2.3 has an unapproved or duplicate declaration: ${name}.`);
+    }
+    found.add(name);
+  }
+  for (const name of expected.keys()) {
+    if (!found.has(name)) fail(`P2.3 public variable is missing: ${name}.`);
+  }
+}
+
 async function check() {
   for (const relativePath of requiredFiles) {
     try {
@@ -398,7 +451,7 @@ async function check() {
   }
 
   await validateCss();
-  console.log("Check passed: manifest, generated CSS, Semantic Tokens, theme modes, Style Settings, Foundation CSS, and Core Typography are valid.");
+  console.log("Check passed: manifest, generated CSS, Semantic Tokens, theme modes, Style Settings, Foundation CSS, Core Typography, and Links/Tags/Highlight are valid.");
 }
 
 check().catch((error) => {

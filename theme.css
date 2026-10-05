@@ -366,3 +366,42 @@ body {
   --scrollbar-thumb-bg: var(--theme-border-hover);
   --scrollbar-active-thumb-bg: var(--theme-border-active);
 }
+
+/* Source: src/editor/links-tags-highlight.css */
+body {
+  --link-decoration: none;
+  --link-decoration-hover: underline;
+  --link-decoration-thickness: 1px;
+  --link-weight: var(--font-normal);
+
+  --link-unresolved-opacity: 0.85;
+  --link-unresolved-filter: none;
+  --link-unresolved-decoration-style: dotted;
+  --link-unresolved-decoration-color:
+    color-mix(in oklch, var(--theme-link-unresolved) 55%, transparent);
+
+  --link-external-decoration: none;
+  --link-external-decoration-hover: underline;
+
+  --tag-size: 0.875em;
+  --tag-color: var(--theme-accent);
+  --tag-color-hover: var(--theme-accent-hover);
+  --tag-decoration: none;
+  --tag-decoration-hover: none;
+  --tag-background:
+    color-mix(in oklch, var(--theme-accent) 10%, transparent);
+  --tag-background-hover:
+    color-mix(in oklch, var(--theme-accent) 16%, transparent);
+  --tag-border-color:
+    color-mix(in oklch, var(--theme-accent) 24%, transparent);
+  --tag-border-color-hover:
+    color-mix(in oklch, var(--theme-accent) 38%, transparent);
+  --tag-border-width: 1px;
+  --tag-padding-x: 0.45em;
+  --tag-padding-y: 0.12em;
+  --tag-radius: var(--theme-radius-xl);
+  --tag-weight: var(--font-medium);
+
+  --text-highlight-bg:
+    color-mix(in oklch, var(--color-yellow) 32%, transparent);
+}
