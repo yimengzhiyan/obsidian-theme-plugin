@@ -1,0 +1,30 @@
+body {
+  --code-size: 0.9em;
+
+  --blockquote-background-color:
+    color-mix(in oklch, var(--theme-accent) 6%, transparent);
+  --blockquote-border-thickness: 3px;
+  --blockquote-border-color:
+    color-mix(in oklch, var(--theme-accent) 55%, transparent);
+  --blockquote-font-style: normal;
+  --blockquote-color: var(--theme-text-normal);
+
+  --table-background: transparent;
+  --table-border-width: 1px;
+  --table-border-color: var(--theme-border);
+  --table-cell-vertical-alignment: middle;
+  --table-white-space: normal;
+
+  --table-header-background: var(--theme-bg-card);
+  --table-header-background-hover: var(--theme-hover-bg);
+  --table-header-border-width: 1px;
+  --table-header-border-color: var(--theme-border-hover);
+  --table-header-size: 0.95em;
+  --table-header-weight: var(--font-semibold);
+  --table-header-color: var(--theme-text-normal);
+
+  --table-line-height: 1.5;
+  --table-text-size: 0.95em;
+  --table-text-color: var(--theme-text-normal);
+  --table-row-background-hover: var(--theme-hover-bg);
+}

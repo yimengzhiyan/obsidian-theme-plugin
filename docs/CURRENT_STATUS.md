@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-Phase 2 — Appearance & Core Components：P2.3 Links / Tags / Highlight complete / Desktop QA PASS / pending PR merge
+Phase 2 — Appearance & Core Components：P2.4 Code / Quote / Table implementation complete / pending Chat Review and Desktop QA
 
 ## Foundation
 
@@ -10,11 +10,11 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Branch
 
-`codex/p2-3-links-tags-highlight`
+`codex/p2-4-code-quote-table`
 
 ## Current Commit
 
-P2.3 implementation commit。本文件不嵌入其所在 commit 的 hash，以避免自引用导致 hash 永远变化；使用 `git rev-parse HEAD` 获取精确值。
+P2.4 implementation commit。本文件不嵌入其所在 commit 的 hash，以避免自引用导致 hash 永远变化；使用 `git rev-parse HEAD` 获取精确值。
 
 ## Completed
 
@@ -59,23 +59,27 @@ P2.3 implementation commit。本文件不嵌入其所在 commit 的 hash，以�
 - Resolved / unresolved / external links 与 bold / italic / heading links PASS；Tags Light / Dark / all views 及红 / 蓝 / 绿 Accent propagation PASS，无 fixed purple residue
 - Highlight 在 Accent 变化后仍保持黄色，Selection regression PASS；P2.2 Typography、Source blank-line navigation 与 Inline / Block Code regression PASS
 - P2.3 无新 Semantic Tokens / Style Settings / custom selectors，未发现 blocker
+- P2.3 MERGED via PR #5；merge commit `ad96df320fcb9724d4895b2032a72deb192fb175`
+- P2.4 公共变量实现完成：Code size、Accent-derived Blockquote、neutral Table；既有 Code background / text 映射与原生 syntax colors 保留
+- P2.4 exact contract check 与 [Desktop QA checklist](CODE_QUOTE_TABLE_TEST.md) 已建立；0 new Tokens / Settings / custom selectors，无 Callout 实现变化
 - 针对性 Core Typography contract check 与 [Typography Desktop QA checklist](TYPOGRAPHY_TEST.md) 已建立
 - GitHub remote 已配置为 `https://github.com/yimengzhiyan/obsidian-theme-plugin.git`；`main` 与 `codex/theme-foundation` 均已推送并设置 upstream
 
 ## In Progress
 
-- P2.3 PR review / merge pending；implementation 与 Desktop QA 已完成
+- P2.4 Chat implementation review / Desktop QA pending；implementation complete，尚未推断 Desktop PASS
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-Create / review / merge P2.3 PR。合并完成前不开始 P2.4；本任务不 merge。
+Chat implementation review → Desktop QA → fix only if necessary → PR → Review / Merge。不开始 P2.5。
 
 ## Known Issues / Blockers
 
 - Known decision：Source Mode visual rhythm may differ from Reading View；这是为保留原生 caret / keyboard navigation 而主动接受的 scope decision，不是 unresolved visual blocker
 - P2.2 无已知 blocker；撤回 Source normalization 后导航已由真实 Desktop 验证恢复
 - P2.3 无 unresolved blockers；Source unresolved-link presentation 可不同于 rendered views，Reading unresolved dotted decoration 主要 hover 可见，均接受为 native/public-variable differences，不增加 selector 覆盖
+- P2.4 Desktop QA pending；Editing / Reading syntax palette 可不同，但两者均须可读；不强求 Source raw Markdown 与 rendered views 一致
 - Desktop artifact gate：正确 branch / commit、root hash == installed hash；Round 2 已一致，不要求其他机器固定 SHA 相等
 - Working Title 同时包含 “Obsidian” 与 “Theme”，不符合当前社区主题目录命名规范；正式发布前必须确定合规名称。
 - manifest 的 author 当前是项目级临时署名，正式发布前需由维护者确认。
@@ -100,5 +104,7 @@ Create / review / merge P2.3 PR。合并完成前不开始 P2.4；本任务不 m
 - P2.2 PR #4：MERGED（`4671678`）
 - P2.3 automated validation：Build / Check / diff-check PASS；15 项内存负向变体均被拒绝；generated theme.css 由 Build 生成
 - P2.3 Desktop QA：PASS（真实 Desktop），root / installed SHA 一致；V0.1 release 包不代表本轮 artifact
-- 本次 docs-only validation：Build / Check / diff-check PASS，implementation / generated theme.css unchanged
+- P2.3 PR #5：MERGED（`ad96df320fcb9724d4895b2032a72deb192fb175`）
+- P2.4 automated validation：Build / Check / diff-check PASS；严格检查 22 个公共变量与 Foundation Code 映射，24 项内存负向变体均被拒绝；P2.2 / P2.3 contract 函数逐字保持不变；theme.css 仅由 Build 生成
+- P2.4 real Obsidian Desktop QA：pending；使用根目录 manifest.json / theme.css，记录 root / installed matching SHA
 - 现有 release/foundation-test 包保留 V0.1 baseline；P2.2 QA 使用本分支根目录安装文件并记录 hash

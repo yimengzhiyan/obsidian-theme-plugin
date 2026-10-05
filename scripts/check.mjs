@@ -94,6 +94,7 @@ const requiredFiles = [
   "src/base/dark.css",
   "src/base/typography.css",
   "src/editor/links-tags-highlight.css",
+  "src/editor/code-quote-table.css",
   "src/workspace/tabs.css",
   "src/workspace/sidebar.css",
   "src/workspace/ribbon.css",
@@ -198,6 +199,20 @@ async function validateCss() {
   assertCoreTypographyContract(typographyCss);
   const inlineCss = await readFile(path.join(projectRoot, "src/editor/links-tags-highlight.css"), "utf8");
   assertLinksTagsHighlightContract(inlineCss);
+  const blockCss = await readFile(path.join(projectRoot, "src/editor/code-quote-table.css"), "utf8");
+  assertCodeQuoteTableContract(blockCss);
+  // Foundation remains the sole source of code background / normal-text mappings.
+  const codeMappings = new Map([
+    ["--code-background", "var(--theme-code-bg)"],
+    ["--code-normal", "var(--theme-code-text)"]
+  ]);
+  for (const [name, expectedValue] of codeMappings) {
+    const matches = [...colorsCss.replace(/\/\*[\s\S]*?\*\//g, "")
+      .matchAll(new RegExp(`${name}\\s*:\\s*([^;]+);`, "g"))];
+    if (matches.length !== 1 || matches[0][1].trim() !== expectedValue) {
+      fail(`Foundation must preserve the exact code mapping: ${name}: ${expectedValue}.`);
+    }
+  }
   const workspaceCss = await Promise.all([
     "tabs.css",
     "sidebar.css",
@@ -423,6 +438,52 @@ function assertLinksTagsHighlightContract(source) {
   }
 }
 
+// Exact public-variable contract for P2.4; no component selector exceptions.
+function assertCodeQuoteTableContract(source) {
+  const css = source.replace(/\/\*[\s\S]*?\*\//g, "").trim();
+  const rule = css.match(/^body\s*\{([^{}]*)\}$/);
+  if (!rule) fail("P2.4 must contain exactly one body rule, without custom selectors.");
+  const expected = new Map([
+    ["--code-size", "0.9em"],
+    ["--blockquote-background-color", "color-mix(in oklch, var(--theme-accent) 6%, transparent)"],
+    ["--blockquote-border-thickness", "3px"],
+    ["--blockquote-border-color", "color-mix(in oklch, var(--theme-accent) 55%, transparent)"],
+    ["--blockquote-font-style", "normal"],
+    ["--blockquote-color", "var(--theme-text-normal)"],
+    ["--table-background", "transparent"],
+    ["--table-border-width", "1px"],
+    ["--table-border-color", "var(--theme-border)"],
+    ["--table-cell-vertical-alignment", "middle"],
+    ["--table-white-space", "normal"],
+    ["--table-header-background", "var(--theme-bg-card)"],
+    ["--table-header-background-hover", "var(--theme-hover-bg)"],
+    ["--table-header-border-width", "1px"],
+    ["--table-header-border-color", "var(--theme-border-hover)"],
+    ["--table-header-size", "0.95em"],
+    ["--table-header-weight", "var(--font-semibold)"],
+    ["--table-header-color", "var(--theme-text-normal)"],
+    ["--table-line-height", "1.5"],
+    ["--table-text-size", "0.95em"],
+    ["--table-text-color", "var(--theme-text-normal)"],
+    ["--table-row-background-hover", "var(--theme-hover-bg)"]
+  ]);
+  const found = new Set();
+  for (const declaration of rule[1].split(";").map((part) => part.trim()).filter(Boolean)) {
+    const match = declaration.match(/^(--[a-z0-9-]+)\s*:\s*(.+)$/s);
+    if (!match) fail("P2.4 permits only approved public variable declarations.");
+    const [, name, value] = match;
+    // Exact allowlist rejects syntax/Callout/interaction overrides, new Tokens,
+    // Settings, colors, animations and properties outside the approved contract.
+    if (!expected.has(name) || expected.get(name) !== value.trim().replace(/\s+/g, " ") || found.has(name)) {
+      fail(`P2.4 has an unapproved or duplicate declaration: ${name}.`);
+    }
+    found.add(name);
+  }
+  for (const name of expected.keys()) {
+    if (!found.has(name)) fail(`P2.4 public variable is missing: ${name}.`);
+  }
+}
+
 async function check() {
   for (const relativePath of requiredFiles) {
     try {
@@ -451,7 +512,7 @@ async function check() {
   }
 
   await validateCss();
-  console.log("Check passed: manifest, generated CSS, Semantic Tokens, theme modes, Style Settings, Foundation CSS, Core Typography, and Links/Tags/Highlight are valid.");
+  console.log("Check passed: manifest, generated CSS, Semantic Tokens, theme modes, Style Settings, Foundation CSS, Core Typography, Links/Tags/Highlight, and Code/Quote/Table are valid.");
 }
 
 check().catch((error) => {
