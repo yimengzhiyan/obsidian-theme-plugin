@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-Phase 2 — Appearance & Core Components：P2.4 Code / Quote / Table complete / Desktop QA PASS / pending PR merge
+Phase 2 — Appearance & Core Components：P2.5 Callout implementation complete / pending Chat Review and Desktop QA
 
 ## Foundation
 
@@ -10,11 +10,11 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Branch
 
-`codex/p2-4-code-quote-table`
+`codex/p2-5-callout`
 
 ## Current Commit
 
-P2.4 final Desktop validation docs commit；tested implementation 为 `56ec8599cd3c401e058ee80721d6af8980aa4fa4`。本文件不嵌入其所在 commit 的 hash，以避免自引用导致 hash 永远变化；使用 `git rev-parse HEAD` 获取精确值。
+P2.5 implementation commit。本文件不嵌入其所在 commit 的 hash，以避免自引用导致 hash 永远变化；使用 `git rev-parse HEAD` 获取精确值。
 
 ## Completed
 
@@ -66,17 +66,21 @@ P2.4 final Desktop validation docs commit；tested implementation 为 `56ec8599c
 - Blockquote 红 / 蓝 / 绿 Accent propagation、nested quote、rich content 与 Callout regression PASS，无紫色残留
 - Table readability / wrapping / embedded content / Source raw editing PASS；未暴露 native cell-selection / drag / add 控件记录 N/A，不阻塞
 - P2.2 Typography / Source navigation 与 P2.3 links / tags / highlight regression PASS；无新增 Tokens / Settings / custom selectors，无 Callout implementation changes
+- P2.4 PR #6 MERGED，merge commit `80fc6e61a6ffd82bbac2c2b744a066a1cc3b4538`
+- P2.5 Callout shell 公共变量实现完成：1px border / 0.28 opacity、既有 radius / spacing Tokens、0.95em semibold title；只增加批准的 8 项声明
+- P2.5 保留原生 semantic colors / icons / aliases / title color / content background / blend mode / folding；0 new Tokens / Settings / custom selectors
+- P2.5 strict contract check 与 [Desktop QA checklist](CALLOUT_TEST.md) 已建立；P2.2 / P2.3 / P2.4 合同保持不变
 - 针对性 Core Typography contract check 与 [Typography Desktop QA checklist](TYPOGRAPHY_TEST.md) 已建立
 - GitHub remote 已配置为 `https://github.com/yimengzhiyan/obsidian-theme-plugin.git`；`main` 与 `codex/theme-foundation` 均已推送并设置 upstream
 
 ## In Progress
 
-- P2.4 PR review / merge pending；implementation、Chat Review 与真实 Desktop QA 已完成
+- P2.5 Chat implementation review / Desktop QA pending；implementation complete，未推断 Desktop PASS
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-Create / review / merge P2.4 PR。合并完成前不开始 P2.5；本任务不 merge。
+Chat implementation review → Desktop QA → fix only if necessary → PR → Review / Merge。不开始 P2.6。
 
 ## Known Issues / Blockers
 
@@ -84,6 +88,7 @@ Create / review / merge P2.4 PR。合并完成前不开始 P2.5；本任务不 m
 - P2.2 无已知 blocker；撤回 Source normalization 后导航已由真实 Desktop 验证恢复
 - P2.3 无 unresolved blockers；Source unresolved-link presentation 可不同于 rendered views，Reading unresolved dotted decoration 主要 hover 可见，均接受为 native/public-variable differences，不增加 selector 覆盖
 - P2.4 无 blocking issue；Editing / Reading syntax palette differences 已接受（两者可读）；Table row hover 可 subtle / view-dependent；未暴露 native table controls 记录 N/A，不视为 theme regression，不新增 selector 覆盖
+- P2.5 尚未真实 Desktop QA；必须确认类型语义、folding、long title / title-only、nested、Accent independence、radius 与 Blockquote distinction
 - Desktop artifact gate：正确 branch / commit、root hash == installed hash；Round 2 已一致，不要求其他机器固定 SHA 相等
 - Working Title 同时包含 “Obsidian” 与 “Theme”，不符合当前社区主题目录命名规范；正式发布前必须确定合规名称。
 - manifest 的 author 当前是项目级临时署名，正式发布前需由维护者确认。
@@ -111,5 +116,7 @@ Create / review / merge P2.4 PR。合并完成前不开始 P2.5；本任务不 m
 - P2.3 PR #5：MERGED（`ad96df320fcb9724d4895b2032a72deb192fb175`）
 - P2.4 automated validation：Build / Check / diff-check PASS；严格检查 22 个公共变量与 Foundation Code 映射，24 项内存负向变体均被拒绝；P2.2 / P2.3 contract 函数逐字保持不变；theme.css 仅由 Build 生成
 - P2.4 real Obsidian Desktop QA：PASS；Obsidian 1.13.7 / Windows 25H2 Build 26200.8737 / Style Settings 1.0.9，root / installed SHA 一致；详见 CODE_QUOTE_TABLE_TEST
-- 本次 docs-only validation：Build / Check / diff-check PASS；implementation / generated theme.css unchanged
+- P2.4 PR #6：MERGED（`80fc6e61a6ffd82bbac2c2b744a066a1cc3b4538`）
+- P2.5 automated validation：Build / Check / diff-check PASS；严格 single-body / 8-declaration contract；29 项内存负向变体全部拒绝（覆盖要求的 26 类），P2.2–P2.4 合同函数逐字不变；theme.css 仅由 Build 生成
+- P2.5 real Obsidian Desktop QA：pending；使用根目录安装文件并记录 branch / commit 和 matching root / installed SHA
 - 现有 release/foundation-test 包保留 V0.1 baseline；P2.2 QA 使用本分支根目录安装文件并记录 hash
