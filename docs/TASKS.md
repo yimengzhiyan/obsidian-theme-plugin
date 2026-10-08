@@ -49,8 +49,8 @@ Auto Hide system、Card Layout、Focus Mode、Advanced Rainbow Folder、Canvas�
 - [x] **P2.0 Planning** — Chat Review PASS；规划状态经 PR #2 合并到 `main`
 - [x] **P2.1 Appearance Token Gap Audit / Contract Freeze** — audit completed；无需新增 global Semantic Tokens，现有 Foundation contract 继续作为依据；详见 [Token audit](APPEARANCE_TOKEN_AUDIT.md)
 - [x] **P2.2 Core Typography — complete / Desktop QA PASS / merged** — PR #4 MERGED，merge commit `4671678`；Live Preview-only normalization 保留，Source 原生编辑行为恢复。最终产品决策与 Rounds 1–4 历史见 [Desktop QA](TYPOGRAPHY_TEST.md)
-- [x] **P2.3 Links / Tags / Highlight — complete / ready for PR merge** — implementation complete、Chat Review PASS、Desktop QA PASS；public-variable-only，无新 Tokens / Settings / custom selectors。Source unresolved-link 原生配色与 Reading dotted decoration 主要 hover 可见均接受为 native differences，详见 [Desktop QA](LINKS_TAGS_HIGHLIGHT_TEST.md)
-- [ ] **P2.4 Code / Quote / Table** — 规划 code block、blockquote 与 table 的基础样式
+- [x] **P2.3 Links / Tags / Highlight — complete / Desktop QA PASS / merged** — MERGED via PR #5，merge commit `ad96df320fcb9724d4895b2032a72deb192fb175`；public-variable-only，无新 Tokens / Settings / custom selectors。Source unresolved-link 原生配色与 Reading dotted decoration 主要 hover 可见均接受为 native differences，详见 [Desktop QA](LINKS_TAGS_HIGHLIGHT_TEST.md)
+- [x] **P2.4 Code / Quote / Table — complete / Desktop QA PASS / ready for PR merge** — implementation complete、Chat Review PASS、Desktop QA PASS；保留 Code 映射、syntax colors 与用户 monospace，Blockquote Accent 联动、Table 可读性及 P2.2/P2.3 regression PASS。无新 Tokens / Settings / selectors；native syntax / hover differences 与未暴露控件 N/A 已记录，详见 [Desktop QA](CODE_QUOTE_TABLE_TEST.md)
 - [ ] **P2.5 Callout** — 独立规划 Callout，避免与基础 Markdown block components 混入同一次提交
 - [ ] **P2.6 Navigation / File Explorer** — 规划 file / folder typography、selected / hover states、folder weight、wrapping 与基础层级；Rainbow Folder 只预留接口和规划，不实现高级版本
 - [ ] **P2.7 Desktop QA / Regression** — 每批组件遵循 Build → Check → Desktop QA → Review → Merge，不等待 Phase 2 全部完成后再测试
