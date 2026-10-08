@@ -367,6 +367,22 @@ body {
   --scrollbar-active-thumb-bg: var(--theme-border-active);
 }
 
+/* Source: src/editor/callout.css */
+body {
+  --callout-border-width: 1px;
+  --callout-border-opacity: 0.28;
+  --callout-padding: 0;
+  --callout-radius: var(--theme-radius-md);
+
+  --callout-title-padding:
+    var(--theme-space-sm) var(--theme-space-md);
+  --callout-title-size: 0.95em;
+  --callout-title-weight: var(--font-semibold);
+
+  --callout-content-padding:
+    0 var(--theme-space-md) var(--theme-space-sm);
+}
+
 /* Source: src/editor/code-quote-table.css */
 body {
   --code-size: 0.9em;
