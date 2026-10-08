@@ -169,7 +169,7 @@ Run Light / Dark × Live Preview / Reading; Source checks native raw editing onl
 - [x] Radius propagation PASS: small observed 1px, medium 10px, large 20px
 - [x] No fixed radius residue; border correct at all tested values
 
-After tests restore original Accent and Radius; restoration was not separately reported in the supplied QA results.
+After tests, the maintainer reported restoring Dark mode, Accent `#dc2626`, and Radius `20`.
 
 ## Source / Quick Regression
 
