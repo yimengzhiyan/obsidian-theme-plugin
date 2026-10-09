@@ -2,17 +2,17 @@
 
 ## Status / Environment
 
-Implementation complete / pending Chat Review and Desktop QA. Automated PASS does not imply Desktop PASS.
+COMPLETE / Chat Review PASS / Desktop QA PASS / pending PR merge. Automated PASS and Desktop PASS are independent; Desktop results below were supplied by the maintainer, not inferred from automated checks.
 
-- Obsidian / installer version: pending
-- OS / Windows build: pending
-- Style Settings version: pending
-- Theme version: pending
+- Obsidian: 1.14.4; Installer: 1.10.6
+- OS / Windows build: Windows 25H2 Build 26200.8737
+- Style Settings version: 1.0.9
+- Theme: Obsidian Fusion Theme
 - Tested branch: `codex/p2-6-navigation-file-explorer`
-- Tested commit: pending; record exact implementation SHA
-- Root theme.css SHA-256: pending
-- Installed theme.css SHA-256: pending
-- Root / installed hash match: pending
+- Tested implementation commit: `2945b00b21718b0bf0bc517ecc6fb317e03af6d1`
+- Root theme.css SHA-256: `86616AB8CBACEDC74E4EEF57931776A2692F0F3F917E4D06C6E8EFDA3408A29B`
+- Installed theme.css SHA-256: `86616AB8CBACEDC74E4EEF57931776A2692F0F3F917E4D06C6E8EFDA3408A29B`
+- Root / installed hash match: YES; checked again at the end of QA and remained identical
 
 Install root `manifest.json` / generated `theme.css`. Foundation release package remains V0.1 baseline. Require correct branch / commit and root hash == installed hash on the test machine, not a fixed hash from another machine.
 
@@ -22,7 +22,7 @@ Install root `manifest.json` / generated `theme.css`. Foundation release package
 
 Existing Foundation hover / active / selected color and background mappings stay in `src/workspace/sidebar.css`, exactly once. No new Tokens / Settings / custom selectors. Navigation public variables may also affect other navigation surfaces; smoke-test them below.
 
-Folder-only weight remains deferred pending real Desktop evidence. No Rainbow Folder, per-folder/level/file-type colors, icons/SVG replacements, width/ellipsis hacks, animations, drag/drop redesign or workspace layout changes. No navigation-heading or highlighted-color override. P2.7 not started.
+Folder-only weight is intentionally unimplemented: real Desktop QA confirmed sufficient folder/file distinction without a selector. No Rainbow Folder, per-folder/level/file-type colors, icons/SVG replacements, width/ellipsis hacks, animations, drag/drop redesign or workspace layout changes. No navigation-heading or highlighted-color override. P2.7 not started.
 
 Official reference: [Navigation public variables](https://raw.githubusercontent.com/obsidianmd/obsidian-developer-docs/main/en/Reference/CSS%20variables/Components/Navigation.md).
 
@@ -53,7 +53,7 @@ Also prepare empty folder, one-child folder and many-sibling folder.
 
 ## Typography / Density / State
 
-Run in Light / Dark, normal and narrow sidebar widths.
+The unchecked procedure boxes below are retained as a reusable test matrix, not pending results; completed outcomes appear under Observations / Final Result. Run in Light / Dark, normal and narrow sidebar widths.
 
 - [ ] File / folder text 0.9em / normal weight readable in Chinese, English and mixed text; not too small or dense
 - [ ] Item / parent padding xs/sm (~4px vertical / 8px horizontal at 16px root) compact but comfortable; click targets and multi-line items usable
@@ -107,7 +107,7 @@ Restore original settings after tests; record any restoration performed. These a
 
 `assertNavigationFileExplorerContract()` checks one body and exactly 13 unique approved names/values. It rejects selectors/pseudo-elements, !important, colors, Tokens/Settings, state-color duplication, headings/highlighted color, animations, property styling, Rainbow and icon overrides.
 
-`assertFoundationNavigationMappings()` checks seven original sidebar mappings exactly once with exact values; sidebar source is unchanged. P2.2–P2.5 contract functions are byte-for-byte unchanged. Build / Check / diff-check PASS; 36 in-memory negative variants rejected (34 navigation-source + 2 Foundation-sidebar variants), covering all 32 requested categories including Foundation duplication/hover override. Desktop checks remain pending.
+`assertFoundationNavigationMappings()` checks seven original sidebar mappings exactly once with exact values; sidebar source is unchanged. P2.2–P2.5 contract functions are byte-for-byte unchanged. Build / Check / diff-check PASS; 36 in-memory negative variants rejected (34 navigation-source + 2 Foundation-sidebar variants), covering all 32 requested categories including Foundation duplication/hover override. Independent real Desktop QA is PASS as recorded below.
 
 ## Desktop PASS Gate
 
@@ -140,4 +140,51 @@ Restore original settings after tests; record any restoration performed. These a
 
 ## Observations / Final Result
 
-Desktop QA: pending. Record mode, sidebar width, reproduction, evidence and any blocker here. Next: Chat implementation review → Desktop QA → fix only if necessary → PR → Review / Merge. P2.7 not started.
+P2.6 Navigation / File Explorer Desktop QA: **PASS**. No blocking theme issue found. The checklist above is retained as the test procedure; final outcomes are recorded below. Only drag/drop is N/A / non-blocking. Next: P2.6 PR review / merge; P2.7 not started.
+
+### Typography / Density / State — PASS
+
+File/folder text in Light / Dark, Chinese / English / mixed text and 0.9em readability: PASS. Visual size acceptable; computed px was not separately measured. Item padding / density: PASS, compact but usable, comfortable click targets and no excessively compressed multi-line names.
+
+Active file state: PASS; background and text readable, no fixed purple residue. Active medium weight: PASS, visually slightly stronger than normal items; implementation maps active weight to medium. Hover file / folder / active item and hover layout stability: PASS; no sudden bolding or wrapping/layout jump observed.
+
+### Wrapping / Rename — PASS
+
+Long English, Chinese and mixed filenames and long folder names: PASS. Narrow sidebar wrapping remained usable, with no unusable clipping, correct click targets and no folder text/chevron overlap. Wrapped active background: PASS, covers the full multi-line item sensibly.
+
+Rename short file / long wrapped file / folder: PASS. Enter confirmation, Esc cancel and selection / caret: PASS. No chevron/input collision observed.
+
+### Hierarchy / Guide / Chevron — PASS
+
+Four-level hierarchy, deep-file readability, indentation amount and narrow-sidebar usability: PASS. Indentation guides in Light / Dark: PASS, visible but subtle, not confused with active indication and without excessive deep-level noise. Expanded / collapsed chevrons, clickability and neutrality: PASS; no icon replacement.
+
+Folder vs file distinction: PASS. Collapse chevrons, indentation, child structure and guides provide sufficient hierarchy. Folder-only selector necessary: **NO**. Decision: retain **0 custom selectors**, no folder-only weight rule.
+
+Empty / one-child / many-sibling folders: PASS. Twelve sibling files remained consistently spaced and easy to scan, without oversized gaps or spacing collapse.
+
+### Native Interaction / Other Navigation
+
+Drag/drop: **N/A / non-blocking** according to the approved QA gate. Automated drag/drop did not complete an actual move; the attempted action was cancelled and the file remained in its original location. No successful drop is claimed.
+
+New Note / New Folder / Sort / Collapse All: PASS. Z–A sorting worked and was restored to A–Z after QA. Backlinks / Outlinks / Search / other navigation: PASS; groups, targets, long paths and result content remained readable, with usable wrapping.
+
+### Accent / Rainbow / Radius — PASS
+
+Red `#dc2626`, blue `#2563eb` and green `#16a34a` Accent: PASS. Active / selected file state follows the existing Accent chain. Normal file/folder names, indentation guides and chevrons remain neutral; no fixed purple residue.
+
+No Rainbow Folder behavior: PASS. No per-folder or level colors, hue rotation, Accent-colored hierarchy or file-type colors. Advanced Rainbow Folder remains deferred. Radius regression: PASS; no new File Explorer radius redesign observed.
+
+### P2.2–P2.5 Regression — PASS
+
+- P2.2: headings / paragraph behavior normal; Source double blank lines remained independently reachable with Up/Down navigation.
+- P2.3: internal / external links normal; Tag follows Accent; Highlight remains yellow.
+- P2.4: Inline Code, Code Block including blank lines, Blockquote and Table: PASS.
+- P2.5: normal Callout, Warning / Error semantic colors, Radius and folding: PASS.
+
+### Restoration / Cleanup — PASS
+
+Settings restored to Dark mode, Accent `#dc2626`, Radius `20`, body text `16px`, Content Width `500`, Line Height `2.0` and original sidebar width. Settings restoration: PASS.
+
+Temporary P2.6 Navigation QA folder was removed from the test Vault after testing. Existing P2.2–P2.5 QA note hashes remained unchanged; this does not refer to repository QA documents being edited by Desktop.
+
+All Desktop exit gates are satisfied, including the approved non-blocking drag/drop N/A. Implementation complete / Chat Review PASS / Desktop QA PASS / ready for PR merge.
