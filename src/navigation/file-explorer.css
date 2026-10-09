@@ -1,0 +1,21 @@
+body {
+  --nav-item-size: 0.9em;
+  --nav-item-padding:
+    var(--theme-space-xs) var(--theme-space-sm);
+  --nav-item-parent-padding:
+    var(--theme-space-xs) var(--theme-space-sm);
+
+  --nav-item-children-padding-start: var(--theme-space-md);
+  --nav-item-children-margin-start: var(--theme-space-xs);
+
+  --nav-item-weight: var(--font-normal);
+  --nav-item-weight-hover: var(--font-normal);
+  --nav-item-weight-active: var(--font-medium);
+  --nav-item-white-space: normal;
+
+  --nav-indentation-guide-width: 1px;
+  --nav-indentation-guide-color: var(--theme-border);
+
+  --nav-collapse-icon-color: var(--theme-text-faint);
+  --nav-collapse-icon-color-collapsed: var(--theme-text-muted);
+}
