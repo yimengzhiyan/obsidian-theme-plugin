@@ -96,6 +96,7 @@ const requiredFiles = [
   "src/editor/links-tags-highlight.css",
   "src/editor/code-quote-table.css",
   "src/editor/callout.css",
+  "src/navigation/file-explorer.css",
   "src/workspace/tabs.css",
   "src/workspace/sidebar.css",
   "src/workspace/ribbon.css",
@@ -204,6 +205,8 @@ async function validateCss() {
   assertCodeQuoteTableContract(blockCss);
   const calloutCss = await readFile(path.join(projectRoot, "src/editor/callout.css"), "utf8");
   assertCalloutContract(calloutCss);
+  const navigationCss = await readFile(path.join(projectRoot, "src/navigation/file-explorer.css"), "utf8");
+  assertNavigationFileExplorerContract(navigationCss);
   // Foundation remains the sole source of code background / normal-text mappings.
   const codeMappings = new Map([
     ["--code-background", "var(--theme-code-bg)"],
@@ -223,6 +226,7 @@ async function validateCss() {
     "statusbar.css",
     "scrollbar.css"
   ].map((file) => readFile(path.join(projectRoot, "src/workspace", file), "utf8")));
+  assertFoundationNavigationMappings(workspaceCss[1]);
   const settingsCss = await readFile(path.join(projectRoot, "settings/style-settings.css"), "utf8");
   const expectedBanner = "/*\n * GENERATED FILE\n * Do not edit theme.css directly.\n * Edit files under src/ instead.\n */";
 
@@ -519,6 +523,62 @@ function assertCalloutContract(source) {
   }
 }
 
+// P2.6 only extends item geometry/typography; Foundation owns state colors.
+function assertNavigationFileExplorerContract(source) {
+  const css = source.replace(/\/\*[\s\S]*?\*\//g, "").trim();
+  const rule = css.match(/^body\s*\{([^{}]*)\}$/);
+  if (!rule) fail("P2.6 must contain exactly one body rule, without custom selectors.");
+  const expected = new Map([
+    ["--nav-item-size", "0.9em"],
+    ["--nav-item-padding", "var(--theme-space-xs) var(--theme-space-sm)"],
+    ["--nav-item-parent-padding", "var(--theme-space-xs) var(--theme-space-sm)"],
+    ["--nav-item-children-padding-start", "var(--theme-space-md)"],
+    ["--nav-item-children-margin-start", "var(--theme-space-xs)"],
+    ["--nav-item-weight", "var(--font-normal)"],
+    ["--nav-item-weight-hover", "var(--font-normal)"],
+    ["--nav-item-weight-active", "var(--font-medium)"],
+    ["--nav-item-white-space", "normal"],
+    ["--nav-indentation-guide-width", "1px"],
+    ["--nav-indentation-guide-color", "var(--theme-border)"],
+    ["--nav-collapse-icon-color", "var(--theme-text-faint)"],
+    ["--nav-collapse-icon-color-collapsed", "var(--theme-text-muted)"]
+  ]);
+  const found = new Set();
+  for (const declaration of rule[1].split(";").map((part) => part.trim()).filter(Boolean)) {
+    const match = declaration.match(/^(--[a-z0-9-]+)\s*:\s*(.+)$/s);
+    if (!match) fail("P2.6 permits only approved public variable declarations.");
+    const [, name, value] = match;
+    // Exact allowlist rejects state-color duplication, headings, drag/drop,
+    // Tokens, Settings, colors and arbitrary property styling.
+    if (!expected.has(name) || expected.get(name) !== value.trim().replace(/\s+/g, " ") || found.has(name)) {
+      fail(`P2.6 has an unapproved or duplicate declaration: ${name}.`);
+    }
+    found.add(name);
+  }
+  for (const name of expected.keys()) {
+    if (!found.has(name)) fail(`P2.6 public variable is missing: ${name}.`);
+  }
+}
+
+function assertFoundationNavigationMappings(source) {
+  const css = source.replace(/\/\*[\s\S]*?\*\//g, "");
+  const expected = new Map([
+    ["--nav-item-color", "var(--theme-text-muted)"],
+    ["--nav-item-color-hover", "var(--theme-text-normal)"],
+    ["--nav-item-color-active", "var(--theme-active-text)"],
+    ["--nav-item-color-selected", "var(--theme-active-text)"],
+    ["--nav-item-background-hover", "var(--theme-hover-bg)"],
+    ["--nav-item-background-active", "var(--theme-active-bg)"],
+    ["--nav-item-background-selected", "var(--theme-active-bg)"]
+  ]);
+  for (const [name, value] of expected) {
+    const matches = [...css.matchAll(new RegExp(`${name}\\s*:\\s*([^;]+);`, "g"))];
+    if (matches.length !== 1 || matches[0][1].trim().replace(/\s+/g, " ") !== value) {
+      fail(`Foundation sidebar mapping must occur exactly once: ${name}: ${value}.`);
+    }
+  }
+}
+
 async function check() {
   for (const relativePath of requiredFiles) {
     try {
@@ -547,7 +607,7 @@ async function check() {
   }
 
   await validateCss();
-  console.log("Check passed: manifest, generated CSS, Semantic Tokens, theme modes, Style Settings, Foundation CSS, Core Typography, Links/Tags/Highlight, Code/Quote/Table, and Callout are valid.");
+  console.log("Check passed: manifest, generated CSS, Semantic Tokens, theme modes, Style Settings, Foundation CSS, Core Typography, Links/Tags/Highlight, Code/Quote/Table, Callout, and Navigation/File Explorer are valid.");
 }
 
 check().catch((error) => {
