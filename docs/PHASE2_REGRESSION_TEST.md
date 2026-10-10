@@ -2,9 +2,9 @@
 
 ## Status / Frozen Scope
 
-Prepared / pending Chat Review and Desktop QA. Automated validation does not imply Desktop PASS. P2.7 introduces no theme implementation changes. The tested CSS artifact must be the merged P2.2–P2.6 state, based on main `f00e67108bece2b0a4cede9a687c7ee2da7cbc6e`.
+Round 1: **NEEDS FIX**. Chat classified ISSUE-01 as BLOCKER and approved a minimal Live Preview integration exception; fix implemented / pending Chat implementation review and targeted Desktop verification. Automated validation does not imply Desktop PASS. Initial tested CSS was the merged P2.2–P2.6 state, based on main `f00e67108bece2b0a4cede9a687c7ee2da7cbc6e`; retest must install the current fix artifact and record branch/commit and matching hashes.
 
-Freeze CSS, Semantic Tokens, Style Settings, selectors, runtime/plugin behavior and build/check tooling. Potential visual issues found while preparing this plan are recorded only, not fixed without real Desktop evidence and Chat review.
+Freeze all other CSS, Semantic Tokens, Style Settings, runtime/plugin behavior and build tooling. The sole approved exception is two foreground-only Live Preview Blockquote Tag rules and their dedicated strict check. Other potential visual issues are recorded only, not fixed without real Desktop evidence and Chat review.
 
 ## Artifact / Environment Gate
 
@@ -13,10 +13,10 @@ Freeze CSS, Semantic Tokens, Style Settings, selectors, runtime/plugin behavior 
 - Root theme.css SHA-256: pending
 - Installed theme.css SHA-256: pending
 - Hash match: pending
-- Obsidian version: pending
-- Installer version: pending
-- Windows version/build: pending
-- Style Settings version: pending
+- Obsidian version (Round 1): 1.14.4
+- Installer version (Round 1): 1.10.6
+- Windows version/build (Round 1): 25H2 Build 26200.8737
+- Style Settings version (Round 1): 1.0.9
 - Theme: pending
 
 Install root `manifest.json` and `theme.css`, not the old V0.1 release package. Require correct branch/commit and **root theme.css == installed theme.css** on the Desktop test machine; otherwise **FAIL — wrong artifact**. Do not require an old milestone hash or another machine's hash. Record actual versions at test time and recheck artifact after QA.
@@ -226,13 +226,55 @@ Only real Desktop evidence can trigger a fix. For each ISSUE record mode, view, 
 - Evidence / historical comparison: pending
 - Chat classification / blocking decision: pending
 
+## Round 1 Evidence / ISSUE-01
+
+Round 1 Desktop QA: **NEEDS FIX**. Chat classification: **BLOCKER — real cross-component regression** (P2.3 Tag × P2.4 Blockquote × Live Preview), not an accepted historical view difference.
+
+Reproduction: Dark / Live Preview / Accent `#16a34a`, using the ordinary Blockquote with `#tag` in the integrated note. Expected: Tag foreground follows Accent. Actual:
+
+- Normal Tag `.cm-hashtag`: computed color `rgb(22, 163, 74)`.
+- Blockquote Tag `.cm-hashtag.cm-quote.cm-quote-1`, parent `.cm-line.HyperMD-quote.HyperMD-quote-1`: computed color `rgb(233, 231, 237)`.
+- `--tag-color` inside both: `#16a34a`; background in both: Accent-derived and correct.
+- Reading Blockquote Tag: PASS. Callout Tag: PASS.
+- Same foreground conflict also observed in Light with blue Accent.
+
+Root cause interpretation: Live Preview quote syntax color wins over Tag foreground on a span carrying both quote and hashtag classes. Public variables propagate correctly, but cannot alone resolve the overlapping property specificity.
+
+P2.7 docs commit `72538caa364811a5928e7ea508661325f25d60a7` introduced no CSS change. Integrated regression exposed a pre-existing cross-component interaction in the merged Phase 2 artifact; it was not introduced by test-plan documentation.
+
+Approved fix: `src/editor/live-preview-composition.css`, exactly two Live Preview-only rules restoring `color: var(--tag-color)` and hover `color: var(--tag-color-hover)`. No Source/Reading overrides, backgrounds/borders, new Tokens or Settings; historical component contracts unchanged.
+
+### Partial Gates — Still Pending
+
+- Inactive tab hover
+- Highlight text selection
+- Code Block long-line behavior
+- Code Block actual Source editing
+- Main-window constrained-space smoke
+
+These were not fully verified in Round 1 and are not ISSUE-01 itself. Do not mark them PASS; complete them during targeted Desktop exit verification.
+
+### CRLF/LF Observation
+
+Desktop independent-copy check initially failed freshness comparison because of CRLF/LF rebuilding, not semantic CSS differences. Normalized text before/after rebuild was identical; original repository and installed artifact remained unchanged. Chat classification: **non-blocking platform/tooling line-ending observation**. Build/check line-ending behavior is unchanged; cross-platform tooling hardening may be considered separately.
+
+### Targeted Desktop Verification — Pending
+
+- Install correct fix branch/commit; root SHA == installed SHA.
+- Ordinary Blockquote Tag normal/hover foreground follows current Tag variables in Light/Dark with red/blue/green Accent; background/border remain unchanged.
+- Normal paragraph, Reading Blockquote and Callout Tags retain previous behavior; non-Tag quote text stays normal.
+- Source native editing, semantic Callout/Highlight and other component styling do not regress.
+- Complete all five partial gates above and record evidence; classify any new issue through Chat, not ad hoc CSS tuning.
+
+Automated fix validation: Build / Check / diff-check PASS; dedicated exact two-rule contract, 20 in-memory negative variants rejected; six historical contract functions byte-for-byte unchanged. Desktop fix verification and Phase 2 exit decision remain pending.
+
 ## Restoration / Final Decision
 
 - Original settings / sidebar width restored: pending
 - Temporary Vault data cleanup: pending
 - Final artifact recheck: pending
-- Chat test-plan Review: pending
-- Real Desktop QA: pending
+- Chat test-plan / ISSUE classification Review: completed; ISSUE-01 BLOCKER, minimal fix approved
+- Real Desktop QA: Round 1 NEEDS FIX; targeted fix verification pending
 - Phase 2 exit decision: pending
 
 Allowed outcomes after evidence review: **PASS — Phase 2 exit gate satisfied**; **NEEDS FIX — blocking regression found**; or **CONDITIONAL / N/A** only for approved non-blocking items. No Desktop PASS is claimed now.

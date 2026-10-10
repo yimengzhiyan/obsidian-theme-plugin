@@ -96,6 +96,7 @@ const requiredFiles = [
   "src/editor/links-tags-highlight.css",
   "src/editor/code-quote-table.css",
   "src/editor/callout.css",
+  "src/editor/live-preview-composition.css",
   "src/navigation/file-explorer.css",
   "src/workspace/tabs.css",
   "src/workspace/sidebar.css",
@@ -207,6 +208,8 @@ async function validateCss() {
   assertCalloutContract(calloutCss);
   const navigationCss = await readFile(path.join(projectRoot, "src/navigation/file-explorer.css"), "utf8");
   assertNavigationFileExplorerContract(navigationCss);
+  const compositionCss = await readFile(path.join(projectRoot, "src/editor/live-preview-composition.css"), "utf8");
+  assertLivePreviewCompositionContract(compositionCss);
   // Foundation remains the sole source of code background / normal-text mappings.
   const codeMappings = new Map([
     ["--code-background", "var(--theme-code-bg)"],
@@ -575,6 +578,26 @@ function assertFoundationNavigationMappings(source) {
     const matches = [...css.matchAll(new RegExp(`${name}\\s*:\\s*([^;]+);`, "g"))];
     if (matches.length !== 1 || matches[0][1].trim().replace(/\s+/g, " ") !== value) {
       fail(`Foundation sidebar mapping must occur exactly once: ${name}: ${value}.`);
+    }
+  }
+}
+
+// P2.7 integration exception: exact two-rule allowlist, not a general CSS parser.
+function assertLivePreviewCompositionContract(source) {
+  const css = source.replace(/\/\*[\s\S]*?\*\//g, "").trim();
+  const rules = [...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)];
+  const prefix = ".markdown-source-view.mod-cm6.is-live-preview .cm-hashtag.cm-quote";
+  const expected = [
+    [prefix, "color: var(--tag-color);"],
+    [`${prefix}:hover`, "color: var(--tag-color-hover);"]
+  ];
+  if (rules.length !== 2 || rules.map((rule) => rule[0]).join("").trim() !== css) {
+    fail("P2.7 composition must contain exactly two approved rules.");
+  }
+  for (const [index, rule] of rules.entries()) {
+    if (rule[1].trim() !== expected[index][0] ||
+        rule[2].trim().replace(/\s+/g, " ") !== expected[index][1]) {
+      fail("P2.7 composition selector, order or color declaration is unapproved.");
     }
   }
 }

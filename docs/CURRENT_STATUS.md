@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-Phase 2 — Appearance & Core Components：P2.7 Final Desktop QA / Regression prepared / pending Chat Review and Desktop QA
+Phase 2 — Appearance & Core Components：P2.7 Round 1 NEEDS FIX；targeted composition fix implemented / pending Chat implementation review and Desktop verification
 
 ## Foundation
 
@@ -89,12 +89,12 @@ P2.7 test-plan docs commit；冻结 CSS 基线为 merged main `f00e67108bece2b0a
 
 ## In Progress
 
-- P2.7 Phase 2 integrated regression：test plan prepared，pending Chat Review and real Desktop QA
+- P2.7 Round 1 NEEDS FIX；ISSUE-01 基于真实 Desktop evidence，经 Chat classified BLOCKER；批准的两条 Live Preview-only foreground rules 已实现，待 targeted Desktop exit verification
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-Chat Review of P2.7 test plan → real Desktop QA → fix only if blocking evidence exists → final docs / PR / merge。当前不创建 PR，不新增视觉实现。
+Chat implementation review → targeted Desktop verification → complete remaining partial P2.7 gates → Phase 2 exit decision。当前不创建 PR，不开始 Phase 3。
 
 ## Known Issues / Blockers
 
@@ -104,7 +104,9 @@ Chat Review of P2.7 test plan → real Desktop QA → fix only if blocking evide
 - P2.4 无 blocking issue；Editing / Reading syntax palette differences 已接受（两者可读）；Table row hover 可 subtle / view-dependent；未暴露 native table controls 记录 N/A，不视为 theme regression，不新增 selector 覆盖
 - P2.5 无 blocker；Callout semantic type colors / icons / aliases 保持原生，Theme Accent 有意不替换其语义颜色；nested blending 与 folding 保持原生，无需 selector-based redesign
 - P2.6 无 blocker；folder-only weight intentionally unimplemented，因为真实 Desktop QA 确认 folder/file hierarchy 足够清晰；drag/drop N/A 按批准 gate 为 non-blocking，不声称成功移动
-- P2.7 Desktop QA pending；历史已接受差异不是新 blocker，除非进一步恶化。潜在问题只记录，等待真实 Desktop evidence 与 Chat 分类后决定是否修复
+- P2.7 ISSUE-01：Live Preview ordinary Blockquote Tag foreground 被 quote syntax color 覆盖，而非跟随 --tag-color；真实 Desktop evidence / Chat blocking classification / minimal selector exception approved，修复后 Desktop 未验证
+- Remaining partial gates：inactive tab hover、Highlight text selection、Code Block long-line / actual Source editing、main-window constrained-space smoke；均待补齐，不标 PASS
+- Desktop 独立副本 CRLF/LF freshness observation：normalized text identical，原仓库与 installed artifact unchanged；non-blocking platform/tooling observation，本轮不改 line-ending behavior
 - Desktop artifact gate：正确 branch / commit、root hash == installed hash；Round 2 已一致，不要求其他机器固定 SHA 相等
 - Working Title 同时包含 “Obsidian” 与 “Theme”，不符合当前社区主题目录命名规范；正式发布前必须确定合规名称。
 - manifest 的 author 当前是项目级临时署名，正式发布前需由维护者确认。

@@ -53,7 +53,7 @@ Auto Hide system、Card Layout、Focus Mode、Advanced Rainbow Folder、Canvas�
 - [x] **P2.4 Code / Quote / Table — complete / Desktop QA PASS / merged** — PR #6 MERGED，merge commit `80fc6e61a6ffd82bbac2c2b744a066a1cc3b4538`；保留 Code 映射、syntax colors 与用户 monospace，Blockquote Accent 联动、Table 可读性及 P2.2/P2.3 regression PASS。无新 Tokens / Settings / selectors；native syntax / hover differences 与未暴露控件 N/A 已记录，详见 [Desktop QA](CODE_QUOTE_TABLE_TEST.md)
 - [x] **P2.5 Callout — complete / Desktop QA PASS / merged** — PR #7 MERGED，merge commit `06eb5641793d04be1b78563b7fd0fb532b1967a3`；原生 semantic colors / icons / aliases / blending / folding 保留，Accent independence、Radius 与 P2.2–P2.4 regression PASS；详见 [Desktop QA](CALLOUT_TEST.md)
 - [x] **P2.6 Navigation / File Explorer — complete / Desktop QA PASS / merged** — PR #8，merge commit `f00e67108bece2b0a4cede9a687c7ee2da7cbc6e`；13 公共变量，Foundation 状态色保留；wrapping / rename / hierarchy / folder-file distinction PASS，folder-only selector 不必要；drag/drop N/A / non-blocking。0 new Tokens / Settings / selectors，无 Rainbow Folder；详见 [Desktop QA](NAVIGATION_FILE_EXPLORER_TEST.md)
-- [ ] **P2.7 Phase 2 Final Desktop QA / Regression — test plan prepared / pending Chat Review and Desktop QA** — 冻结 merged P2.2–P2.6 artifact，验证 Foundation、各组件、跨组件组合与最终 exit gate；不新增实现，见 [Integrated QA plan](PHASE2_REGRESSION_TEST.md)。各批次 Build → Check → Desktop QA → Review → Merge 的历史流程保留
+- [ ] **P2.7 Phase 2 Final Desktop QA / Regression — Round 1 NEEDS FIX / targeted fix implemented / pending Desktop exit verification** — ISSUE-01 LP Blockquote Tag foreground conflict 经 Chat 判为 BLOCKER，批准两条 foreground-only integration selectors；其余合同不变，五项 partial gates 待补齐，不标 complete，见 [Integrated QA plan](PHASE2_REGRESSION_TEST.md)
 
 ### P2.2 follow-up deferred
 

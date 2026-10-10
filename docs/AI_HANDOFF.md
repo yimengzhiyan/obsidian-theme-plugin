@@ -2,7 +2,7 @@
 
 - **项目**：模块化 Obsidian CSS Theme；`Obsidian Fusion Theme` 只是 Working Title。
 - **V0.1 Foundation**：已通过 PR #1 合并到 `main`；merge commit 为 `f8e37f459589ec37a1f8cf5a2dd9f305b9a3a1b9`，最终 Desktop QA PASS。
-- **当前阶段**：P2.7 Phase 2 Final Desktop QA / Regression，test plan prepared / pending Chat Review and Desktop QA；当前分支 `codex/p2-7-phase2-regression`。P2.7 has no theme implementation changes。
+- **当前阶段**：P2.7 Round 1 NEEDS FIX；ISSUE-01 LP Blockquote Tag foreground vs Accent，Chat classification BLOCKER；批准的两条 Live Preview-only selectors 已实现，pending implementation review / targeted Desktop verification；当前分支 `codex/p2-7-phase2-regression`。初始 docs commit 没有 CSS change，问题由 integrated QA 暴露。
 - **Token contract**：P2.1 未新增任何 global Semantic Token；现有 Foundation contract 继续作为依据。Component-specific tokens 必须证明独立、可复用的语义与实际消费者；详见 [Token audit](APPEARANCE_TOKEN_AUDIT.md)。
 - **P2.2 Core Typography**：COMPLETE / Desktop QA PASS / MERGED via PR #4，merge `4671678ccc2ab759a93557b36e568016d6c7367a`。Live Preview-only normalization 保留；Source normalization 因 keyboard regression 撤回，native rhythm 主动接受。历史与最终 PASS 见 TYPOGRAPHY_TEST；勿重新加入 Source spacing hacks。
 - **P2.3 architecture / QA**：Links public variables only，现有 Theme link colors 保留；Tags 为 Accent-derived lightweight pills；Highlight yellow semantic 独立于 Accent。0 custom selectors / new Semantic Tokens / new Style Settings。Chat Review 与 Desktop QA PASS；Source unresolved-link 原生配色与 Reading dotted decoration 主要 hover 可见是已接受 native differences，不需 CSS override。
@@ -19,7 +19,7 @@
 - **原则**：Semantic Design Token 优先；同时支持 Light / Dark；Style Settings 可选；不使用 Community Plugin runtime；Composer / Border 仅作为设计与实现思路参考，不直接复制。
 - **现状**：Semantic Tokens、Light/Dark、公共变量映射、基础 Workspace、四项 Style Settings、兼容 workaround 和 Native Controls Accent 均已通过 Foundation exit gate。Slider thumb 保持中性，不属于 Accent linkage；Checkbox 在 Desktop 环境中无独立测试入口，记录为 N/A，公开映射由自动检查覆盖。
 - **Style Settings workaround**：Accent 暂用 `variable-text` 接收 CSS color，规避 Style Settings 1.0.9 / Pickr 的 `null.clone` 问题；不要在未经 Desktop 复测时恢复 `variable-color`。
-- **立即下一步**：[P2.7 test plan](PHASE2_REGRESSION_TEST.md) Chat Review → real Desktop QA → 仅真实 blocking evidence 触发修复 → final QA docs / PR / Review / Merge。当前不创建 PR；综合 Desktop PASS 不从 automated PASS 推断，保留历史已接受差异。Foundation release 包仍是 V0.1 baseline。
+- **立即下一步**：[P2.7 evidence](PHASE2_REGRESSION_TEST.md) Chat implementation review → targeted Desktop verification → 补齐 inactive tab hover / Highlight selection / Code long-line / actual Source editing / constrained-window smoke → Phase 2 exit decision。0 new Tokens / Settings，旧组件 CSS 合同不变；CRLF/LF 为 non-blocking tooling observation，不改 Build 行为。不创建 PR，不开始 Phase 3。
 - **Typography deferred**：First-line indent（off）、letter / word spacing、granular heading settings、bold / italic settings；P2.4 仅统一 Code size，inline-code selector 装饰与 syntax palette system 不实现。
 - **限制**：Auto Hide、Card Layout、Focus Mode、Advanced Rainbow Folder、Canvas、Graph、Advanced Animation、Preset System、Seamless Embed、Companion Plugin 继续 deferred。
 - **验证**：V0.1 / P2.2 / P2.3 / P2.4 / P2.5 / P2.6 Desktop QA PASS；P2.6 无 blocker，automated validation 见 CURRENT_STATUS。
