@@ -67,4 +67,4 @@ Implementation then requires repository checks, generated-artifact consistency a
 - What minimal preset model preserves user overrides and supports return to baseline?
 - Which shell states and platform combinations must be covered before opting into layout/focus behavior?
 
-Chat review of these planning documents is complete as reported by the maintainer. This branch is ready for a documentation-only PR to main; do not merge in this task. No implementation begins without a separately approved concrete task.
+Chat review of these planning documents is complete as reported by the maintainer. Planning PR #10 was squash merged into main at `fbc971d8d034906d1bfd911df5d86e3688cffeaf`. P3.1 now has a [Workspace preparation plan](P3_1_WORKSPACE_FUSION_PLAN.md), pending its own Chat review; no implementation has started. No implementation begins without a separately approved concrete task.

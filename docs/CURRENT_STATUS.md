@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-Phase 3 — Planning：三份规划文档已由 Chat review（维护者报告），本轮仅完成规划分支收尾与 PR；尚未开始任何 Phase 3 实现。Phase 2 COMPLETE / MERGED，P2.7 Desktop Exit Verification PASS，exit gate satisfied。
+Phase 3 — P3.1 Workspace Fusion preparation：文档草稿完成，pending Chat review before CSS；无实现。Phase 3 planning PR #10 已 squash merged；Phase 2 COMPLETE / MERGED。
 
 ## Foundation
 
@@ -10,11 +10,11 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Branch
 
-`codex/phase-3-planning`
+`codex/p3-1-workspace-fusion`
 
 ## Current Commit
 
-Phase 3 planning docs；分支基于已合并的 main `882709c83add9677b69eedf05fe5fdfaea366df6`（PR #9）。ISSUE-01 verified fix：`0068eabc4a8177c8b26afdd8ab72579eafd80fc1`。本文件不嵌入自身提交 hash；使用 `git rev-parse HEAD` 获取当前精确值。
+P3.1 documentation preparation；基于更新后的 main `fbc971d8d034906d1bfd911df5d86e3688cffeaf`（PR #10 squash merge）。使用 `git rev-parse HEAD` 获取当前提交。
 
 ## Completed
 
@@ -91,14 +91,17 @@ Phase 3 planning docs；分支基于已合并的 main `882709c83add9677b69eedf05
 - Phase 2 PR #9 MERGED；merge commit `882709c83add9677b69eedf05fe5fdfaea366df6`；实现修复与最终回归文档均已进入 main
 - Phase 3 planning：已建立 [Design Spec](THEME_DESIGN_SPEC.md)、[Feature Matrix](FUSION_FEATURE_MATRIX.md)、[Source Analysis](SOURCE_THEME_ANALYSIS.md)；仅文档，未实现新功能
 
+- Phase 3 planning PR #10 squash MERGED：`fbc971d8d034906d1bfd911df5d86e3688cffeaf`；本地 / 远程 main 已更新
+- [P3.1 Workspace Fusion plan](P3_1_WORKSPACE_FUSION_PLAN.md) 已准备：范围、模块、变量、设置候选、QA 与延期项；仅文档
+
 ## In Progress
 
-- Phase 3 planning 已 review，待文档 PR review / merge；Workspace、Layout、Focus System、Reading Enhancement、Presets、Effects 都是未批准、未实现的候选模块。
+- P3.1 Workspace foundation preparation pending Chat review；Tabs / Sidebar / Ribbon / Status bar / View header 与 shared geometry 都未实现。
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-提交并推送仅文档的收尾修正，创建规划 PR 到 main，等待 PR review；本轮不合并、不实现功能。后续另行批准首个有明确范围、来源证据与验收条件的任务。
+Chat review P3.1 plan，确定实际消费者、视觉数值、必要 selectors / aliases 与设置候选。当前仅 commit / push 文档；不创建实现 PR，不写 CSS。review 后另行批准具体实现。
 
 ## Known Issues / Blockers
 
@@ -150,3 +153,5 @@ Phase 3 planning docs；分支基于已合并的 main `882709c83add9677b69eedf05
 - Phase 2 final documentation closeout：Build / Check / diff-check PASS；仅更新四份文档，CSS / theme.css / scripts/check.mjs 不变；Desktop PASS 为维护者报告结果。
 
 - Phase 3 planning / finalization validation：`npm run check` / `git diff --check` PASS；AGENTS 要求 Check，且 Check 内部验证 Build/生成同步；未单独执行 `npm run build`，无 CSS 源码变化；六份文档以外无修改。无新 Desktop QA claim。
+
+- P3.1 preparation：`npm run check` / `git diff --check` PASS；仅文档，src / settings / scripts / theme.css / manifest unchanged；未执行新 Desktop QA。

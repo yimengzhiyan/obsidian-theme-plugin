@@ -67,19 +67,30 @@ First-line indent（默认 off）、letter spacing、word spacing、granular hea
 - [x] 建立 [Source Theme Analysis](SOURCE_THEME_ANALYSIS.md)：Composer / Border README 证据、Fusion 解读与未完成的代码级研究
 - [x] Chat review 规划文档完成（维护者报告）；不代表候选功能获得实现批准
 - [ ] 对选定候选项固定来源 revision，研究 public-variable / selector 可行性和 native behavior 风险
-- [ ] review 后定义首个有明确范围、非目标与 Desktop 验收条件的实现任务；本轮不实现
+- [x] 选择 W01 的 P3.1 workspace foundation，建立范围与 Desktop QA 草稿；仍 pending Chat review，未获 CSS 实现批准
+- [x] PR #10 squash merged（`fbc971d8d034906d1bfd911df5d86e3688cffeaf`）
 
 ### Future module candidates — no implementation authorization
 
 | Module | Matrix IDs | Planning state |
 | --- | --- | --- |
-| Workspace | W01–W02 | Candidate; shell 基础已存在，增量待 review |
+| Workspace | W01–W02 | W01 selected for P3.1 preparation only; W02 deferred |
 | Layout | L01 | Candidate; Card Layout 未实现 |
 | Focus System | F01–F02 | Candidate; Focus / Auto Hide 未实现 |
 | Reading Enhancement | R01–R02 | Candidate; 保留 Phase 2 Typography / Source navigation |
 | Presets | P01 | Candidate; schema / persistence / restoration 待设计 |
 | Effects | E01–E02 | Candidate; Advanced Animation 继续 deferred |
 
+## P3.1 — Workspace Fusion System preparation
+
+- [x] 从更新后的 main 创建 `codex/p3-1-workspace-fusion`
+- [x] 建立 [P3.1 plan](P3_1_WORKSPACE_FUSION_PLAN.md)：五个 shell areas、workspace 模块、共享 geometry、变量路线、设置候选与 QA
+- [ ] Chat review P3.1 plan；确定视觉值、public-variable / selector consumers、aliases 与 settings 必要性
+- [ ] 固定相关来源 revision，补齐 view-header 变量/DOM 与 build-order 可行性证据
+- [ ] 获得后续具体实现指令后才写 CSS；当前不创建实现 PR
+
+仅允许规划未来 src/workspace 范围；现有 scrollbar 保留不变。Full Auto Hide、Focus、Card Layout、Presets、Animations、Rainbow folders、Canvas/Graph、Companion Plugin 均在本阶段之外。没有新增 Tokens / Style Settings。
+
 ## Next Step
 
-提交并推送文档收尾修正，创建仅文档的规划 PR 到 main，等待 PR review；本轮不合并。Phase 3 仍仅为规划，不增加 CSS、Tokens、Style Settings 或 runtime；实现须另行明确批准的任务。
+Chat review P3.1 documentation preparation。文档 commit / push 后等待；不写 CSS、不创建实现 PR。

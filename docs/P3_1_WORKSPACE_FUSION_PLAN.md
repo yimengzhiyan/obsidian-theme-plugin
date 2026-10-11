@@ -1,0 +1,93 @@
+# P3.1 — Workspace Fusion System Preparation
+
+## Status / baseline / authority
+
+**Preparation only — pending Chat review before any CSS.** Branch: `codex/p3-1-workspace-fusion`; baseline: main `fbc971d8d034906d1bfd911df5d86e3688cffeaf`, squash merge of Phase 3 planning PR #10. Phase 2 P2.2–P2.7 remains complete and merged; ISSUE-01 is closed and verified.
+
+This plan narrows feature-matrix W01 to the workspace foundation. W02 chrome reduction and other modules remain deferred. The current instruction authorizes this documentation preparation, not feature implementation, new CSS files, settings metadata, token definitions or an implementation PR.
+
+Read alongside [Design Spec](THEME_DESIGN_SPEC.md), [Feature Matrix](FUSION_FEATURE_MATRIX.md), [Source Analysis](SOURCE_THEME_ANALYSIS.md) and existing Foundation / Phase 2 QA contracts.
+
+## Goal and scope
+
+Combine Border's workspace customization direction with Fusion's semantic surfaces, Accent states and restrained geometry. Produce a consistent shell for writing, navigation and everyday switching between panes. Keep existing controls visible and native behavior intact. Border inspiration is README-level evidence from SOURCE_THEME_ANALYSIS; no source code or exact visual design is imported.
+
+| Area | Intended refinement to review | Preserved behavior / boundary |
+| --- | --- | --- |
+| Tabs | Clear normal/hover/active/focused hierarchy, readable titles and consistent radius/spacing | Existing Accent indicator, tab close/switch/drag and overflow; ordinary and stacked tabs remain native |
+| Sidebar | Consistent shell surface, tab/header spacing and separator treatment | Left/right collapse, resize, scrolling and controls; do not change P2.6 File Explorer typography, wrapping or hierarchy |
+| Ribbon | Coordinate background, icon states, padding and width with shell rhythm | Existing icons, focus/tooltips and access with sidebar expanded/collapsed; no hiding |
+| Status bar | Coordinate typography, background, border/radius and spacing | Native anchoring and status item access; no overlay/card repositioning or hiding |
+| View header | Establish title/action surface and spacing consistent with tabs/sidebar | Header visibility, native back/forward/actions/menu and keyboard access; no plugin-dependent controls |
+| Shared geometry | Reuse spacing/radius primitives across these five surfaces | Preserve usable hit areas, user fonts and narrow-window layout; avoid arbitrary per-module geometry |
+
+Exact pixel values, title truncation policy and any selector additions are unresolved design choices for Chat review. No full theme redesign or required pixel parity across operating systems.
+
+## CSS module plan — no files created now
+
+Allowed future implementation directory is **`src/workspace/` only**. Existing modules already style the shell; this is a bounded refinement, not a replacement of the Foundation.
+
+| Future module | Current state | Proposed responsibility |
+| --- | --- | --- |
+| `workspace-tokens.css` | Does not exist | Only if reviewed shared workspace meanings have multiple consumers; derive aliases from Foundation spacing/radius/surface tokens |
+| `tabs.css` | Exists | Tab states and geometry; retain established Accent chain |
+| `sidebar.css` | Exists | Sidebar shell; retain seven Foundation navigation-state mappings in place |
+| `ribbon.css` | Exists | Ribbon geometry and existing icon-state contract |
+| `statusbar.css` | Exists | Status surface/typography/geometry; native placement |
+| `view-header.css` | Does not exist | View header surface/title/action foundation after variable/DOM research |
+
+`scrollbar.css` already exists and remains in place, unchanged. The requested future structure does not remove it. No base/editor/navigation/layout/effects/apps changes are part of P3.1. `theme.css` would be generated only in a later approved implementation; it is unchanged in this preparation.
+
+Build currently orders workspace as tabs → sidebar → ribbon → statusbar → scrollbar, then remaining files alphabetically, so `view-header.css` would precede `workspace-tokens.css`. Do not assume the diagram is build order. Simple variable aliases may resolve after consumers if cascade scope is correct; any need for tokens-first emission must be reviewed as a separate tooling-scope decision. Do not change Build/check now or rename files to work around scope.
+
+## Variable inventory and proposed dependencies
+
+No variables are added now. Prefer existing semantic tokens and documented public variables. The lists below are research candidates, not an approved declaration allowlist or final values.
+
+| Role | Existing / proposed inputs | Review requirement |
+| --- | --- | --- |
+| Surfaces and text | Existing `--theme-bg-primary`, `--theme-bg-secondary`, `--theme-bg-sidebar`, `--theme-text-normal`, `--theme-text-muted` | Map to shell consumers without overriding content semantics |
+| States and borders | Existing `--theme-hover-bg`, `--theme-active-bg`, `--theme-active-text`, `--theme-indicator`, `--theme-border`, `--theme-border-hover`, `--theme-border-active` | Preserve Accent propagation and visible focused/active distinction |
+| Geometry | Existing `--theme-space-xs/sm/md`, `--theme-radius-sm/md/lg` | Reuse radius setting propagation; decide geometry per actual public consumer |
+| Tabs | Existing tab colors, container, divider, outline and radius mappings; candidates `--tab-font-size`, `--tab-font-weight`, `--tab-width`, `--tab-max-width` | Public variables documented; preserve overflow/stacked behavior and user interface font |
+| Sidebar | Existing split backgrounds / navigation mappings; documented `--sidebar-markdown-font-size`, `--sidebar-tab-text-display` | Inventory only; do not hide labels or alter sidebar Markdown typography by default; no File Explorer restyling |
+| Ribbon | Existing `--ribbon-background`, `--ribbon-background-collapsed` and scoped icon colors; candidates `--ribbon-width`, `--ribbon-padding` | Check hit areas and sidebar collapse states |
+| Status bar | Existing background, border color, radius and text mappings; candidates `--status-bar-font-size`, `--status-bar-border-width` | Keep native position and scroll padding; do not add position overrides |
+| View header | Existing Fusion surface/text/spacing/radius inputs; public header variables and consumers not yet established | Research current Obsidian variables/DOM before proposing exact names or selectors; no invented public-variable contract |
+
+Potential workspace-only aliases for review: `--theme-workspace-control-radius` (tabs and header/action controls) and `--theme-workspace-control-gap` (header/Ribbon control groups). Their exact consumer properties and cascade scopes must be demonstrated; drop aliases if direct Foundation token mapping suffices. These are not new global semantic categories. Do not add aliases merely because a `workspace-tokens.css` filename is planned.
+
+Public-reference inventory consulted during preparation: [Tabs](https://github.com/obsidianmd/obsidian-developer-docs/blob/main/en/Reference/CSS%20variables/Components/Tabs.md), [Ribbon](https://github.com/obsidianmd/obsidian-developer-docs/blob/main/en/Reference/CSS%20variables/Window/Ribbon.md), [Sidebar](https://github.com/obsidianmd/obsidian-developer-docs/blob/main/en/Reference/CSS%20variables/Window/Sidebar.md), [Status bar](https://github.com/obsidianmd/obsidian-developer-docs/blob/main/en/Reference/CSS%20variables/Window/Status%20bar.md). These confirm named variables, not Desktop consumer behavior. Pin revisions before implementation-level research; view-header variable/DOM research is outstanding.
+
+## Style Settings candidates — none added
+
+The existing four settings remain the only implemented settings. Prefer meaningful defaults and reuse Accent/Radius. Do not add an entire Workspace settings catalog.
+
+| Candidate | User purpose | Proposed route / decision |
+| --- | --- | --- |
+| Workspace control spacing / density | Optional compact vs comfortable control spacing | Only if shared alias consumers are proven; propose baseline-preserving default and bounded values during review |
+| Tab title size | Improve title readability without altering content fonts | Consider public tab font size; demonstrate a need beyond the native interface font preference before admission |
+| Ribbon width | Adjust shell control space | Consider public Ribbon width; ensure usable icons and accessible controls before admission |
+
+No candidate is approved, implemented or assigned settings metadata. Workspace radius uses the existing Radius setting rather than a duplicate setting. Header/statusbar visibility switches, auto-hide controls, preset selectors and focus toggles are outside P3.1. Any future settings-file change requires explicit scope approval because the current allowed implementation directory is src/workspace only.
+
+## QA requirements for a later implementation
+
+All QA below is **planned / not executed**. Preparation check results do not imply Desktop PASS.
+
+1. Artifact gate: record branch/commit, Obsidian/installer/OS/Style Settings versions and root == installed theme SHA before and after QA; install root artifact, not the V0.1 release package.
+2. Light/Dark: all five workspace surfaces readable in Live Preview, Source and Reading contexts; interface font overrides respected; clear normal/hover/active/focused/disabled states where native UI exposes them.
+3. Tabs: switch/close, long English/Chinese titles, many tabs/overflow, split panes, ordinary/stacked tabs, active pane vs inactive window, keyboard focus and drag/reorder if actually performed. Record unavailable states as justified N/A; do not redesign native stacks.
+4. Sidebars: both sides expanded/collapsed and resized narrow/wide; headers/actions reachable, scrollable long content, File Explorer wrapping/rename/four-level hierarchy and neutral guide/chevrons preserved; Backlinks/Outlinks/Search smoke.
+5. Ribbon: icons/hover/focus/tooltips/activation with sidebar expanded/collapsed; native controls remain reachable. Status bar: multiple native items, text legibility, click targets and no editor/scrollbar overlap in constrained windows.
+6. View header: title and actions readable with long names, back/forward/menu and focus usable in split panes; native hidden-header behavior, if configured by Obsidian, remains respected without theme-added hiding.
+7. Existing settings: red/blue/green Accent propagation, Radius small/medium/large (record values), Content Width at two values, Line Height 1.5/2.0; no fixed purple or clipping, no semantic Callout/Highlight flattening. Any approved new candidate settings require extremes/default/restart/restoration tests.
+8. Phase 2 regression: Source caret/Up/Down/Enter/Backspace and every real blank line; typography, links/tags/highlight, quote-tag normal/hover ISSUE-01, code, table, Callout semantic/folding and Navigation contracts. No new content selectors or source geometry changes.
+9. Scope/automation: later approved CSS changes require Build/Check/diff-check and strict reviewed declaration/selector scope; no accidental token/settings/deferred-feature expansion. Existing transitions may remain; no new animation is introduced.
+10. Restore settings/window/sidebar state, remove only temporary QA data, recheck artifact. Record PASS/ISSUE/justified N/A with actual evidence; review any blocker before changing scope.
+
+## Deferred items / review gate
+
+Full Auto Hide, Focus System, Card Layout, Presets, new Animations, Rainbow folders, Canvas/Graph and Companion Plugin features remain unimplemented and outside P3.1. Reading enhancements, advanced effects, Seamless Embed and extra content tuning remain deferred. No new hide/reveal logic, layout relocation, DOM patch, JS runtime or dependency.
+
+Chat review must settle exact visual proposal and defaults, variable consumers and selector exceptions, necessity of workspace aliases, build-order feasibility, whether any settings merit a later separate authorization, and Desktop coverage. After review, obtain a concrete implementation instruction before writing CSS. No implementation PR is created during this preparation.
