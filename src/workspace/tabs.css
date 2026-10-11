@@ -3,13 +3,72 @@ body {
   --tab-container-background: var(--theme-bg-secondary);
   --tab-divider-color: var(--theme-border);
   --tab-outline-color: var(--theme-border);
-  --tab-radius: var(--theme-radius-md);
-  --tab-radius-active: var(--theme-radius-md);
+  --tab-curve: var(--theme-workspace-control-radius);
+  --tab-radius: var(--theme-workspace-control-radius);
+  --tab-radius-active: var(--theme-workspace-control-radius);
   --tab-text-color: var(--theme-text-muted);
   --tab-text-color-active: var(--theme-active-text);
   --tab-text-color-focused: var(--theme-text-muted);
+  --tab-text-color-focused-highlighted: var(--theme-text-normal);
   --tab-text-color-focused-active: var(--theme-active-text);
   --tab-text-color-focused-active-current: var(--theme-active-text);
+}
+
+/* Ordinary tab controls share spacing without changing native width/overflow.
+ * Stacked headers retain their native geometry and writing direction.
+ */
+.workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner {
+  min-width: 0;
+  column-gap: var(--theme-workspace-control-gap);
+  padding-block: var(--theme-workspace-control-gap);
+  padding-inline: var(--theme-workspace-control-gap);
+  border-radius: var(--theme-workspace-control-radius);
+  background-color: var(--theme-bg-primary);
+}
+
+.workspace-tabs:not(.mod-stacked) .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
+  background-color: var(--theme-hover-bg);
+}
+
+.workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active .workspace-tab-header-inner {
+  background-color: var(--theme-active-bg);
+}
+
+/* Let the title yield space to native icons and the close target. */
+.workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-title {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-icon,
+.workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button {
+  flex-shrink: 0;
+}
+
+.workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button {
+  color: var(--theme-text-muted);
+  border-radius: var(--theme-workspace-control-radius);
+}
+
+.workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button:hover {
+  color: var(--theme-text-normal);
+  background-color: var(--theme-hover-bg);
+}
+
+.workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button:active {
+  color: var(--theme-active-text);
+  background-color: var(--theme-active-bg);
+}
+
+.workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button:focus-visible {
+  outline: 2px solid var(--theme-accent);
+  outline-offset: -2px;
+}
+
+.workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active {
+  font-weight: var(--font-medium);
 }
 
 .workspace-tab-header {

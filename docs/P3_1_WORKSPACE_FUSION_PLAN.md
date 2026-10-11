@@ -2,9 +2,9 @@
 
 ## Status / baseline / authority
 
-**Preparation only — pending Chat review before any CSS.** Branch: `codex/p3-1-workspace-fusion`; baseline: main `fbc971d8d034906d1bfd911df5d86e3688cffeaf`, squash merge of Phase 3 planning PR #10. Phase 2 P2.2–P2.7 remains complete and merged; ISSUE-01 is closed and verified.
+**First milestone implemented locally — workspace tokens + Tabs only; pending Chat implementation review and Desktop QA.** Branch: `codex/p3-1-workspace-fusion`; baseline: main `fbc971d8d034906d1bfd911df5d86e3688cffeaf`, squash merge of Phase 3 planning PR #10. Phase 2 P2.2–P2.7 remains complete and merged; ISSUE-01 is closed and verified.
 
-This plan narrows feature-matrix W01 to the workspace foundation. W02 chrome reduction and other modules remain deferred. The current instruction authorizes this documentation preparation, not feature implementation, new CSS files, settings metadata, token definitions or an implementation PR.
+This plan narrows feature-matrix W01 to the workspace foundation. W02 chrome reduction and other modules remain deferred. The latest instruction authorizes only workspace-tokens.css and tabs.css for the first milestone; remaining modules stop for Chat review. No settings or implementation PR are authorized.
 
 Read alongside [Design Spec](THEME_DESIGN_SPEC.md), [Feature Matrix](FUSION_FEATURE_MATRIX.md), [Source Analysis](SOURCE_THEME_ANALYSIS.md) and existing Foundation / Phase 2 QA contracts.
 
@@ -23,7 +23,7 @@ Combine Border's workspace customization direction with Fusion's semantic surfac
 
 Exact pixel values, title truncation policy and any selector additions are unresolved design choices for Chat review. No full theme redesign or required pixel parity across operating systems.
 
-## CSS module plan — no files created now
+## CSS module plan — preparation baseline (first milestone changes below)
 
 Allowed future implementation directory is **`src/workspace/` only**. Existing modules already style the shell; this is a bounded refinement, not a replacement of the Foundation.
 
@@ -36,13 +36,13 @@ Allowed future implementation directory is **`src/workspace/` only**. Existing m
 | `statusbar.css` | Exists | Status surface/typography/geometry; native placement |
 | `view-header.css` | Does not exist | View header surface/title/action foundation after variable/DOM research |
 
-`scrollbar.css` already exists and remains in place, unchanged. The requested future structure does not remove it. No base/editor/navigation/layout/effects/apps changes are part of P3.1. `theme.css` would be generated only in a later approved implementation; it is unchanged in this preparation.
+`scrollbar.css` already exists and remains in place, unchanged. The requested future structure does not remove it. No base/editor/navigation/layout/effects/apps changes are part of P3.1. `theme.css` would be generated only in a later approved implementation; it is rebuilt for the first milestone.
 
 Build currently orders workspace as tabs → sidebar → ribbon → statusbar → scrollbar, then remaining files alphabetically, so `view-header.css` would precede `workspace-tokens.css`. Do not assume the diagram is build order. Simple variable aliases may resolve after consumers if cascade scope is correct; any need for tokens-first emission must be reviewed as a separate tooling-scope decision. Do not change Build/check now or rename files to work around scope.
 
 ## Variable inventory and proposed dependencies
 
-No variables are added now. Prefer existing semantic tokens and documented public variables. The lists below are research candidates, not an approved declaration allowlist or final values.
+The first milestone adds only the two workspace aliases recorded below. Prefer existing semantic tokens and documented public variables. The lists below are research candidates, not an approved declaration allowlist or final values.
 
 | Role | Existing / proposed inputs | Review requirement |
 | --- | --- | --- |
@@ -91,3 +91,28 @@ All QA below is **planned / not executed**. Preparation check results do not imp
 Full Auto Hide, Focus System, Card Layout, Presets, new Animations, Rainbow folders, Canvas/Graph and Companion Plugin features remain unimplemented and outside P3.1. Reading enhancements, advanced effects, Seamless Embed and extra content tuning remain deferred. No new hide/reveal logic, layout relocation, DOM patch, JS runtime or dependency.
 
 Chat review must settle exact visual proposal and defaults, variable consumers and selector exceptions, necessity of workspace aliases, build-order feasibility, whether any settings merit a later separate authorization, and Desktop coverage. After review, obtain a concrete implementation instruction before writing CSS. No implementation PR is created during this preparation.
+
+## First milestone implementation record
+
+Branch: `codex/p3-1-workspace-fusion`; implementation starts at preparation commit `eb0f5c02148ba17c1cdba84677629fa2f05af51e`. Only workspace-tokens.css and tabs.css are edited as implementation source; theme.css is generated by Build. Historical first milestone was uncommitted; the current P3.1a instruction authorizes committing it together with the refinement. No push or PR.
+
+| Change | Actual route / consumers | Reason / limits |
+| --- | --- | --- |
+| Control radius | body `--theme-workspace-control-radius: var(--theme-radius-md)` → public tab radius / active radius / curve | Preserve existing Radius linkage; new curve mapping needs Desktop clipping checks |
+| Control gap | body `--theme-workspace-control-gap: var(--theme-space-xs)` → ordinary tab inner column-gap / padding-inline | Foundation xs = 0.25rem; two consumers; `.workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner` only |
+| Active emphasis | Ordinary active tab header → `font-weight: var(--font-medium)` | Native weight; no font family/size override |
+| Highlighted state | Public `--tab-text-color-focused-highlighted: var(--theme-text-normal)` | Existing color semantics; normal/focused/active Accent chain preserved |
+
+Aliases and public consumers share body scope, preserving Radius setting overrides without changing Build order. Variables need not precede their consumers in the stylesheet; browser/Obsidian resolution still requires QA. No new global palette, settings, width/max-width, overflow, position, display, visibility or stack-layout overrides. Stacked inner spacing/weight is excluded, while public radius/curve mappings still apply to stacked tabs and require regression QA. Existing transitions, hover and active indicator rules remain byte-identical. No upstream code is imported.
+
+Validation: Build / Check / diff-check PASS. Baseline comparison confirms protected base/editor/navigation/components/settings/scripts/manifest files unchanged; all existing generated sections except Tabs are byte-identical, with workspace-tokens as the sole new section. Generic Check covers token definition/cycles and Phase 2 contracts, but no exact P3.1 Tabs allowlist is added. No new test dependency or check-script change.
+
+Chat implementation review pending. Desktop/browser QA NOT RUN; no visual PASS claimed. Review/tests must cover Light/Dark, red/blue/green Accent, Radius extremes and computed aliases, curve clipping, focused/highlighted/active states, ordinary/stacked tabs, long Chinese/English titles, many-tabs overflow, close/switch/reorder and keyboard access, split panes/narrow windows, Source blank-line navigation and ISSUE-01 regression. Record exact artifact/version/settings evidence using the QA gate above.
+
+Stop here for Chat review; Sidebar, Ribbon, Status bar and View header remain untouched. Earlier preparation language is the baseline plan, not the current milestone status. No settings candidate is approved by this implementation instruction.
+
+## P3.1a refinement record
+
+Current instruction authorizes Tabs refinement only. Ordinary tab inner receives primary / hover / active surfaces, control radius and gap-derived block padding; title shrinks with min-width:0 and ellipsis/nowrap, icon/close preserves its space. Close states consume muted/normal/active text and hover/active background; focus-visible uses existing Accent. No new tokens, settings, fixed tab dimensions, DOM/runtime, visibility changes or Border code.
+
+Earlier first-milestone no-overflow claim is historical: P3.1a deliberately applies overflow:hidden only to the title for ellipsis, not the tab row or control container. Existing outer hover/active/transition selectors and Phase 2 contracts remain unchanged. Build / Check / diff-check PASS; Desktop QA / final review pending. See CURRENT_STATUS and DECISIONS Log for scope and risks. Sidebar/Ribbon remains stopped.

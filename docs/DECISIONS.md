@@ -68,3 +68,17 @@ Phase 2 必须建立在已经合并的 V0.1 Foundation 上。新增视觉能力�
 不允许在多个组件中复制散落的 hardcoded color。Component-specific token 只有在存在明确、可复用的组件语义时才增加，避免提前制造庞大 Token 系统。Auto Hide、Card Layout、Focus Mode、Advanced Rainbow Folder、Canvas、Graph、Advanced Animation、Preset System、Seamless Embed 和 Companion Plugin 继续 deferred。
 
 本决策只确定 Phase 2 的实现顺序与边界，不预先确定具体颜色值或最终 UI 设计。
+
+## Decision 009 — Workspace geometry aliases at consumer scope
+
+P3.1 首个 milestone 添加 body-scoped `--theme-workspace-control-radius` / `--theme-workspace-control-gap`，派生自既有 Radius / xs spacing。Tabs radius、active radius、curve 与普通 tab gap/padding 是实际消费者；不创建完整 workspace token 家族或设置。
+
+Aliases 与公共消费者变量同在 body，保留 body Radius 覆盖；不使用 :root 提前计算 aliases，不改 Build 顺序/脚本。Phase 2 与既有 Accent 状态规则不变。后续复用须 Chat review，本决定不授权 Sidebar/Ribbon 实现。Desktop/browser QA pending。
+
+## Log
+
+### P3.1a — Tabs implementation refinement
+
+按本轮 Chat review 后指令细化 Fusion Tab Shell，保留 Foundation state/indicator rules。普通（非 stacked）Tabs 的 inner 用既有 primary / hover / active surfaces 和 workspace radius；gap 派生横纵 padding / column gap，未设固定宽高或 density setting。title 使用 min-width:0 + ellipsis/nowrap，icon/close 不 shrink；关闭按钮增加 muted/hover/pressed/focus-visible 反馈，不改 native visibility、事件或 DOM。
+
+没有新增 token，workspace-tokens 延续首个 milestone 的两项 aliases；没有复制 Border CSS、添加设置、runtime 或后续模块。只从 source Build theme.css。Build / Check / diff-check PASS，Phase 2 与其他生成 sections baseline 比较不变。Desktop QA 尚未执行；重点风险是实际 tab flex/title inheritance、vertical padding/curve clipping、close keyboard focusability 与窄窗 stacked/split-pane regression。记录不代表新架构方向或 QA PASS。

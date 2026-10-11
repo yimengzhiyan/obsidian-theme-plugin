@@ -87,10 +87,14 @@ First-line indent（默认 off）、letter spacing、word spacing、granular hea
 - [x] 建立 [P3.1 plan](P3_1_WORKSPACE_FUSION_PLAN.md)：五个 shell areas、workspace 模块、共享 geometry、变量路线、设置候选与 QA
 - [ ] Chat review P3.1 plan；确定视觉值、public-variable / selector consumers、aliases 与 settings 必要性
 - [ ] 固定相关来源 revision，补齐 view-header 变量/DOM 与 build-order 可行性证据
-- [ ] 获得后续具体实现指令后才写 CSS；当前不创建实现 PR
+- [x] 获首个 milestone 指令，实现 workspace-tokens.css / tabs.css；Build / Check / diff-check PASS
+- [x] 收到 Chat review 后 P3.1a refinement 指令；完成 default/active/hover、close、density、long-title 源码
+- [ ] P3.1a final review / Desktop QA
+- [ ] Desktop QA first milestone（未运行）
+- [ ] review 后另行批准 Sidebar/Ribbon；当前停止，不创建实现 PR
 
-仅允许规划未来 src/workspace 范围；现有 scrollbar 保留不变。Full Auto Hide、Focus、Card Layout、Presets、Animations、Rainbow folders、Canvas/Graph、Companion Plugin 均在本阶段之外。没有新增 Tokens / Style Settings。
+仅允许规划未来 src/workspace 范围；现有 scrollbar 保留不变。Full Auto Hide、Focus、Card Layout、Presets、Animations、Rainbow folders、Canvas/Graph、Companion Plugin 均在本阶段之外。首个 milestone 新增两项 workspace geometry aliases；无新 global palette / Style Settings。
 
 ## Next Step
 
-Chat review P3.1 documentation preparation。文档 commit / push 后等待；不写 CSS、不创建实现 PR。
+Chat implementation review workspace tokens + Tabs first milestone；Desktop QA pending，停止 Sidebar/Ribbon。P3.1a 实现提交后待 Desktop QA / final review，不创建 PR。

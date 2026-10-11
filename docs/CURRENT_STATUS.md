@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-Phase 3 — P3.1 Workspace Fusion preparation：文档草稿完成，pending Chat review before CSS；无实现。Phase 3 planning PR #10 已 squash merged；Phase 2 COMPLETE / MERGED。
+Phase 3 — P3.1a Fusion Workspace Tab Shell：源码 refinement 完成，Build / Check / diff-check PASS；待 Desktop QA / final review，未标 Desktop PASS。Phase 2 COMPLETE / MERGED。
 
 ## Foundation
 
@@ -14,7 +14,7 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Commit
 
-P3.1 documentation preparation；基于更新后的 main `fbc971d8d034906d1bfd911df5d86e3688cffeaf`（PR #10 squash merge）。使用 `git rev-parse HEAD` 获取当前提交。
+P3.1a Tabs implementation；基于更新后的 main `fbc971d8d034906d1bfd911df5d86e3688cffeaf`（PR #10 squash merge）。使用 `git rev-parse HEAD` 获取当前提交。
 
 ## Completed
 
@@ -96,12 +96,12 @@ P3.1 documentation preparation；基于更新后的 main `fbc971d8d034906d1bfd91
 
 ## In Progress
 
-- P3.1 Workspace foundation preparation pending Chat review；Tabs / Sidebar / Ribbon / Status bar / View header 与 shared geometry 都未实现。
+- P3.1a Tabs refinement 已实现：default / active / hover shell、close hover/pressed/focus-visible、gap-derived density 与 long-title ellipsis；Desktop QA pending，其他 workspace 模块不变。
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-Chat review P3.1 plan，确定实际消费者、视觉数值、必要 selectors / aliases 与设置候选。当前仅 commit / push 文档；不创建实现 PR，不写 CSS。review 后另行批准具体实现。
+对 P3.1a Tabs 进行真实 Desktop QA 和 final review：Light/Dark、Accent/Radius、long title/overflow、close targets、stacked/split panes 与 Phase 2 regression。停止 Sidebar/Ribbon；未获 push/PR 指令。
 
 ## Known Issues / Blockers
 
@@ -155,3 +155,7 @@ Chat review P3.1 plan，确定实际消费者、视觉数值、必要 selectors 
 - Phase 3 planning / finalization validation：`npm run check` / `git diff --check` PASS；AGENTS 要求 Check，且 Check 内部验证 Build/生成同步；未单独执行 `npm run build`，无 CSS 源码变化；六份文档以外无修改。无新 Desktop QA claim。
 
 - P3.1 preparation：`npm run check` / `git diff --check` PASS；仅文档，src / settings / scripts / theme.css / manifest unchanged；未执行新 Desktop QA。
+
+- P3.1 first milestone：Build / Check / diff-check PASS；仅两份 workspace 源码 + generated theme.css；Phase 2 源码/生成 sections 不变。Desktop/browser QA 未运行；历史 first-milestone 本地验证结果，现纳入 P3.1a 提交。
+
+- P3.1a Tabs：Build / Check / diff-check PASS；generated theme.css 与 source 同步，无 hardcoded colors；对 main baseline 的比较确认 Phase 2 与其他 workspace 源码/生成 sections 不变。只使用已有 tokens 和两项已批准 workspace aliases，无新设置/Plugin/JS/DOM 修改。Desktop QA 未运行，不能据自动检查认定无运行时 regression。
