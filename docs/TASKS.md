@@ -31,7 +31,7 @@
 
 ## Explicitly deferred
 
-Auto Hide system、Card Layout、Focus Mode、Advanced Rainbow Folder、Canvas、Graph、Advanced Animation、Preset System、Seamless Embed、Companion Plugin。
+Auto Hide、Card Layout、Focus Mode、Preset System 可作为 Phase 3 规划候选研究，仍未获实现批准。Advanced Rainbow Folder、Canvas、Graph、Advanced Animation、Seamless Embed、Companion Plugin 继续 deferred；详见 [Feature Matrix](FUSION_FEATURE_MATRIX.md)，规划不自动解除实现 deferral。
 
 ## Foundation Exit Gate
 
@@ -53,12 +53,33 @@ Auto Hide system、Card Layout、Focus Mode、Advanced Rainbow Folder、Canvas�
 - [x] **P2.4 Code / Quote / Table — complete / Desktop QA PASS / merged** — PR #6 MERGED，merge commit `80fc6e61a6ffd82bbac2c2b744a066a1cc3b4538`；保留 Code 映射、syntax colors 与用户 monospace，Blockquote Accent 联动、Table 可读性及 P2.2/P2.3 regression PASS。无新 Tokens / Settings / selectors；native syntax / hover differences 与未暴露控件 N/A 已记录，详见 [Desktop QA](CODE_QUOTE_TABLE_TEST.md)
 - [x] **P2.5 Callout — complete / Desktop QA PASS / merged** — PR #7 MERGED，merge commit `06eb5641793d04be1b78563b7fd0fb532b1967a3`；原生 semantic colors / icons / aliases / blending / folding 保留，Accent independence、Radius 与 P2.2–P2.4 regression PASS；详见 [Desktop QA](CALLOUT_TEST.md)
 - [x] **P2.6 Navigation / File Explorer — complete / Desktop QA PASS / merged** — PR #8，merge commit `f00e67108bece2b0a4cede9a687c7ee2da7cbc6e`；13 公共变量，Foundation 状态色保留；wrapping / rename / hierarchy / folder-file distinction PASS，folder-only selector 不必要；drag/drop N/A / non-blocking。0 new Tokens / Settings / selectors，无 Rainbow Folder；详见 [Desktop QA](NAVIGATION_FILE_EXPLORER_TEST.md)
-- [x] **P2.7 Phase 2 Final Desktop QA / Regression — complete / Desktop Exit Verification PASS** — ISSUE-01 fix verified at `0068eabc4a8177c8b26afdd8ab72579eafd80fc1`；Phase 2 exit gate satisfied，P2.2–P2.7 complete；见 [Integrated QA](PHASE2_REGRESSION_TEST.md)。本次仅文档收尾，不创建 PR。
+- [x] **P2.7 Phase 2 Final Desktop QA / Regression — complete / Desktop Exit Verification PASS** — ISSUE-01 fix verified at `0068eabc4a8177c8b26afdd8ab72579eafd80fc1`；Phase 2 exit gate satisfied，P2.2–P2.7 complete；见 [Integrated QA](PHASE2_REGRESSION_TEST.md)。已通过 PR #9 合并至 main，merge commit `882709c83add9677b69eedf05fe5fdfaea366df6`。
 
 ### P2.2 follow-up deferred
 
-First-line indent（默认 off）、letter spacing、word spacing、granular heading settings、bold / italic settings。Core Typography Desktop QA 后再评估是否需要；当前未实现。Inline Code 的视觉设计与 Code tuning 留给 P2.4。
+First-line indent（默认 off）、letter spacing、word spacing、granular heading settings、bold / italic settings。Core Typography Desktop QA 后再评估是否需要；当前未实现。P2.4 已统一 Code size；额外 Inline Code 装饰与 syntax palette system 仍 deferred。
+
+## Milestone: Phase 3 — Planning (Chat reviewed; implementation not started)
+
+- [x] 从已合并 Phase 2 的 main 创建 `codex/phase-3-planning`
+- [x] 建立 [Theme Design Spec](THEME_DESIGN_SPEC.md)：长期愿景、已完成基线、六个模块、开发原则与 review gate
+- [x] 建立 [Fusion Feature Matrix](FUSION_FEATURE_MATRIX.md)：来源、优先级、状态、依赖与继续延期的功能
+- [x] 建立 [Source Theme Analysis](SOURCE_THEME_ANALYSIS.md)：Composer / Border README 证据、Fusion 解读与未完成的代码级研究
+- [x] Chat review 规划文档完成（维护者报告）；不代表候选功能获得实现批准
+- [ ] 对选定候选项固定来源 revision，研究 public-variable / selector 可行性和 native behavior 风险
+- [ ] review 后定义首个有明确范围、非目标与 Desktop 验收条件的实现任务；本轮不实现
+
+### Future module candidates — no implementation authorization
+
+| Module | Matrix IDs | Planning state |
+| --- | --- | --- |
+| Workspace | W01–W02 | Candidate; shell 基础已存在，增量待 review |
+| Layout | L01 | Candidate; Card Layout 未实现 |
+| Focus System | F01–F02 | Candidate; Focus / Auto Hide 未实现 |
+| Reading Enhancement | R01–R02 | Candidate; 保留 Phase 2 Typography / Source navigation |
+| Presets | P01 | Candidate; schema / persistence / restoration 待设计 |
+| Effects | E01–E02 | Candidate; Advanced Animation 继续 deferred |
 
 ## Next Step
 
-Phase 2 final documentation closeout complete；下一步为 **Phase 3 planning**，尚未开始 Phase 3 实现。
+提交并推送文档收尾修正，创建仅文档的规划 PR 到 main，等待 PR review；本轮不合并。Phase 3 仍仅为规划，不增加 CSS、Tokens、Style Settings 或 runtime；实现须另行明确批准的任务。

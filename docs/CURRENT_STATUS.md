@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-Phase 2 — Appearance & Core Components：COMPLETE；P2.7 Desktop Exit Verification PASS，Phase 2 exit gate satisfied；P2.2–P2.7 complete
+Phase 3 — Planning：三份规划文档已由 Chat review（维护者报告），本轮仅完成规划分支收尾与 PR；尚未开始任何 Phase 3 实现。Phase 2 COMPLETE / MERGED，P2.7 Desktop Exit Verification PASS，exit gate satisfied。
 
 ## Foundation
 
@@ -10,11 +10,11 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Branch
 
-`codex/p2-7-phase2-regression`
+`codex/phase-3-planning`
 
 ## Current Commit
 
-Phase 2 final documentation closeout；已验证的 ISSUE-01 fix commit 为 `0068eabc4a8177c8b26afdd8ab72579eafd80fc1`，此前 merged CSS 基线为 `f00e67108bece2b0a4cede9a687c7ee2da7cbc6e`。本文件不嵌入其所在 commit 的 hash，以避免自引用导致 hash 永远变化；使用 `git rev-parse HEAD` 获取精确值。
+Phase 3 planning docs；分支基于已合并的 main `882709c83add9677b69eedf05fe5fdfaea366df6`（PR #9）。ISSUE-01 verified fix：`0068eabc4a8177c8b26afdd8ab72579eafd80fc1`。本文件不嵌入自身提交 hash；使用 `git rev-parse HEAD` 获取当前精确值。
 
 ## Completed
 
@@ -88,14 +88,17 @@ Phase 2 final documentation closeout；已验证的 ISSUE-01 fix commit 为 `006
 - GitHub remote 已配置为 `https://github.com/yimengzhiyan/obsidian-theme-plugin.git`；`main` 与 `codex/theme-foundation` 均已推送并设置 upstream
 - P2.7 targeted Desktop Exit Verification PASS；ISSUE-01 fix verified at `0068eabc4a8177c8b26afdd8ab72579eafd80fc1`；Phase 2 exit gate satisfied，P2.2–P2.7 complete，详见 [Final QA](PHASE2_REGRESSION_TEST.md)
 
+- Phase 2 PR #9 MERGED；merge commit `882709c83add9677b69eedf05fe5fdfaea366df6`；实现修复与最终回归文档均已进入 main
+- Phase 3 planning：已建立 [Design Spec](THEME_DESIGN_SPEC.md)、[Feature Matrix](FUSION_FEATURE_MATRIX.md)、[Source Analysis](SOURCE_THEME_ANALYSIS.md)；仅文档，未实现新功能
+
 ## In Progress
 
-- 无进行中的 Phase 2 任务；最终文档收尾完成。
+- Phase 3 planning 已 review，待文档 PR review / merge；Workspace、Layout、Focus System、Reading Enhancement、Presets、Effects 都是未批准、未实现的候选模块。
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-Phase 3 planning。当前仅完成 Phase 2 文档收尾、commit / push；不创建 PR，尚未开始 Phase 3 实现。
+提交并推送仅文档的收尾修正，创建规划 PR 到 main，等待 PR review；本轮不合并、不实现功能。后续另行批准首个有明确范围、来源证据与验收条件的任务。
 
 ## Known Issues / Blockers
 
@@ -145,3 +148,5 @@ Phase 3 planning。当前仅完成 Phase 2 文档收尾、commit / push；不创
 - P2.7 automated preparation validation：Build / Check / diff-check PASS；仅四份文档，theme.css / src / settings / scripts unchanged；历史 preparation 结果；最终 Desktop Exit Verification PASS 与 Phase 2 exit gate satisfied 依据维护者本次指令，独立于自动检查
 - 现有 release/foundation-test 包保留 V0.1 baseline；P2.2 QA 使用本分支根目录安装文件并记录 hash
 - Phase 2 final documentation closeout：Build / Check / diff-check PASS；仅更新四份文档，CSS / theme.css / scripts/check.mjs 不变；Desktop PASS 为维护者报告结果。
+
+- Phase 3 planning / finalization validation：`npm run check` / `git diff --check` PASS；AGENTS 要求 Check，且 Check 内部验证 Build/生成同步；未单独执行 `npm run build`，无 CSS 源码变化；六份文档以外无修改。无新 Desktop QA claim。
