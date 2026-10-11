@@ -59,13 +59,13 @@ Auto Hide、Card Layout、Focus Mode、Preset System 可作为 Phase 3 规划候
 
 First-line indent（默认 off）、letter spacing、word spacing、granular heading settings、bold / italic settings。Core Typography Desktop QA 后再评估是否需要；当前未实现。P2.4 已统一 Code size；额外 Inline Code 装饰与 syntax palette system 仍 deferred。
 
-## Milestone: Phase 3 — Planning (pending Chat review)
+## Milestone: Phase 3 — Planning (Chat reviewed; implementation not started)
 
 - [x] 从已合并 Phase 2 的 main 创建 `codex/phase-3-planning`
 - [x] 建立 [Theme Design Spec](THEME_DESIGN_SPEC.md)：长期愿景、已完成基线、六个模块、开发原则与 review gate
 - [x] 建立 [Fusion Feature Matrix](FUSION_FEATURE_MATRIX.md)：来源、优先级、状态、依赖与继续延期的功能
 - [x] 建立 [Source Theme Analysis](SOURCE_THEME_ANALYSIS.md)：Composer / Border README 证据、Fusion 解读与未完成的代码级研究
-- [ ] Chat review：确认愿景、候选优先级与边界；review 前不创建 PR
+- [x] Chat review 规划文档完成（维护者报告）；不代表候选功能获得实现批准
 - [ ] 对选定候选项固定来源 revision，研究 public-variable / selector 可行性和 native behavior 风险
 - [ ] review 后定义首个有明确范围、非目标与 Desktop 验收条件的实现任务；本轮不实现
 
@@ -82,4 +82,4 @@ First-line indent（默认 off）、letter spacing、word spacing、granular hea
 
 ## Next Step
 
-Chat review Phase 3 规划草稿。仅 commit / push 本分支；不创建 PR，不增加 CSS、Tokens、Style Settings 或 runtime。功能实现须后续明确批准的具体任务。
+提交并推送文档收尾修正，创建仅文档的规划 PR 到 main，等待 PR review；本轮不合并。Phase 3 仍仅为规划，不增加 CSS、Tokens、Style Settings 或 runtime；实现须另行明确批准的任务。

@@ -2,7 +2,7 @@
 
 ## Scope and evidence level
 
-Phase 3 planning reference, pending Chat review. Sources were consulted on 2026-10-11 through upstream repository README pages. This is a README-level design analysis, not a selector audit, source-code compatibility claim or Desktop evaluation. Upstream branches are mutable; exact source revisions must be pinned before implementation-level research. No upstream code, settings, presets or assets are imported.
+Phase 3 planning reference reviewed by Chat, as reported by the maintainer; implementation research remains pending. Sources were consulted on 2026-10-11 through upstream repository README pages. This is a README-level design analysis, not a selector audit, source-code compatibility claim or Desktop evaluation. Upstream branches are mutable; exact source revisions must be pinned before implementation-level research. No upstream code, settings, presets or assets are imported.
 
 The Fusion roles below are design interpretations. They do not imply that Composer or Border exclusively owns a feature or that Fusion already implements it.
 

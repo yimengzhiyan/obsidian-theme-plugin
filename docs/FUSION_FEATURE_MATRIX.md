@@ -2,7 +2,7 @@
 
 ## Status vocabulary
 
-Planning draft — pending Chat review. Source means design inspiration or evidence, not copied code. `Complete` describes the existing verified baseline; `Candidate` means documented but unapproved and unimplemented; `Deferred` remains outside current implementation scope. No row is currently approved for Phase 3 implementation.
+Planning documents reviewed by Chat, as reported by the maintainer. Planning only; no implementation authorization. Source means design inspiration or evidence, not copied code. `Complete` describes the existing verified baseline; `Candidate` means documented but unapproved and unimplemented; `Deferred` remains outside current implementation scope. No row is currently approved for Phase 3 implementation.
 
 Priorities: **Baseline** = preserve existing capability; **P1** = first review candidate; **P2** = evaluate after baseline/shell contracts; **P3** = later optional investigation; **Deferred** = no implementation commitment. Priorities are proposals, not deadlines. Composer/Border references are summarized in [source analysis](SOURCE_THEME_ANALYSIS.md); detailed upstream selector analysis remains pending.
 

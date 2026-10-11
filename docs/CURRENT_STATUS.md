@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-Phase 3 — Planning：三份规划文档草稿已建立，pending Chat review；尚未开始任何 Phase 3 实现。Phase 2 COMPLETE / MERGED，P2.7 Desktop Exit Verification PASS，exit gate satisfied。
+Phase 3 — Planning：三份规划文档已由 Chat review（维护者报告），本轮仅完成规划分支收尾与 PR；尚未开始任何 Phase 3 实现。Phase 2 COMPLETE / MERGED，P2.7 Desktop Exit Verification PASS，exit gate satisfied。
 
 ## Foundation
 
@@ -89,16 +89,16 @@ Phase 3 planning docs；分支基于已合并的 main `882709c83add9677b69eedf05
 - P2.7 targeted Desktop Exit Verification PASS；ISSUE-01 fix verified at `0068eabc4a8177c8b26afdd8ab72579eafd80fc1`；Phase 2 exit gate satisfied，P2.2–P2.7 complete，详见 [Final QA](PHASE2_REGRESSION_TEST.md)
 
 - Phase 2 PR #9 MERGED；merge commit `882709c83add9677b69eedf05fe5fdfaea366df6`；实现修复与最终回归文档均已进入 main
-- Phase 3 planning draft：已建立 [Design Spec](THEME_DESIGN_SPEC.md)、[Feature Matrix](FUSION_FEATURE_MATRIX.md)、[Source Analysis](SOURCE_THEME_ANALYSIS.md)；仅文档，未实现新功能
+- Phase 3 planning：已建立 [Design Spec](THEME_DESIGN_SPEC.md)、[Feature Matrix](FUSION_FEATURE_MATRIX.md)、[Source Analysis](SOURCE_THEME_ANALYSIS.md)；仅文档，未实现新功能
 
 ## In Progress
 
-- Phase 3 规划草稿 pending Chat review；Workspace、Layout、Focus System、Reading Enhancement、Presets、Effects 都是未批准、未实现的候选模块。
+- Phase 3 planning 已 review，待文档 PR review / merge；Workspace、Layout、Focus System、Reading Enhancement、Presets、Effects 都是未批准、未实现的候选模块。
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-Chat review 三份规划文档，确认模块优先级、来源证据与实现边界。review 前不创建 PR；本轮仅 commit / push 规划分支，不实施任何功能。review 后才确定首个有明确范围与验收条件的任务。
+提交并推送仅文档的收尾修正，创建规划 PR 到 main，等待 PR review；本轮不合并、不实现功能。后续另行批准首个有明确范围、来源证据与验收条件的任务。
 
 ## Known Issues / Blockers
 
@@ -149,4 +149,4 @@ Chat review 三份规划文档，确认模块优先级、来源证据与实现�
 - 现有 release/foundation-test 包保留 V0.1 baseline；P2.2 QA 使用本分支根目录安装文件并记录 hash
 - Phase 2 final documentation closeout：Build / Check / diff-check PASS；仅更新四份文档，CSS / theme.css / scripts/check.mjs 不变；Desktop PASS 为维护者报告结果。
 
-- Phase 3 planning validation：`npm run check` / `git diff --check` PASS；AGENTS 要求 Check，且 Check 内部验证 Build/生成同步；未单独执行 `npm run build`，无 CSS 源码变化；六份文档以外无修改。无新 Desktop QA claim。
+- Phase 3 planning / finalization validation：`npm run check` / `git diff --check` PASS；AGENTS 要求 Check，且 Check 内部验证 Build/生成同步；未单独执行 `npm run build`，无 CSS 源码变化；六份文档以外无修改。无新 Desktop QA claim。
