@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-Phase 2 — Appearance & Core Components：P2.6 Navigation / File Explorer complete / Desktop QA PASS / pending PR merge
+Phase 2 — Appearance & Core Components：COMPLETE；P2.7 Desktop Exit Verification PASS，Phase 2 exit gate satisfied；P2.2–P2.7 complete
 
 ## Foundation
 
@@ -10,11 +10,11 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Branch
 
-`codex/p2-6-navigation-file-explorer`
+`codex/p2-7-phase2-regression`
 
 ## Current Commit
 
-P2.6 final validation docs commit；tested implementation 为 `2945b00b21718b0bf0bc517ecc6fb317e03af6d1`。本文件不嵌入其所在 commit 的 hash，以避免自引用导致 hash 永远变化；使用 `git rev-parse HEAD` 获取精确值。
+Phase 2 final documentation closeout；已验证的 ISSUE-01 fix commit 为 `0068eabc4a8177c8b26afdd8ab72579eafd80fc1`，此前 merged CSS 基线为 `f00e67108bece2b0a4cede9a687c7ee2da7cbc6e`。本文件不嵌入其所在 commit 的 hash，以避免自引用导致 hash 永远变化；使用 `git rev-parse HEAD` 获取精确值。
 
 ## Completed
 
@@ -82,17 +82,20 @@ P2.6 final validation docs commit；tested implementation 为 `2945b00b21718b0bf
 - 红 / 蓝 / 绿 Accent propagation PASS；普通名称 / guide / chevron 保持中性，无 Rainbow Folder 或紫色残留
 - Drag/drop N/A / non-blocking：尝试取消，未完成移动，文件留在原位；File Explorer controls、Backlinks / Outlinks / Search 与 P2.2–P2.5 regression PASS
 - Settings restoration PASS；测试 Vault 临时 P2.6 文件夹已清理，既有 P2.2–P2.5 QA note hashes 不变；无 blocking theme issue
+- P2.6 PR #8 MERGED，merge commit `f00e67108bece2b0a4cede9a687c7ee2da7cbc6e`
+- [P2.7 integrated regression plan](PHASE2_REGRESSION_TEST.md) prepared；覆盖最终 artifact、Foundation / P2.2–P2.6、四项设置与跨组件交互；无 theme implementation changes
 - 针对性 Core Typography contract check 与 [Typography Desktop QA checklist](TYPOGRAPHY_TEST.md) 已建立
 - GitHub remote 已配置为 `https://github.com/yimengzhiyan/obsidian-theme-plugin.git`；`main` 与 `codex/theme-foundation` 均已推送并设置 upstream
+- P2.7 targeted Desktop Exit Verification PASS；ISSUE-01 fix verified at `0068eabc4a8177c8b26afdd8ab72579eafd80fc1`；Phase 2 exit gate satisfied，P2.2–P2.7 complete，详见 [Final QA](PHASE2_REGRESSION_TEST.md)
 
 ## In Progress
 
-- P2.6 PR review / merge pending；implementation complete / Chat Review PASS / Desktop QA PASS
+- 无进行中的 Phase 2 任务；最终文档收尾完成。
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-Create / review / merge P2.6 PR。Do not begin P2.7 until P2.6 merge completes.
+Phase 3 planning。当前仅完成 Phase 2 文档收尾、commit / push；不创建 PR，尚未开始 Phase 3 实现。
 
 ## Known Issues / Blockers
 
@@ -102,6 +105,9 @@ Create / review / merge P2.6 PR。Do not begin P2.7 until P2.6 merge completes.
 - P2.4 无 blocking issue；Editing / Reading syntax palette differences 已接受（两者可读）；Table row hover 可 subtle / view-dependent；未暴露 native table controls 记录 N/A，不视为 theme regression，不新增 selector 覆盖
 - P2.5 无 blocker；Callout semantic type colors / icons / aliases 保持原生，Theme Accent 有意不替换其语义颜色；nested blending 与 folding 保持原生，无需 selector-based redesign
 - P2.6 无 blocker；folder-only weight intentionally unimplemented，因为真实 Desktop QA 确认 folder/file hierarchy 足够清晰；drag/drop N/A 按批准 gate 为 non-blocking，不声称成功移动
+- P2.7 ISSUE-01：Live Preview ordinary Blockquote Tag foreground 被 quote syntax color 覆盖，而非跟随 --tag-color；历史 BLOCKER；修复 `0068eabc4a8177c8b26afdd8ab72579eafd80fc1` 已通过 targeted Desktop verification，ISSUE-01 closed
+- Round 1 partial gates（已关闭）：inactive tab hover、Highlight text selection、Code Block long-line / actual Source editing、main-window constrained-space smoke；已由维护者报告的 final Desktop Exit Verification PASS 关闭；详细逐项记录未在本次指令中提供
+- Desktop 独立副本 CRLF/LF freshness observation：normalized text identical，原仓库与 installed artifact unchanged；non-blocking platform/tooling observation，本轮不改 line-ending behavior
 - Desktop artifact gate：正确 branch / commit、root hash == installed hash；Round 2 已一致，不要求其他机器固定 SHA 相等
 - Working Title 同时包含 “Obsidian” 与 “Theme”，不符合当前社区主题目录命名规范；正式发布前必须确定合规名称。
 - manifest 的 author 当前是项目级临时署名，正式发布前需由维护者确认。
@@ -135,4 +141,7 @@ Create / review / merge P2.6 PR。Do not begin P2.7 until P2.6 merge completes.
 - P2.5 PR #7：MERGED（`06eb5641793d04be1b78563b7fd0fb532b1967a3`）
 - P2.6 automated validation：Build / Check / diff-check PASS；严格 single-body / 13-declaration contract + 七项 Foundation 映射验证；36 项内存负向变体全部拒绝（覆盖要求的 32 类），P2.2–P2.5 合同函数逐字不变；theme.css 仅由 Build 生成
 - P2.6 real Obsidian Desktop QA：PASS；Obsidian 1.14.4 / Installer 1.10.6 / Windows 25H2 Build 26200.8737 / Style Settings 1.0.9；matching root / installed SHA、具体结果与恢复状态见 NAVIGATION_FILE_EXPLORER_TEST；独立于 automated validation
+- P2.6 PR #8：MERGED（`f00e67108bece2b0a4cede9a687c7ee2da7cbc6e`）
+- P2.7 automated preparation validation：Build / Check / diff-check PASS；仅四份文档，theme.css / src / settings / scripts unchanged；历史 preparation 结果；最终 Desktop Exit Verification PASS 与 Phase 2 exit gate satisfied 依据维护者本次指令，独立于自动检查
 - 现有 release/foundation-test 包保留 V0.1 baseline；P2.2 QA 使用本分支根目录安装文件并记录 hash
+- Phase 2 final documentation closeout：Build / Check / diff-check PASS；仅更新四份文档，CSS / theme.css / scripts/check.mjs 不变；Desktop PASS 为维护者报告结果。
