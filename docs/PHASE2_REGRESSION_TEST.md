@@ -2,22 +2,23 @@
 
 ## Status / Frozen Scope
 
-Round 1: **NEEDS FIX**. Chat classified ISSUE-01 as BLOCKER and approved a minimal Live Preview integration exception; fix implemented / pending Chat implementation review and targeted Desktop verification. Automated validation does not imply Desktop PASS. Initial tested CSS was the merged P2.2–P2.6 state, based on main `f00e67108bece2b0a4cede9a687c7ee2da7cbc6e`; retest must install the current fix artifact and record branch/commit and matching hashes.
+**PASS — P2.7 Desktop Exit Verification complete; Phase 2 exit gate satisfied.** ISSUE-01 fix verified at `0068eabc4a8177c8b26afdd8ab72579eafd80fc1`. P2.2–P2.7 milestones are complete. Final Desktop result is reported by the maintainer in the documentation-closeout instruction; automated validation is separate evidence. Round 1 NEEDS FIX is retained below as history.
+
+Initial tested CSS was the merged P2.2–P2.6 state, based on main `f00e67108bece2b0a4cede9a687c7ee2da7cbc6e`; final verification covers the approved ISSUE-01 fix. This closeout changes documentation only. Next step: **Phase 3 planning**, not implementation.
 
 Freeze all other CSS, Semantic Tokens, Style Settings, runtime/plugin behavior and build tooling. The sole approved exception is two foreground-only Live Preview Blockquote Tag rules and their dedicated strict check. Other potential visual issues are recorded only, not fixed without real Desktop evidence and Chat review.
 
 ## Artifact / Environment Gate
 
-- Branch: pending (expected `codex/p2-7-phase2-regression`)
-- Tested commit: pending; record the exact installed revision
-- Root theme.css SHA-256: pending
-- Installed theme.css SHA-256: pending
-- Hash match: pending
+- Branch: `codex/p2-7-phase2-regression`
+- Verified fix commit: `0068eabc4a8177c8b26afdd8ab72579eafd80fc1`
+- Root / installed SHA-256 values: not supplied in the closeout instruction; no values invented here
+- Final artifact gate: satisfied under the maintainer-reported Desktop Exit Verification PASS
 - Obsidian version (Round 1): 1.14.4
 - Installer version (Round 1): 1.10.6
 - Windows version/build (Round 1): 25H2 Build 26200.8737
 - Style Settings version (Round 1): 1.0.9
-- Theme: pending
+- Theme: `Obsidian Fusion Theme`
 
 Install root `manifest.json` and `theme.css`, not the old V0.1 release package. Require correct branch/commit and **root theme.css == installed theme.css** on the Desktop test machine; otherwise **FAIL — wrong artifact**. Do not require an old milestone hash or another machine's hash. Record actual versions at test time and recheck artifact after QA.
 
@@ -177,7 +178,7 @@ Passing components individually is insufficient: combinations must not break one
 
 ## No Scope Creep / Exit Gate
 
-All results below remain pending until real Desktop QA. Required final PASS gate:
+The required gate below is satisfied by the maintainer-reported final Desktop PASS. The unchecked detailed checklist above is retained as the original test procedure, not an outstanding task list; individual measurement logs were not supplied for this documentation closeout. Required final PASS gate:
 
 1. Correct artifact / hash match
 2. Build PASS
@@ -244,7 +245,7 @@ P2.7 docs commit `72538caa364811a5928e7ea508661325f25d60a7` introduced no CSS ch
 
 Approved fix: `src/editor/live-preview-composition.css`, exactly two Live Preview-only rules restoring `color: var(--tag-color)` and hover `color: var(--tag-color-hover)`. No Source/Reading overrides, backgrounds/borders, new Tokens or Settings; historical component contracts unchanged.
 
-### Partial Gates — Still Pending
+### Partial Gates — Closed by Final Desktop PASS
 
 - Inactive tab hover
 - Highlight text selection
@@ -252,13 +253,15 @@ Approved fix: `src/editor/live-preview-composition.css`, exactly two Live Previe
 - Code Block actual Source editing
 - Main-window constrained-space smoke
 
-These were not fully verified in Round 1 and are not ISSUE-01 itself. Do not mark them PASS; complete them during targeted Desktop exit verification.
+These were not fully verified in Round 1 and are not ISSUE-01 itself. They are no longer outstanding: the maintainer reports targeted Desktop Exit Verification PASS and Phase 2 exit gate satisfied. No additional per-case measurements were supplied for this closeout.
 
 ### CRLF/LF Observation
 
 Desktop independent-copy check initially failed freshness comparison because of CRLF/LF rebuilding, not semantic CSS differences. Normalized text before/after rebuild was identical; original repository and installed artifact remained unchanged. Chat classification: **non-blocking platform/tooling line-ending observation**. Build/check line-ending behavior is unchanged; cross-platform tooling hardening may be considered separately.
 
-### Targeted Desktop Verification — Pending
+### Targeted Desktop Verification — PASS
+
+The following is the retained verification procedure; final outcome is PASS as reported by the maintainer.
 
 - Install correct fix branch/commit; root SHA == installed SHA.
 - Ordinary Blockquote Tag normal/hover foreground follows current Tag variables in Light/Dark with red/blue/green Accent; background/border remain unchanged.
@@ -266,17 +269,17 @@ Desktop independent-copy check initially failed freshness comparison because of 
 - Source native editing, semantic Callout/Highlight and other component styling do not regress.
 - Complete all five partial gates above and record evidence; classify any new issue through Chat, not ad hoc CSS tuning.
 
-Automated fix validation: Build / Check / diff-check PASS; dedicated exact two-rule contract, 20 in-memory negative variants rejected; six historical contract functions byte-for-byte unchanged. Desktop fix verification and Phase 2 exit decision remain pending.
+Automated fix validation: Build / Check / diff-check PASS; dedicated exact two-rule contract, 20 in-memory negative variants rejected; six historical contract functions byte-for-byte unchanged. **ISSUE-01 fix verified** at `0068eabc4a8177c8b26afdd8ab72579eafd80fc1`; **targeted Desktop Exit Verification PASS** (maintainer-reported). Phase 2 exit gate satisfied; no outstanding blocking regression reported.
 
 ## Restoration / Final Decision
 
-- Original settings / sidebar width restored: pending
-- Temporary Vault data cleanup: pending
-- Final artifact recheck: pending
-- Chat test-plan / ISSUE classification Review: completed; ISSUE-01 BLOCKER, minimal fix approved
-- Real Desktop QA: Round 1 NEEDS FIX; targeted fix verification pending
-- Phase 2 exit decision: pending
+- Original settings / sidebar width restoration, temporary Vault cleanup and exact final artifact hashes: detailed records not supplied in the closeout instruction; no independent claim added here
+- Chat test-plan / ISSUE classification Review: completed; historical ISSUE-01 BLOCKER, minimal fix approved
+- Real Desktop QA: Round 1 NEEDS FIX (historical); targeted Desktop Exit Verification **PASS**
+- ISSUE-01: **fixed and verified**, fix commit `0068eabc4a8177c8b26afdd8ab72579eafd80fc1`
+- Phase 2 exit decision: **PASS — Phase 2 exit gate satisfied**
+- Phase 2 milestones: **P2.2–P2.7 complete**
+- Final documentation closeout validation: `npm run build`, `npm run check`, `git diff --check` PASS
+- Next step: **Phase 3 planning**; Phase 3 implementation has not started
 
-Allowed outcomes after evidence review: **PASS — Phase 2 exit gate satisfied**; **NEEDS FIX — blocking regression found**; or **CONDITIONAL / N/A** only for approved non-blocking items. No Desktop PASS is claimed now.
-
-Workflow: Chat Review → real Desktop QA → fix only with blocking evidence → final QA docs → PR → final Review / Merge.
+Final Desktop conclusions above come from the maintainer's explicit closeout instruction, not from automated checks performed during documentation work. This closeout is committed and pushed on the existing branch; no PR is created.
