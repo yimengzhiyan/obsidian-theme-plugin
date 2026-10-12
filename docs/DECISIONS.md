@@ -94,3 +94,9 @@ Aliases 与公共消费者变量同在 body，保留 body Radius 覆盖；不使
 基于已验证 Tabs 修复 62789ef，扩展既有 sidebar.css，不重建或删除原七项 Foundation navigation 映射。追加左右 split 直属 workspace-tabs 的 secondary background / gap，以及直属 tab-header-container 的 primary background / gap-derived horizontal padding / neutral inset divider。没有修改 File Explorer/tree/Search/Backlinks/plugin internals、字体/颜色继承、content padding、尺寸/overflow/定位、resize handle 或 editor selectors。
 
 divider 使用内阴影而非新增 border width，避免改变 header/resize 几何。全部消费现有 tokens，无 Sidebar token 或 workspace contract 扩展；Tabs QA fixes / P2.6 源码与其他生成 sections 保持字节不变。Build / Check / diff-check PASS；Desktop QA pending，需实测 native DOM 层级、row-gap 是否由布局消费、header 狭窄控件裁切及拖拽/scroll。无新的整体架构决策，无 push / PR。
+
+### P3.1c-1 — Ribbon shell implementation record
+
+只扩展既有 ribbon.css。expanded background 消费 secondary；collapsed primary 与 icon/hover/active 合同保留。左右 inset divider 不加宽 Ribbon，标准 action shell 复用 workspace gap/radius，无新增 token/settings 或整体架构变化。command/plugin buttons 保持事件、顺序、可见性、icon/SVG 和 native 尺寸；未增加 plugin-specific selector。
+
+Build / Check / diff-check PASS，非 Ribbon source/generated sections baseline 比较字节不变；Desktop QA 尚未运行。Sidebar PASS 依据本轮维护者报告。提交后 push 为持续授权，不创建 PR，不实现后续模块。

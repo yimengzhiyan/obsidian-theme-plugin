@@ -1,5 +1,5 @@
 body {
-  --ribbon-background: var(--theme-bg-sidebar);
+  --ribbon-background: var(--theme-bg-secondary);
   --ribbon-background-collapsed: var(--theme-bg-primary);
 }
 
@@ -8,6 +8,23 @@ body {
   --icon-color-hover: var(--theme-text-normal);
   --icon-color-active: var(--theme-indicator);
   --icon-color-focused: var(--theme-indicator);
+}
+
+/* Inset separators do not alter the Ribbon width or resize hit areas. */
+.workspace-ribbon.mod-left {
+  box-shadow: inset -1px 0 0 var(--theme-border);
+}
+
+.workspace-ribbon.mod-right {
+  box-shadow: inset 1px 0 0 var(--theme-border);
+}
+
+/* Standard native/extension actions share shell geometry, not icon styling.
+ * Keep native target dimensions, visibility, ordering and command behavior.
+ */
+.workspace-ribbon .side-dock-ribbon-action {
+  margin-block: var(--theme-workspace-control-gap);
+  border-radius: var(--theme-workspace-control-radius);
 }
 
 .workspace-ribbon .clickable-icon:hover {
