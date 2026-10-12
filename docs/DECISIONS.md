@@ -82,3 +82,9 @@ Aliases 与公共消费者变量同在 body，保留 body Radius 覆盖；不使
 按本轮 Chat review 后指令细化 Fusion Tab Shell，保留 Foundation state/indicator rules。普通（非 stacked）Tabs 的 inner 用既有 primary / hover / active surfaces 和 workspace radius；gap 派生横纵 padding / column gap，未设固定宽高或 density setting。title 使用 min-width:0 + ellipsis/nowrap，icon/close 不 shrink；关闭按钮增加 muted/hover/pressed/focus-visible 反馈，不改 native visibility、事件或 DOM。
 
 没有新增 token，workspace-tokens 延续首个 milestone 的两项 aliases；没有复制 Border CSS、添加设置、runtime 或后续模块。只从 source Build theme.css。Build / Check / diff-check PASS，Phase 2 与其他生成 sections baseline 比较不变。Desktop QA 尚未执行；重点风险是实际 tab flex/title inheritance、vertical padding/curve clipping、close keyboard focusability 与窄窗 stacked/split-pane regression。记录不代表新架构方向或 QA PASS。
+
+### P3.1a — Desktop geometry and state cascade correction
+
+真实 Desktop QA 证实 Radius 20 的原生 curve 伪元素及 inner overflow 会裁切标题/close；curve 与 inner radius 以已有 space-sm 为上限，public outer/active Radius 联动保留。普通 refinement selectors 限 mod-root，防止 Sidebar header 被附带细化。
+
+原生 active outline specificity 覆盖 Foundation inset indicator。增加 ordinary root active selector，组合已有 indicator 与原生 outline width；仅 active header 的 outline color 映射既有 theme-border-active，container 保持中性。无新 Token/Setting/运行时，Phase 2 合同不变。六种 Light/Dark x red/blue/green 与窄窗/keyboard retest PASS。独立 Tab/close tabindex=-1 为原生 N/A，不添加 DOM/ARIA/focus hacks。详见 P3_1A_TABS_DESKTOP_QA.md；final implementation review 仍独立。

@@ -289,7 +289,7 @@ body {
   --tab-container-background: var(--theme-bg-secondary);
   --tab-divider-color: var(--theme-border);
   --tab-outline-color: var(--theme-border);
-  --tab-curve: var(--theme-workspace-control-radius);
+  --tab-curve: min(var(--theme-workspace-control-radius), var(--theme-space-sm));
   --tab-radius: var(--theme-workspace-control-radius);
   --tab-radius-active: var(--theme-workspace-control-radius);
   --tab-text-color: var(--theme-text-muted);
@@ -303,57 +303,57 @@ body {
 /* Ordinary tab controls share spacing without changing native width/overflow.
  * Stacked headers retain their native geometry and writing direction.
  */
-.workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner {
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner {
   min-width: 0;
   column-gap: var(--theme-workspace-control-gap);
   padding-block: var(--theme-workspace-control-gap);
   padding-inline: var(--theme-workspace-control-gap);
-  border-radius: var(--theme-workspace-control-radius);
+  border-radius: min(var(--theme-workspace-control-radius), var(--theme-space-sm));
   background-color: var(--theme-bg-primary);
 }
 
-.workspace-tabs:not(.mod-stacked) .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
   background-color: var(--theme-hover-bg);
 }
 
-.workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active .workspace-tab-header-inner {
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active .workspace-tab-header-inner {
   background-color: var(--theme-active-bg);
 }
 
 /* Let the title yield space to native icons and the close target. */
-.workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-title {
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-title {
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-icon,
-.workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button {
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-icon,
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button {
   flex-shrink: 0;
 }
 
-.workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button {
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button {
   color: var(--theme-text-muted);
   border-radius: var(--theme-workspace-control-radius);
 }
 
-.workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button:hover {
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button:hover {
   color: var(--theme-text-normal);
   background-color: var(--theme-hover-bg);
 }
 
-.workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button:active {
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button:active {
   color: var(--theme-active-text);
   background-color: var(--theme-active-bg);
 }
 
-.workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button:focus-visible {
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button:focus-visible {
   outline: 2px solid var(--theme-accent);
   outline-offset: -2px;
 }
 
-.workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active {
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active {
   font-weight: var(--font-medium);
 }
 
@@ -371,6 +371,16 @@ body {
 .workspace-tab-header.is-active {
   color: var(--theme-active-text);
   box-shadow: inset 0 -2px 0 var(--theme-indicator);
+}
+
+/* Native active outlines outrank the Foundation selector. Preserve that
+ * outline while keeping the Accent indicator visible on ordinary root tabs.
+ */
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active {
+  --tab-outline-color: var(--theme-border-active);
+  box-shadow:
+    inset 0 -2px 0 var(--theme-indicator),
+    0 0 0 var(--tab-outline-width) var(--tab-outline-color);
 }
 
 /* Source: src/workspace/sidebar.css */
