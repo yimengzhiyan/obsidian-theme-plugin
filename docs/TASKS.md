@@ -89,12 +89,14 @@ First-line indent（默认 off）、letter spacing、word spacing、granular hea
 - [ ] 固定相关来源 revision，补齐 view-header 变量/DOM 与 build-order 可行性证据
 - [x] 获首个 milestone 指令，实现 workspace-tokens.css / tabs.css；Build / Check / diff-check PASS
 - [x] 收到 Chat review 后 P3.1a refinement 指令；完成 default/active/hover、close、density、long-title 源码
-- [ ] P3.1a final review / Desktop QA
-- [ ] Desktop QA first milestone（未运行）
-- [ ] review 后另行批准 Sidebar/Ribbon；当前停止，不创建实现 PR
+- [x] P3.1a Desktop QA PASS after fix 62789ef；详见 P3_1A_TABS_DESKTOP_QA.md
+- [x] Tabs milestone Desktop gate 完成；独立 Tab/close focus N/A 原生保留
+- [x] 获 P3.1b scoped instruction，实现 Sidebar shell（源码完成，未标 Desktop PASS）
+- [ ] P3.1b Chat review / Desktop QA
+- [ ] Ribbon 后续另行批准，当前不实现、不创建 PR
 
 仅允许规划未来 src/workspace 范围；现有 scrollbar 保留不变。Full Auto Hide、Focus、Card Layout、Presets、Animations、Rainbow folders、Canvas/Graph、Companion Plugin 均在本阶段之外。首个 milestone 新增两项 workspace geometry aliases；无新 global palette / Style Settings。
 
 ## Next Step
 
-Chat implementation review workspace tokens + Tabs first milestone；Desktop QA pending，停止 Sidebar/Ribbon。P3.1a 实现提交后待 Desktop QA / final review，不创建 PR。
+P3.1b Sidebar shell implementation review / Desktop QA。本轮 commit only，不 push / PR，不继续 Ribbon。

@@ -399,6 +399,21 @@ body {
   background-color: var(--theme-bg-sidebar);
 }
 
+/* Sidebar shell only: direct children exclude editor panes and view internals.
+ * Leave content padding, native widths and resize handles untouched.
+ */
+.workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs {
+  background-color: var(--theme-bg-secondary);
+  row-gap: var(--theme-workspace-control-gap);
+}
+
+/* An inset divider changes no header or resize-handle dimensions. */
+.workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs > .workspace-tab-header-container {
+  background-color: var(--theme-bg-primary);
+  padding-inline: var(--theme-workspace-control-gap);
+  box-shadow: inset 0 -1px 0 var(--theme-border);
+}
+
 /* Source: src/workspace/ribbon.css */
 body {
   --ribbon-background: var(--theme-bg-sidebar);

@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-Phase 3 — P3.1a Fusion Workspace Tab Shell：Desktop QA PASS after targeted Tabs fixes；Build / Check / diff-check PASS。Final implementation review pending；Phase 2 COMPLETE / MERGED。
+Phase 3 — P3.1b Sidebar Workspace Shell：源码实现完成，Build / Check / diff-check PASS；Desktop QA / implementation review pending。P3.1a Tabs Desktop QA PASS；Phase 2 COMPLETE / MERGED。
 
 ## Foundation
 
@@ -14,7 +14,7 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Commit
 
-P3.1a Tabs implementation + Desktop QA fixes；基于更新后的 main `fbc971d8d034906d1bfd911df5d86e3688cffeaf`（PR #10 squash merge）。使用 `git rev-parse HEAD` 获取当前提交。
+P3.1b Sidebar implementation；基于已同步的 Tabs QA fix `62789ef45bda6167eea7ae672eae3596aca9205d`。main baseline `fbc971d8d034906d1bfd911df5d86e3688cffeaf`。使用 `git rev-parse HEAD` 获取当前提交。
 
 ## Completed
 
@@ -96,12 +96,12 @@ P3.1a Tabs implementation + Desktop QA fixes；基于更新后的 main `fbc971d8
 
 ## In Progress
 
-- P3.1a Desktop QA PASS after Tabs clipping / indicator fixes；独立 Tab/close keyboard focus 为原生 N/A（tabIndex=-1），详见 [Desktop QA](P3_1A_TABS_DESKTOP_QA.md)。其他 workspace 模块不变，final review pending。
+- P3.1b Sidebar shell 已实现，Desktop QA / review pending；P3.1a QA fix 原样保留，独立 Tab/close keyboard focus N/A 结论不变。
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-Final implementation review of P3.1a QA fixes → P3.1b Sidebar scoped instruction。Desktop gate 已满足；本轮不实现 Sidebar/Ribbon，不 push，不创建 PR。
+Chat implementation review / Desktop QA P3.1b：左右侧栏 expanded/collapsed、narrow/wide resize、header 与 divider、P2.6 wrapping/rename/hierarchy/scroll、Search/Backlinks 内容及 editor/Tabs smoke。当前不实现 Ribbon，不 push，不创建 PR。
 
 ## Known Issues / Blockers
 
@@ -161,3 +161,6 @@ Final implementation review of P3.1a QA fixes → P3.1b Sidebar scoped instructi
 - P3.1a Tabs：Build / Check / diff-check PASS；generated theme.css 与 source 同步，无 hardcoded colors；对 main baseline 的比较确认 Phase 2 与其他 workspace 源码/生成 sections 不变。只使用已有 tokens 和两项已批准 workspace aliases，无新设置/Plugin/JS/DOM 修改。Desktop QA 未运行，不能据自动检查认定无运行时 regression。
 
 - P3.1a real Windows Desktop QA：PASS after targeted fixes；Obsidian 1.14.4 / installer 1.10.6 / Windows 25H2 build 26200.8737 / Style Settings 1.0.9。Light/Dark x red/blue/green active indicator/border、Radius 0/20、close、long title、keyboard switching、split/stacked、749 px narrow window 与 Phase 2 smoke PASS；native independent Tab/close focus N/A。Source edits restored by SHA, temporary QA data removed, original notes/settings/window restored. Full evidence: [P3.1a Desktop QA](P3_1A_TABS_DESKTOP_QA.md).
+
+- P3.1b automated validation：Build / Check / diff-check PASS；仅 sidebar.css 追加两条直属 shell/header rules，theme.css 由 Build 同步。原 sidebar/Foundation mappings 与其他生成 sections（含 Tabs/P2.6）字节不变；无 token/settings/script/runtime 变化。
+- P3.1b Desktop QA：未运行。selector 不直接匹配内容、editor 或 resize handle；实际 header padding/row-gap 对窄窗控件与 scroll 高度的影响仍须真实 Desktop 验证，不由源码比较推断 PASS。

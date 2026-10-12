@@ -88,3 +88,9 @@ Aliases 与公共消费者变量同在 body，保留 body Radius 覆盖；不使
 真实 Desktop QA 证实 Radius 20 的原生 curve 伪元素及 inner overflow 会裁切标题/close；curve 与 inner radius 以已有 space-sm 为上限，public outer/active Radius 联动保留。普通 refinement selectors 限 mod-root，防止 Sidebar header 被附带细化。
 
 原生 active outline specificity 覆盖 Foundation inset indicator。增加 ordinary root active selector，组合已有 indicator 与原生 outline width；仅 active header 的 outline color 映射既有 theme-border-active，container 保持中性。无新 Token/Setting/运行时，Phase 2 合同不变。六种 Light/Dark x red/blue/green 与窄窗/keyboard retest PASS。独立 Tab/close tabindex=-1 为原生 N/A，不添加 DOM/ARIA/focus hacks。详见 P3_1A_TABS_DESKTOP_QA.md；final implementation review 仍独立。
+
+### P3.1b — Sidebar shell boundary
+
+基于已验证 Tabs 修复 62789ef，扩展既有 sidebar.css，不重建或删除原七项 Foundation navigation 映射。追加左右 split 直属 workspace-tabs 的 secondary background / gap，以及直属 tab-header-container 的 primary background / gap-derived horizontal padding / neutral inset divider。没有修改 File Explorer/tree/Search/Backlinks/plugin internals、字体/颜色继承、content padding、尺寸/overflow/定位、resize handle 或 editor selectors。
+
+divider 使用内阴影而非新增 border width，避免改变 header/resize 几何。全部消费现有 tokens，无 Sidebar token 或 workspace contract 扩展；Tabs QA fixes / P2.6 源码与其他生成 sections 保持字节不变。Build / Check / diff-check PASS；Desktop QA pending，需实测 native DOM 层级、row-gap 是否由布局消费、header 狭窄控件裁切及拖拽/scroll。无新的整体架构决策，无 push / PR。

@@ -116,3 +116,20 @@ Stop here for Chat review; Sidebar, Ribbon, Status bar and View header remain un
 Current instruction authorizes Tabs refinement only. Ordinary tab inner receives primary / hover / active surfaces, control radius and gap-derived block padding; title shrinks with min-width:0 and ellipsis/nowrap, icon/close preserves its space. Close states consume muted/normal/active text and hover/active background; focus-visible uses existing Accent. No new tokens, settings, fixed tab dimensions, DOM/runtime, visibility changes or Border code.
 
 Earlier first-milestone no-overflow claim is historical: P3.1a deliberately applies overflow:hidden only to the title for ellipsis, not the tab row or control container. Existing outer hover/active/transition selectors and Phase 2 contracts remain unchanged. Build / Check / diff-check PASS; Desktop QA / final review pending. See CURRENT_STATUS and DECISIONS Log for scope and risks. Sidebar/Ribbon remains stopped.
+
+## P3.1b Sidebar shell implementation record
+
+Baseline: `62789ef45bda6167eea7ae672eae3596aca9205d`; incoming Tabs Desktop QA PASS evidence is [Tabs QA](P3_1A_TABS_DESKTOP_QA.md). Current instruction authorizes Sidebar foundation only. sidebar.css already exists; preserve its complete Foundation prefix, including seven navigation-state mappings and existing split background.
+
+Added only two rule blocks:
+
+- Left/right split → direct workspace-tabs: secondary background and row-gap from existing workspace-control-gap (Foundation xs).
+- Same container → direct tab-header-container: primary background, horizontal gap-derived padding, neutral 1px inset bottom divider.
+
+No descendant content selector, inherited font/text color, content padding, fixed width/height, display/overflow/position, resize-handle property, Sidebar token or setting. Native split background remains unchanged. Inset divider avoids adding box dimensions; container row-gap is shell spacing, not a rewrite of tree/leaf geometry. No rounded card or auto-hide behavior. Workspace aliases need no extension.
+
+Build / Check / diff-check PASS. Comparison against 62789ef confirms all source changes limited to sidebar.css; its old prefix is byte-identical and all other generated sections, including Tabs/P2.6, are byte-identical. No new script/dependency/DOM/runtime/upstream code.
+
+Desktop QA NOT RUN; pending implementation review and actual application evidence. Test Light/Dark; both sidebars expanded/collapsed, native vertical split groups and narrow/wide widths; controls/title/tooltip access, drag resize and divider hover; long file/folder wrapping, rename, four-level hierarchy, selected/hover colors, scroll to first/last row; Search/Backlinks/Outlinks/plugin contents unchanged; editor Source/LP/Reading and Tabs stacked/split/narrow smoke. Record artifacts/root == installed hashes and actual settings. Header padding can reduce available horizontal control space; row-gap can affect available scroll height and depends on native layout; direct-child selectors may be inert if native DOM differs. Treat these as QA risks, not current verified blockers.
+
+This milestone is committed locally only; no push/PR or Ribbon implementation.
