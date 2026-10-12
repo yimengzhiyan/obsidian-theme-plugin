@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-Phase 3 — P3.1c-1 Ribbon Workspace Shell：源码完成，Build / Check / diff-check PASS；Ribbon Desktop QA pending。Tabs / Sidebar Desktop QA PASS；Phase 2 COMPLETE。
+Phase 3 — P3.1c-2 Status Bar Workspace Shell：源码完成，Build / Check / diff-check PASS；Status Bar Desktop QA pending。Tabs / Sidebar / Ribbon Desktop QA PASS；Phase 2 COMPLETE。
 
 ## Foundation
 
@@ -14,7 +14,7 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Commit
 
-P3.1c-1 Ribbon implementation；baseline `c69bdcf23cc1f756c9a03faee959518a48b98345`，Tabs QA fix `62789ef` 保留。使用 `git rev-parse HEAD` 获取当前精确提交。
+P3.1c-2 Status Bar implementation；baseline `22e47efb06e6e3451807ad71a1d6990297e440fd`。使用 `git rev-parse HEAD` 获取当前精确提交。
 
 ## Completed
 
@@ -96,12 +96,12 @@ P3.1c-1 Ribbon implementation；baseline `c69bdcf23cc1f756c9a03faee959518a48b983
 
 ## In Progress
 
-- P3.1c-1 Ribbon shell 源码完成，Desktop QA pending；Tabs QA fix 与 Sidebar/P2.6 源码不变。Sidebar Desktop QA PASS 依据维护者本次任务报告，未提供新独立测试记录。
+- Status Bar shell 源码完成，Desktop QA pending；Tabs/Sidebar/Ribbon QA 结论保留，Ribbon PASS 按维护者 P3.1c-2 指令报告，未补造 hash/环境。
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-P3.1c-1 Ribbon Chat review / Desktop QA：Light/Dark、sidebar expanded/collapsed、native/plugin command buttons click/tooltip、hover/active、间距/Radius、窄高窗口和 workspace resize；不实现 Status bar/View header 等后续模块。按维护者要求提交后 push 并核对远端，不创建 PR。
+Status Bar Chat review / Desktop QA：Light/Dark、core/plugin items、实际 clickable hover/click、长文本/多状态项/窄窗、editor 底部与 split panes；不继续 View header。提交后 push 并核对远端，不创建 PR。
 
 ## Known Issues / Blockers
 
@@ -168,3 +168,8 @@ P3.1c-1 Ribbon Chat review / Desktop QA：Light/Dark、sidebar expanded/collapse
 - P3.1b Desktop QA：PASS（维护者在 P3.1c-1 指令中报告）；无新增测试环境/hash/逐项结果主张，历史 pending 记录保留。
 - P3.1c-1：Build / Check / diff-check PASS；源码仅 ribbon.css，theme.css 由 Build 同步。无 token/settings/script/runtime 变化；现有 hover/active rules 与非 Ribbon 源码/生成 sections 字节不变。
 - Ribbon Desktop QA：未运行。标准按钮保留 native 尺寸/事件/可见性；需要确认 margin 在实际 native 容器的布局效果、Radius 极值、底部控件可达性与 plugin action shell 兼容性。新增 divider 不改变尺寸；resize 实际交互仍须 QA。
+
+- P3.1c-1 Ribbon Desktop QA：PASS（维护者本轮指令报告）；此前 pending 条目为历史记录。
+- P3.1c-2：Build / Check / diff-check PASS；源码仅 statusbar.css，theme.css 由 Build 同步；native secondary background / border color / muted text 保留，radius 复用既有 workspace alias，gap 与直属 mod-clickable hover shell。无新 token/settings/runtime。
+- Protected scope：相对 baseline，所有非 Status Bar source/generated sections 字节不变；不覆盖 native position/width/height/scroll padding/wrap/visibility 或 plugin descendants。
+- Status Bar Desktop QA：未运行。实际 column-gap 的空间占用、长插件内容/窄窗 overflow、hover 颜色与插件语义兼容性及 editor 底部遮挡仍需检查，不能从源码比较推断 PASS。

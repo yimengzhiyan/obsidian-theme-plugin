@@ -100,3 +100,9 @@ divider 使用内阴影而非新增 border width，避免改变 header/resize �
 只扩展既有 ribbon.css。expanded background 消费 secondary；collapsed primary 与 icon/hover/active 合同保留。左右 inset divider 不加宽 Ribbon，标准 action shell 复用 workspace gap/radius，无新增 token/settings 或整体架构变化。command/plugin buttons 保持事件、顺序、可见性、icon/SVG 和 native 尺寸；未增加 plugin-specific selector。
 
 Build / Check / diff-check PASS，非 Ribbon source/generated sections baseline 比较字节不变；Desktop QA 尚未运行。Sidebar PASS 依据本轮维护者报告。提交后 push 为持续授权，不创建 PR，不实现后续模块。
+
+### P3.1c-2 — Status Bar shell compatibility record
+
+保留 native background/divider/text 合同；radius 仅改为等价 workspace alias。原 divider border-color 已消费 theme-border，不追加第二条 separator 或覆盖 border width，避免改变 native 几何。Status Bar root column-gap 派生 workspace gap；仅直属标准 item 圆角与 mod-clickable hover shell，无 plugin-specific/内部节点/定位/尺寸/可见性修改。
+
+无新架构方向、token/settings/runtime。Build / Check / diff-check PASS，非 Status Bar source/generated sections 字节不变。Desktop QA pending：多/长状态项、窄窗、plugin hover、editor 底部遮挡与 native wrap/scroll 尚需实测。Ribbon PASS 依据维护者报告；提交后 push，无 PR。

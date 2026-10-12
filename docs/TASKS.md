@@ -94,11 +94,13 @@ First-line indent（默认 off）、letter spacing、word spacing、granular hea
 - [x] P3.1b Sidebar shell 完成 / Desktop QA PASS（维护者本次报告）
 - [x] Sidebar Desktop QA 已完成（维护者报告）
 - [x] 获 P3.1c-1 Ribbon scoped instruction，源码完成，Build / Check / diff-check PASS
-- [ ] Ribbon Chat review / Desktop QA
-- [ ] Status bar / View header 等后续模块另行批准
+- [x] Ribbon Desktop QA PASS（维护者在 P3.1c-2 指令报告）
+- [x] 获 P3.1c-2 指令，实现 Status Bar shell；Build / Check / diff-check PASS
+- [ ] Status Bar Chat review / Desktop QA
+- [ ] View header 等后续模块另行批准
 
 仅允许规划未来 src/workspace 范围；现有 scrollbar 保留不变。Full Auto Hide、Focus、Card Layout、Presets、Animations、Rainbow folders、Canvas/Graph、Companion Plugin 均在本阶段之外。首个 milestone 新增两项 workspace geometry aliases；无新 global palette / Style Settings。
 
 ## Next Step
 
-Ribbon implementation review / Desktop QA。提交后 push 并核对远端，不创建 PR，不继续后续模块。
+Status Bar implementation review / Desktop QA。提交后 push 并核对远端，不创建 PR，不继续后续模块。
