@@ -118,3 +118,9 @@ Workspace Fusion COMPLETE，完成范围为 Workspace Tokens、Tabs、Sidebar、
 最新 scoped instruction 授权 P3.2a。独立 workspace/view-header.css，root 限 main workspace leaf-content 直属 view-header；不匹配 Sidebar/Tabs、editor contents 或 plugin internals。不用全局 file-header variables：只在 header scope 设置官方 border/weight，减少对其他 header 的传播；现有 primary 背景匹配 native title fade，不修改其伪元素/path/breadcrumb。
 
 共享 gap/radius 复用，action radius cap 沿用既有 space-sm 控制极值；native action dimensions/visibility/events 不改，disabled shell 不覆盖。无新 tokens/settings/JS/DOM/定位机制。Build 排序自动收集新增模块，不改脚本，所有既有生成 sections 字节不变。Build / Check / diff-check PASS；Desktop QA pending，详见 CURRENT_STATUS。
+
+### P3.2b-1 — Layout token audit and native split boundary
+
+现有 workspace-control-gap（Foundation xs）和 border 足够，无新 layout semantics/token/settings。新增 layout/layout.css 只给 main root/native nested horizontal/vertical splits 统一 gap；nested selector 排除 leaf-content 内部，divider-color 保持既有 neutral contract。无全局 workspace-leaf 几何规则，不设 pane ratio/direction/margin/radius/dimensions 或 divider hit-area 宽度。
+
+这是 native split spacing foundation，不是 Layout Engine/Card system。原生 flex、resize 与持久化继续由 Obsidian 控制。Build / Check / diff-check PASS，全部原 source/generated sections 字节不变。Desktop QA pending，需验证 gap 对 native sizing/resize offsets、nested/stacked/窄窗与 editor regression 的影响。P3.2a PASS 依据维护者本轮报告。

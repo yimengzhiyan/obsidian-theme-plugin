@@ -112,10 +112,19 @@ Native Tab/close 独立 sequential focus N/A；Tabs drag/reorder、screen-reader
 - [x] 收到独立 scoped instruction，新增 workspace/view-header.css
 - [x] 完成公共 main leaf header background/divider/spacing/title/action shell
 - [x] Build / Check / diff-check PASS；旧 source/generated sections 与 P3.1 checkpoint 字节不变
-- [ ] Chat implementation review / Desktop QA（未运行）
+- [x] P3.2a Desktop QA PASS（维护者本轮报告）
 
 无新 token/settings；禁止 Breadcrumb/Path、Sticky/Floating/Auto Hide、view/plugin-specific styling、JS/DOM 修改。QA 与 scope 详见 CURRENT_STATUS。
 
+## P3.2b-1 — Layout Foundation
+
+- [x] Token audit：现有 workspace gap / border 足够，无新 token/settings
+- [x] 新增 src/layout/layout.css；main native split spacing / separation contract
+- [x] Build / Check / diff-check PASS；所有既有 source/generated sections 不变
+- [ ] Chat implementation review / Desktop QA
+
+仅 foundation，不实现 Card Layout、Floating Panel、Auto Layout、Responsive breakpoints、Focus Mode、JS/DOM 修改；无全局 workspace-leaf 几何规则。
+
 ## Next Step
 
-P3.2a Chat review / Desktop QA，核对 actual header DOM、变量消费、rename/long title/actions/native header visibility、split/stacked/narrow 与 Sidebar/Tabs/editor regression。提交后 push，不创建 PR，不实现其他功能。
+Layout review / Desktop QA，实际 horizontal/vertical/nested split resize/比例保存、stacked/极窄窗口与 editor regression。提交后 push，不创建 PR、不继续其他功能。

@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-Phase 3 — P3.2a View Header Shell：源码完成，Build / Check / diff-check PASS；Desktop QA / Chat implementation review pending。Phase 2 / P3.1 COMPLETE，P3.1 Desktop QA ALL PASS。
+Phase 3 — P3.2b-1 Layout Foundation：源码完成，Build / Check / diff-check PASS；Layout Desktop QA / Chat review pending。Phase 2 / P3.1 COMPLETE；P3.2a Desktop QA PASS（维护者报告）。
 
 ## Foundation
 
@@ -14,7 +14,7 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Commit
 
-P3.2a View Header implementation；从 P3.1 final checkpoint `91f13f7588f655638ea5b00fffbb8a9e1d61f79c` 开始。分支沿用 codex/p3-1-workspace-fusion，不假设已合并 main；精确提交用 git rev-parse HEAD。
+P3.2b-1 Layout implementation；baseline `0a60fa0985c5c7dc3fb6e1951535b5d19fe171ae`。沿用 codex/p3-1-workspace-fusion；精确提交用 git rev-parse HEAD，不假设已合并 main。
 
 ## Completed
 
@@ -96,12 +96,12 @@ P3.2a View Header implementation；从 P3.1 final checkpoint `91f13f7588f655638e
 
 ## In Progress
 
-- P3.2a 新增 view-header.css 完成；implementation review / Desktop QA pending，未开始任何其他模块。
+- P3.2b-1 新增 layout/layout.css 完成；Chat review / Desktop QA pending。P3.2a Desktop QA PASS 依据本轮维护者指令，未补造环境/hash/逐项记录。
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-Chat review / Desktop QA P3.2a：main leaf 公共 header 的背景/divider/spacing/title/action；native header visibility、rename、long title、back/forward/actions/disabled states、split/stacked/narrow window，以及 Tabs/Sidebar/editor regression。提交并 push；不创建 PR或继续后续功能。
+Layout Chat review / Desktop QA：横/纵/混合 nested split、实际 resize/比例持久、stacked tabs 和窄窗/editor 内容回归。只提交/push 当前 foundation，不创建 PR，不实现 Card/Floating/Auto Layout 或其他功能。
 
 ## Known Issues / Blockers
 
@@ -203,3 +203,17 @@ Validation：Build / Check / diff-check PASS；source 只新增 view-header.css�
 Desktop QA NOT RUN：记录 branch/commit/root==installed hash 与实际版本/设置；Light/Dark、red/blue/green Accent、Radius 0/20；native header on/off、short/long Chinese/English title、rename/tooltip/title scrolling、back/forward/menu/actions clicks/hover/active/disabled；split/stacked/narrow 窗口、Sidebar/Tabs不受影响、Source/LP/Reading typography/caret 与 components smoke。N/A 依据实际 native controls，不强制 focus/DOM。不声称全平台或全插件兼容。
 
 Remaining risks：public variables/DOM class 的实际消费与 native specificity、1px divider/header padding 对窄窗空间、标题字重与原生 editing 继承、action shell 与特殊控件。没有新 Desktop PASS；提交后按持续授权推送，不创建 PR。
+
+## P3.2b-1 Layout Geometry Foundation
+
+Token audit：现有 workspace-control-gap → theme-space-xs 与 theme-border 足够表达均匀 pane 间距和 neutral divider。无语义缺口，无新 layout token/settings；不使用 radius，避免将 spacing foundation 变成 Card shell。
+
+新增 src/layout/layout.css，Build 自动按既有 layout group 收集。主 root split：gap 使用 workspace-control-gap，divider-color 保持 Foundation border。主 root 下 native horizontal/vertical split：同一 gap；`:not(.workspace-leaf-content *)` 排除 editor/plugin 内容内的同名 split。无全局 workspace-leaf rule，无 tabs/sidebar/ribbon/statusbar/header/navigation/editor/components 修改。
+
+不设置 pane margin/padding、尺寸、flex-direction/比例、display、position、overflow、圆角、divider width/hover hit area 或 breakpoint；不是 Layout Engine。原生 resize/stacked scroll/持久化行为由 Obsidian 控制。divider hover 继续继承 Foundation 映射。官方参考 [Divider variables](https://github.com/obsidianmd/obsidian-developer-docs/blob/main/en/Reference/CSS%20variables/Window/Divider.md)。
+
+Validation：Build / Check / diff-check PASS。基线比较确认全部既有源文件和 generated sections 字节不变，仅新 layout section；无 hardcoded colors、新 token 或脚本变化。P3.2a Desktop PASS 为维护者报告，不从自动检查推断。
+
+Layout Desktop QA NOT RUN：记录版本/branch/commit 与 root==installed hash；Light/Dark、单 pane 与左右/上下/混合 nested splits、增删 pane、拖动所有 divider 到极值、resize hover/hit area、保存/重开 pane 比例；stacked tabs 内部滚动和拖拽/切换；真实窄窗与 split+sidebar expanded/collapsed、header/Status Bar 不遮挡；Source/LP/Reading 的 width/line-height、caret/blank lines、heading/Callout/Navigation regression。不强制 pixel equality，N/A 记录实际原因，恢复设置/window。
+
+Remaining risks：gap 会参与 native flex available-space 计算；native percentage/flex sizing、min-size 与 divider offsets 在混合/极窄 splits 可能出现 overflow 或拖动偏差。匹配 native split DOM 及 complex :not scope 须 Desktop 验证。未声称 pane sizing/编辑体验已 PASS。无 Card/Floating/Auto Layout/Responsive/Focus/JS/DOM 修改；提交后 push，不创建 PR。
