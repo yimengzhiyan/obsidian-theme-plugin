@@ -143,16 +143,16 @@ Native Tab/close 独立 sequential focus N/A；Tabs drag/reorder、screen-reader
 
 Focus System：CSS only；based on native `.workspace-leaf.mod-active`；no runtime behavior。header hidden 无额外cue；community custom views/pop-out/全平台与 WCAG/screen-reader 审计未作认证，既有 N/A 保留。PASS 依据维护者指令，不补造逐项结果。
 
-## P3.3a — Reading Width Foundation
+## P3.3a — Reading Width Evidence / Architecture Review COMPLETE
 
-- [x] 完整读取 Reading DOM evidence 54c7b30（b693656 merge保留）
-- [x] 新增 reading/reading-width.css，Reading/LP完整直属sizer chain，max-width/居中
-- [x] 最小Build注册reading末尾group；所有旧模块/生成sections/顺序不变
-- [x] Build / Check / diff-check PASS；复用existing宽度，无新token/settings
-- [ ] Chat implementation review / Desktop QA
+- [x] 完整Reading DOM evidence保留，已证明native 500/700/centering/responsive/on-off正常
+- [x] Independent implementation review NEEDS FIX：52d06ea增加冗余selector，无public-variable gap
+- [x] 新corrective commit删除reading-width.css，撤回Build group并Build移除生成section
+- [x] Decision012 supersedes011；P3.3a review COMPLETE，无需新增CSS implementation
+- [x] Build / Check / diff-check PASS；旧module/source/generated sections与evidence不变
 
-Source/new rules分离，保留原生Readable line length switch；不改Typography/font/line-height/spacing/renderer/Code/Card/插件view或DOM。
+既有theme-reading-width→file-line-width足够；Reading / Live Preview / Source均保留native public-variable行为。不加high-specificity width selectors、token、setting或其他Reading CSS。embed/community contexts保持未认证边界；不声称新Desktop QA PASS。
 
 ## Next Step
 
-P3.3a Chat review / Desktop QA，Content Width 500/700、原生on/off、窄pane、Sourcecaret及embed/Graph/Canvas/workspace exclusions。commit后push，无PR，不继续其他功能。
+后续独立architecture/scope review。未来只有真实public-variable gap证据才重新review selector。当前不开始Reading Spacing；corrective commit普通push，不rewrite/force-push，不创建PR。

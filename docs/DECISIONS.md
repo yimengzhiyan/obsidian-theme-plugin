@@ -81,11 +81,21 @@ P3.2c-1 基于已同步的 Focus DOM evidence：pane signal 是 `.workspace-leaf
 
 复用现有 Accent/border，无 focus token/setting/runtime。窗口失焦仍保留 active pane；native header 隐藏时不强制 cue。Markdown/Core Graph shell 有真实证据，任意 community view/pop-out 兼容待 QA。Build/Check/diff-check PASS；Focus Desktop QA pending。
 
-## Decision 011 — Reading width contract and build extension
+## Decision 011 — Reading width contract and build extension (SUPERSEDED by Decision 012)
+
+**Historical / no longer effective.** Its scoped selectors and reading Build group are withdrawn by Decision 012; retain this entry only for traceability.
 
 P3.3a 使用实际 DOM evidence 的两个主 Markdown 直属 sizer chain。复用现有 `--theme-reading-width → --file-line-width` 与 Content Width；仅 max-width / margin-inline:auto，Reading/LP都要求原生 readable-line-width开关，LP额外 is-live-preview 排除 Source。不给 cm-content 叠加宽度，不改现有 renderer/typography/spacing；不新增token。
 
 原生宽度已实测正常，因此这是一份明确局部合同，而非强制改变默认宽度或声称修复。源码放 src/reading；Build在所有既有groups末尾注册reading，保留旧groups相对顺序与输出内容，metadata仍优先。只有构建期现有脚本最小变更，无JavaScript runtime/dependency/DOM行为。旧AGENTS的base→…→apps顺序继续保留为完整前缀，reading为新增末尾扩展。Desktop QA pending。
+
+## Decision 012 — Preserve native Reading Width contract (supersedes Decision 011)
+
+P3.3a Reading Width evidence / architecture review COMPLETE；无需新增 CSS implementation。DOM evidence 证明 Foundation 既有 `--theme-reading-width → --file-line-width` 已完整表达 Content Width，Obsidian native Reading / Live Preview / Source 都消费它；原生 readable-line-width 开关、居中与窄 pane响应正常，不存在 selector gap。
+
+撤回 Decision 011 的两条冗余 high-specificity selectors及src/reading Build group，删除对应source并Build清除生成section，恢复原metadata/base→workspace→editor→navigation→components→layout→effects→apps组合同。52d06ea 保留在历史，用新 corrective commit，不rewrite/force-push。
+
+不新增token/settings/其他Reading CSS，不改Typography/Content Width。保留 DOM evidence；embed/community contexts未认证。未来只有真实public-variable gap证据才能重新review scoped exception；Reading Spacing不属本任务。Decision 011不再是有效实施方向。
 
 ## Log
 

@@ -20,8 +20,7 @@ const sourceGroups = [
   { directory: "src/components" },
   { directory: "src/layout" },
   { directory: "src/effects" },
-  { directory: "src/apps" },
-  { directory: "src/reading" }
+  { directory: "src/apps" }
 ];
 
 const banner = `/*

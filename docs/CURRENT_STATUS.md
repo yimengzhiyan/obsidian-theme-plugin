@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-P3.3a Reading Width Foundation：源码完成，Build / Check / diff-check PASS；Desktop QA / Chat review pending。Phase 2 / P3.1 / Phase 3.2 COMPLETE。
+P3.3a Reading Width evidence / architecture review COMPLETE；无需新增 CSS implementation。Native public-variable contract 保留；Phase 2 / P3.1 / Phase 3.2 COMPLETE。
 
 ## Foundation
 
@@ -14,7 +14,7 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Commit
 
-P3.3a Reading Width implementation；baseline `b693656728b3e459a3d8ded210bb3a8916a3aa1e`，Reading evidence commit `54c7b307f5a962a4753d0fdf8c5a4049729d5b47`。精确提交用 git rev-parse HEAD，不假设已合并 main。
+P3.3a architecture correction：新 corrective commit 撤回 52d06ea 的冗余 selectors/build group，不改写历史。Reading evidence 54c7b30 保留；精确提交用 git rev-parse HEAD。
 
 ## Completed
 
@@ -96,12 +96,12 @@ P3.3a Reading Width implementation；baseline `b693656728b3e459a3d8ded210bb3a891
 
 ## In Progress
 
-- P3.3a Reading Width 源码完成；Chat review / Desktop QA pending。其他阶段合同保持不变。
+- 无进行中的 P3.3a CSS 实现；evidence / architecture review COMPLETE，结论是无需新增 CSS。
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-P3.3a Chat review / Desktop QA：Reading 与 Live Preview 的 Content Width 500/700、Readable line length on/off、窄 pane responsive、Source/Graph/Canvas/embed边界及旧内容/工作区回归。提交/push，不创建 PR、不实现其他 reading 功能。
+下一阶段须独立 scope/review；不开始 Reading Spacing。只有未来出现真实 public-variable gap，才基于新证据重新 review scoped selector。embed/community contexts 保持未认证边界。
 
 ## Known Issues / Blockers
 
@@ -248,18 +248,12 @@ Remaining limitations：native header 隐藏时无额外 focus cue；DOM evidenc
 
 既有 Build/Check/diff-check PASS；本 checkpoint Check/diff-check PASS，src/theme.css/settings/scripts/manifest 内容不变，无新 token。只更新允许的四份文档；checkpoint commit 后按持续授权 push，不创建 PR或合并。下一阶段 pending architecture review，不开始 deferred features。
 
-## P3.3a Reading Width Foundation
+## P3.3a Reading Width — Evidence / Architecture Review COMPLETE
 
-Evidence：完整读取 [Reading DOM Evidence](P3_3A_READING_DOM_EVIDENCE.md)，远端 54c7b30 经 b693656 merge 保留。Reading 是 preview-mode Markdown 主 leaf 的 view-content→reading-view→readable preview-view→直属 preview-sizer；Live Preview 是 source-mode Markdown 主 leaf 的 view-content→source-view（is-live-preview AND is-readable-line-width）→cm-editor→cm-scroller→cm-sizer。
+Independent implementation review: **NEEDS FIX** for redundant scoped width selectors in `52d06ea07072498083b28a415b0023b38bd35af0`. Evidence already proves there is no public-variable gap. The corrective commit deletes reading-width.css, restores the original Build group contract and rebuilds theme.css without the Reading section. No force push or history rewrite; Decision 012 supersedes Decision 011.
 
-新增 src/reading/reading-width.css，恰好两条 max-width:var(--file-line-width) / margin-inline:auto。复用既有 theme-reading-width→file-line-width / Content Width，不新增 reading token/settings；不固定 width、不重设 padding、不触及 cm-content。原生 evidence 已证明 500/700 限宽、居中与窄 pane 自适应正常：本轮将它们明确为局部合同，不声称修复已有 Reading bug或新增可见视觉变化。
+Final contract: existing **`--theme-reading-width → --file-line-width` is sufficient**. Reading preview-sizer, Live Preview cm-sizer and Source continue consuming Obsidian native public-variable behavior. Content Width 500/700, centering, narrow-pane responsiveness and Readable line length disabled/enabled behavior remain native. No high-specificity width selectors, new token/setting or other Reading CSS; Typography/Content Width/Phase 2/3 source remains unchanged.
 
-两种视图都要求 is-readable-line-width，关闭原生开关时新规则不匹配。Source 缺少 is-live-preview，不应用新规则；其既有原生限宽仍由 Foundation 全局变量正常驱动。data-type=markdown 与完整直属 chain 排除 Graph/Canvas、workspace shell、常规嵌入内容；embed/community renderer 实测仍 N/A，不作全插件兼容证明。
+[Reading DOM evidence](P3_3A_READING_DOM_EVIDENCE.md) is preserved byte-for-byte. Embed/community contexts remain unverified/N/A, not certified. No new Desktop QA is claimed; this is an evidence-driven architecture conclusion. If a real public-variable gap appears later, gather evidence and review the smallest scoped exception first. Do not start Reading Spacing under this correction.
 
-Build 接入：scripts/build.mjs 仅末尾追加 src/reading group，保留 metadata-first 和所有旧组相对顺序。theme.css 由 Build 生成，新增 reading section 在末尾；全部旧 source/generated sections字节不变。没有修改 Phase 2 Typography、任何内容 spacing/font/Code/Callout 或 Phase 3 shell/effects/layout。
-
-Validation：Build / Check / diff-check PASS；检查两条合法 declaration、模式/开关与直属链、无新增token/hardcoded color。Generic Check 覆盖生成同步与既有合同，不代替 Desktop selector/cascade验证。除必要的 Build group注册外无 JS/runtime/DOM/dependency变化。
-
-Desktop QA NOT RUN：正确版本/branch/commit/root==installed hash；Light/Dark，Reading/LP 500/700 对比 visible sizer与变量/max-width/ML/MR；Readable line length关/开，确保 native unlimited选择保留；窄pane（原证据300px）不横向固定溢出；长文滚动、Source真实空行caret/↑↓/Enter/Backspace，标题/段落/list/Callout/Table/Code视觉与原生长行行为无回归；split/stacked active切换不改width；Graph/Canvas、可用embed/hover/community view不被匹配（未暴露即N/A）。恢复设置/笔记/window。
-
-Remaining risks：新的高specificity局部规则可能与其他snippets/插件width规则竞争；embed/community views未实测，不能据直属链直接宣称全部PASS；原生container/cascade跨版本变化仍需验证。明确contract保持已有native宽度，可能无视觉差异，这是预期。提交后push，无PR。
+Validation: Build / Check / diff-check PASS. reading-width.css absent; build.mjs and theme.css byte-identical to pre-implementation baseline b693656; file-line-width mapping remains; all existing source/generated sections and evidence unchanged. Corrective commit is pushed normally on the current branch, no PR.
