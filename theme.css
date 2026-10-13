@@ -680,3 +680,31 @@ body {
 .workspace-split.mod-root .workspace-leaf:not(.mod-active) > .workspace-leaf-content > .view-header {
   --file-header-border: 1px solid var(--theme-border);
 }
+
+/* Source: src/reading/reading-width.css */
+/* Main Markdown Reading only; keep the native readable-line-width switch.
+ * Full direct-child chains exclude embedded renderers and other view types.
+ */
+.workspace-split.mod-root .workspace-leaf
+  > .workspace-leaf-content[data-type="markdown"][data-mode="preview"]
+  > .view-content
+  > .markdown-reading-view
+  > .markdown-preview-view.is-readable-line-width
+  > .markdown-preview-sizer {
+  max-width: var(--file-line-width);
+  margin-inline: auto;
+}
+
+/* Source shares CodeMirror containers but lacks is-live-preview.
+ * Only the sizer is constrained; leave cm-content and native padding alone.
+ */
+.workspace-split.mod-root .workspace-leaf
+  > .workspace-leaf-content[data-type="markdown"][data-mode="source"]
+  > .view-content
+  > .markdown-source-view.is-live-preview.is-readable-line-width
+  > .cm-editor
+  > .cm-scroller
+  > .cm-sizer {
+  max-width: var(--file-line-width);
+  margin-inline: auto;
+}

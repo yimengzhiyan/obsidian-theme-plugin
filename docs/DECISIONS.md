@@ -81,6 +81,12 @@ P3.2c-1 基于已同步的 Focus DOM evidence：pane signal 是 `.workspace-leaf
 
 复用现有 Accent/border，无 focus token/setting/runtime。窗口失焦仍保留 active pane；native header 隐藏时不强制 cue。Markdown/Core Graph shell 有真实证据，任意 community view/pop-out 兼容待 QA。Build/Check/diff-check PASS；Focus Desktop QA pending。
 
+## Decision 011 — Reading width contract and build extension
+
+P3.3a 使用实际 DOM evidence 的两个主 Markdown 直属 sizer chain。复用现有 `--theme-reading-width → --file-line-width` 与 Content Width；仅 max-width / margin-inline:auto，Reading/LP都要求原生 readable-line-width开关，LP额外 is-live-preview 排除 Source。不给 cm-content 叠加宽度，不改现有 renderer/typography/spacing；不新增token。
+
+原生宽度已实测正常，因此这是一份明确局部合同，而非强制改变默认宽度或声称修复。源码放 src/reading；Build在所有既有groups末尾注册reading，保留旧groups相对顺序与输出内容，metadata仍优先。只有构建期现有脚本最小变更，无JavaScript runtime/dependency/DOM行为。旧AGENTS的base→…→apps顺序继续保留为完整前缀，reading为新增末尾扩展。Desktop QA pending。
+
 ## Log
 
 ### P3.1a — Tabs implementation refinement

@@ -143,6 +143,16 @@ Native Tab/close 独立 sequential focus N/A；Tabs drag/reorder、screen-reader
 
 Focus System：CSS only；based on native `.workspace-leaf.mod-active`；no runtime behavior。header hidden 无额外cue；community custom views/pop-out/全平台与 WCAG/screen-reader 审计未作认证，既有 N/A 保留。PASS 依据维护者指令，不补造逐项结果。
 
+## P3.3a — Reading Width Foundation
+
+- [x] 完整读取 Reading DOM evidence 54c7b30（b693656 merge保留）
+- [x] 新增 reading/reading-width.css，Reading/LP完整直属sizer chain，max-width/居中
+- [x] 最小Build注册reading末尾group；所有旧模块/生成sections/顺序不变
+- [x] Build / Check / diff-check PASS；复用existing宽度，无新token/settings
+- [ ] Chat implementation review / Desktop QA
+
+Source/new rules分离，保留原生Readable line length switch；不改Typography/font/line-height/spacing/renderer/Code/Card/插件view或DOM。
+
 ## Next Step
 
-下一阶段 pending architecture review；明确 native evidence、scope、token/selector 路线与 QA gate 后另行授权。checkpoint commit/push，不创建 PR/merge，不实施 deferred features。
+P3.3a Chat review / Desktop QA，Content Width 500/700、原生on/off、窄pane、Sourcecaret及embed/Graph/Canvas/workspace exclusions。commit后push，无PR，不继续其他功能。

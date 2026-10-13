@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-Phase 3.2 COMPLETE：View Header Shell / Layout Foundation / Focus Foundation complete，Desktop QA ALL PASS。Phase 2 / P3.1 COMPLETE；下一阶段 pending architecture review。
+P3.3a Reading Width Foundation：源码完成，Build / Check / diff-check PASS；Desktop QA / Chat review pending。Phase 2 / P3.1 / Phase 3.2 COMPLETE。
 
 ## Foundation
 
@@ -14,7 +14,7 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Commit
 
-Phase 3.2 final documentation checkpoint；最终实现 `7827734ba95c837bf45b9516616142d408149da9`。使用 git rev-parse HEAD 获取 checkpoint 精确提交；complete 不代表已合并 main。
+P3.3a Reading Width implementation；baseline `b693656728b3e459a3d8ded210bb3a8916a3aa1e`，Reading evidence commit `54c7b307f5a962a4753d0fdf8c5a4049729d5b47`。精确提交用 git rev-parse HEAD，不假设已合并 main。
 
 ## Completed
 
@@ -96,12 +96,12 @@ Phase 3.2 final documentation checkpoint；最终实现 `7827734ba95c837bf45b951
 
 ## In Progress
 
-- 无进行中的 Phase 3.2 实现或 Desktop QA；下一阶段 pending architecture review，尚未实施新功能。
+- P3.3a Reading Width 源码完成；Chat review / Desktop QA pending。其他阶段合同保持不变。
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-下一阶段 architecture review：明确 bounded scope、native state/DOM evidence、token/selector 路线与 QA gate 后另行批准实现。本轮仅文档 checkpoint commit/push，不创建 PR或合并。
+P3.3a Chat review / Desktop QA：Reading 与 Live Preview 的 Content Width 500/700、Readable line length on/off、窄 pane responsive、Source/Graph/Canvas/embed边界及旧内容/工作区回归。提交/push，不创建 PR、不实现其他 reading 功能。
 
 ## Known Issues / Blockers
 
@@ -247,3 +247,19 @@ Focus System：**CSS only，based on native `.workspace-leaf.mod-active`，no ru
 Remaining limitations：native header 隐藏时无额外 focus cue；DOM evidence覆盖测试版本的 Markdown/Core Graph，不等于所有 community custom views、pop-outs、平台兼容。ALL PASS 不代表 WCAG/screen-reader 审计。既有 Tab/close 独立 focus N/A、Tabs drag/reorder 未执行、P2.6 drag/drop/Foundation Checkbox N/A 继续保留。不重新扩展实现或以这些限制暗示新的 blocker。
 
 既有 Build/Check/diff-check PASS；本 checkpoint Check/diff-check PASS，src/theme.css/settings/scripts/manifest 内容不变，无新 token。只更新允许的四份文档；checkpoint commit 后按持续授权 push，不创建 PR或合并。下一阶段 pending architecture review，不开始 deferred features。
+
+## P3.3a Reading Width Foundation
+
+Evidence：完整读取 [Reading DOM Evidence](P3_3A_READING_DOM_EVIDENCE.md)，远端 54c7b30 经 b693656 merge 保留。Reading 是 preview-mode Markdown 主 leaf 的 view-content→reading-view→readable preview-view→直属 preview-sizer；Live Preview 是 source-mode Markdown 主 leaf 的 view-content→source-view（is-live-preview AND is-readable-line-width）→cm-editor→cm-scroller→cm-sizer。
+
+新增 src/reading/reading-width.css，恰好两条 max-width:var(--file-line-width) / margin-inline:auto。复用既有 theme-reading-width→file-line-width / Content Width，不新增 reading token/settings；不固定 width、不重设 padding、不触及 cm-content。原生 evidence 已证明 500/700 限宽、居中与窄 pane 自适应正常：本轮将它们明确为局部合同，不声称修复已有 Reading bug或新增可见视觉变化。
+
+两种视图都要求 is-readable-line-width，关闭原生开关时新规则不匹配。Source 缺少 is-live-preview，不应用新规则；其既有原生限宽仍由 Foundation 全局变量正常驱动。data-type=markdown 与完整直属 chain 排除 Graph/Canvas、workspace shell、常规嵌入内容；embed/community renderer 实测仍 N/A，不作全插件兼容证明。
+
+Build 接入：scripts/build.mjs 仅末尾追加 src/reading group，保留 metadata-first 和所有旧组相对顺序。theme.css 由 Build 生成，新增 reading section 在末尾；全部旧 source/generated sections字节不变。没有修改 Phase 2 Typography、任何内容 spacing/font/Code/Callout 或 Phase 3 shell/effects/layout。
+
+Validation：Build / Check / diff-check PASS；检查两条合法 declaration、模式/开关与直属链、无新增token/hardcoded color。Generic Check 覆盖生成同步与既有合同，不代替 Desktop selector/cascade验证。除必要的 Build group注册外无 JS/runtime/DOM/dependency变化。
+
+Desktop QA NOT RUN：正确版本/branch/commit/root==installed hash；Light/Dark，Reading/LP 500/700 对比 visible sizer与变量/max-width/ML/MR；Readable line length关/开，确保 native unlimited选择保留；窄pane（原证据300px）不横向固定溢出；长文滚动、Source真实空行caret/↑↓/Enter/Backspace，标题/段落/list/Callout/Table/Code视觉与原生长行行为无回归；split/stacked active切换不改width；Graph/Canvas、可用embed/hover/community view不被匹配（未暴露即N/A）。恢复设置/笔记/window。
+
+Remaining risks：新的高specificity局部规则可能与其他snippets/插件width规则竞争；embed/community views未实测，不能据直属链直接宣称全部PASS；原生container/cascade跨版本变化仍需验证。明确contract保持已有native宽度，可能无视觉差异，这是预期。提交后push，无PR。
