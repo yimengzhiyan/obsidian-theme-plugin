@@ -112,3 +112,9 @@ Build / Check / diff-check PASS，非 Ribbon source/generated sections baseline 
 Workspace Fusion COMPLETE，完成范围为 Workspace Tokens、Tabs、Sidebar、Ribbon、Status Bar。Tabs/Sidebar/Ribbon/Status Bar Desktop QA ALL PASS，最终结论依据维护者 checkpoint 指令；Tabs 的独立键盘 focus N/A、未执行 drag/reorder/screen-reader audit 与既有 Phase 2 N/A 继续保留，不扩大验证范围。
 
 记录代码链：Tabs fix 62789ef → Sidebar c69bdcf → Ribbon 22e47ef → Status Bar 3953aab。仅文档 closeout，无新增源码/token/settings/架构方向。View header 不包含在本次完成范围；下一阶段 pending architecture review，其他 deferred features 未实现。历史 implementation/QA pending 条目是过程记录，以 CURRENT_STATUS final checkpoint 为当前状态；尚未宣称 P3.1 已合并 main。
+
+### P3.2a — Public View Header scope
+
+最新 scoped instruction 授权 P3.2a。独立 workspace/view-header.css，root 限 main workspace leaf-content 直属 view-header；不匹配 Sidebar/Tabs、editor contents 或 plugin internals。不用全局 file-header variables：只在 header scope 设置官方 border/weight，减少对其他 header 的传播；现有 primary 背景匹配 native title fade，不修改其伪元素/path/breadcrumb。
+
+共享 gap/radius 复用，action radius cap 沿用既有 space-sm 控制极值；native action dimensions/visibility/events 不改，disabled shell 不覆盖。无新 tokens/settings/JS/DOM/定位机制。Build 排序自动收集新增模块，不改脚本，所有既有生成 sections 字节不变。Build / Check / diff-check PASS；Desktop QA pending，详见 CURRENT_STATUS。

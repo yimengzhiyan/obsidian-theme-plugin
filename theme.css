@@ -483,6 +483,43 @@ body {
   --scrollbar-active-thumb-bg: var(--theme-border-active);
 }
 
+/* Source: src/workspace/view-header.css */
+/* Public leaf headers in the main workspace only; never Sidebar headers,
+ * tab rows, view content or plugin-specific internals.
+ */
+.workspace-split.mod-root .workspace-leaf-content > .view-header {
+  --file-header-border: 1px solid var(--theme-border);
+  --file-header-font-weight: var(--font-medium);
+  background-color: var(--theme-bg-primary);
+  column-gap: var(--theme-workspace-control-gap);
+  padding-inline: var(--theme-workspace-control-gap);
+}
+
+/* Keep native title scrolling, gradients, rename and font-size behavior. */
+.workspace-split.mod-root .workspace-leaf-content > .view-header > .view-header-title-container > .view-header-title {
+  color: var(--theme-text-normal);
+}
+
+.workspace-split.mod-root .workspace-leaf-content > .view-header > .view-actions {
+  column-gap: var(--theme-workspace-control-gap);
+}
+
+/* Existing public action controls retain native dimensions, icons and events. */
+.workspace-split.mod-root .workspace-leaf-content > .view-header > .view-actions > .view-action {
+  --icon-color: var(--theme-text-muted);
+  --icon-color-hover: var(--theme-text-normal);
+  --icon-color-active: var(--theme-accent);
+  border-radius: min(var(--theme-workspace-control-radius), var(--theme-space-sm));
+}
+
+.workspace-split.mod-root .workspace-leaf-content > .view-header > .view-actions > .view-action:not(.is-disabled):not([aria-disabled="true"]):hover {
+  background-color: var(--theme-hover-bg);
+}
+
+.workspace-split.mod-root .workspace-leaf-content > .view-header > .view-actions > .view-action:not(.is-disabled):not([aria-disabled="true"]).is-active {
+  background-color: var(--theme-active-bg);
+}
+
 /* Source: src/workspace/workspace-tokens.css */
 /* Workspace geometry aliases share the Foundation Radius / spacing contract.
  * Keep these on body so consumer variables resolve against the same scope,

@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-Phase 3 — P3.1 Workspace Fusion COMPLETE：Workspace Tokens / Tabs / Sidebar / Ribbon / Status Bar 完成；四个可视模块 Desktop QA ALL PASS。Final documentation checkpoint；下一阶段 pending architecture review。Phase 2 COMPLETE / MERGED。
+Phase 3 — P3.2a View Header Shell：源码完成，Build / Check / diff-check PASS；Desktop QA / Chat implementation review pending。Phase 2 / P3.1 COMPLETE，P3.1 Desktop QA ALL PASS。
 
 ## Foundation
 
@@ -14,7 +14,7 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Commit
 
-P3.1 final documentation checkpoint；最终实现 HEAD `3953aabe934f5cc35a13ff6ae4273231c546c031`。本文件不嵌入自身 commit hash；使用 `git rev-parse HEAD` 获取当前提交。P3.1 complete 不代表已合并 main。
+P3.2a View Header implementation；从 P3.1 final checkpoint `91f13f7588f655638ea5b00fffbb8a9e1d61f79c` 开始。分支沿用 codex/p3-1-workspace-fusion，不假设已合并 main；精确提交用 git rev-parse HEAD。
 
 ## Completed
 
@@ -96,12 +96,12 @@ P3.1 final documentation checkpoint；最终实现 HEAD `3953aabe934f5cc35a13ff6
 
 ## In Progress
 
-- 无进行中的 P3.1 实现 / Desktop QA；维护者报告全部模块 PASS。下一阶段仅等待 architecture review，未开始功能实现。
+- P3.2a 新增 view-header.css 完成；implementation review / Desktop QA pending，未开始任何其他模块。
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-下一阶段 architecture review：确认下一 bounded module 的范围、来源证据、变量/selector/设置路线与 QA gate。View header 与 deferred features 尚未实现；未获得明确指令前不继续源码、不创建 PR或合并。
+Chat review / Desktop QA P3.2a：main leaf 公共 header 的背景/divider/spacing/title/action；native header visibility、rename、long title、back/forward/actions/disabled states、split/stacked/narrow window，以及 Tabs/Sidebar/editor regression。提交并 push；不创建 PR或继续后续功能。
 
 ## Known Issues / Blockers
 
@@ -189,3 +189,17 @@ P3.1 Workspace Fusion **COMPLETE**，限 Workspace Tokens、Tabs、Sidebar、Rib
 Remaining limitations：Tabs/close `tabIndex=-1`，独立 sequential keyboard focus N/A，不添加 DOM/focus hacks，不声称 close focus-visible 独立验证；Tabs drag/reorder 与 screen-reader audit 未执行。P2.6 drag/drop N/A、Foundation Checkbox N/A 和既有 accepted native differences 保留，非本轮新增 blocker。ALL PASS 不扩展为全插件/全平台认证，也不从自动检查推断 Desktop PASS。
 
 此前 Build / Check / diff-check PASS。本次 documentation checkpoint `npm run check` / `git diff --check` PASS；Check 按 AGENTS 要求运行，内部 Build 保持生成内容不变。仅四份允许文档更新；src / theme.css / settings / scripts / manifest 未变，无新增 token。下一阶段 pending architecture review；View header 未实现，Auto Hide / Focus / Card Layout / Presets / advanced features 继续 deferred。没有未提交源码或临时 QA 工作；commit 后按持续授权 push，未创建 PR/merge。
+
+## P3.2a View Header Shell — Implementation
+
+最新 scoped instruction 授权独立 View Header Shell，不重开 P3.1。新增 src/workspace/view-header.css；Build 生成 theme.css。所有 selectors 以 `.workspace-split.mod-root .workspace-leaf-content > .view-header` 为根；直属 title/actions 子节点限定避免污染 Sidebar、Tabs 或 view contents，不按 data-type/plugin 名称分支。
+
+公共变量：header scope 的 file-header-border → 1px solid theme-border、file-header-font-weight → native medium。header primary 背景与 gap-derived column-gap / horizontal padding；直属 title normal text；actions gap；直属 public view-action 的 muted/hover/active icon variables、受 existing space-sm cap 的 workspace radius、hover/active backgrounds，disabled/aria-disabled 不附加 shell 背景。
+
+无新 token/setting/runtime/DOM 修改；没有 path/breadcrumb/pseudo-element、position/sticky/floating/hide、font-size/family 或 view-specific styling。官方变量依据 [File reference](https://github.com/obsidianmd/obsidian-developer-docs/blob/main/en/Reference/CSS%20variables/Editor/File.md)，DOM 子节点匹配须 Desktop 验证。
+
+Validation：Build / Check / diff-check PASS；source 只新增 view-header.css，全部既有 generated sections 字节不变。原模块源码/Phase 2/P3.1 contracts 保留；Check 为基础健康与旧合同验证，不代替新的 selector/native UI Desktop QA。
+
+Desktop QA NOT RUN：记录 branch/commit/root==installed hash 与实际版本/设置；Light/Dark、red/blue/green Accent、Radius 0/20；native header on/off、short/long Chinese/English title、rename/tooltip/title scrolling、back/forward/menu/actions clicks/hover/active/disabled；split/stacked/narrow 窗口、Sidebar/Tabs不受影响、Source/LP/Reading typography/caret 与 components smoke。N/A 依据实际 native controls，不强制 focus/DOM。不声称全平台或全插件兼容。
+
+Remaining risks：public variables/DOM class 的实际消费与 native specificity、1px divider/header padding 对窄窗空间、标题字重与原生 editing 继承、action shell 与特殊控件。没有新 Desktop PASS；提交后按持续授权推送，不创建 PR。

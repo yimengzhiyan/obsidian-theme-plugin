@@ -99,7 +99,7 @@ First-line indent（默认 off）、letter spacing、word spacing、granular hea
 - [x] Status Bar Desktop QA PASS（维护者 final checkpoint 报告）
 - [x] Workspace Tokens / Tabs / Sidebar / Ribbon / Status Bar COMPLETE
 - [x] P3.1 Desktop QA all modules PASS / final documentation checkpoint
-- [ ] View header 等后续模块另行批准
+- [x] 后续明确 scoped instruction 已批准 P3.2a View Header（不属于 P3.1 完成范围）
 
 P3.1 已完成的实现范围限 src/workspace，五项能力不含 View header；现有 scrollbar 保留不变。Full Auto Hide、Focus、Card Layout、Presets、Animations、Rainbow folders、Canvas/Graph、Companion Plugin 均在本阶段之外。首个 milestone 新增两项 workspace geometry aliases；无新 global palette / Style Settings。
 
@@ -107,6 +107,15 @@ P3.1 已完成的实现范围限 src/workspace，五项能力不含 View header�
 
 Native Tab/close 独立 sequential focus N/A；Tabs drag/reorder、screen-reader audit 未执行，不将其改写为 PASS。P2.6 drag/drop 与 Foundation Checkbox N/A 保留。模块 ALL PASS 为维护者最终结论，不意味着完整平台/插件覆盖。
 
+## P3.2a — View Header Shell
+
+- [x] 收到独立 scoped instruction，新增 workspace/view-header.css
+- [x] 完成公共 main leaf header background/divider/spacing/title/action shell
+- [x] Build / Check / diff-check PASS；旧 source/generated sections 与 P3.1 checkpoint 字节不变
+- [ ] Chat implementation review / Desktop QA（未运行）
+
+无新 token/settings；禁止 Breadcrumb/Path、Sticky/Floating/Auto Hide、view/plugin-specific styling、JS/DOM 修改。QA 与 scope 详见 CURRENT_STATUS。
+
 ## Next Step
 
-下一阶段 pending architecture review。定义明确的 scope、来源证据、变量/selector/settings 方案与 QA gate 后再获实现指令。View header 与 deferred features 不自动开始；本轮仅 checkpoint commit / push，不创建 PR/merge。
+P3.2a Chat review / Desktop QA，核对 actual header DOM、变量消费、rename/long title/actions/native header visibility、split/stacked/narrow 与 Sidebar/Tabs/editor regression。提交后 push，不创建 PR，不实现其他功能。
