@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-Phase 3 — P3.1c-2 Status Bar Workspace Shell：源码完成，Build / Check / diff-check PASS；Status Bar Desktop QA pending。Tabs / Sidebar / Ribbon Desktop QA PASS；Phase 2 COMPLETE。
+Phase 3 — P3.1 Workspace Fusion COMPLETE：Workspace Tokens / Tabs / Sidebar / Ribbon / Status Bar 完成；四个可视模块 Desktop QA ALL PASS。Final documentation checkpoint；下一阶段 pending architecture review。Phase 2 COMPLETE / MERGED。
 
 ## Foundation
 
@@ -14,7 +14,7 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Commit
 
-P3.1c-2 Status Bar implementation；baseline `22e47efb06e6e3451807ad71a1d6990297e440fd`。使用 `git rev-parse HEAD` 获取当前精确提交。
+P3.1 final documentation checkpoint；最终实现 HEAD `3953aabe934f5cc35a13ff6ae4273231c546c031`。本文件不嵌入自身 commit hash；使用 `git rev-parse HEAD` 获取当前提交。P3.1 complete 不代表已合并 main。
 
 ## Completed
 
@@ -96,12 +96,12 @@ P3.1c-2 Status Bar implementation；baseline `22e47efb06e6e3451807ad71a1d6990297
 
 ## In Progress
 
-- Status Bar shell 源码完成，Desktop QA pending；Tabs/Sidebar/Ribbon QA 结论保留，Ribbon PASS 按维护者 P3.1c-2 指令报告，未补造 hash/环境。
+- 无进行中的 P3.1 实现 / Desktop QA；维护者报告全部模块 PASS。下一阶段仅等待 architecture review，未开始功能实现。
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-Status Bar Chat review / Desktop QA：Light/Dark、core/plugin items、实际 clickable hover/click、长文本/多状态项/窄窗、editor 底部与 split panes；不继续 View header。提交后 push 并核对远端，不创建 PR。
+下一阶段 architecture review：确认下一 bounded module 的范围、来源证据、变量/selector/设置路线与 QA gate。View header 与 deferred features 尚未实现；未获得明确指令前不继续源码、不创建 PR或合并。
 
 ## Known Issues / Blockers
 
@@ -173,3 +173,19 @@ Status Bar Chat review / Desktop QA：Light/Dark、core/plugin items、实际 cl
 - P3.1c-2：Build / Check / diff-check PASS；源码仅 statusbar.css，theme.css 由 Build 同步；native secondary background / border color / muted text 保留，radius 复用既有 workspace alias，gap 与直属 mod-clickable hover shell。无新 token/settings/runtime。
 - Protected scope：相对 baseline，所有非 Status Bar source/generated sections 字节不变；不覆盖 native position/width/height/scroll padding/wrap/visibility 或 plugin descendants。
 - Status Bar Desktop QA：未运行。实际 column-gap 的空间占用、长插件内容/窄窗 overflow、hover 颜色与插件语义兼容性及 editor 底部遮挡仍需检查，不能从源码比较推断 PASS。
+
+## P3.1 Final Checkpoint — 2026-10-13
+
+P3.1 Workspace Fusion **COMPLETE**，限 Workspace Tokens、Tabs、Sidebar、Ribbon、Status Bar。Desktop QA **ALL PASS**，依据维护者 final checkpoint 指令；Tabs 详细证据见 [Desktop QA](P3_1A_TABS_DESKTOP_QA.md)，其他模块未提供独立环境/hash/逐项日志，不补造数据。上方 pending / NOT RUN 与实现风险条目为历史过程记录，当前状态以本 checkpoint 为准。
+
+| Module | Implementation / verified fix | Final status |
+| --- | --- | --- |
+| Workspace Tokens | `144e5e31c02234421c3f7c2f4ed1d46b96155d08` | COMPLETE；两项 geometry aliases，由模块集成验证 |
+| Tabs | `62789ef45bda6167eea7ae672eae3596aca9205d` | COMPLETE / Desktop QA PASS |
+| Sidebar | `c69bdcf23cc1f756c9a03faee959518a48b98345` | COMPLETE / Desktop QA PASS |
+| Ribbon | `22e47efb06e6e3451807ad71a1d6990297e440fd` | COMPLETE / Desktop QA PASS |
+| Status Bar | `3953aabe934f5cc35a13ff6ae4273231c546c031` | COMPLETE / Desktop QA PASS |
+
+Remaining limitations：Tabs/close `tabIndex=-1`，独立 sequential keyboard focus N/A，不添加 DOM/focus hacks，不声称 close focus-visible 独立验证；Tabs drag/reorder 与 screen-reader audit 未执行。P2.6 drag/drop N/A、Foundation Checkbox N/A 和既有 accepted native differences 保留，非本轮新增 blocker。ALL PASS 不扩展为全插件/全平台认证，也不从自动检查推断 Desktop PASS。
+
+此前 Build / Check / diff-check PASS。本次 documentation checkpoint `npm run check` / `git diff --check` PASS；Check 按 AGENTS 要求运行，内部 Build 保持生成内容不变。仅四份允许文档更新；src / theme.css / settings / scripts / manifest 未变，无新增 token。下一阶段 pending architecture review；View header 未实现，Auto Hide / Focus / Card Layout / Presets / advanced features 继续 deferred。没有未提交源码或临时 QA 工作；commit 后按持续授权 push，未创建 PR/merge。

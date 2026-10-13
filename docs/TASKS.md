@@ -59,7 +59,7 @@ Auto Hide、Card Layout、Focus Mode、Preset System 可作为 Phase 3 规划候
 
 First-line indent（默认 off）、letter spacing、word spacing、granular heading settings、bold / italic settings。Core Typography Desktop QA 后再评估是否需要；当前未实现。P2.4 已统一 Code size；额外 Inline Code 装饰与 syntax palette system 仍 deferred。
 
-## Milestone: Phase 3 — Planning (Chat reviewed; implementation not started)
+## Milestone: Phase 3 — Planning (Chat reviewed / merged; historical planning)
 
 - [x] 从已合并 Phase 2 的 main 创建 `codex/phase-3-planning`
 - [x] 建立 [Theme Design Spec](THEME_DESIGN_SPEC.md)：长期愿景、已完成基线、六个模块、开发原则与 review gate
@@ -67,26 +67,26 @@ First-line indent（默认 off）、letter spacing、word spacing、granular hea
 - [x] 建立 [Source Theme Analysis](SOURCE_THEME_ANALYSIS.md)：Composer / Border README 证据、Fusion 解读与未完成的代码级研究
 - [x] Chat review 规划文档完成（维护者报告）；不代表候选功能获得实现批准
 - [ ] 对选定候选项固定来源 revision，研究 public-variable / selector 可行性和 native behavior 风险
-- [x] 选择 W01 的 P3.1 workspace foundation，建立范围与 Desktop QA 草稿；仍 pending Chat review，未获 CSS 实现批准
+- [x] 选择 W01 的 P3.1 workspace foundation，建立范围与 Desktop QA 草稿；后续 scoped instructions 已授权并完成下列五项 P3.1 能力
 - [x] PR #10 squash merged（`fbc971d8d034906d1bfd911df5d86e3688cffeaf`）
 
 ### Future module candidates — no implementation authorization
 
 | Module | Matrix IDs | Planning state |
 | --- | --- | --- |
-| Workspace | W01–W02 | W01 selected for P3.1 preparation only; W02 deferred |
+| Workspace | W01–W02 | W01 P3.1 five-module scope complete / Desktop QA ALL PASS; W02 deferred |
 | Layout | L01 | Candidate; Card Layout 未实现 |
 | Focus System | F01–F02 | Candidate; Focus / Auto Hide 未实现 |
 | Reading Enhancement | R01–R02 | Candidate; 保留 Phase 2 Typography / Source navigation |
 | Presets | P01 | Candidate; schema / persistence / restoration 待设计 |
 | Effects | E01–E02 | Candidate; Advanced Animation 继续 deferred |
 
-## P3.1 — Workspace Fusion System preparation
+## P3.1 — Workspace Fusion COMPLETE / Final Checkpoint
 
 - [x] 从更新后的 main 创建 `codex/p3-1-workspace-fusion`
 - [x] 建立 [P3.1 plan](P3_1_WORKSPACE_FUSION_PLAN.md)：五个 shell areas、workspace 模块、共享 geometry、变量路线、设置候选与 QA
-- [ ] Chat review P3.1 plan；确定视觉值、public-variable / selector consumers、aliases 与 settings 必要性
-- [ ] 固定相关来源 revision，补齐 view-header 变量/DOM 与 build-order 可行性证据
+- [x] 按后续 scoped instructions 完成五项 P3.1 能力；无新增设置
+- [ ] 下一阶段 architecture review：View header 来源/变量/DOM 研究留待独立批准；P3.1 Build 顺序已保持
 - [x] 获首个 milestone 指令，实现 workspace-tokens.css / tabs.css；Build / Check / diff-check PASS
 - [x] 收到 Chat review 后 P3.1a refinement 指令；完成 default/active/hover、close、density、long-title 源码
 - [x] P3.1a Desktop QA PASS after fix 62789ef；详见 P3_1A_TABS_DESKTOP_QA.md
@@ -96,11 +96,17 @@ First-line indent（默认 off）、letter spacing、word spacing、granular hea
 - [x] 获 P3.1c-1 Ribbon scoped instruction，源码完成，Build / Check / diff-check PASS
 - [x] Ribbon Desktop QA PASS（维护者在 P3.1c-2 指令报告）
 - [x] 获 P3.1c-2 指令，实现 Status Bar shell；Build / Check / diff-check PASS
-- [ ] Status Bar Chat review / Desktop QA
+- [x] Status Bar Desktop QA PASS（维护者 final checkpoint 报告）
+- [x] Workspace Tokens / Tabs / Sidebar / Ribbon / Status Bar COMPLETE
+- [x] P3.1 Desktop QA all modules PASS / final documentation checkpoint
 - [ ] View header 等后续模块另行批准
 
-仅允许规划未来 src/workspace 范围；现有 scrollbar 保留不变。Full Auto Hide、Focus、Card Layout、Presets、Animations、Rainbow folders、Canvas/Graph、Companion Plugin 均在本阶段之外。首个 milestone 新增两项 workspace geometry aliases；无新 global palette / Style Settings。
+P3.1 已完成的实现范围限 src/workspace，五项能力不含 View header；现有 scrollbar 保留不变。Full Auto Hide、Focus、Card Layout、Presets、Animations、Rainbow folders、Canvas/Graph、Companion Plugin 均在本阶段之外。首个 milestone 新增两项 workspace geometry aliases；无新 global palette / Style Settings。
+
+## Remaining limitations
+
+Native Tab/close 独立 sequential focus N/A；Tabs drag/reorder、screen-reader audit 未执行，不将其改写为 PASS。P2.6 drag/drop 与 Foundation Checkbox N/A 保留。模块 ALL PASS 为维护者最终结论，不意味着完整平台/插件覆盖。
 
 ## Next Step
 
-Status Bar implementation review / Desktop QA。提交后 push 并核对远端，不创建 PR，不继续后续模块。
+下一阶段 pending architecture review。定义明确的 scope、来源证据、变量/selector/settings 方案与 QA gate 后再获实现指令。View header 与 deferred features 不自动开始；本轮仅 checkpoint commit / push，不创建 PR/merge。

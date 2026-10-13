@@ -106,3 +106,9 @@ Build / Check / diff-check PASS，非 Ribbon source/generated sections baseline 
 保留 native background/divider/text 合同；radius 仅改为等价 workspace alias。原 divider border-color 已消费 theme-border，不追加第二条 separator 或覆盖 border width，避免改变 native 几何。Status Bar root column-gap 派生 workspace gap；仅直属标准 item 圆角与 mod-clickable hover shell，无 plugin-specific/内部节点/定位/尺寸/可见性修改。
 
 无新架构方向、token/settings/runtime。Build / Check / diff-check PASS，非 Status Bar source/generated sections 字节不变。Desktop QA pending：多/长状态项、窄窗、plugin hover、editor 底部遮挡与 native wrap/scroll 尚需实测。Ribbon PASS 依据维护者报告；提交后 push，无 PR。
+
+### P3.1 — Final milestone close (2026-10-13)
+
+Workspace Fusion COMPLETE，完成范围为 Workspace Tokens、Tabs、Sidebar、Ribbon、Status Bar。Tabs/Sidebar/Ribbon/Status Bar Desktop QA ALL PASS，最终结论依据维护者 checkpoint 指令；Tabs 的独立键盘 focus N/A、未执行 drag/reorder/screen-reader audit 与既有 Phase 2 N/A 继续保留，不扩大验证范围。
+
+记录代码链：Tabs fix 62789ef → Sidebar c69bdcf → Ribbon 22e47ef → Status Bar 3953aab。仅文档 closeout，无新增源码/token/settings/架构方向。View header 不包含在本次完成范围；下一阶段 pending architecture review，其他 deferred features 未实现。历史 implementation/QA pending 条目是过程记录，以 CURRENT_STATUS final checkpoint 为当前状态；尚未宣称 P3.1 已合并 main。
