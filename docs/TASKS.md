@@ -76,7 +76,7 @@ First-line indent（默认 off）、letter spacing、word spacing、granular hea
 | --- | --- | --- |
 | Workspace | W01–W02 | W01 P3.1 five-module scope complete / Desktop QA ALL PASS; W02 deferred |
 | Layout | L01 | Candidate; Card Layout 未实现 |
-| Focus System | F01–F02 | F01 native boundary foundation implemented / QA pending; Focus Mode / Auto Hide deferred |
+| Focus System | F01–F02 | F01 native boundary foundation complete / Desktop QA PASS; Focus Mode / Auto Hide deferred |
 | Reading Enhancement | R01–R02 | Candidate; 保留 Phase 2 Typography / Source navigation |
 | Presets | P01 | Candidate; schema / persistence / restoration 待设计 |
 | Effects | E01–E02 | Candidate; Advanced Animation 继续 deferred |
@@ -130,10 +130,19 @@ Native Tab/close 独立 sequential focus N/A；Tabs drag/reorder、screen-reader
 - [x] 读取实际 DOM evidence f31119b：native leaf mod-active、main direct header chain
 - [x] 新增 effects/focus.css，两条 active Accent / inactive neutral 1px header boundary
 - [x] Build / Check / diff-check PASS；所有既有source/generated sections不变
-- [ ] Focus Chat implementation review / Desktop QA
+- [x] Focus Foundation COMPLETE / Desktop QA PASS（维护者 final checkpoint 报告）
 
 只有 native active leaf visual hierarchy；不是 Focus Mode。body.is-focused不使用；无 token/setting/runtime、content opacity、blur/animation/hide/collapse 或 geometry变化。
 
+## Phase 3.2 Final Documentation Checkpoint
+
+- [x] View Header Shell COMPLETE / Desktop QA PASS — `0a60fa0985c5c7dc3fb6e1951535b5d19fe171ae`
+- [x] Layout Foundation COMPLETE / Desktop QA PASS — `3cf65addc96a3356eee91861ae485db19b6fd97b`
+- [x] Focus Foundation COMPLETE / Desktop QA PASS — `7827734ba95c837bf45b9516616142d408149da9`
+- [x] Phase 3.2 COMPLETE；final checkpoint 仅四份文档
+
+Focus System：CSS only；based on native `.workspace-leaf.mod-active`；no runtime behavior。header hidden 无额外cue；community custom views/pop-out/全平台与 WCAG/screen-reader 审计未作认证，既有 N/A 保留。PASS 依据维护者指令，不补造逐项结果。
+
 ## Next Step
 
-Focus review / Desktop QA，覆盖 split/stacked leaf activation、window失焦、Markdown/Graph、Light/Dark/Accent与 active tab/selected file/content/a11y smoke。提交后 push，不创建 PR、不继续其他功能。
+下一阶段 pending architecture review；明确 native evidence、scope、token/selector 路线与 QA gate 后另行授权。checkpoint commit/push，不创建 PR/merge，不实施 deferred features。

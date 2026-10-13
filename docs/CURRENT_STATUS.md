@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-Phase 3 — P3.2c-1 Focus Foundation：Native Active Leaf Visual Hierarchy 源码完成，Build / Check / diff-check PASS；Focus Desktop QA / Chat review pending。Phase 2 / P3.1 COMPLETE；P3.2a / P3.2b-1 Desktop QA PASS（维护者报告）。
+Phase 3.2 COMPLETE：View Header Shell / Layout Foundation / Focus Foundation complete，Desktop QA ALL PASS。Phase 2 / P3.1 COMPLETE；下一阶段 pending architecture review。
 
 ## Foundation
 
@@ -14,7 +14,7 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Commit
 
-P3.2c-1 Focus implementation；baseline DOM evidence `f31119bc60940f1852c7d277d47baabd9e758f49`，Layout implementation `3cf65ad`。沿用当前分支；精确提交用 git rev-parse HEAD，不假设已合并 main。
+Phase 3.2 final documentation checkpoint；最终实现 `7827734ba95c837bf45b9516616142d408149da9`。使用 git rev-parse HEAD 获取 checkpoint 精确提交；complete 不代表已合并 main。
 
 ## Completed
 
@@ -96,12 +96,12 @@ P3.2c-1 Focus implementation；baseline DOM evidence `f31119bc60940f1852c7d277d4
 
 ## In Progress
 
-- P3.2c-1 新增 effects/focus.css 完成；Focus QA/review pending。Layout 与 View Header PASS 依据维护者指令；DOM evidence 已同步并读取，未重新执行 Desktop QA。
+- 无进行中的 Phase 3.2 实现或 Desktop QA；下一阶段 pending architecture review，尚未实施新功能。
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-Focus Chat review / Desktop QA：native active leaf switching、split/stacked、Markdown/Graph header boundary、应用失焦不改变 pane signal；验证 selected file/active tab/content/a11y 不退化。提交/push，不创建 PR、不实现 Focus Mode 或其他行为。
+下一阶段 architecture review：明确 bounded scope、native state/DOM evidence、token/selector 路线与 QA gate 后另行批准实现。本轮仅文档 checkpoint commit/push，不创建 PR或合并。
 
 ## Known Issues / Blockers
 
@@ -231,3 +231,19 @@ Validation：Build / Check / diff-check PASS；额外静态核对 exact two rule
 Desktop QA NOT RUN：记录 branch/commit/版本/实际设置与 root==installed hash；Light/Dark x red/blue/green Accent，A/B split active 来回切换（native mouse/keyboard）与 stacked 同组 leaf；Markdown Source/LP/Reading 和 Core Graph 激活/失活，hidden tabs 不被显示；window 失焦/回焦保持最后 active leaf signal。header hidden 的 native 配置下没有额外 boundary，这是有意 scope 限制，不强制显示。验证 header divider可见/无double width、标题/actions/rename/disabled 与 native keyboard focus outlines 保留；active tab/selected file原有状态、Sidebar/Ribbon/Status Bar、split resize/geometry/scroll、content字色/selection/caret/Callout/Code/Navigation无回归。N/A/限制作真实记录。
 
 Remaining risks：Accent vs neutral boundary 在部分色值的可见性未验证，不声称 WCAG/screen-reader 审计；公共 file-header-border 的实际 cascade/消费、隐藏header无额外cue；pop-outs/其他平台/社区自定义header未由 evidence覆盖。Graph contents不改，任意community header兼容仍需测试。无新 Desktop PASS，提交后 push，不创建 PR。
+
+## Phase 3.2 Final Checkpoint
+
+**Phase 3.2 COMPLETE / Desktop QA ALL PASS**，依据维护者 final checkpoint 指令。历史 pending / NOT RUN 是实施过程记录，当前结论以此 checkpoint 为准；本轮未重新执行 Desktop QA，不补造独立测试环境/hash/逐项日志。
+
+| Module | Commit | Final status |
+| --- | --- | --- |
+| View Header Shell | `0a60fa0985c5c7dc3fb6e1951535b5d19fe171ae` | COMPLETE / Desktop QA PASS |
+| Layout Foundation | `3cf65addc96a3356eee91861ae485db19b6fd97b` | COMPLETE / Desktop QA PASS |
+| Focus Foundation | `7827734ba95c837bf45b9516616142d408149da9` | COMPLETE / Desktop QA PASS |
+
+Focus System：**CSS only，based on native `.workspace-leaf.mod-active`，no runtime behavior**。仅 main root leaf 直属公共 header 的 active Accent / inactive neutral 1px boundary；不用 body.is-focused，不改变内容 opacity、布局几何、键盘处理或 panel visibility。
+
+Remaining limitations：native header 隐藏时无额外 focus cue；DOM evidence覆盖测试版本的 Markdown/Core Graph，不等于所有 community custom views、pop-outs、平台兼容。ALL PASS 不代表 WCAG/screen-reader 审计。既有 Tab/close 独立 focus N/A、Tabs drag/reorder 未执行、P2.6 drag/drop/Foundation Checkbox N/A 继续保留。不重新扩展实现或以这些限制暗示新的 blocker。
+
+既有 Build/Check/diff-check PASS；本 checkpoint Check/diff-check PASS，src/theme.css/settings/scripts/manifest 内容不变，无新 token。只更新允许的四份文档；checkpoint commit 后按持续授权 push，不创建 PR或合并。下一阶段 pending architecture review，不开始 deferred features。

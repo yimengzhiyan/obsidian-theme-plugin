@@ -130,3 +130,9 @@ Workspace Fusion COMPLETE，完成范围为 Workspace Tokens、Tabs、Sidebar、
 现有 workspace-control-gap（Foundation xs）和 border 足够，无新 layout semantics/token/settings。新增 layout/layout.css 只给 main root/native nested horizontal/vertical splits 统一 gap；nested selector 排除 leaf-content 内部，divider-color 保持既有 neutral contract。无全局 workspace-leaf 几何规则，不设 pane ratio/direction/margin/radius/dimensions 或 divider hit-area 宽度。
 
 这是 native split spacing foundation，不是 Layout Engine/Card system。原生 flex、resize 与持久化继续由 Obsidian 控制。Build / Check / diff-check PASS，全部原 source/generated sections 字节不变。Desktop QA pending，需验证 gap 对 native sizing/resize offsets、nested/stacked/窄窗与 editor regression 的影响。P3.2a PASS 依据维护者本轮报告。
+
+### Phase 3.2 — Final documentation close
+
+Phase 3.2 COMPLETE；View Header 0a60fa0 / Layout Foundation 3cf65ad / Focus Foundation 7827734 全部 complete / Desktop QA PASS，最终结论由维护者 checkpoint 指令提供。历史 pending 为过程记录，不补造测试环境/hash/log，不改变既有代码或架构。
+
+Focus System 明确 CSS only、based on native `.workspace-leaf.mod-active`、no runtime behavior。header hidden 无额外cue、community views/pop-out/全平台以及 WCAG/screen-reader audit 不作扩大认证；既有 N/A 保留。无新 token/settings/source，下一阶段 pending architecture review；本轮文档 commit/push，不创建 PR或合并。
