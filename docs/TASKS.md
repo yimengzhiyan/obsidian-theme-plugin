@@ -76,7 +76,7 @@ First-line indent（默认 off）、letter spacing、word spacing、granular hea
 | --- | --- | --- |
 | Workspace | W01–W02 | W01 P3.1 five-module scope complete / Desktop QA ALL PASS; W02 deferred |
 | Layout | L01 | Candidate; Card Layout 未实现 |
-| Focus System | F01–F02 | Candidate; Focus / Auto Hide 未实现 |
+| Focus System | F01–F02 | F01 native boundary foundation implemented / QA pending; Focus Mode / Auto Hide deferred |
 | Reading Enhancement | R01–R02 | Candidate; 保留 Phase 2 Typography / Source navigation |
 | Presets | P01 | Candidate; schema / persistence / restoration 待设计 |
 | Effects | E01–E02 | Candidate; Advanced Animation 继续 deferred |
@@ -121,10 +121,19 @@ Native Tab/close 独立 sequential focus N/A；Tabs drag/reorder、screen-reader
 - [x] Token audit：现有 workspace gap / border 足够，无新 token/settings
 - [x] 新增 src/layout/layout.css；main native split spacing / separation contract
 - [x] Build / Check / diff-check PASS；所有既有 source/generated sections 不变
-- [ ] Chat implementation review / Desktop QA
+- [x] Layout Desktop QA PASS（维护者报告）
 
 仅 foundation，不实现 Card Layout、Floating Panel、Auto Layout、Responsive breakpoints、Focus Mode、JS/DOM 修改；无全局 workspace-leaf 几何规则。
 
+## P3.2c-1 — Focus Foundation
+
+- [x] 读取实际 DOM evidence f31119b：native leaf mod-active、main direct header chain
+- [x] 新增 effects/focus.css，两条 active Accent / inactive neutral 1px header boundary
+- [x] Build / Check / diff-check PASS；所有既有source/generated sections不变
+- [ ] Focus Chat implementation review / Desktop QA
+
+只有 native active leaf visual hierarchy；不是 Focus Mode。body.is-focused不使用；无 token/setting/runtime、content opacity、blur/animation/hide/collapse 或 geometry变化。
+
 ## Next Step
 
-Layout review / Desktop QA，实际 horizontal/vertical/nested split resize/比例保存、stacked/极窄窗口与 editor regression。提交后 push，不创建 PR、不继续其他功能。
+Focus review / Desktop QA，覆盖 split/stacked leaf activation、window失焦、Markdown/Graph、Light/Dark/Accent与 active tab/selected file/content/a11y smoke。提交后 push，不创建 PR、不继续其他功能。

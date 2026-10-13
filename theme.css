@@ -664,3 +664,19 @@ body {
 .workspace-split.mod-root .workspace-split:is(.mod-horizontal, .mod-vertical):not(.workspace-leaf-content *) {
   gap: var(--theme-workspace-control-gap);
 }
+
+/* Source: src/effects/focus.css */
+/* Native active-leaf hierarchy, verified in P3_2C_FOCUS_DOM_EVIDENCE.md.
+ * Only the public header boundary changes; preserve content, geometry,
+ * title/action readability and native application/keyboard focus behavior.
+ */
+.workspace-split.mod-root .workspace-leaf.mod-active > .workspace-leaf-content > .view-header {
+  --file-header-border: 1px solid var(--theme-accent);
+}
+
+/* Neutral inactive shell is de-emphasized relative to the Accent boundary.
+ * Hidden leaves remain hidden; no opacity or view-type overrides.
+ */
+.workspace-split.mod-root .workspace-leaf:not(.mod-active) > .workspace-leaf-content > .view-header {
+  --file-header-border: 1px solid var(--theme-border);
+}

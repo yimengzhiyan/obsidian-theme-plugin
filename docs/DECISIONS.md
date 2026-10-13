@@ -75,6 +75,12 @@ P3.1 首个 milestone 添加 body-scoped `--theme-workspace-control-radius` / `-
 
 Aliases 与公共消费者变量同在 body，保留 body Radius 覆盖；不使用 :root 提前计算 aliases，不改 Build 顺序/脚本。Phase 2 与既有 Accent 状态规则不变。后续复用须 Chat review，本决定不授权 Sidebar/Ribbon 实现。Desktop/browser QA pending。
 
+## Decision 010 — Native active leaf boundary only
+
+P3.2c-1 基于已同步的 Focus DOM evidence：pane signal 是 `.workspace-leaf.mod-active`，而非 body.is-focused、tab-group active 或 header 自有状态。仅 main root leaf 直属公共 header 的既有 1px border：active Accent，inactive neutral border。Inactive shell 相对退强调，内容/标题/控件不降 opacity 或文字对比，不修改几何，不创建行为。
+
+复用现有 Accent/border，无 focus token/setting/runtime。窗口失焦仍保留 active pane；native header 隐藏时不强制 cue。Markdown/Core Graph shell 有真实证据，任意 community view/pop-out 兼容待 QA。Build/Check/diff-check PASS；Focus Desktop QA pending。
+
 ## Log
 
 ### P3.1a — Tabs implementation refinement

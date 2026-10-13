@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-Phase 3 — P3.2b-1 Layout Foundation：源码完成，Build / Check / diff-check PASS；Layout Desktop QA / Chat review pending。Phase 2 / P3.1 COMPLETE；P3.2a Desktop QA PASS（维护者报告）。
+Phase 3 — P3.2c-1 Focus Foundation：Native Active Leaf Visual Hierarchy 源码完成，Build / Check / diff-check PASS；Focus Desktop QA / Chat review pending。Phase 2 / P3.1 COMPLETE；P3.2a / P3.2b-1 Desktop QA PASS（维护者报告）。
 
 ## Foundation
 
@@ -14,7 +14,7 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Commit
 
-P3.2b-1 Layout implementation；baseline `0a60fa0985c5c7dc3fb6e1951535b5d19fe171ae`。沿用 codex/p3-1-workspace-fusion；精确提交用 git rev-parse HEAD，不假设已合并 main。
+P3.2c-1 Focus implementation；baseline DOM evidence `f31119bc60940f1852c7d277d47baabd9e758f49`，Layout implementation `3cf65ad`。沿用当前分支；精确提交用 git rev-parse HEAD，不假设已合并 main。
 
 ## Completed
 
@@ -96,12 +96,12 @@ P3.2b-1 Layout implementation；baseline `0a60fa0985c5c7dc3fb6e1951535b5d19fe171
 
 ## In Progress
 
-- P3.2b-1 新增 layout/layout.css 完成；Chat review / Desktop QA pending。P3.2a Desktop QA PASS 依据本轮维护者指令，未补造环境/hash/逐项记录。
+- P3.2c-1 新增 effects/focus.css 完成；Focus QA/review pending。Layout 与 View Header PASS 依据维护者指令；DOM evidence 已同步并读取，未重新执行 Desktop QA。
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-Layout Chat review / Desktop QA：横/纵/混合 nested split、实际 resize/比例持久、stacked tabs 和窄窗/editor 内容回归。只提交/push 当前 foundation，不创建 PR，不实现 Card/Floating/Auto Layout 或其他功能。
+Focus Chat review / Desktop QA：native active leaf switching、split/stacked、Markdown/Graph header boundary、应用失焦不改变 pane signal；验证 selected file/active tab/content/a11y 不退化。提交/push，不创建 PR、不实现 Focus Mode 或其他行为。
 
 ## Known Issues / Blockers
 
@@ -217,3 +217,17 @@ Validation：Build / Check / diff-check PASS。基线比较确认全部既有源
 Layout Desktop QA NOT RUN：记录版本/branch/commit 与 root==installed hash；Light/Dark、单 pane 与左右/上下/混合 nested splits、增删 pane、拖动所有 divider 到极值、resize hover/hit area、保存/重开 pane 比例；stacked tabs 内部滚动和拖拽/切换；真实窄窗与 split+sidebar expanded/collapsed、header/Status Bar 不遮挡；Source/LP/Reading 的 width/line-height、caret/blank lines、heading/Callout/Navigation regression。不强制 pixel equality，N/A 记录实际原因，恢复设置/window。
 
 Remaining risks：gap 会参与 native flex available-space 计算；native percentage/flex sizing、min-size 与 divider offsets 在混合/极窄 splits 可能出现 overflow 或拖动偏差。匹配 native split DOM 及 complex :not scope 须 Desktop 验证。未声称 pane sizing/编辑体验已 PASS。无 Card/Floating/Auto Layout/Responsive/Focus/JS/DOM 修改；提交后 push，不创建 PR。
+
+## P3.2c-1 Native Active Leaf Visual Hierarchy
+
+DOM evidence：已读取 [P3_2C_FOCUS_DOM_EVIDENCE](P3_2C_FOCUS_DOM_EVIDENCE.md)，提交 f31119b；Obsidian 1.14.4 / Windows 实测确认 main root 中 leaf `.mod-active` 切换，header 无独立 active/focused/selected 状态，Markdown 与 core Graph 共享 leaf/content/direct-header chain。body.is-focused 仅 application focus，本实现不使用。
+
+新增 src/effects/focus.css，恰好两条规则：main root active leaf 直属 content/header 的 file-header-border → 1px solid theme-accent；inactive leaf 相同链 → 1px solid theme-border。Inactive de-emphasis 为相对 active Accent boundary 的 neutral shell，不降低标题/内容/按钮的颜色或 opacity。边界宽度与 P3.2a 原 1px 相同；背景/尺寸/spacing/定位/overflow不改，无新 token/settings。效果模块晚于 workspace 输出，state selector 局部优先级解决边界颜色覆盖，不用 important。
+
+CSS only / no runtime behavior；无 JS/DOM/keyboard/focus handler、body focus condition、auto-hide/Zen/collapse/panel hiding/blur/animation。没有修改其他 source；所有 prior generated sections 字节不变。只作用公共 header，plugin contents 未匹配；Core Graph 是 evidence-supported shell，不能扩大为任意 community plugin 兼容证明。
+
+Validation：Build / Check / diff-check PASS；额外静态核对 exact two rules/允许的两个 border 值与 prior section 同步。Generic Check 不新增 Focus strict gate，不代替实际视觉测试。
+
+Desktop QA NOT RUN：记录 branch/commit/版本/实际设置与 root==installed hash；Light/Dark x red/blue/green Accent，A/B split active 来回切换（native mouse/keyboard）与 stacked 同组 leaf；Markdown Source/LP/Reading 和 Core Graph 激活/失活，hidden tabs 不被显示；window 失焦/回焦保持最后 active leaf signal。header hidden 的 native 配置下没有额外 boundary，这是有意 scope 限制，不强制显示。验证 header divider可见/无double width、标题/actions/rename/disabled 与 native keyboard focus outlines 保留；active tab/selected file原有状态、Sidebar/Ribbon/Status Bar、split resize/geometry/scroll、content字色/selection/caret/Callout/Code/Navigation无回归。N/A/限制作真实记录。
+
+Remaining risks：Accent vs neutral boundary 在部分色值的可见性未验证，不声称 WCAG/screen-reader 审计；公共 file-header-border 的实际 cascade/消费、隐藏header无额外cue；pop-outs/其他平台/社区自定义header未由 evidence覆盖。Graph contents不改，任意community header兼容仍需测试。无新 Desktop PASS，提交后 push，不创建 PR。
