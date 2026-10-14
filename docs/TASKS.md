@@ -77,7 +77,7 @@ First-line indent（默认 off）、letter spacing、word spacing、granular hea
 | Workspace | W01–W02 | W01 P3.1 five-module scope complete / Desktop QA ALL PASS; W02 deferred |
 | Layout | L01 | Candidate; Card Layout 未实现 |
 | Focus System | F01–F02 | F01 native boundary foundation complete / Desktop QA PASS; Focus Mode / Auto Hide deferred |
-| Reading Enhancement | R01–R02 | Candidate; 保留 Phase 2 Typography / Source navigation |
+| Reading Enhancement | R01–R02 | P3.3 Width/Rhythm review COMPLETE；NO NEW CSS REQUIRED；Boundary/Focus enhancement 未实现 |
 | Presets | P01 | Candidate; schema / persistence / restoration 待设计 |
 | Effects | E01–E02 | Candidate; Advanced Animation 继续 deferred |
 
@@ -86,7 +86,7 @@ First-line indent（默认 off）、letter spacing、word spacing、granular hea
 - [x] 从更新后的 main 创建 `codex/p3-1-workspace-fusion`
 - [x] 建立 [P3.1 plan](P3_1_WORKSPACE_FUSION_PLAN.md)：五个 shell areas、workspace 模块、共享 geometry、变量路线、设置候选与 QA
 - [x] 按后续 scoped instructions 完成五项 P3.1 能力；无新增设置
-- [ ] 下一阶段 architecture review：View header 来源/变量/DOM 研究留待独立批准；P3.1 Build 顺序已保持
+- [x] 后续独立 scope 已完成 P3.2a View Header review / implementation / Desktop QA；P3.1 Build 顺序保持
 - [x] 获首个 milestone 指令，实现 workspace-tokens.css / tabs.css；Build / Check / diff-check PASS
 - [x] 收到 Chat review 后 P3.1a refinement 指令；完成 default/active/hover、close、density、long-title 源码
 - [x] P3.1a Desktop QA PASS after fix 62789ef；详见 P3_1A_TABS_DESKTOP_QA.md
@@ -153,6 +153,17 @@ Focus System：CSS only；based on native `.workspace-leaf.mod-active`；no runt
 
 既有theme-reading-width→file-line-width足够；Reading / Live Preview / Source均保留native public-variable行为。不加high-specificity width selectors、token、setting或其他Reading CSS。embed/community contexts保持未认证边界；不声称新Desktop QA PASS。
 
+## P3.3b — Reading Rhythm / Spacing Gap Audit COMPLETE
+
+- [x] [Desktop audit](P3_3B_READING_RHYTHM_AUDIT.md)：A=5、B=3、C=0，NO NEW CSS REQUIRED
+- [x] Phase 2 typography/spacing 足够；Source native rhythm difference 接受，caret / keyboard navigation 优先
+- [x] Phase 3.3 final documentation close；Width Decision 012 保持有效
+- [x] Build / Check / diff-check；无新增 Reading CSS/token/Style Setting
+
+不创建 src/reading、reading-width.css、reading-spacing.css、Reading Boundary 或 Reading Focus enhancement。Reading / Live Preview / Source 均保留 native width behavior；embed/community contexts 未认证。
+
 ## Next Step
 
-后续独立architecture/scope review。未来只有真实public-variable gap证据才重新review selector。当前不开始Reading Spacing；corrective commit普通push，不rewrite/force-push，不创建PR。
+- [ ] Integration PR review：P3.1 / P3.2 已实现模块与 P3.3 evidence / final close；不自行 merge
+
+暂不开始 P4。只有出现新的、可复现且现有 public variable/token 无法表达的真实 gap，才重新开启 Reading implementation review；不以已接受 Source 差异或像素 parity 作为 gap。正常 push，不 rewrite/force-push。

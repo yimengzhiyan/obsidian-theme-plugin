@@ -152,3 +152,11 @@ Workspace Fusion COMPLETE，完成范围为 Workspace Tokens、Tabs、Sidebar、
 Phase 3.2 COMPLETE；View Header 0a60fa0 / Layout Foundation 3cf65ad / Focus Foundation 7827734 全部 complete / Desktop QA PASS，最终结论由维护者 checkpoint 指令提供。历史 pending 为过程记录，不补造测试环境/hash/log，不改变既有代码或架构。
 
 Focus System 明确 CSS only、based on native `.workspace-leaf.mod-active`、no runtime behavior。header hidden 无额外cue、community views/pop-out/全平台以及 WCAG/screen-reader audit 不作扩大认证；既有 N/A 保留。无新 token/settings/source，下一阶段 pending architecture review；本轮文档 commit/push，不创建 PR或合并。
+
+### Phase 3.3 — Final Reading review close (2026-10-14)
+
+Phase 3.3 COMPLETE。P3.3a Width evidence / architecture review 与 P3.3b Rhythm audit（A=5、B=3、C=0）均 NO NEW CSS REQUIRED；这不是新增 Reading 模块。Decision 012 仍是有效 Width decision，011 保留为已撤回历史。
+
+既有 `--theme-reading-width → --file-line-width` 与 Phase 2 typography/spacing 足够；Reading / Live Preview / Source 保留 native width behavior。Source native visual rhythm difference 是已接受产品决策，优先 caret/keyboard navigation。不得创建 src/reading、reading-width.css、reading-spacing.css、Reading Boundary 或 Reading Focus enhancement。只有新的、可复现且现有 public variable/token 无法表达的真实 gap 才重开独立 implementation review；embed/community contexts 未认证。
+
+本轮仅 documentation checkpoint / integration validation，不改源码、token 或 Style Setting，不开始 P4。Width DOM evidence 与 Rhythm audit 原文保留，Desktop/平台/插件认证范围不扩大。

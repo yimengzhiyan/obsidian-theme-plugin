@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-P3.3b Reading Rhythm / Spacing Gap Audit COMPLETE — NO NEW CSS REQUIRED；A/B 已记录，C=0。P3.3a native width contract 与 Phase 2 / P3.1 / Phase 3.2 完成状态保持。
+Phase 3.3 Reading Enhancement COMPLETE — P3.3a Width evidence / architecture review 与 P3.3b Rhythm audit 均为 NO NEW CSS REQUIRED（A=5、B=3、C=0）。Phase 2 / P3.1 / Phase 3.2 COMPLETE；进入 integration preparation。
 
 ## Foundation
 
@@ -14,7 +14,7 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Commit
 
-P3.3b audit baseline：`865dcfda7b84ddb37606b3868808949e5d6bd692`。本次仅 audit / 状态文档；最终提交以 git rev-parse HEAD 为准。P3.3a architecture correction 与 Reading evidence 保留。
+Final close baseline：`b5d47ad`（Reading Rhythm audit）；Width corrective commit `865dcfda7b84ddb37606b3868808949e5d6bd692`。本次仅文档 checkpoint；最终提交以 `git rev-parse HEAD` 为准。
 
 ## Completed
 
@@ -102,7 +102,7 @@ P3.3b audit baseline：`865dcfda7b84ddb37606b3868808949e5d6bd692`。本次仅 au
 
 ## Next Step
 
-P3.3b 以 NO NEW CSS REQUIRED 结束，不创建 Reading Spacing 模块。未来只有通过全部 C gate 的真实 public-variable gap 才进入独立 Chat Design Review；本轮不开始 Reading Boundary / Focus Enhancement。embed/community contexts 保持未认证边界。
+准备将已完成 P3.1 / P3.2 与 P3.3 review 结果提交 integration PR，待独立审查；不自行 merge，不开始 P4。Reading implementation 仅在新的、可复现且现有 public variable/token 无法表达的真实 gap 出现后，进入独立 Chat Design Review。
 
 ## Known Issues / Blockers
 
@@ -268,3 +268,18 @@ Reading / Live Preview 的 ordinary paragraphs、heading transitions、consecuti
 分类：A=5 个 sufficient 场景组，B=3 个 accepted native difference 组，C=0。**NO NEW CSS REQUIRED**；现有 Phase 2 spacing contract 足够，不新增 CSS/token/settings，也不调整任何内容层 spacing。详情及测试边界见 [Reading Rhythm Audit](P3_3B_READING_RHYTHM_AUDIT.md)。
 
 Validation：隔离副本 npm run check PASS；提交前 git diff --check。原仓库和 installed theme artifact 不变，临时笔记清理、既有笔记 hashes 不变，Dark / Line Height 2 / Width 500 与原 workspace 恢复。无后续 implementation / PR。
+
+## Phase 3.3 Final Checkpoint — 2026-10-14
+
+**Phase 3.3 COMPLETE / NO NEW CSS REQUIRED**。P3.3a [DOM evidence](P3_3A_READING_DOM_EVIDENCE.md) 与 P3.3b [Rhythm audit](P3_3B_READING_RHYTHM_AUDIT.md) 保留；A=5、B=3、C=0。
+
+- Width：既有 `--theme-reading-width → --file-line-width` 足够，Decision 012 继续有效，Decision 011 已被 supersede。Reading / Live Preview / Source 保留 Obsidian native 限宽、居中、窄 pane 响应及 Readable line length 开关。
+- Rhythm：Phase 2 typography/spacing contract 已足够。Source native visual rhythm difference 是已接受产品决策，继续优先 caret / keyboard navigation，不要求视觉 parity。
+- 不创建 `src/reading`、`reading-width.css`、`reading-spacing.css`、Reading Boundary 或 Reading Focus enhancement；不增加 high-specificity width/spacing selectors、token 或 Style Setting。
+- Future gate：只有新的、可复现且现有 public variable/token 无法表达的真实 gap，才重新开启 Reading implementation review。
+
+Limitations：embed/community contexts 未认证；audit 限已记录版本、fixture、字体和参数，Light 为 smoke，不扩大为全平台/全部 Markdown 或 accessibility 认证。Phase 3.1 / 3.2 Desktop QA PASS 与既有 N/A 保留；本次未重跑 Desktop QA。
+
+Working tree reconciliation：同步 audit 后本机 `git status` 干净，`CURRENT_STATUS.md` 无历史未提交 diff，因此没有可整合或丢弃的本地 QA 日志。远端 durable evidence / audit 已保留；其他 checkout 的未提交记录不在本机验证范围。仅清理已撤回实现留下的空 `src/reading` 目录，无源码删除或新实现。
+
+Integration validation：`npm run build` / `npm run check` / `git diff --check` PASS；generated theme.css 与 source 同步且内容不变。相对本次 baseline，Phase 2 / P3.1 / P3.2 source、settings、scripts、manifest 与 evidence 均未修改，无 Reading Width/Spacing selectors。文档 checkpoint 正常 commit/push，后续 integration review，不自动 merge/P4。
