@@ -4,6 +4,20 @@ name: Obsidian Fusion Theme
 id: obsidian-fusion-theme
 settings:
   -
+    id: oft-preset-prototype
+    title: Preset prototype
+    description: Optional appearance recommendation, not a runtime mode. Your saved individual values always take priority. Default keeps your values; it does not reset them. Disabling Style Settings uses theme defaults; re-enabling may restore your selection.
+    type: class-select
+    allowEmpty: false
+    default: fusion-preset-default
+    options:
+      -
+        label: Fusion Default (keep my values)
+        value: fusion-preset-default
+      -
+        label: Fusion Writer Prototype (640px recommendation)
+        value: fusion-writer-prototype
+  -
     id: oft-appearance
     title: Appearance
     type: heading
@@ -49,7 +63,7 @@ settings:
   -
     id: theme-reading-width
     title: Content width
-    description: Maximum line width when Obsidian's readable line length is enabled.
+    description: Saved values override the Writer prototype. Without a saved value, Writer recommends 640px, although this slider may display 700. Reset removes your saved override, exposing the recommendation. Select Fusion Default to remove the recommendation while keeping your values. Width only applies when Obsidian's readable line length is enabled.
     type: variable-number-slider
     default: 700
     min: 480
