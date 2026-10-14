@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-P3.3a Reading Width evidence / architecture review COMPLETE；无需新增 CSS implementation。Native public-variable contract 保留；Phase 2 / P3.1 / Phase 3.2 COMPLETE。
+P3.3b Reading Rhythm / Spacing Gap Audit COMPLETE — NO NEW CSS REQUIRED；A/B 已记录，C=0。P3.3a native width contract 与 Phase 2 / P3.1 / Phase 3.2 完成状态保持。
 
 ## Foundation
 
@@ -14,7 +14,7 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Commit
 
-P3.3a architecture correction：新 corrective commit 撤回 52d06ea 的冗余 selectors/build group，不改写历史。Reading evidence 54c7b30 保留；精确提交用 git rev-parse HEAD。
+P3.3b audit baseline：`865dcfda7b84ddb37606b3868808949e5d6bd692`。本次仅 audit / 状态文档；最终提交以 git rev-parse HEAD 为准。P3.3a architecture correction 与 Reading evidence 保留。
 
 ## Completed
 
@@ -97,11 +97,12 @@ P3.3a architecture correction：新 corrective commit 撤回 52d06ea 的冗余 s
 ## In Progress
 
 - 无进行中的 P3.3a CSS 实现；evidence / architecture review COMPLETE，结论是无需新增 CSS。
+- P3.3b audit COMPLETE；C=0，无 Reading Spacing implementation；详见 [Rhythm Audit](P3_3B_READING_RHYTHM_AUDIT.md)。
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-下一阶段须独立 scope/review；不开始 Reading Spacing。只有未来出现真实 public-variable gap，才基于新证据重新 review scoped selector。embed/community contexts 保持未认证边界。
+P3.3b 以 NO NEW CSS REQUIRED 结束，不创建 Reading Spacing 模块。未来只有通过全部 C gate 的真实 public-variable gap 才进入独立 Chat Design Review；本轮不开始 Reading Boundary / Focus Enhancement。embed/community contexts 保持未认证边界。
 
 ## Known Issues / Blockers
 
@@ -257,3 +258,13 @@ Final contract: existing **`--theme-reading-width → --file-line-width` is suff
 [Reading DOM evidence](P3_3A_READING_DOM_EVIDENCE.md) is preserved byte-for-byte. Embed/community contexts remain unverified/N/A, not certified. No new Desktop QA is claimed; this is an evidence-driven architecture conclusion. If a real public-variable gap appears later, gather evidence and review the smallest scoped exception first. Do not start Reading Spacing under this correction.
 
 Validation: Build / Check / diff-check PASS. reading-width.css absent; build.mjs and theme.css byte-identical to pre-implementation baseline b693656; file-line-width mapping remains; all existing source/generated sections and evidence unchanged. Corrective commit is pushed normally on the current branch, no PR.
+
+## P3.3b Reading Rhythm / Spacing Gap Audit — 2026-10-14
+
+真实 Desktop audit COMPLETE：Obsidian 1.14.4 / Installer 1.10.6 / Windows 25H2 26200.8737 / Style Settings 1.0.9。Baseline `865dcfda7b84ddb37606b3868808949e5d6bd692`；独立临时长文，未修改既有 QA 笔记。
+
+Reading / Live Preview 的 ordinary paragraphs、heading transitions、consecutive headings 及 List / Quote / Code / Callout / Table 前后分组正常。Dark 完成 Line Height 1.5/2.0 × Width 500/700；Light / 窄 pane smoke 通过。Source caret、双真实空行 ↑/↓、Enter / Backspace 与长文末尾导航通过；不要求 Source visual parity。
+
+分类：A=5 个 sufficient 场景组，B=3 个 accepted native difference 组，C=0。**NO NEW CSS REQUIRED**；现有 Phase 2 spacing contract 足够，不新增 CSS/token/settings，也不调整任何内容层 spacing。详情及测试边界见 [Reading Rhythm Audit](P3_3B_READING_RHYTHM_AUDIT.md)。
+
+Validation：隔离副本 npm run check PASS；提交前 git diff --check。原仓库和 installed theme artifact 不变，临时笔记清理、既有笔记 hashes 不变，Dark / Line Height 2 / Width 500 与原 workspace 恢复。无后续 implementation / PR。
