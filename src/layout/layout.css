@@ -1,0 +1,14 @@
+/* Geometry for native main-workspace split containers only.
+ * Keep pane sizing/direction and native divider hit areas owned by Obsidian.
+ */
+.workspace-split.mod-root {
+  --divider-color: var(--theme-border);
+  gap: var(--theme-workspace-control-gap);
+}
+
+/* Do not enter leaf contents, where editors/plugins may own their own layout.
+ * No workspace-leaf, workspace-tabs or sidebar geometry overrides.
+ */
+.workspace-split.mod-root .workspace-split:is(.mod-horizontal, .mod-vertical):not(.workspace-leaf-content *) {
+  gap: var(--theme-workspace-control-gap);
+}

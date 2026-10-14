@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-Phase 3 — Planning：三份规划文档已由 Chat review（维护者报告），本轮仅完成规划分支收尾与 PR；尚未开始任何 Phase 3 实现。Phase 2 COMPLETE / MERGED，P2.7 Desktop Exit Verification PASS，exit gate satisfied。
+Phase 3.3 Reading Enhancement COMPLETE — P3.3a Width evidence / architecture review 与 P3.3b Rhythm audit 均为 NO NEW CSS REQUIRED（A=5、B=3、C=0）。Phase 2 / P3.1 / Phase 3.2 COMPLETE；进入 integration preparation。
 
 ## Foundation
 
@@ -10,11 +10,11 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Branch
 
-`codex/phase-3-planning`
+`codex/p3-1-workspace-fusion`
 
 ## Current Commit
 
-Phase 3 planning docs；分支基于已合并的 main `882709c83add9677b69eedf05fe5fdfaea366df6`（PR #9）。ISSUE-01 verified fix：`0068eabc4a8177c8b26afdd8ab72579eafd80fc1`。本文件不嵌入自身提交 hash；使用 `git rev-parse HEAD` 获取当前精确值。
+Final close baseline：`b5d47ad`（Reading Rhythm audit）；Width corrective commit `865dcfda7b84ddb37606b3868808949e5d6bd692`。本次仅文档 checkpoint；最终提交以 `git rev-parse HEAD` 为准。
 
 ## Completed
 
@@ -91,14 +91,18 @@ Phase 3 planning docs；分支基于已合并的 main `882709c83add9677b69eedf05
 - Phase 2 PR #9 MERGED；merge commit `882709c83add9677b69eedf05fe5fdfaea366df6`；实现修复与最终回归文档均已进入 main
 - Phase 3 planning：已建立 [Design Spec](THEME_DESIGN_SPEC.md)、[Feature Matrix](FUSION_FEATURE_MATRIX.md)、[Source Analysis](SOURCE_THEME_ANALYSIS.md)；仅文档，未实现新功能
 
+- Phase 3 planning PR #10 squash MERGED：`fbc971d8d034906d1bfd911df5d86e3688cffeaf`；本地 / 远程 main 已更新
+- [P3.1 Workspace Fusion plan](P3_1_WORKSPACE_FUSION_PLAN.md) 已准备：范围、模块、变量、设置候选、QA 与延期项；仅文档
+
 ## In Progress
 
-- Phase 3 planning 已 review，待文档 PR review / merge；Workspace、Layout、Focus System、Reading Enhancement、Presets、Effects 都是未批准、未实现的候选模块。
+- 无进行中的 P3.3a CSS 实现；evidence / architecture review COMPLETE，结论是无需新增 CSS。
+- P3.3b audit COMPLETE；C=0，无 Reading Spacing implementation；详见 [Rhythm Audit](P3_3B_READING_RHYTHM_AUDIT.md)。
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-提交并推送仅文档的收尾修正，创建规划 PR 到 main，等待 PR review；本轮不合并、不实现功能。后续另行批准首个有明确范围、来源证据与验收条件的任务。
+准备将已完成 P3.1 / P3.2 与 P3.3 review 结果提交 integration PR，待独立审查；不自行 merge，不开始 P4。Reading implementation 仅在新的、可复现且现有 public variable/token 无法表达的真实 gap 出现后，进入独立 Chat Design Review。
 
 ## Known Issues / Blockers
 
@@ -150,3 +154,132 @@ Phase 3 planning docs；分支基于已合并的 main `882709c83add9677b69eedf05
 - Phase 2 final documentation closeout：Build / Check / diff-check PASS；仅更新四份文档，CSS / theme.css / scripts/check.mjs 不变；Desktop PASS 为维护者报告结果。
 
 - Phase 3 planning / finalization validation：`npm run check` / `git diff --check` PASS；AGENTS 要求 Check，且 Check 内部验证 Build/生成同步；未单独执行 `npm run build`，无 CSS 源码变化；六份文档以外无修改。无新 Desktop QA claim。
+
+- P3.1 preparation：`npm run check` / `git diff --check` PASS；仅文档，src / settings / scripts / theme.css / manifest unchanged；未执行新 Desktop QA。
+
+- P3.1 first milestone：Build / Check / diff-check PASS；仅两份 workspace 源码 + generated theme.css；Phase 2 源码/生成 sections 不变。Desktop/browser QA 未运行；历史 first-milestone 本地验证结果，现纳入 P3.1a 提交。
+
+- P3.1a Tabs：Build / Check / diff-check PASS；generated theme.css 与 source 同步，无 hardcoded colors；对 main baseline 的比较确认 Phase 2 与其他 workspace 源码/生成 sections 不变。只使用已有 tokens 和两项已批准 workspace aliases，无新设置/Plugin/JS/DOM 修改。Desktop QA 未运行，不能据自动检查认定无运行时 regression。
+
+- P3.1a real Windows Desktop QA：PASS after targeted fixes；Obsidian 1.14.4 / installer 1.10.6 / Windows 25H2 build 26200.8737 / Style Settings 1.0.9。Light/Dark x red/blue/green active indicator/border、Radius 0/20、close、long title、keyboard switching、split/stacked、749 px narrow window 与 Phase 2 smoke PASS；native independent Tab/close focus N/A。Source edits restored by SHA, temporary QA data removed, original notes/settings/window restored. Full evidence: [P3.1a Desktop QA](P3_1A_TABS_DESKTOP_QA.md).
+
+- P3.1b automated validation：Build / Check / diff-check PASS；仅 sidebar.css 追加两条直属 shell/header rules，theme.css 由 Build 同步。原 sidebar/Foundation mappings 与其他生成 sections（含 Tabs/P2.6）字节不变；无 token/settings/script/runtime 变化。
+- P3.1b Desktop QA：未运行。selector 不直接匹配内容、editor 或 resize handle；实际 header padding/row-gap 对窄窗控件与 scroll 高度的影响仍须真实 Desktop 验证，不由源码比较推断 PASS。
+
+- P3.1b Desktop QA：PASS（维护者在 P3.1c-1 指令中报告）；无新增测试环境/hash/逐项结果主张，历史 pending 记录保留。
+- P3.1c-1：Build / Check / diff-check PASS；源码仅 ribbon.css，theme.css 由 Build 同步。无 token/settings/script/runtime 变化；现有 hover/active rules 与非 Ribbon 源码/生成 sections 字节不变。
+- Ribbon Desktop QA：未运行。标准按钮保留 native 尺寸/事件/可见性；需要确认 margin 在实际 native 容器的布局效果、Radius 极值、底部控件可达性与 plugin action shell 兼容性。新增 divider 不改变尺寸；resize 实际交互仍须 QA。
+
+- P3.1c-1 Ribbon Desktop QA：PASS（维护者本轮指令报告）；此前 pending 条目为历史记录。
+- P3.1c-2：Build / Check / diff-check PASS；源码仅 statusbar.css，theme.css 由 Build 同步；native secondary background / border color / muted text 保留，radius 复用既有 workspace alias，gap 与直属 mod-clickable hover shell。无新 token/settings/runtime。
+- Protected scope：相对 baseline，所有非 Status Bar source/generated sections 字节不变；不覆盖 native position/width/height/scroll padding/wrap/visibility 或 plugin descendants。
+- Status Bar Desktop QA：未运行。实际 column-gap 的空间占用、长插件内容/窄窗 overflow、hover 颜色与插件语义兼容性及 editor 底部遮挡仍需检查，不能从源码比较推断 PASS。
+
+## P3.1 Final Checkpoint — 2026-10-13
+
+P3.1 Workspace Fusion **COMPLETE**，限 Workspace Tokens、Tabs、Sidebar、Ribbon、Status Bar。Desktop QA **ALL PASS**，依据维护者 final checkpoint 指令；Tabs 详细证据见 [Desktop QA](P3_1A_TABS_DESKTOP_QA.md)，其他模块未提供独立环境/hash/逐项日志，不补造数据。上方 pending / NOT RUN 与实现风险条目为历史过程记录，当前状态以本 checkpoint 为准。
+
+| Module | Implementation / verified fix | Final status |
+| --- | --- | --- |
+| Workspace Tokens | `144e5e31c02234421c3f7c2f4ed1d46b96155d08` | COMPLETE；两项 geometry aliases，由模块集成验证 |
+| Tabs | `62789ef45bda6167eea7ae672eae3596aca9205d` | COMPLETE / Desktop QA PASS |
+| Sidebar | `c69bdcf23cc1f756c9a03faee959518a48b98345` | COMPLETE / Desktop QA PASS |
+| Ribbon | `22e47efb06e6e3451807ad71a1d6990297e440fd` | COMPLETE / Desktop QA PASS |
+| Status Bar | `3953aabe934f5cc35a13ff6ae4273231c546c031` | COMPLETE / Desktop QA PASS |
+
+Remaining limitations：Tabs/close `tabIndex=-1`，独立 sequential keyboard focus N/A，不添加 DOM/focus hacks，不声称 close focus-visible 独立验证；Tabs drag/reorder 与 screen-reader audit 未执行。P2.6 drag/drop N/A、Foundation Checkbox N/A 和既有 accepted native differences 保留，非本轮新增 blocker。ALL PASS 不扩展为全插件/全平台认证，也不从自动检查推断 Desktop PASS。
+
+此前 Build / Check / diff-check PASS。本次 documentation checkpoint `npm run check` / `git diff --check` PASS；Check 按 AGENTS 要求运行，内部 Build 保持生成内容不变。仅四份允许文档更新；src / theme.css / settings / scripts / manifest 未变，无新增 token。下一阶段 pending architecture review；View header 未实现，Auto Hide / Focus / Card Layout / Presets / advanced features 继续 deferred。没有未提交源码或临时 QA 工作；commit 后按持续授权 push，未创建 PR/merge。
+
+## P3.2a View Header Shell — Implementation
+
+最新 scoped instruction 授权独立 View Header Shell，不重开 P3.1。新增 src/workspace/view-header.css；Build 生成 theme.css。所有 selectors 以 `.workspace-split.mod-root .workspace-leaf-content > .view-header` 为根；直属 title/actions 子节点限定避免污染 Sidebar、Tabs 或 view contents，不按 data-type/plugin 名称分支。
+
+公共变量：header scope 的 file-header-border → 1px solid theme-border、file-header-font-weight → native medium。header primary 背景与 gap-derived column-gap / horizontal padding；直属 title normal text；actions gap；直属 public view-action 的 muted/hover/active icon variables、受 existing space-sm cap 的 workspace radius、hover/active backgrounds，disabled/aria-disabled 不附加 shell 背景。
+
+无新 token/setting/runtime/DOM 修改；没有 path/breadcrumb/pseudo-element、position/sticky/floating/hide、font-size/family 或 view-specific styling。官方变量依据 [File reference](https://github.com/obsidianmd/obsidian-developer-docs/blob/main/en/Reference/CSS%20variables/Editor/File.md)，DOM 子节点匹配须 Desktop 验证。
+
+Validation：Build / Check / diff-check PASS；source 只新增 view-header.css，全部既有 generated sections 字节不变。原模块源码/Phase 2/P3.1 contracts 保留；Check 为基础健康与旧合同验证，不代替新的 selector/native UI Desktop QA。
+
+Desktop QA NOT RUN：记录 branch/commit/root==installed hash 与实际版本/设置；Light/Dark、red/blue/green Accent、Radius 0/20；native header on/off、short/long Chinese/English title、rename/tooltip/title scrolling、back/forward/menu/actions clicks/hover/active/disabled；split/stacked/narrow 窗口、Sidebar/Tabs不受影响、Source/LP/Reading typography/caret 与 components smoke。N/A 依据实际 native controls，不强制 focus/DOM。不声称全平台或全插件兼容。
+
+Remaining risks：public variables/DOM class 的实际消费与 native specificity、1px divider/header padding 对窄窗空间、标题字重与原生 editing 继承、action shell 与特殊控件。没有新 Desktop PASS；提交后按持续授权推送，不创建 PR。
+
+## P3.2b-1 Layout Geometry Foundation
+
+Token audit：现有 workspace-control-gap → theme-space-xs 与 theme-border 足够表达均匀 pane 间距和 neutral divider。无语义缺口，无新 layout token/settings；不使用 radius，避免将 spacing foundation 变成 Card shell。
+
+新增 src/layout/layout.css，Build 自动按既有 layout group 收集。主 root split：gap 使用 workspace-control-gap，divider-color 保持 Foundation border。主 root 下 native horizontal/vertical split：同一 gap；`:not(.workspace-leaf-content *)` 排除 editor/plugin 内容内的同名 split。无全局 workspace-leaf rule，无 tabs/sidebar/ribbon/statusbar/header/navigation/editor/components 修改。
+
+不设置 pane margin/padding、尺寸、flex-direction/比例、display、position、overflow、圆角、divider width/hover hit area 或 breakpoint；不是 Layout Engine。原生 resize/stacked scroll/持久化行为由 Obsidian 控制。divider hover 继续继承 Foundation 映射。官方参考 [Divider variables](https://github.com/obsidianmd/obsidian-developer-docs/blob/main/en/Reference/CSS%20variables/Window/Divider.md)。
+
+Validation：Build / Check / diff-check PASS。基线比较确认全部既有源文件和 generated sections 字节不变，仅新 layout section；无 hardcoded colors、新 token 或脚本变化。P3.2a Desktop PASS 为维护者报告，不从自动检查推断。
+
+Layout Desktop QA NOT RUN：记录版本/branch/commit 与 root==installed hash；Light/Dark、单 pane 与左右/上下/混合 nested splits、增删 pane、拖动所有 divider 到极值、resize hover/hit area、保存/重开 pane 比例；stacked tabs 内部滚动和拖拽/切换；真实窄窗与 split+sidebar expanded/collapsed、header/Status Bar 不遮挡；Source/LP/Reading 的 width/line-height、caret/blank lines、heading/Callout/Navigation regression。不强制 pixel equality，N/A 记录实际原因，恢复设置/window。
+
+Remaining risks：gap 会参与 native flex available-space 计算；native percentage/flex sizing、min-size 与 divider offsets 在混合/极窄 splits 可能出现 overflow 或拖动偏差。匹配 native split DOM 及 complex :not scope 须 Desktop 验证。未声称 pane sizing/编辑体验已 PASS。无 Card/Floating/Auto Layout/Responsive/Focus/JS/DOM 修改；提交后 push，不创建 PR。
+
+## P3.2c-1 Native Active Leaf Visual Hierarchy
+
+DOM evidence：已读取 [P3_2C_FOCUS_DOM_EVIDENCE](P3_2C_FOCUS_DOM_EVIDENCE.md)，提交 f31119b；Obsidian 1.14.4 / Windows 实测确认 main root 中 leaf `.mod-active` 切换，header 无独立 active/focused/selected 状态，Markdown 与 core Graph 共享 leaf/content/direct-header chain。body.is-focused 仅 application focus，本实现不使用。
+
+新增 src/effects/focus.css，恰好两条规则：main root active leaf 直属 content/header 的 file-header-border → 1px solid theme-accent；inactive leaf 相同链 → 1px solid theme-border。Inactive de-emphasis 为相对 active Accent boundary 的 neutral shell，不降低标题/内容/按钮的颜色或 opacity。边界宽度与 P3.2a 原 1px 相同；背景/尺寸/spacing/定位/overflow不改，无新 token/settings。效果模块晚于 workspace 输出，state selector 局部优先级解决边界颜色覆盖，不用 important。
+
+CSS only / no runtime behavior；无 JS/DOM/keyboard/focus handler、body focus condition、auto-hide/Zen/collapse/panel hiding/blur/animation。没有修改其他 source；所有 prior generated sections 字节不变。只作用公共 header，plugin contents 未匹配；Core Graph 是 evidence-supported shell，不能扩大为任意 community plugin 兼容证明。
+
+Validation：Build / Check / diff-check PASS；额外静态核对 exact two rules/允许的两个 border 值与 prior section 同步。Generic Check 不新增 Focus strict gate，不代替实际视觉测试。
+
+Desktop QA NOT RUN：记录 branch/commit/版本/实际设置与 root==installed hash；Light/Dark x red/blue/green Accent，A/B split active 来回切换（native mouse/keyboard）与 stacked 同组 leaf；Markdown Source/LP/Reading 和 Core Graph 激活/失活，hidden tabs 不被显示；window 失焦/回焦保持最后 active leaf signal。header hidden 的 native 配置下没有额外 boundary，这是有意 scope 限制，不强制显示。验证 header divider可见/无double width、标题/actions/rename/disabled 与 native keyboard focus outlines 保留；active tab/selected file原有状态、Sidebar/Ribbon/Status Bar、split resize/geometry/scroll、content字色/selection/caret/Callout/Code/Navigation无回归。N/A/限制作真实记录。
+
+Remaining risks：Accent vs neutral boundary 在部分色值的可见性未验证，不声称 WCAG/screen-reader 审计；公共 file-header-border 的实际 cascade/消费、隐藏header无额外cue；pop-outs/其他平台/社区自定义header未由 evidence覆盖。Graph contents不改，任意community header兼容仍需测试。无新 Desktop PASS，提交后 push，不创建 PR。
+
+## Phase 3.2 Final Checkpoint
+
+**Phase 3.2 COMPLETE / Desktop QA ALL PASS**，依据维护者 final checkpoint 指令。历史 pending / NOT RUN 是实施过程记录，当前结论以此 checkpoint 为准；本轮未重新执行 Desktop QA，不补造独立测试环境/hash/逐项日志。
+
+| Module | Commit | Final status |
+| --- | --- | --- |
+| View Header Shell | `0a60fa0985c5c7dc3fb6e1951535b5d19fe171ae` | COMPLETE / Desktop QA PASS |
+| Layout Foundation | `3cf65addc96a3356eee91861ae485db19b6fd97b` | COMPLETE / Desktop QA PASS |
+| Focus Foundation | `7827734ba95c837bf45b9516616142d408149da9` | COMPLETE / Desktop QA PASS |
+
+Focus System：**CSS only，based on native `.workspace-leaf.mod-active`，no runtime behavior**。仅 main root leaf 直属公共 header 的 active Accent / inactive neutral 1px boundary；不用 body.is-focused，不改变内容 opacity、布局几何、键盘处理或 panel visibility。
+
+Remaining limitations：native header 隐藏时无额外 focus cue；DOM evidence覆盖测试版本的 Markdown/Core Graph，不等于所有 community custom views、pop-outs、平台兼容。ALL PASS 不代表 WCAG/screen-reader 审计。既有 Tab/close 独立 focus N/A、Tabs drag/reorder 未执行、P2.6 drag/drop/Foundation Checkbox N/A 继续保留。不重新扩展实现或以这些限制暗示新的 blocker。
+
+既有 Build/Check/diff-check PASS；本 checkpoint Check/diff-check PASS，src/theme.css/settings/scripts/manifest 内容不变，无新 token。只更新允许的四份文档；checkpoint commit 后按持续授权 push，不创建 PR或合并。下一阶段 pending architecture review，不开始 deferred features。
+
+## P3.3a Reading Width — Evidence / Architecture Review COMPLETE
+
+Independent implementation review: **NEEDS FIX** for redundant scoped width selectors in `52d06ea07072498083b28a415b0023b38bd35af0`. Evidence already proves there is no public-variable gap. The corrective commit deletes reading-width.css, restores the original Build group contract and rebuilds theme.css without the Reading section. No force push or history rewrite; Decision 012 supersedes Decision 011.
+
+Final contract: existing **`--theme-reading-width → --file-line-width` is sufficient**. Reading preview-sizer, Live Preview cm-sizer and Source continue consuming Obsidian native public-variable behavior. Content Width 500/700, centering, narrow-pane responsiveness and Readable line length disabled/enabled behavior remain native. No high-specificity width selectors, new token/setting or other Reading CSS; Typography/Content Width/Phase 2/3 source remains unchanged.
+
+[Reading DOM evidence](P3_3A_READING_DOM_EVIDENCE.md) is preserved byte-for-byte. Embed/community contexts remain unverified/N/A, not certified. No new Desktop QA is claimed; this is an evidence-driven architecture conclusion. If a real public-variable gap appears later, gather evidence and review the smallest scoped exception first. Do not start Reading Spacing under this correction.
+
+Validation: Build / Check / diff-check PASS. reading-width.css absent; build.mjs and theme.css byte-identical to pre-implementation baseline b693656; file-line-width mapping remains; all existing source/generated sections and evidence unchanged. Corrective commit is pushed normally on the current branch, no PR.
+
+## P3.3b Reading Rhythm / Spacing Gap Audit — 2026-10-14
+
+真实 Desktop audit COMPLETE：Obsidian 1.14.4 / Installer 1.10.6 / Windows 25H2 26200.8737 / Style Settings 1.0.9。Baseline `865dcfda7b84ddb37606b3868808949e5d6bd692`；独立临时长文，未修改既有 QA 笔记。
+
+Reading / Live Preview 的 ordinary paragraphs、heading transitions、consecutive headings 及 List / Quote / Code / Callout / Table 前后分组正常。Dark 完成 Line Height 1.5/2.0 × Width 500/700；Light / 窄 pane smoke 通过。Source caret、双真实空行 ↑/↓、Enter / Backspace 与长文末尾导航通过；不要求 Source visual parity。
+
+分类：A=5 个 sufficient 场景组，B=3 个 accepted native difference 组，C=0。**NO NEW CSS REQUIRED**；现有 Phase 2 spacing contract 足够，不新增 CSS/token/settings，也不调整任何内容层 spacing。详情及测试边界见 [Reading Rhythm Audit](P3_3B_READING_RHYTHM_AUDIT.md)。
+
+Validation：隔离副本 npm run check PASS；提交前 git diff --check。原仓库和 installed theme artifact 不变，临时笔记清理、既有笔记 hashes 不变，Dark / Line Height 2 / Width 500 与原 workspace 恢复。无后续 implementation / PR。
+
+## Phase 3.3 Final Checkpoint — 2026-10-14
+
+**Phase 3.3 COMPLETE / NO NEW CSS REQUIRED**。P3.3a [DOM evidence](P3_3A_READING_DOM_EVIDENCE.md) 与 P3.3b [Rhythm audit](P3_3B_READING_RHYTHM_AUDIT.md) 保留；A=5、B=3、C=0。
+
+- Width：既有 `--theme-reading-width → --file-line-width` 足够，Decision 012 继续有效，Decision 011 已被 supersede。Reading / Live Preview / Source 保留 Obsidian native 限宽、居中、窄 pane 响应及 Readable line length 开关。
+- Rhythm：Phase 2 typography/spacing contract 已足够。Source native visual rhythm difference 是已接受产品决策，继续优先 caret / keyboard navigation，不要求视觉 parity。
+- 不创建 `src/reading`、`reading-width.css`、`reading-spacing.css`、Reading Boundary 或 Reading Focus enhancement；不增加 high-specificity width/spacing selectors、token 或 Style Setting。
+- Future gate：只有新的、可复现且现有 public variable/token 无法表达的真实 gap，才重新开启 Reading implementation review。
+
+Limitations：embed/community contexts 未认证；audit 限已记录版本、fixture、字体和参数，Light 为 smoke，不扩大为全平台/全部 Markdown 或 accessibility 认证。Phase 3.1 / 3.2 Desktop QA PASS 与既有 N/A 保留；本次未重跑 Desktop QA。
+
+Working tree reconciliation：同步 audit 后本机 `git status` 干净，`CURRENT_STATUS.md` 无历史未提交 diff，因此没有可整合或丢弃的本地 QA 日志。远端 durable evidence / audit 已保留；其他 checkout 的未提交记录不在本机验证范围。仅清理已撤回实现留下的空 `src/reading` 目录，无源码删除或新实现。
+
+Integration validation：`npm run build` / `npm run check` / `git diff --check` PASS；generated theme.css 与 source 同步且内容不变。相对本次 baseline，Phase 2 / P3.1 / P3.2 source、settings、scripts、manifest 与 evidence 均未修改，无 Reading Width/Spacing selectors。文档 checkpoint 正常 commit/push，后续 integration review，不自动 merge/P4。

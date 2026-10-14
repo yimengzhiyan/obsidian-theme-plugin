@@ -2,7 +2,7 @@
 
 ## Status and authority
 
-Phase 3 planning documents reviewed by Chat, as reported by the maintainer. Planning only; implementation requires a separately approved task. No Phase 3 feature is implemented or authorized by this document. This specification defines product intent; [feature matrix](FUSION_FEATURE_MATRIX.md) defines candidate scope and status; [source analysis](SOURCE_THEME_ANALYSIS.md) records external evidence. TASKS tracks execution, CURRENT_STATUS tracks the actual branch and validation, and DECISIONS retains architecture decisions.
+Phase 3 planning documents reviewed by Chat, as reported by the maintainer. Planning only; implementation requires a separately approved task. This design document does not authorize implementation; the latest instruction authorizes only P3.1 workspace tokens + Tabs. This specification defines product intent; [feature matrix](FUSION_FEATURE_MATRIX.md) defines candidate scope and status; [source analysis](SOURCE_THEME_ANALYSIS.md) records external evidence. TASKS tracks execution, CURRENT_STATUS tracks the actual branch and validation, and DECISIONS retains architecture decisions.
 
 Before implementation, reconcile these documents through Chat review. A feature listed as a candidate is not an implementation task. Changes to scope must update the matrix and TASKS together; stable architecture changes must also be recorded in DECISIONS.
 
@@ -67,4 +67,4 @@ Implementation then requires repository checks, generated-artifact consistency a
 - What minimal preset model preserves user overrides and supports return to baseline?
 - Which shell states and platform combinations must be covered before opting into layout/focus behavior?
 
-Chat review of these planning documents is complete as reported by the maintainer. This branch is ready for a documentation-only PR to main; do not merge in this task. No implementation begins without a separately approved concrete task.
+Chat review of these planning documents is complete as reported by the maintainer. Planning PR #10 was squash merged into main at `fbc971d8d034906d1bfd911df5d86e3688cffeaf`. P3.1 now has a [Workspace preparation plan](P3_1_WORKSPACE_FUSION_PLAN.md), with P3.1a Tabs refinement implemented, pending Desktop QA / final review; remaining modules stopped. No implementation begins without a separately approved concrete task.

@@ -3,13 +3,72 @@ body {
   --tab-container-background: var(--theme-bg-secondary);
   --tab-divider-color: var(--theme-border);
   --tab-outline-color: var(--theme-border);
-  --tab-radius: var(--theme-radius-md);
-  --tab-radius-active: var(--theme-radius-md);
+  --tab-curve: min(var(--theme-workspace-control-radius), var(--theme-space-sm));
+  --tab-radius: var(--theme-workspace-control-radius);
+  --tab-radius-active: var(--theme-workspace-control-radius);
   --tab-text-color: var(--theme-text-muted);
   --tab-text-color-active: var(--theme-active-text);
   --tab-text-color-focused: var(--theme-text-muted);
+  --tab-text-color-focused-highlighted: var(--theme-text-normal);
   --tab-text-color-focused-active: var(--theme-active-text);
   --tab-text-color-focused-active-current: var(--theme-active-text);
+}
+
+/* Ordinary tab controls share spacing without changing native width/overflow.
+ * Stacked headers retain their native geometry and writing direction.
+ */
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner {
+  min-width: 0;
+  column-gap: var(--theme-workspace-control-gap);
+  padding-block: var(--theme-workspace-control-gap);
+  padding-inline: var(--theme-workspace-control-gap);
+  border-radius: min(var(--theme-workspace-control-radius), var(--theme-space-sm));
+  background-color: var(--theme-bg-primary);
+}
+
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
+  background-color: var(--theme-hover-bg);
+}
+
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active .workspace-tab-header-inner {
+  background-color: var(--theme-active-bg);
+}
+
+/* Let the title yield space to native icons and the close target. */
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-title {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-icon,
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button {
+  flex-shrink: 0;
+}
+
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button {
+  color: var(--theme-text-muted);
+  border-radius: var(--theme-workspace-control-radius);
+}
+
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button:hover {
+  color: var(--theme-text-normal);
+  background-color: var(--theme-hover-bg);
+}
+
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button:active {
+  color: var(--theme-active-text);
+  background-color: var(--theme-active-bg);
+}
+
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button:focus-visible {
+  outline: 2px solid var(--theme-accent);
+  outline-offset: -2px;
+}
+
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active {
+  font-weight: var(--font-medium);
 }
 
 .workspace-tab-header {
@@ -26,4 +85,14 @@ body {
 .workspace-tab-header.is-active {
   color: var(--theme-active-text);
   box-shadow: inset 0 -2px 0 var(--theme-indicator);
+}
+
+/* Native active outlines outrank the Foundation selector. Preserve that
+ * outline while keeping the Accent indicator visible on ordinary root tabs.
+ */
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active {
+  --tab-outline-color: var(--theme-border-active);
+  box-shadow:
+    inset 0 -2px 0 var(--theme-indicator),
+    0 0 0 var(--tab-outline-width) var(--tab-outline-color);
 }

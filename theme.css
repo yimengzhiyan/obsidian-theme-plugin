@@ -289,13 +289,72 @@ body {
   --tab-container-background: var(--theme-bg-secondary);
   --tab-divider-color: var(--theme-border);
   --tab-outline-color: var(--theme-border);
-  --tab-radius: var(--theme-radius-md);
-  --tab-radius-active: var(--theme-radius-md);
+  --tab-curve: min(var(--theme-workspace-control-radius), var(--theme-space-sm));
+  --tab-radius: var(--theme-workspace-control-radius);
+  --tab-radius-active: var(--theme-workspace-control-radius);
   --tab-text-color: var(--theme-text-muted);
   --tab-text-color-active: var(--theme-active-text);
   --tab-text-color-focused: var(--theme-text-muted);
+  --tab-text-color-focused-highlighted: var(--theme-text-normal);
   --tab-text-color-focused-active: var(--theme-active-text);
   --tab-text-color-focused-active-current: var(--theme-active-text);
+}
+
+/* Ordinary tab controls share spacing without changing native width/overflow.
+ * Stacked headers retain their native geometry and writing direction.
+ */
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner {
+  min-width: 0;
+  column-gap: var(--theme-workspace-control-gap);
+  padding-block: var(--theme-workspace-control-gap);
+  padding-inline: var(--theme-workspace-control-gap);
+  border-radius: min(var(--theme-workspace-control-radius), var(--theme-space-sm));
+  background-color: var(--theme-bg-primary);
+}
+
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
+  background-color: var(--theme-hover-bg);
+}
+
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active .workspace-tab-header-inner {
+  background-color: var(--theme-active-bg);
+}
+
+/* Let the title yield space to native icons and the close target. */
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-title {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-icon,
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button {
+  flex-shrink: 0;
+}
+
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button {
+  color: var(--theme-text-muted);
+  border-radius: var(--theme-workspace-control-radius);
+}
+
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button:hover {
+  color: var(--theme-text-normal);
+  background-color: var(--theme-hover-bg);
+}
+
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button:active {
+  color: var(--theme-active-text);
+  background-color: var(--theme-active-bg);
+}
+
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button:focus-visible {
+  outline: 2px solid var(--theme-accent);
+  outline-offset: -2px;
+}
+
+.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active {
+  font-weight: var(--font-medium);
 }
 
 .workspace-tab-header {
@@ -314,6 +373,16 @@ body {
   box-shadow: inset 0 -2px 0 var(--theme-indicator);
 }
 
+/* Native active outlines outrank the Foundation selector. Preserve that
+ * outline while keeping the Accent indicator visible on ordinary root tabs.
+ */
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active {
+  --tab-outline-color: var(--theme-border-active);
+  box-shadow:
+    inset 0 -2px 0 var(--theme-indicator),
+    0 0 0 var(--tab-outline-width) var(--tab-outline-color);
+}
+
 /* Source: src/workspace/sidebar.css */
 body {
   --nav-item-color: var(--theme-text-muted);
@@ -330,9 +399,24 @@ body {
   background-color: var(--theme-bg-sidebar);
 }
 
+/* Sidebar shell only: direct children exclude editor panes and view internals.
+ * Leave content padding, native widths and resize handles untouched.
+ */
+.workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs {
+  background-color: var(--theme-bg-secondary);
+  row-gap: var(--theme-workspace-control-gap);
+}
+
+/* An inset divider changes no header or resize-handle dimensions. */
+.workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs > .workspace-tab-header-container {
+  background-color: var(--theme-bg-primary);
+  padding-inline: var(--theme-workspace-control-gap);
+  box-shadow: inset 0 -1px 0 var(--theme-border);
+}
+
 /* Source: src/workspace/ribbon.css */
 body {
-  --ribbon-background: var(--theme-bg-sidebar);
+  --ribbon-background: var(--theme-bg-secondary);
   --ribbon-background-collapsed: var(--theme-bg-primary);
 }
 
@@ -341,6 +425,23 @@ body {
   --icon-color-hover: var(--theme-text-normal);
   --icon-color-active: var(--theme-indicator);
   --icon-color-focused: var(--theme-indicator);
+}
+
+/* Inset separators do not alter the Ribbon width or resize hit areas. */
+.workspace-ribbon.mod-left {
+  box-shadow: inset -1px 0 0 var(--theme-border);
+}
+
+.workspace-ribbon.mod-right {
+  box-shadow: inset 1px 0 0 var(--theme-border);
+}
+
+/* Standard native/extension actions share shell geometry, not icon styling.
+ * Keep native target dimensions, visibility, ordering and command behavior.
+ */
+.workspace-ribbon .side-dock-ribbon-action {
+  margin-block: var(--theme-workspace-control-gap);
+  border-radius: var(--theme-workspace-control-radius);
 }
 
 .workspace-ribbon .clickable-icon:hover {
@@ -356,8 +457,23 @@ body {
 body {
   --status-bar-background: var(--theme-bg-secondary);
   --status-bar-border-color: var(--theme-border);
-  --status-bar-radius: var(--theme-radius-md);
+  --status-bar-radius: var(--theme-workspace-control-radius);
   --status-bar-text-color: var(--theme-text-muted);
+}
+
+/* Keep native anchoring, divider width, scroll padding and item sizing. */
+.status-bar {
+  column-gap: var(--theme-workspace-control-gap);
+}
+
+/* Only decorate the standard item shell, never plugin-owned descendants. */
+.status-bar > .status-bar-item {
+  border-radius: var(--theme-workspace-control-radius);
+}
+
+.status-bar > .status-bar-item.mod-clickable:hover {
+  color: var(--theme-text-normal);
+  background-color: var(--theme-hover-bg);
 }
 
 /* Source: src/workspace/scrollbar.css */
@@ -365,6 +481,53 @@ body {
   --scrollbar-bg: transparent;
   --scrollbar-thumb-bg: var(--theme-border-hover);
   --scrollbar-active-thumb-bg: var(--theme-border-active);
+}
+
+/* Source: src/workspace/view-header.css */
+/* Public leaf headers in the main workspace only; never Sidebar headers,
+ * tab rows, view content or plugin-specific internals.
+ */
+.workspace-split.mod-root .workspace-leaf-content > .view-header {
+  --file-header-border: 1px solid var(--theme-border);
+  --file-header-font-weight: var(--font-medium);
+  background-color: var(--theme-bg-primary);
+  column-gap: var(--theme-workspace-control-gap);
+  padding-inline: var(--theme-workspace-control-gap);
+}
+
+/* Keep native title scrolling, gradients, rename and font-size behavior. */
+.workspace-split.mod-root .workspace-leaf-content > .view-header > .view-header-title-container > .view-header-title {
+  color: var(--theme-text-normal);
+}
+
+.workspace-split.mod-root .workspace-leaf-content > .view-header > .view-actions {
+  column-gap: var(--theme-workspace-control-gap);
+}
+
+/* Existing public action controls retain native dimensions, icons and events. */
+.workspace-split.mod-root .workspace-leaf-content > .view-header > .view-actions > .view-action {
+  --icon-color: var(--theme-text-muted);
+  --icon-color-hover: var(--theme-text-normal);
+  --icon-color-active: var(--theme-accent);
+  border-radius: min(var(--theme-workspace-control-radius), var(--theme-space-sm));
+}
+
+.workspace-split.mod-root .workspace-leaf-content > .view-header > .view-actions > .view-action:not(.is-disabled):not([aria-disabled="true"]):hover {
+  background-color: var(--theme-hover-bg);
+}
+
+.workspace-split.mod-root .workspace-leaf-content > .view-header > .view-actions > .view-action:not(.is-disabled):not([aria-disabled="true"]).is-active {
+  background-color: var(--theme-active-bg);
+}
+
+/* Source: src/workspace/workspace-tokens.css */
+/* Workspace geometry aliases share the Foundation Radius / spacing contract.
+ * Keep these on body so consumer variables resolve against the same scope,
+ * even though Build emits this module after tabs.css.
+ */
+body {
+  --theme-workspace-control-radius: var(--theme-radius-md);
+  --theme-workspace-control-gap: var(--theme-space-xs);
 }
 
 /* Source: src/editor/callout.css */
@@ -484,4 +647,36 @@ body {
 
   --nav-collapse-icon-color: var(--theme-text-faint);
   --nav-collapse-icon-color-collapsed: var(--theme-text-muted);
+}
+
+/* Source: src/layout/layout.css */
+/* Geometry for native main-workspace split containers only.
+ * Keep pane sizing/direction and native divider hit areas owned by Obsidian.
+ */
+.workspace-split.mod-root {
+  --divider-color: var(--theme-border);
+  gap: var(--theme-workspace-control-gap);
+}
+
+/* Do not enter leaf contents, where editors/plugins may own their own layout.
+ * No workspace-leaf, workspace-tabs or sidebar geometry overrides.
+ */
+.workspace-split.mod-root .workspace-split:is(.mod-horizontal, .mod-vertical):not(.workspace-leaf-content *) {
+  gap: var(--theme-workspace-control-gap);
+}
+
+/* Source: src/effects/focus.css */
+/* Native active-leaf hierarchy, verified in P3_2C_FOCUS_DOM_EVIDENCE.md.
+ * Only the public header boundary changes; preserve content, geometry,
+ * title/action readability and native application/keyboard focus behavior.
+ */
+.workspace-split.mod-root .workspace-leaf.mod-active > .workspace-leaf-content > .view-header {
+  --file-header-border: 1px solid var(--theme-accent);
+}
+
+/* Neutral inactive shell is de-emphasized relative to the Accent boundary.
+ * Hidden leaves remain hidden; no opacity or view-type overrides.
+ */
+.workspace-split.mod-root .workspace-leaf:not(.mod-active) > .workspace-leaf-content > .view-header {
+  --file-header-border: 1px solid var(--theme-border);
 }

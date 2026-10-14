@@ -1,0 +1,8 @@
+/* Workspace geometry aliases share the Foundation Radius / spacing contract.
+ * Keep these on body so consumer variables resolve against the same scope,
+ * even though Build emits this module after tabs.css.
+ */
+body {
+  --theme-workspace-control-radius: var(--theme-radius-md);
+  --theme-workspace-control-gap: var(--theme-space-xs);
+}

@@ -2,7 +2,7 @@
 
 ## Status vocabulary
 
-Planning documents reviewed by Chat, as reported by the maintainer. Planning only; no implementation authorization. Source means design inspiration or evidence, not copied code. `Complete` describes the existing verified baseline; `Candidate` means documented but unapproved and unimplemented; `Deferred` remains outside current implementation scope. No row is currently approved for Phase 3 implementation.
+Planning documents reviewed by Chat, as reported by the maintainer. Planning review alone does not authorize implementation. Source means design inspiration or evidence, not copied code. `Complete` describes the existing verified baseline; `Candidate` means documented but unapproved and unimplemented; `Deferred` remains outside current implementation scope. Latest instruction authorizes W01 workspace tokens + Tabs first milestone only; remaining implementation stops for review.
 
 Priorities: **Baseline** = preserve existing capability; **P1** = first review candidate; **P2** = evaluate after baseline/shell contracts; **P3** = later optional investigation; **Deferred** = no implementation commitment. Priorities are proposals, not deadlines. Composer/Border references are summarized in [source analysis](SOURCE_THEME_ANALYSIS.md); detailed upstream selector analysis remains pending.
 
@@ -23,7 +23,7 @@ Priorities: **Baseline** = preserve existing capability; **P1** = first review c
 
 | ID | Module / feature | Source / confidence | Priority | Status | Dependency / review gate |
 | --- | --- | --- | --- | --- | --- |
-| W01 | Workspace: shell density and hierarchy refinement | Fusion baseline; Border customization documented | P1 | Candidate | Identify concrete daily-use problem; preserve active/hover states and resizing |
+| W01 | Workspace: shell density and hierarchy refinement | Fusion baseline; Border customization documented | P1 | P3.1a Tab Shell refinement implemented; Desktop QA / final review pending; other modules untouched | [P3.1 plan](P3_1_WORKSPACE_FUSION_PLAN.md); preserve active/hover states and resizing |
 | W02 | Workspace: optional chrome reduction | Border auto-hide documented; Fusion design interpretation | P2 | Candidate; historically deferred | Define exactly which controls; keyboard/pointer recovery and CSS feasibility |
 | L01 | Layout: optional card/panel separation | Border Card Layout documented | P2 | Candidate; historically deferred | W01 contract; split/stacked panes and constrained-window QA; baseline fallback |
 | F01 | Focus System: reversible content emphasis | Fusion synthesis; not asserted as an upstream named feature | P2 | Candidate; historically deferred | Specify activation/recovery; no hidden required control or Source geometry changes |

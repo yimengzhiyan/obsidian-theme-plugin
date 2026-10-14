@@ -1,6 +1,21 @@
 body {
   --status-bar-background: var(--theme-bg-secondary);
   --status-bar-border-color: var(--theme-border);
-  --status-bar-radius: var(--theme-radius-md);
+  --status-bar-radius: var(--theme-workspace-control-radius);
   --status-bar-text-color: var(--theme-text-muted);
+}
+
+/* Keep native anchoring, divider width, scroll padding and item sizing. */
+.status-bar {
+  column-gap: var(--theme-workspace-control-gap);
+}
+
+/* Only decorate the standard item shell, never plugin-owned descendants. */
+.status-bar > .status-bar-item {
+  border-radius: var(--theme-workspace-control-radius);
+}
+
+.status-bar > .status-bar-item.mod-clickable:hover {
+  color: var(--theme-text-normal);
+  background-color: var(--theme-hover-bg);
 }
