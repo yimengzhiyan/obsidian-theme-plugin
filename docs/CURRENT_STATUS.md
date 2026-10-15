@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-P4.1.5 Desktop Acceptance QA EXECUTED — FAIL / promotion blocked。Prototype f50040a 的 recommendation/override/Default/persistence 与 regression smoke 通过；单项 Content Width Reset 未删除保存覆盖，实际为 700px 而非 Writer 640px。详见本页 P4.1.5 checkpoint。
+P4.1.6 RESET-01 Mechanism Investigation COMPLETE — root cause CONFIRMED。P4.1.5 仍为 FAIL / promotion blocked；没有实施修复。Reset 的 programmatic slider setter 触发 trailing save，在 clearSetting 删除后重新写入700。详见 [调查报告](P4_1_RESET_01_INVESTIGATION.md) 与本页最新 checkpoint。
 
 ## Foundation
 
@@ -14,7 +14,7 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Commit
 
-Tested implementation：`f50040a45c456693b603dc148445b33ea8eca2c1`。本次仅 Desktop QA 文档；QA commit 使用 `git rev-parse HEAD`。
+Unchanged implementation：`f50040a45c456693b603dc148445b33ea8eca2c1`；已保留 Desktop QA commit `7d89f34108beffea8ac4f30842e1f44c37ea6273`。P4.1.6 仅调查/状态文档；当前文档 commit 使用 `git rev-parse HEAD` 获取。
 
 ## Completed
 
@@ -103,7 +103,7 @@ Tested implementation：`f50040a45c456693b603dc148445b33ea8eca2c1`。本次仅 D
 
 ## Next Step
 
-返回独立 Chat Design Review，处理 P4.1.5 RESET-01 的实测行为与 UX 承诺冲突。当前不建议进入正式 Phase 4；不修改 Preset 架构、不新增 preset/runtime/token，也不改 Phase 2/3 或 Reading。
+返回独立 Chat Design Review：依据 P4.1.6 已确认机制，选择 D（停止当前 assisted prototype promotion、保留 documentation-only）或另行授权范围明确的 C 替代控件研究。当前没有已验证修复，不建议进入正式 Phase 4；不要自行改 UX Contract、实现或重解释 Reset=700 为 PASS。
 
 ## Known Issues / Blockers
 
@@ -405,3 +405,15 @@ Dark设置窗口中重复两次，均为700。为排除鼠标定位/自动化set
 - 测试结束关闭Obsidian后恢复测试Vault的初始app/appearance/community/data配置。保留专用fixture及本地备份以便复测，不入Git。恢复原Vault注册/窗口配置并重新打开原日常Vault。
 - **不建议进入正式Phase 4。** 返回Chat Design Review评估Reset行为与静态UX承诺冲突，任何修订须另行授权和复测；本报告不作新的架构决策。
 - Remaining risks：一个已了解UX Contract的维护者样本，不代表新手理解；单一width轴不能推广到全Preset体系。section/all reset、selection reset的完整recovery、native readable-line-length off/on、pop-outs、所有社区view/其他平台及accessibility未完整认证。User instruction的核心用例已执行，Reset失败仍是blocker。
+
+## P4.1.6 RESET-01 Investigation — 2026-10-15
+
+- **Investigation COMPLETE / root cause CONFIRMED；P4.1.5 FAIL 保留。** [详细报告](P4_1_RESET_01_INVESTIGATION.md) 为本轮机制证据、A/B/C/D比较与限制；历史 P4.1.5 “根因未定”是当时诊断边界，由此调查补齐，原 Desktop 观察不变。
+- 保留 `codex/p4-preset-prototype` 的原 QA commit `7d89f34108beffea8ac4f30842e1f44c37ea6273` 与 implementation `f50040a45c456693b603dc148445b33ea8eca2c1`；未 cherry-pick / 重写历史。
+- 证据：Style Settings 1.0.9 固定源码 `4ebec6a`，与独立 Vault 已安装 release 执行内容核对一致；实际 updated Obsidian 1.14.4 app.js setter/debounce 源码；已有 Desktop 鼠标/键盘复现；新离线 exact-function replay 五项断言 / 四场景 PASS。
+- 根因：Reset 先 `Slider.setValue(700)`；值变化触发注册 callback，经 Obsidian trailing debounce 约250ms调用 setSetting；随后同步 clearSetting 的 delete 无法取消它，故保存键被重建为700。并非 CSS override 优先级故障。未把离线 timing 或 modeled persistence 当成 Desktop I/O trace。
+- A：原生删除存在，但二次 Reset 依赖当前值/队列、未新做 Desktop 验证；全主题 Reset 会清其他配置与 selection。B：没有合法 metadata Reset 行为开关。C：文本控件有 pending input race；select 需评估单位/保存值/UI兼容；未实现。D：建议冻结当前 promotion、保留 documentation-only，待 Chat 决策。
+- Contract：不把700解释成成功；不更改原 UX Contract / DECISIONS。需要 Chat 决定 D 或单独批准 C 研究、对应 contract 后续修订；不能据本报告启动修复或宣布正式 Phase 4 通过。
+- 验证：`npm run check` 在独立 tracked-file copy 第二次 PASS（首次仅该副本 freshness 重建）；仓库 theme.css 始终未写，SHA-256 `CB30DFB7C0E288EAC9DFEB03D51DD43CB62B6FCCE9957C62C80805C8B537DA90`；`git diff --check` PASS；与 QA HEAD 比较除本报告 / CURRENT_STATUS / AI_HANDOFF 外无 tracked 内容变化。
+- 本轮未操作日常或独立 Vault 设置。分析工具与提取的应用源码留在仓库外，不提交。Remaining unknowns：alternate control Desktop/迁移、pending input 全路径、真实保存完成时序、其他版本及未来上游修复；不构成现有 prototype PASS。
+- 按授权只提交调查与状态文档，推送前重新 fetch / 核对远端，正常 fast-forward 同步既有 QA 与本轮调查；不创建 PR、不合并 main。
