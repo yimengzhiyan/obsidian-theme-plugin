@@ -162,8 +162,17 @@ Focus System：CSS only；based on native `.workspace-leaf.mod-active`；no runt
 
 不创建 src/reading、reading-width.css、reading-spacing.css、Reading Boundary 或 Reading Focus enhancement。Reading / Live Preview / Source 均保留 native width behavior；embed/community contexts 未认证。
 
+## P4.1 Preset Prototype — Experiment Closed / Acceptance FAIL
+
+- [x] Architecture / feature / mechanism / UX / gate 文档完成；仅 candidate 与实验授权，不是正式 feature
+- [x] Writer Prototype 实现 `f50040a` 与静态验证保留
+- [x] P4.1.5 Desktop QA `7d89f34` 完成：整体 FAIL / RESET-01 blocker
+- [x] P4.1.6 调查 `14c5bc9` 完成：root cause CONFIRMED，未实施修复
+- [x] 实验记录 closeout、完整证据链与当前 disposition 已写入 CURRENT_STATUS；实现/报告保留
+- [ ] 用户确认 Preset 产品方向：Documentation-only 为 Chat 推荐，尚未批准；确认前不实施新方案或正式修订 UX Contract
+
+当前 assisted Prototype 未达验收门槛，不标记成功/正式功能。RESET-01 unresolved，promotion blocked；不自动修复、换控件、增profile或重开实验。缺陷保留为已收尾实验的未解决限制，不作为自动执行的修复待办。
+
 ## Next Step
 
-- [ ] Integration PR review：P3.1 / P3.2 已实现模块与 P3.3 evidence / final close；不自行 merge
-
-暂不开始 P4。只有出现新的、可复现且现有 public variable/token 无法表达的真实 gap，才重新开启 Reading implementation review；不以已接受 Source 差异或像素 parity 作为 gap。正常 push，不 rewrite/force-push。
+等待用户确认产品方向与下一个独立任务。可考虑 shell-level Card Layout 的设计/DOM scope review，**不代表开发已授权**；Focus Enhancement、Auto Hide、Effects 继续 Defer。不得自行创建 PR、合并 main、启动 Card 或其他 Phase 4 实现。Reading contract 仍遵守 Decision 012。

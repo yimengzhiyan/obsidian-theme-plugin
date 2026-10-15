@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-P4.1.6 RESET-01 Mechanism Investigation COMPLETE — root cause CONFIRMED。P4.1.5 仍为 FAIL / promotion blocked；没有实施修复。Reset 的 programmatic slider setter 触发 trailing save，在 clearSetting 删除后重新写入700。详见 [调查报告](P4_1_RESET_01_INVESTIGATION.md) 与本页最新 checkpoint。
+P4.1 Preset Prototype 实验收尾 COMPLETE；assisted Prototype 验收 FAIL / promotion blocked。RESET-01 根因已确认但未修复，实验实现与证据保留。Documentation-only 是 Chat 推荐方向，待用户确认，尚非批准的最终产品决策；不自动进入修复循环或其他 Phase 4 功能。
 
 ## Foundation
 
@@ -14,7 +14,7 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Commit
 
-Unchanged implementation：`f50040a45c456693b603dc148445b33ea8eca2c1`；已保留 Desktop QA commit `7d89f34108beffea8ac4f30842e1f44c37ea6273`。P4.1.6 仅调查/状态文档；当前文档 commit 使用 `git rev-parse HEAD` 获取。
+Implementation：`f50040a45c456693b603dc148445b33ea8eca2c1`；Desktop QA：`7d89f34108beffea8ac4f30842e1f44c37ea6273`；RESET-01 investigation：`14c5bc9`。当前 closeout 文档 commit 用 `git rev-parse HEAD` 获取。
 
 ## Completed
 
@@ -96,14 +96,16 @@ Unchanged implementation：`f50040a45c456693b603dc148445b33ea8eca2c1`；已保�
 
 ## In Progress
 
-- P4.1.5 Desktop acceptance 已执行，Reset gate FAIL；等待独立设计 review，未实施修复。
+- P4.1 实验已收尾，Reset gate FAIL / promotion blocked；等待用户确认产品方向，无进行中的修复任务。
 - 无进行中的 P3.3a CSS 实现；evidence / architecture review COMPLETE，结论是无需新增 CSS。
 - P3.3b audit COMPLETE；C=0，无 Reading Spacing implementation；详见 [Rhythm Audit](P3_3B_READING_RHYTHM_AUDIT.md)。
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-返回独立 Chat Design Review：依据 P4.1.6 已确认机制，选择 D（停止当前 assisted prototype promotion、保留 documentation-only）或另行授权范围明确的 C 替代控件研究。当前没有已验证修复，不建议进入正式 Phase 4；不要自行改 UX Contract、实现或重解释 Reset=700 为 PASS。
+等待用户确认 Preset 产品方向：Chat 推荐 Documentation-only，但尚未批准，不创建 recipes 或改写历史 UX Contract。当前 assisted 实验冻结，不修复 RESET-01、不换控件、不增加 profile。未来若重新研究 assisted 路线，必须另行明确授权范围和验收；不自动重开。
+
+Phase 4 的其他候选仅供后续选择：shell-level Card Layout 的独立设计/DOM scope review；Focus Enhancement、Auto Hide、Effects 继续 Defer。任何候选都需用户选择与独立任务授权；本轮不启动 Card 开发、PR 或 main 合并。
 
 ## Known Issues / Blockers
 
@@ -417,3 +419,31 @@ Dark设置窗口中重复两次，均为700。为排除鼠标定位/自动化set
 - 验证：`npm run check` 在独立 tracked-file copy 第二次 PASS（首次仅该副本 freshness 重建）；仓库 theme.css 始终未写，SHA-256 `CB30DFB7C0E288EAC9DFEB03D51DD43CB62B6FCCE9957C62C80805C8B537DA90`；`git diff --check` PASS；与 QA HEAD 比较除本报告 / CURRENT_STATUS / AI_HANDOFF 外无 tracked 内容变化。
 - 本轮未操作日常或独立 Vault 设置。分析工具与提取的应用源码留在仓库外，不提交。Remaining unknowns：alternate control Desktop/迁移、pending input 全路径、真实保存完成时序、其他版本及未来上游修复；不构成现有 prototype PASS。
 - 按授权只提交调查与状态文档，推送前重新 fetch / 核对远端，正常 fast-forward 同步既有 QA 与本轮调查；不创建 PR、不合并 main。
+
+## P4.1 Preset Prototype Closeout
+
+**实验记录收尾完成 ≠ prototype 验收成功。** 当前 assisted Prototype 未达到 gate，Desktop QA FAIL、promotion blocked、RESET-01 未修复；不是正式 Preset System，不是 Phase 4 feature completion，也不推导为所有 Theme-first preset 都不可能。
+
+### Durable evidence chain
+
+| Stage | Commit | Evidence / conclusion |
+| --- | --- | --- |
+| Feature decision | `58dd713` | [Feature Decisions](P4_FEATURE_DECISIONS.md)：Prototype candidate，不是 implementation acceptance |
+| Architecture design | `b58fcf6` | [Preset Design](P4_1_PRESET_SYSTEM_DESIGN.md)：Needs more research |
+| Mechanism research | `d85fcd3` | [Mechanism Research](P4_1_PRESET_MECHANISM_RESEARCH.md)：Theme-only feasible with limitations；Reset 删除后稳定回退的推断已由 P4.1.6 纠正 |
+| UX Contract | `df742b1` | [UX Contract](P4_1_PRESET_UX_CONTRACT.md)：Style Settings assisted；User override > recommendation > default；尚未降级承诺以掩盖 FAIL |
+| Prototype gate | `abab4f5` | [Gate](P4_1_PRESET_PROTOTYPE_GATE.md)：Proceed to prototype，仅实验门槛 |
+| Implementation | `f50040a` | [Prototype Report](P4_1_PRESET_PROTOTYPE_REPORT.md)：Writer 640px、Default；本地静态通过/当时 Desktop pending，不是最新验收结果 |
+| P4.1.5 Desktop QA | `7d89f34108beffea8ac4f30842e1f44c37ea6273` | [本页原始 QA checkpoint](#p415-desktop-preset-acceptance-qa--2026-10-15)：整体 FAIL；Dark 鼠标和 Light 原生键盘均复现 RESET-01；其他局部 PASS 不消除 blocker |
+| P4.1.6 investigation | `14c5bc9` | [RESET-01 investigation](P4_1_RESET_01_INVESTIGATION.md)：root cause CONFIRMED；exact-function 离线 replay，不声称新 Desktop 修复验证 |
+
+确认机制：Style Settings 1.0.9 / Obsidian 1.14.4 的 Reset 调用 slider.setValue(700)，触发注册回调的 trailing save；clearSetting 删除后，pending callback 重建保存键700。saved700按用户优先级正确覆盖Writer640。不是 CSS 优先级失败，也不是删除调用根本未发生；不能把700重新解释为验收成功。
+
+### Disposition and reserved decisions
+
+- 冻结本次 assisted promotion，保留现有源码、settings、generated theme、历史报告与测试证据，不删除/回滚文件，不修复 RESET-01。
+- **Documentation-only = Chat 推荐方向 / 待用户确认**。没有已批准最终产品决策；不把推荐写成已采用方案，不新增/替换 DECISIONS，不自动制作新 Preset。
+- 是否批准 Documentation-only、是否正式修订 UX/feature 状态、如何处置保留的实验、是否另行重开有边界研究，均留待用户明确决定；没有自动重试任务。
+- 维护者预判、覆盖、重启、plugin off/on 与 P2/P3 smoke 的已记录 PASS 继续保留；单人样本、section/selection reset完整恢复、resize、native width开关、其他平台/插件和 accessibility 限制继续保留，不扩大认证。
+
+本轮仅 CURRENT_STATUS / AI_HANDOFF / TASKS 文档收尾；npm run check / git diff --check PASS，非文档内容与同步后的调查 baseline 完全一致。未重跑 Desktop、未操作 Vault、未创建 PR/合并 main，也未开始 Card Layout 或其他 Phase 4 实现。
