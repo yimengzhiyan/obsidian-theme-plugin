@@ -97,6 +97,14 @@ P3.3a Reading Width evidence / architecture review COMPLETE；无需新增 CSS i
 
 不新增token/settings/其他Reading CSS，不改Typography/Content Width。保留 DOM evidence；embed/community contexts未认证。未来只有真实public-variable gap证据才能重新review scoped exception；Reading Spacing不属本任务。Decision 011不再是有效实施方向。
 
+## Decision 013 — End assisted Preset experiment; Documentation-only direction
+
+2026-10-17：用户正式确认结束 P4.1 Style Settings assisted Preset 路线；不再进入 RESET-01 修复、换控件或重试循环。后续 Preset 仅保留 Documentation-only 推荐配置方向。这不表示立即需要编写 recipes，也不自动批准任何新的实现任务。
+
+P4.1 Prototype 是失败实验：Desktop Acceptance FAIL、RESET-01 root cause CONFIRMED、promotion blocked。保留 implementation f50040a、QA 7d89f34、调查14c5bc9与closeout694ff8c及原有报告；不改写历史结论，不删除实验代码/证据，不将收尾写为验收成功，也不推论所有 Theme-first preset 都不可行。当前任务不改变已有 theme/settings artifact；保留实验的后续分支/发布处置须另行授权。
+
+P4.2 shell-level Card Layout 是独立候选，不继承 Preset Prototype 的 class-select、状态或实现；本次仅 P4.2a Evidence / Design Review。没有 Card CSS、兼容 CSS、Prototype、PR、main 合并或 release acceptance 授权。Phase 2/3、Reading Decision012和Focus Decision010保持有效。
+
 ## Log
 
 ### P3.1a — Tabs implementation refinement

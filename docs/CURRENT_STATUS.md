@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-P4.1 Preset Prototype 实验收尾 COMPLETE；assisted Prototype 验收 FAIL / promotion blocked。RESET-01 根因已确认但未修复，实验实现与证据保留。Documentation-only 是 Chat 推荐方向，待用户确认，尚非批准的最终产品决策；不自动进入修复循环或其他 Phase 4 功能。
+P4.1 assisted Preset 路线正式结束：失败实验/证据保留，Documentation-only 已获用户确认（Decision013），不进入 RESET-01 修复循环、不立即制作 recipes。P4.2a Card Shell Evidence / Design Review 已完成当前采集与报告，结论 **Needs more research**；没有 Prototype 或实现授权。
 
 ## Foundation
 
@@ -14,7 +14,7 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Commit
 
-Implementation：`f50040a45c456693b603dc148445b33ea8eca2c1`；Desktop QA：`7d89f34108beffea8ac4f30842e1f44c37ea6273`；RESET-01 investigation：`14c5bc9`。当前 closeout 文档 commit 用 `git rev-parse HEAD` 获取。
+Implementation：`f50040a45c456693b603dc148445b33ea8eca2c1`；Desktop QA：`7d89f34108beffea8ac4f30842e1f44c37ea6273`；RESET-01 investigation：`14c5bc9`。同步 closeout baseline：`694ff8c63afe1657cb2887c7acfbfa2954a10ed4`；当前 P4.2a 文档 checkpoint commit 用 `git rev-parse HEAD` 获取。
 
 ## Completed
 
@@ -96,20 +96,20 @@ Implementation：`f50040a45c456693b603dc148445b33ea8eca2c1`；Desktop QA：`7d89
 
 ## In Progress
 
-- P4.1 实验已收尾，Reset gate FAIL / promotion blocked；等待用户确认产品方向，无进行中的修复任务。
+- P4.1 实验已收尾，Reset gate FAIL / promotion blocked；Documentation-only 已由用户正式确认，无修复/换控件/重试任务。
 - 无进行中的 P3.3a CSS 实现；evidence / architecture review COMPLETE，结论是无需新增 CSS。
 - P3.3b audit COMPLETE；C=0，无 Reading Spacing implementation；详见 [Rhythm Audit](P3_3B_READING_RHYTHM_AUDIT.md)。
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-等待用户确认 Preset 产品方向：Chat 推荐 Documentation-only，但尚未批准，不创建 recipes 或改写历史 UX Contract。当前 assisted 实验冻结，不修复 RESET-01、不换控件、不增加 profile。未来若重新研究 assisted 路线，必须另行明确授权范围和验收；不自动重开。
+依据 [P4.2a evidence](P4_2_CARD_SHELL_EVIDENCE.md) 返回 Chat Design Review：普通 main leaf-content 是候选 envelope，但边界绘制/圆角裁切安全性尚未确认，结论 Needs more research。下一步只能在独立授权后补齐最小证据或批准有边界的视觉实验；本轮不创建 Prototype、不实现 Card/兼容 CSS、不创建 PR/合并 main。
 
-Phase 4 的其他候选仅供后续选择：shell-level Card Layout 的独立设计/DOM scope review；Focus Enhancement、Auto Hide、Effects 继续 Defer。任何候选都需用户选择与独立任务授权；本轮不启动 Card 开发、PR 或 main 合并。
+Preset 后续仅 Documentation-only 方向，不要求立即编写 recipes，不重开 P4.1 implementation/RESET-01 修复。Notebook Navigator 为重点社区兼容样本；当前独立 Vault 未安装，交互 NOT TESTED，不能将官方变量/静态源码研究写成 Desktop PASS。Focus Enhancement / Auto Hide / Effects 仍 Defer。
 
 ## Known Issues / Blockers
 
-- P4.1.5 RESET-01：Content Width Reset保留700覆盖而非删除，Writer实际700而非640；Desktop acceptance FAIL，promotion blocked。详见最新checkpoint。
+- P4.1.5 RESET-01：失败实验的未解决限制，Desktop acceptance FAIL / promotion blocked 保留；用户已结束 assisted 路线，不再作为自动修复待办。Documentation-only 决策见013。
 - Known decision：Source Mode visual rhythm may differ from Reading View；这是为保留原生 caret / keyboard navigation 而主动接受的 scope decision，不是 unresolved visual blocker
 - P2.2 无已知 blocker；撤回 Source normalization 后导航已由真实 Desktop 验证恢复
 - P2.3 无 unresolved blockers；Source unresolved-link presentation 可不同于 rendered views，Reading unresolved dotted decoration 主要 hover 可见，均接受为 native/public-variable differences，不增加 selector 覆盖
@@ -447,3 +447,16 @@ Dark设置窗口中重复两次，均为700。为排除鼠标定位/自动化set
 - 维护者预判、覆盖、重启、plugin off/on 与 P2/P3 smoke 的已记录 PASS 继续保留；单人样本、section/selection reset完整恢复、resize、native width开关、其他平台/插件和 accessibility 限制继续保留，不扩大认证。
 
 本轮仅 CURRENT_STATUS / AI_HANDOFF / TASKS 文档收尾；npm run check / git diff --check PASS，非文档内容与同步后的调查 baseline 完全一致。未重跑 Desktop、未操作 Vault、未创建 PR/合并 main，也未开始 Card Layout 或其他 Phase 4 实现。
+
+## P4.2a Card Shell Evidence / Design Review — 2026-10-17
+
+- **P4.1 正式产品方向已确认**：Decision013采用Documentation-only，结束assisted路线/RESET-01修复循环。失败实现f50040a、QA7d89f34、调查14c5bc9、closeout694ff8c和历史报告保留；上方“待用户确认”是历史checkpoint，不再代表当前决策。没有立即制作recipes的任务，也没有回滚/删除实验artifact。
+- **P4.2 独立候选 / disposition: Needs more research。** [Card Shell Evidence](P4_2_CARD_SHELL_EVIDENCE.md) 含Source/Live Preview/Reading、左右/上下nested、ordinary hidden tabs/stacked、native header hidden、core Graph的真实DOM与computed样本；不是Card Desktop QA PASS。
+- 候选优先main原生非stacked组下leaf直属leaf-content，避开native divider sibling；root/nested split的既有gap4px作用于groups之间。stacked同时存在多个非零尺寸leaf与兄弟竖向tab header，不能用inactive代替hidden；首个候选应排除stacked，不改其滚动/可见性。
+- No new token / no geometry change：复用既有surface/border/Radius/workspace aliases；pane尺寸、ratio、divider hit area、gap/padding、content width、scroll/overflow、header高度与Sidebar/Ribbon/Status Bar合同全部保留。物理border可能消耗空间；native hidden overflow下圆角可能收紧裁切；中性边界如何避免被opaque子内容盖住尚需证据。
+- Focus建议：neutral-only outer shell候选，Decision010 header active Accent/inactive neutral完全保持。禁止移动Focus信号或补造header-hidden active cue。原生header开关已恢复并读到show-view-header=true。
+- Notebook Navigator：优先社区兼容性样本；测试Vault只有Style Settings1.0.9，NN NOT INSTALLED / NOT TESTED，版本/布局N/A。官方guide+固定source667ece262dda7645c78a76812b12a70d788aae24（source manifest3.4.3）审查公开nn-theme变量、mode/user优先级、原生host与插件内部双栏/scroll边界；未安装/执行，不声称交互PASS，不复用源码或扩大Card范围。
+- 环境：独立P415-Preset-Acceptance Vault，当前Obsidian1.14.4、Style Settings1.0.9；Installer1.10.6/Windows25H2 26200.8737沿用记录。普通窗1024×800，main980×800，独立pane488px、stacked leaf408px；未独立调整800px全窗口或验收Card resize。
+- 结束：仅用native命令改变测试布局/模式与临时header配置；只读Console查询，无DOM/CSS修改、listener/helper/runtime。关闭测试Vault/DevTools后恢复备份配置并核对hash。日常Vault未用于本次实验；installed/root theme SHA256仍CB30DFB7C0E288EAC9DFEB03D51DD43CB62B6FCCE9957C62C80805C8B537DA90。
+- Validation：独立tracked-file副本npm run check第二次PASS（首次仅副本freshness重建）；git diff --check PASS。src/settings/theme.css/scripts与同步后694ff8c保持完全一致；仅本报告、DECISIONS/CURRENT_STATUS/TASKS/AI_HANDOFF五份文档进入同一checkpoint。历史P4.1报告未改；不创建PR，不合并main。
+- Next gate：Chat决定最小后续研究；圆角/非几何边界绘制、stacked off-state、custom/community/absent-header、RTL/pop-out/DPI及完整交互回归仍未知。不自动启动Prototype或compatibility实现。

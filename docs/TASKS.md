@@ -169,10 +169,22 @@ Focus System：CSS only；based on native `.workspace-leaf.mod-active`；no runt
 - [x] P4.1.5 Desktop QA `7d89f34` 完成：整体 FAIL / RESET-01 blocker
 - [x] P4.1.6 调查 `14c5bc9` 完成：root cause CONFIRMED，未实施修复
 - [x] 实验记录 closeout、完整证据链与当前 disposition 已写入 CURRENT_STATUS；实现/报告保留
-- [ ] 用户确认 Preset 产品方向：Documentation-only 为 Chat 推荐，尚未批准；确认前不实施新方案或正式修订 UX Contract
+- [x] 用户正式确认 Documentation-only，Decision013已落盘；结束assisted路线/RESET-01修复循环。失败证据保留；不立即编写recipes，不重开implementation。
 
 当前 assisted Prototype 未达验收门槛，不标记成功/正式功能。RESET-01 unresolved，promotion blocked；不自动修复、换控件、增profile或重开实验。缺陷保留为已收尾实验的未解决限制，不作为自动执行的修复待办。
 
 ## Next Step
 
-等待用户确认产品方向与下一个独立任务。可考虑 shell-level Card Layout 的设计/DOM scope review，**不代表开发已授权**；Focus Enhancement、Auto Hide、Effects 继续 Defer。不得自行创建 PR、合并 main、启动 Card 或其他 Phase 4 实现。Reading contract 仍遵守 Decision 012。
+P4.2a独立Evidence / Design Review已执行，见下方checkpoint。结论Needs more research，等待Chat选择下一最小证据问题；没有Card Prototype/implementation授权。Focus Enhancement、Auto Hide、Effects继续Defer；Reading Decision012保持。不得创建PR/合并main。
+
+## P4.2a — Card Shell Evidence / Design Review
+
+- [x] 同步远端closeout694ff8c，记录P4.1正式Documentation-only决策013
+- [x] 独立Desktop采集三种Markdown模式、双向/nested split、hidden/stacked、header hidden及core Graph公共shell
+- [x] 审查Layout/View Header/Focus源码与现有surface/border/Radius/gap合同；无新token/geometry需求
+- [x] [Evidence report](P4_2_CARD_SHELL_EVIDENCE.md)：候选main ordinary leaf-content；neutral-only Card建议；**Needs more research**
+- [x] Notebook Navigator公开变量/官方source固定revision审查；作为重点后续兼容样本，当前独立Vault未安装，Desktop交互NOT TESTED
+- [x] Check/diff-check与implementation preservation；原生header恢复、测试Vault关闭后配置备份恢复
+- [ ] Chat选择后续最小证据问题；仅在另行明确授权后才可Prototype
+
+不要将以上checkbox写成Card实现/验收通过。边界绘制/圆角裁切/stacked/社区host兼容仍需研究；本轮无Card CSS、兼容CSS、preset继承、新设置/token/runtime、PR或main合并。

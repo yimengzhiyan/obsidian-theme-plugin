@@ -1,13 +1,13 @@
 # AI Handoff
 
 - **项目**：个人长期使用的模块化 Obsidian CSS Theme，融合 Composer 读写体验与 Border workspace 思路，独立实现；Working Title 尚未定稿。
-- **当前阶段**：P4.1 实验记录已收尾；assisted Prototype 验收 FAIL / promotion blocked。RESET-01 根因 CONFIRMED、未修复；不是正式 Preset System，不自动继续修复。
+- **当前阶段**：P4.1 assisted路线正式结束，Documentation-only已由用户确认（Decision013）；失败实验/证据保留。P4.2a独立Card shell Evidence / Design Review：Needs more research，没有Prototype或Card验收声明。
 - **分支**：`codex/p4-preset-prototype`；implementation `f50040a`、Desktop QA `7d89f34108beffea8ac4f30842e1f44c37ea6273`、调查 `14c5bc9` 全部保留；当前文档 hash 用 git 获取。
 - **实现提交**：Tokens/Tabs 初始 `144e5e3`；Tabs verified QA fix `62789ef45bda6167eea7ae672eae3596aca9205d`；Sidebar `c69bdcf23cc1f756c9a03faee959518a48b98345`；Ribbon `22e47efb06e6e3451807ad71a1d6990297e440fd`；Status Bar `3953aabe934f5cc35a13ff6ae4273231c546c031`。Checkpoint hash 用 `git rev-parse HEAD` 获取。
 - **QA 来源**：[Tabs Desktop report](P3_1A_TABS_DESKTOP_QA.md) 为详细证据；Sidebar/Ribbon/Status Bar final PASS 由维护者 checkpoint 指令报告，不补造环境/hash/逐项数据。历史 pending 记录不再是当前待办。
 - **Remaining N/A / limits**：native Tab/close tabindex=-1，独立 sequential focus N/A，close focus-visible 不声称独立验证；Tabs drag/reorder、screen-reader audit 未执行。P2.6 drag/drop、Foundation Checkbox 既有 N/A 不重开。不声称全部插件或平台认证。
-- **立即下一步**：等待用户确认产品方向。Documentation-only 是 Chat 推荐、待用户确认，尚非批准的最终决定；不自动修复 RESET-01、换控件或重试。其他 Phase 4 候选须独立选择/授权，不启动 Card 开发。
-- **本轮范围**：仅实验 closeout 文档；完整证据链与 disposition 见 CURRENT_STATUS 的 P4.1 Preset Prototype Closeout。历史机制研究的 Reset 推断由调查纠正，原 contract/证据不删改，不新增正式架构决策。
+- **立即下一步**：返回Chat依据Card evidence选择最小后续研究；main ordinary leaf-content候选尚需边界/圆角安全证据，不启动Prototype。Preset仅Documentation-only方向，不立即编写recipes，不再修复/换控件/重试RESET-01。
+- **本轮范围**：仅P4.2a DOM/变量/设计证据与五份文档；正式P4.1产品决策新增013。历史P4.1报告/contract与所有implementation不改；完整样本/限制见P4_2_CARD_SHELL_EVIDENCE.md。
 - **Token contract**：仅既有 Foundation + 两项 body-scoped workspace geometry aliases；Style Settings → semantic tokens → Obsidian public variables → 有证据才 scoped selectors；无新 palette/设置，workspace Build 顺序不变。
 - **已保留合同**：Phase 2 selectors/contracts、native Source caret/真实空行 navigation、用户字体、Callout semantic colors 与 yellow Highlight、P2.6 hierarchy/wrapping；ISSUE-01 fix `0068eab` 已验证合并，不重做。Tabs QA 的 mod-root scope、curve cap 与 active Accent outline 保留。
 - **延期**：Auto Hide、Focus Mode、Card Layout、正式Preset System（当前仅实验性Writer）、Advanced Rainbow Folder、Canvas/Graph、Advanced Animation、Seamless Embed、Companion Plugin；不引入 JS/runtime/DOM patch。未来规划来源与执行合同见 [Design Spec](THEME_DESIGN_SPEC.md)、[Matrix](FUSION_FEATURE_MATRIX.md)、[Source Analysis](SOURCE_THEME_ANALYSIS.md)、[P3.1 plan](P3_1_WORKSPACE_FUSION_PLAN.md)。旧矩阵/计划过程状态以 CURRENT_STATUS checkpoint 和 TASKS 为准，旧阶段过程记录不代表当前未授权状态。
@@ -24,9 +24,14 @@
 - **P4.1.5 recovery**：独立Vault与备份保留本地；日常五项配置hash不变，测试配置恢复，原Vault重新打开。npmcheck第二次PASS（首次仅CRLF freshness），最终CSS字节恢复且implementation无diff；diff-check通过。详细证据以CURRENT_STATUS最新checkpoint为准；上方旧Phase3 handoff的“暂不开始P4”等为历史阶段范围。
 
 - **P4.1.6 confirmed mechanism**：Slider Reset先setValue(metadata default700)，实际1.14.4 setter在值变化时触发onChange；插件250ms trailing callback在clearSetting删除后setSetting700。旧机制研究“删除即稳定回退”缺少SDK callback/timer证据，已在新报告纠正；原UX Contract不擅自降级。
-- **Options / next authority**：A二次Reset/全主题Reset不等于可靠单项Reset；B无合法metadata hook；C数值文本存在pending-input写回，select有旧数值/px兼容成本，均未实施或Desktop认证；Chat推荐D Documentation-only；最终产品方向待用户确认，尚未批准。不要自行修复、换控件、改Typography/Reading、更新DECISIONS或宣布PASS。
+- **Options / next authority**：A二次Reset/全主题Reset不等于可靠单项Reset；B无合法metadata hook；C数值文本存在pending-input写回，select有旧数值/px兼容成本，均未实施或Desktop认证；旧调查提出的D Documentation-only已于本轮获用户确认并记录Decision013；不继续C/修复循环，不改Typography/Reading或宣布PASS。
 - **P4.1.6 validation**：离线五断言/四场景PASS；独立副本npmcheck第二次PASS，repo implementation/theme/metadata完全不变，diff-check PASS。原QA历史保留，按本轮授权核实远端后正常推送两次文档提交；最终hash/远端以git为准。
 
-- **产品决策边界**：不要将旧“Style Settings assisted / Proceed to prototype”当成当前验收成功；也不要将实验 FAIL 写成所有 Theme-first preset 不可行。Documentation-only、UX contract 正式修订和实验最终处置仍待用户确认，DECISIONS 本轮不改。
-- **后续候选**：shell-level Card Layout 仅可作为待选择的独立 design/DOM review；Focus Enhancement / Auto Hide / Effects 继续 Defer。没有被本 checkpoint 自动授权的下一实现任务。
+- **产品决策边界**：不要将旧“Style Settings assisted / Proceed to prototype”当成当前验收成功；也不要将实验 FAIL 写成所有 Theme-first preset 不可行。Documentation-only方向已正式确认，Decision013有效；历史UX/QA报告保留，实验代码后续分支/发布处置未授权，不在本轮删除或改写。
+- **后续候选**：shell-level Card Layout独立P4.2a evidence已执行，Needs more research；Focus Enhancement / Auto Hide / Effects继续Defer，没有下一实现授权。
 - **Closeout validation**：npm run check / diff-check PASS；src/settings/theme/scripts/manifest 及历史 evidence 与14c5bc9不变，无文件删除；本轮未操作 Vault或重跑Desktop。正常 commit/push，不创建PR或合并。
+
+- **P4.2a evidence**：[Card Shell](P4_2_CARD_SHELL_EVIDENCE.md)。Source/LP/Reading、左右/上下nested、ordinary hidden/stacked、native header hidden与core Graph完成真实只读采样；优先研究main非stacked原生组下leaf直属leaf-content，避开divider sibling。inactive不是hidden；stacked两个leaf均非零尺寸，首个候选应排除stacked。
+- **Card contract**：无需新token/geometry；现有gap4px/Radius/surface/border足够表达语义。圆角会影响native overflow-hidden裁切，物理border会消耗内部空间，背景可被opaque children盖住；边界绘制仍未验证，因此Needs more research。Focus保持Decision010 header-only Accent/neutral，Card只提出neutral shell；不能补造header隐藏cue。
+- **Notebook Navigator**：后续重点社区兼容样本；独立Vault未安装/未测，版本与布局N/A；官方source667ece2/source manifest3.4.3不是已安装版本。公开nn-theme变量和host/内部双栏scroll边界已静态审查，不实施映射、不安装插件、不写Desktop PASS、不扩大Card范围。
+- **P4.2a validation/recovery**：独立副本npmcheck第二次PASS、diff-check PASS；src/settings/theme/scripts不变，五份docs同一checkpoint。header开关恢复并读取show-view-header=true，关闭隔离Vault/DevTools后备份配置hash恢复一致。无PR/main合并/Prototype；commit/hash/push以Git最终核对为准。
