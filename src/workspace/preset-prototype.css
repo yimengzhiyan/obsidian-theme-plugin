@@ -1,8 +1,0 @@
-/* Experimental configuration recommendation, not a runtime mode.
- * :where keeps the option class at zero specificity: body (0,0,1)
- * yields to Style Settings body.css-settings-manager (0,1,1).
- * Default adds no recommendation. Existing public-variable consumers remain native.
- */
-body:where(.fusion-writer-prototype) {
-  --theme-reading-width: 640px;
-}
