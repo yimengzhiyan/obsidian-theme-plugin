@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-P4.1 assisted Preset 路线正式结束：失败实验/证据保留，Documentation-only 已获用户确认（Decision013），不进入 RESET-01 修复循环、不立即制作 recipes。P4.2b Non-layout Boundary Painter Spike 完成，建议 **Proceed to bounded prototype**：ordinary main shell 的 inward neutral outline 候选，尚未创建/获准实施 Prototype。下一步返回 Chat 审定边界及后续 host QA。
+P4.2c bounded A2 Card shell prototype implemented / automated validation PASS / Desktop QA PENDING. Prototype implementation ≠ Card feature accepted. Failed Preset active runtime isolated only on new Card branch; Decision013 and evidence retained.
 
 ## Foundation
 
@@ -10,11 +10,11 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Branch
 
-`codex/p4-preset-prototype`
+`codex/p4-card-shell-prototype`
 
 ## Current Commit
 
-Implementation：`f50040a45c456693b603dc148445b33ea8eca2c1`；Desktop QA：`7d89f34108beffea8ac4f30842e1f44c37ea6273`；RESET-01 investigation：`14c5bc9`。P4.2a baseline：`1ef5ae658316fe9731b735a7e0ab32b3ada92cbc`；当前 P4.2b 文档 checkpoint commit 用 `git rev-parse HEAD` 获取。
+Evidence baseline `71363e733242b80dbf69e223ce3d97b7d2ed80b7`; isolation `f25a03ece0dd165151f360d672a9fcc5c23d1cf6`; Card implementation checkpoint hash via `git rev-parse HEAD`.
 
 ## Completed
 
@@ -103,9 +103,7 @@ Implementation：`f50040a45c456693b603dc148445b33ea8eca2c1`；Desktop QA：`7d89
 
 ## Next Step
 
-依据 [P4.2a evidence](P4_2_CARD_SHELL_EVIDENCE.md) 返回 Chat Design Review：普通 main leaf-content 是候选 envelope，但边界绘制/圆角裁切安全性尚未确认，结论 Needs more research。下一步只能在独立授权后补齐最小证据或批准有边界的视觉实验；本轮不创建 Prototype、不实现 Card/兼容 CSS、不创建 PR/合并 main。
-
-Preset 后续仅 Documentation-only 方向，不要求立即编写 recipes，不重开 P4.1 implementation/RESET-01 修复。Notebook Navigator 为重点社区兼容样本；当前独立 Vault 未安装，交互 NOT TESTED，不能将官方变量/静态源码研究写成 Desktop PASS。Focus Enhancement / Auto Hide / Effects 仍 Defer。
+Chat review [P4.2c prototype](P4_2C_CARD_SHELL_PROTOTYPE.md), then separately authorized Desktop QA. Do not auto-start QA, expand Card scope, create PR or merge. Stacked fully excluded; Focus remains header-only. Preset Documentation-only per Decision013; no RESET-01 repair. Focus Enhancement / Auto Hide / Effects remain deferred.
 
 ## Known Issues / Blockers
 
@@ -471,3 +469,11 @@ Dark设置窗口中重复两次，均为700。为排除鼠标定位/自动化set
 - Source空行caret/UpDown、LP多行selection、Reading独立scroll、pane/tab切换、实际divider resize、Graph pan smoke无明显副作用。不是完整P2/P3或Card QA。Dark为本轮模式；Light、Notebook Navigator（未安装/NOT TESTED）、其他community hosts/pop-out/RTL/DPI及极端角部仍未认证。
 - 测试结束关闭隔离Vault/DevTools，恢复备份并核对全部备份配置及两笔记hash；删除临时snippet，appearance无enable引用。root/installed theme SHA256仍CB30DFB7C0E288EAC9DFEB03D51DD43CB62B6FCCE9957C62C80805C8B537DA90。日常Vault未使用。
 - Validation：独立tracked-file副本npm run check第二次PASS，首次仅副本freshness重建，normalized输出与repo一致；git diff --check PASS。只提交本报告/CURRENT_STATUS/AI_HANDOFF/TASKS；src/settings/theme/scripts/DECISIONS和历史证据不改。当前分支正常commit/push，无PR/main合并。
+
+## P4.2c Bounded Card Shell Implementation Checkpoint
+
+From synced remote71363e7, created independent codex/p4-card-shell-prototype. First commit isolates failed Preset runtime: restores exact abab4f5 settings, deletes active preset-prototype.css, rebuilds theme. Old Preset branch/history and all reports/QA/RESET-01/closeout/Decision013/P4.2 evidence preserved. No new decision.
+
+Second commit adds exact A2 selector and only outline1px neutral / offset-1px / existing workspace radius in layout/card-shell.css; no geometry, overflow, background, shadow, active Card, Sidebar/content/plugin internals or setting/token/runtime expansion. Focus/Layout/View Header/build script unchanged. Stacked excluded without fallback.
+
+Build / Check / diff-check and exact static/source/generated-section comparisons PASS. Only Card generated section added after isolation. Desktop QA PENDING; spike results do not certify this artifact. Known limits and future QA risks in [prototype report](P4_2C_CARD_SHELL_PROTOTYPE.md). Prototype implementation ≠ Card feature accepted; no QA/PR/main merge in this task.

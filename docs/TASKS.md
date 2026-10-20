@@ -200,3 +200,15 @@ P4.2b Boundary Painter Spike已执行，见下方最新checkpoint。建议Procee
 - [ ] Chat审定下一bounded prototype范围及真实Notebook Navigator host兼容测试；本轮不执行
 
 Notebook Navigator仍NOT INSTALLED / NOT TESTED。不得为圆角补overflow hidden、geometry改动、descendant透明/重构或overlay；Focus header-only合同保留。未新增DECISION，不重开Preset实验。
+
+## P4.2c — Bounded Card Prototype checkpoint
+
+- [x] Verify synced71363e7 and create independent codex/p4-card-shell-prototype
+- [x] Separate isolation commit: restoreabab4f5 settings; remove failed Preset active source/generated section; preserve old branch and all evidence/Decision013
+- [x] Implement exact approved A2 envelope with only neutral outline/offset/radius; stacked fully excluded, Focus unchanged
+- [x] Build / Check / diff-check; static contract and prior-section byte comparison
+- [ ] Chat implementation review
+- [ ] Separately authorized Desktop QA; NOT RUN in this task
+- [ ] Subsequent Chat decision on Card feature acceptance; no automatic promotion
+
+Current next action is review only, superseding historical “spike only/no prototype yet” process notes. No new token/setting/geometry/overflow/Focus state. Do not start QA, add Card variants, repair Preset, create PR or merge main. Full scope/risks: [P4.2c prototype](P4_2C_CARD_SHELL_PROTOTYPE.md).
