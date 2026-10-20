@@ -2,7 +2,7 @@
 
 ## Current Milestone
 
-P4.1 assisted Preset 路线正式结束：失败实验/证据保留，Documentation-only 已获用户确认（Decision013），不进入 RESET-01 修复循环、不立即制作 recipes。P4.2a Card Shell Evidence / Design Review 已完成当前采集与报告，结论 **Needs more research**；没有 Prototype 或实现授权。
+P4.1 assisted Preset 路线正式结束：失败实验/证据保留，Documentation-only 已获用户确认（Decision013），不进入 RESET-01 修复循环、不立即制作 recipes。P4.2b Non-layout Boundary Painter Spike 完成，建议 **Proceed to bounded prototype**：ordinary main shell 的 inward neutral outline 候选，尚未创建/获准实施 Prototype。下一步返回 Chat 审定边界及后续 host QA。
 
 ## Foundation
 
@@ -14,7 +14,7 @@ V0.1 Theme Foundation — Complete / Merged to `main`
 
 ## Current Commit
 
-Implementation：`f50040a45c456693b603dc148445b33ea8eca2c1`；Desktop QA：`7d89f34108beffea8ac4f30842e1f44c37ea6273`；RESET-01 investigation：`14c5bc9`。同步 closeout baseline：`694ff8c63afe1657cb2887c7acfbfa2954a10ed4`；当前 P4.2a 文档 checkpoint commit 用 `git rev-parse HEAD` 获取。
+Implementation：`f50040a45c456693b603dc148445b33ea8eca2c1`；Desktop QA：`7d89f34108beffea8ac4f30842e1f44c37ea6273`；RESET-01 investigation：`14c5bc9`。P4.2a baseline：`1ef5ae658316fe9731b735a7e0ab32b3ada92cbc`；当前 P4.2b 文档 checkpoint commit 用 `git rev-parse HEAD` 获取。
 
 ## Completed
 
@@ -460,3 +460,14 @@ Dark设置窗口中重复两次，均为700。为排除鼠标定位/自动化set
 - 结束：仅用native命令改变测试布局/模式与临时header配置；只读Console查询，无DOM/CSS修改、listener/helper/runtime。关闭测试Vault/DevTools后恢复备份配置并核对hash。日常Vault未用于本次实验；installed/root theme SHA256仍CB30DFB7C0E288EAC9DFEB03D51DD43CB62B6FCCE9957C62C80805C8B537DA90。
 - Validation：独立tracked-file副本npm run check第二次PASS（首次仅副本freshness重建）；git diff --check PASS。src/settings/theme.css/scripts与同步后694ff8c保持完全一致；仅本报告、DECISIONS/CURRENT_STATUS/TASKS/AI_HANDOFF五份文档进入同一checkpoint。历史P4.1报告未改；不创建PR，不合并main。
 - Next gate：Chat决定最小后续研究；圆角/非几何边界绘制、stacked off-state、custom/community/absent-header、RTL/pop-out/DPI及完整交互回归仍未知。不自动启动Prototype或compatibility实现。
+
+## P4.2b Non-layout Boundary Painter Spike — 2026-10-19
+
+- [Report](P4_2B_CARD_BOUNDARY_SPIKE.md)：**Proceed to bounded prototype** 是研究建议，不是正式 Card 实现/验收或新的产品决策；返回 Chat 审定下一范围，不自行实施。
+- 临时 snippet 仅作用于独立 Vault 的 ordinary main direct leaf-content，明确排除 stacked 和 view-owned nested hosts。A0 outward outline 不清楚；A1/A2 inward outline offset -1px 可见，A2 复用现有8px Radius，为首选。B1/B2 inset shadow 被 opaque children 遮盖，未形成可信连续外框，不推荐。
+- 固定布局20条有效记录：3 baseline +17实验，single / 左右 / nested+Graph+narrow 的 rect、divider、gap、overflow与scroll尺寸逐值相同。实际A2 divider drag成功，右窄pane约409px；主动resize和状态切换不混入 painter 几何比较。早期窗口尺寸/旧Console样本已排除。
+- Radius0/8/20的single geometry相同；A20 nested曲线真实可见。未新增overflow，但native hidden overflow已有，radius可能收紧原生角部clip；不声称20px角部/overlay全认证，不为新host增加clipping。
+- A2 ordinary→stacked→ordinary：stacked两leaf outline none0/radius0，native横滚329→79，409/738尺寸不变；ordinary恢复outline/radius，无stale。Header native隐藏时neutral outline仍在，Focus header-hidden限制保留；恢复后show-view-header存在、display flex。
+- Source空行caret/UpDown、LP多行selection、Reading独立scroll、pane/tab切换、实际divider resize、Graph pan smoke无明显副作用。不是完整P2/P3或Card QA。Dark为本轮模式；Light、Notebook Navigator（未安装/NOT TESTED）、其他community hosts/pop-out/RTL/DPI及极端角部仍未认证。
+- 测试结束关闭隔离Vault/DevTools，恢复备份并核对全部备份配置及两笔记hash；删除临时snippet，appearance无enable引用。root/installed theme SHA256仍CB30DFB7C0E288EAC9DFEB03D51DD43CB62B6FCCE9957C62C80805C8B537DA90。日常Vault未使用。
+- Validation：独立tracked-file副本npm run check第二次PASS，首次仅副本freshness重建，normalized输出与repo一致；git diff --check PASS。只提交本报告/CURRENT_STATUS/AI_HANDOFF/TASKS；src/settings/theme/scripts/DECISIONS和历史证据不改。当前分支正常commit/push，无PR/main合并。

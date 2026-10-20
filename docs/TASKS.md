@@ -175,7 +175,7 @@ Focus System：CSS only；based on native `.workspace-leaf.mod-active`；no runt
 
 ## Next Step
 
-P4.2a独立Evidence / Design Review已执行，见下方checkpoint。结论Needs more research，等待Chat选择下一最小证据问题；没有Card Prototype/implementation授权。Focus Enhancement、Auto Hide、Effects继续Defer；Reading Decision012保持。不得创建PR/合并main。
+P4.2b Boundary Painter Spike已执行，见下方最新checkpoint。建议Proceed to bounded prototype，等待Chat审定ordinary neutral outline范围及host QA；没有Card Prototype/implementation执行授权。Focus Enhancement、Auto Hide、Effects继续Defer；Reading Decision012保持。不得创建PR/合并main。
 
 ## P4.2a — Card Shell Evidence / Design Review
 
@@ -185,6 +185,18 @@ P4.2a独立Evidence / Design Review已执行，见下方checkpoint。结论Needs
 - [x] [Evidence report](P4_2_CARD_SHELL_EVIDENCE.md)：候选main ordinary leaf-content；neutral-only Card建议；**Needs more research**
 - [x] Notebook Navigator公开变量/官方source固定revision审查；作为重点后续兼容样本，当前独立Vault未安装，Desktop交互NOT TESTED
 - [x] Check/diff-check与implementation preservation；原生header恢复、测试Vault关闭后配置备份恢复
-- [ ] Chat选择后续最小证据问题；仅在另行明确授权后才可Prototype
+- [x] 后续最小研究已由用户指定为P4.2b Non-layout Boundary Painter Spike；见下方，不代表Prototype授权
 
 不要将以上checkbox写成Card实现/验收通过。边界绘制/圆角裁切/stacked/社区host兼容仍需研究；本轮无Card CSS、兼容CSS、preset继承、新设置/token/runtime、PR或main合并。
+
+## P4.2b — Non-layout Boundary Painter Spike
+
+- [x] 独立Vault备份；只用临时snippet/read-only DOM，未改repo implementation
+- [x] Baseline/A1/A2/B1/B2覆盖single、左右、nested+Graph+narrow；17实验geometry/overflow/scroll-size比较相同
+- [x] Outline offset0/-1及Radius0/8/20对照；A2推荐，inset不推荐；角部限制保留
+- [x] A2原生ordinary→stacked→ordinary干净退出恢复、横滚；header隐藏/恢复；Source/LP/Reading/divider/pane/Graph/tab smoke
+- [x] [Spike report](P4_2B_CARD_BOUNDARY_SPIKE.md)：**Proceed to bounded prototype**研究建议，非Card Desktop PASS或实现授权
+- [x] 临时样式删除；关闭测试Vault后备份配置与两笔记hash核对；check/diff-check及implementation preservation
+- [ ] Chat审定下一bounded prototype范围及真实Notebook Navigator host兼容测试；本轮不执行
+
+Notebook Navigator仍NOT INSTALLED / NOT TESTED。不得为圆角补overflow hidden、geometry改动、descendant透明/重构或overlay；Focus header-only合同保留。未新增DECISION，不重开Preset实验。

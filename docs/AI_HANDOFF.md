@@ -1,13 +1,13 @@
 # AI Handoff
 
 - **项目**：个人长期使用的模块化 Obsidian CSS Theme，融合 Composer 读写体验与 Border workspace 思路，独立实现；Working Title 尚未定稿。
-- **当前阶段**：P4.1 assisted路线正式结束，Documentation-only已由用户确认（Decision013）；失败实验/证据保留。P4.2a独立Card shell Evidence / Design Review：Needs more research，没有Prototype或Card验收声明。
+- **当前阶段**：P4.1 assisted路线正式结束，Documentation-only已由用户确认（Decision013）；失败实验/证据保留。P4.2b Boundary Painter Spike完成：建议Proceed to bounded prototype，未创建Prototype、没有Card验收声明。
 - **分支**：`codex/p4-preset-prototype`；implementation `f50040a`、Desktop QA `7d89f34108beffea8ac4f30842e1f44c37ea6273`、调查 `14c5bc9` 全部保留；当前文档 hash 用 git 获取。
 - **实现提交**：Tokens/Tabs 初始 `144e5e3`；Tabs verified QA fix `62789ef45bda6167eea7ae672eae3596aca9205d`；Sidebar `c69bdcf23cc1f756c9a03faee959518a48b98345`；Ribbon `22e47efb06e6e3451807ad71a1d6990297e440fd`；Status Bar `3953aabe934f5cc35a13ff6ae4273231c546c031`。Checkpoint hash 用 `git rev-parse HEAD` 获取。
 - **QA 来源**：[Tabs Desktop report](P3_1A_TABS_DESKTOP_QA.md) 为详细证据；Sidebar/Ribbon/Status Bar final PASS 由维护者 checkpoint 指令报告，不补造环境/hash/逐项数据。历史 pending 记录不再是当前待办。
 - **Remaining N/A / limits**：native Tab/close tabindex=-1，独立 sequential focus N/A，close focus-visible 不声称独立验证；Tabs drag/reorder、screen-reader audit 未执行。P2.6 drag/drop、Foundation Checkbox 既有 N/A 不重开。不声称全部插件或平台认证。
-- **立即下一步**：返回Chat依据Card evidence选择最小后续研究；main ordinary leaf-content候选尚需边界/圆角安全证据，不启动Prototype。Preset仅Documentation-only方向，不立即编写recipes，不再修复/换控件/重试RESET-01。
-- **本轮范围**：仅P4.2a DOM/变量/设计证据与五份文档；正式P4.1产品决策新增013。历史P4.1报告/contract与所有implementation不改；完整样本/限制见P4_2_CARD_SHELL_EVIDENCE.md。
+- **立即下一步**：返回Chat审定bounded prototype范围及后续host QA；A2 inward neutral outline有spike证据，尚无实施授权。Preset仅Documentation-only方向，不立即编写recipes，不再修复/换控件/重试RESET-01。
+- **本轮范围**：仅P4.2b独立Vault临时painter实验与四份文档；临时CSS已删除，未新增DECISION。历史报告/contract与所有implementation不改；最新样本/限制见P4_2B_CARD_BOUNDARY_SPIKE.md，P4.2a保留为历史依据。
 - **Token contract**：仅既有 Foundation + 两项 body-scoped workspace geometry aliases；Style Settings → semantic tokens → Obsidian public variables → 有证据才 scoped selectors；无新 palette/设置，workspace Build 顺序不变。
 - **已保留合同**：Phase 2 selectors/contracts、native Source caret/真实空行 navigation、用户字体、Callout semantic colors 与 yellow Highlight、P2.6 hierarchy/wrapping；ISSUE-01 fix `0068eab` 已验证合并，不重做。Tabs QA 的 mod-root scope、curve cap 与 active Accent outline 保留。
 - **延期**：Auto Hide、Focus Mode、Card Layout、正式Preset System（当前仅实验性Writer）、Advanced Rainbow Folder、Canvas/Graph、Advanced Animation、Seamless Embed、Companion Plugin；不引入 JS/runtime/DOM patch。未来规划来源与执行合同见 [Design Spec](THEME_DESIGN_SPEC.md)、[Matrix](FUSION_FEATURE_MATRIX.md)、[Source Analysis](SOURCE_THEME_ANALYSIS.md)、[P3.1 plan](P3_1_WORKSPACE_FUSION_PLAN.md)。旧矩阵/计划过程状态以 CURRENT_STATUS checkpoint 和 TASKS 为准，旧阶段过程记录不代表当前未授权状态。
@@ -35,3 +35,7 @@
 - **Card contract**：无需新token/geometry；现有gap4px/Radius/surface/border足够表达语义。圆角会影响native overflow-hidden裁切，物理border会消耗内部空间，背景可被opaque children盖住；边界绘制仍未验证，因此Needs more research。Focus保持Decision010 header-only Accent/neutral，Card只提出neutral shell；不能补造header隐藏cue。
 - **Notebook Navigator**：后续重点社区兼容样本；独立Vault未安装/未测，版本与布局N/A；官方source667ece2/source manifest3.4.3不是已安装版本。公开nn-theme变量和host/内部双栏scroll边界已静态审查，不实施映射、不安装插件、不写Desktop PASS、不扩大Card范围。
 - **P4.2a validation/recovery**：独立副本npmcheck第二次PASS、diff-check PASS；src/settings/theme/scripts不变，五份docs同一checkpoint。header开关恢复并读取show-view-header=true，关闭隔离Vault/DevTools后备份配置hash恢复一致。无PR/main合并/Prototype；commit/hash/push以Git最终核对为准。
+
+- **P4.2b最新证据**：[Boundary Spike](P4_2B_CARD_BOUNDARY_SPIKE.md)。A1/A2 offset -1px neutral outline为可信薄框候选；A0 edge clipping，B1/B2 inset被children遮盖不推荐。17非baseline精确geometry比较全部相同，native gap/overflow/scroll owner保持；真实A2 divider resize成功。Radius0/8/20 single geometry保持，20px实际有曲线但角部clip/overlay未全认证，不新增overflow。
+- **P4.2b状态/交互**：A2真实ordinary→stacked→ordinary，stacked outline/radius完全退出，横滚329→79，恢复无stale；header隐藏neutral frame仍在，恢复show-view-header/display flex，Focus既有限制保留。Source/LP selection/Reading scroll/pane与tab切换/Graph pan smoke无明显副作用。Dark样本，不是完整QA；Notebook Navigator仍NOT TESTED，Light/community/pop-out/RTL/DPI等待后续。
+- **P4.2b disposition/recovery**：建议Proceed to bounded prototype，尚未实施/批准，不新增DECISION。下一步Chat审定ordinary main direct leaf-content + outline/existing radius + stacked off-state范围，之后才能做真实NN host兼容。临时snippet删除，测试窗口关闭后配置及笔记hash恢复一致，repo/installed theme hash不变；npmcheck独立副本第二次PASS（首次freshness），diff-check PASS，四份docs checkpoint正常commit/push，无PR/main合并。
