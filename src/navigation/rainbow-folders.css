@@ -33,4 +33,3 @@ body.fusion-rainbow-folders .workspace-leaf-content[data-type="file-explorer"] .
   --nav-item-color: color-mix(in oklch, var(--color-purple) 55%, var(--theme-text-normal));
   --nav-item-color-hover: color-mix(in oklch, var(--color-purple) 70%, var(--theme-text-normal));
 }
-
