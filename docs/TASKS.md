@@ -255,22 +255,20 @@ NN fixture drag/drop remains UNVERIFIED/non-blocking coverage limitation, not a 
 ## Phase5 — Batched Feature Completion (current authority)
 
 - [x] Create codex/p5-feature-completion from synced main4cb19c4
-- [x] 5A W02/F01/F02/E01/E02 implemented / integrated QA pending
-- [x] Chrome-only Focus/reveal, tab close, Ribbon/Status soft hide, direct Sidebar header chrome
-- [x] Basic transitions/press/reduced-motion; narrow ordinary CM6 active-line fallback
-- [x] Build/Check/diff-check + protected Card/settings/typography/Decision checks
-- [x] 5B Reading & Writing batch implemented, same branch; integratedQA pending
-- [ ] Mid-cycle integrated Desktop QA after5A+5B, concentrated fixes
-- [ ] 5C PKM surfaces;5D customization;final integratedQA
+- [x] 5A W02/F01/F02/E01/E02 implemented; 5B R01/R02 implemented on the same branch
+- [x] Build/Check/diff-check and protected Card/settings/typography/Decision contracts
+- [x] Mid-cycle integrated Desktop QA at aeec39a: **PASS**, bounded environment; [report](P5_MID_CYCLE_DESKTOP_QA.md)
+- [x] Actual workspace/chrome/native keyboard, ordinary/stacked, Graph/nested/narrow, reduced-motion activation and Source/LP active-line smoke
+- [x] Default/nonzero Reading/LP consumers, actual math/footnote exclusions, Source real-blank navigation, heading fallback, width/line-height and Light/Dark regression
+- [x] Archive/remove temporary fixtures; restore configuration except tested artifact; original-note hashes and root/installed SHA unchanged
+- [x] Isolated-copy npm check PASS; 28 inputs byte-identical and normalized generated output equal
+- [ ] Maintainer review of **Phase 5 Mid-cycle Fix Batch** below
+- [ ] 5C PKM surfaces; 5D customization; final integrated QA — not started by this task
 
-[P5 plan](P5_FEATURE_COMPLETION_PLAN.md) replaces per-feature execution gates for authorized Phase5 work. Prior “Focus/soft reveal/basic Effects deferred” notes are historical for bounded5A scope; no full auto-collapse/runtime or advanced animation implied. Decision013/014 unchanged. No new settings/Preset, no QA/PR/merge in5A.
+### Phase 5 Mid-cycle Fix Batch
 
-## Phase5B checkpoint
+- [ ] C-01 policy/tuning review: selected Sidebar tab keeps direct header opacity 1 via :has(.is-active), even with main focus. Confirm whether this is desired; only adjust if maintainers choose a different resting policy. Preserve content opacity and plugin boundaries.
+- [x] No confirmed A blocker or B needs-fix item; no onsite source changes
+- [x] D limits retained: autospace unsupported, native tab/close sequential focus N/A, unavailable optional controls/plugins/metadata N/A, exact held press frame unverified
 
-- [x] R01/R02 Phase5B implemented / integrated QA pending
-- [x] Semantic defaults/public mappings/LP spacing consumers; prose indent/letter/word, H1–H6 size/weight, neutral emphasis
-- [x] Progressive CJK autospace class + prose pretty/heading balance; code/math exclusions
-- [x] Build/Check/diff-check and default/Source/width/5A preservation checks
-- [ ] **Next:5A+5B Mid-cycle Integrated Desktop QA**; not started in implementation task
-
-P3.3 C=0 remains no corrective rhythm CSS needed;5B adds configurable capabilities. Native-equivalent CJK breaking and Inline Title polish skipped. No settings expansion/5C/5D/PR/merge. See P5 plan for limitations and pending integrated checks.
+This single batch replaces per-issue Phase gates. PASS does not mean final Phase5 completion, a new setting/runtime, PR/merge or expanded platform/plugin/accessibility certification. Decision013/014 unchanged. P3.3 C=0 remains the historical no-corrective-rhythm conclusion; 5B adds default-preserving optional capabilities. Delivery is five documents only on codex/p5-feature-completion; staged diff-check PASS; obtain exact QA commit/push from Git at closeout.

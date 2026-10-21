@@ -4,15 +4,19 @@ Last Updated: 2026-10-21 (America/Los_Angeles)
 
 ## Current milestone
 
-**Phase5A + Phase5B implemented / integrated QA pending.** Branch codex/p5-feature-completion;5B baseline4e85ceecfbde45a85493fb4e6e46a60cbb1479db. R01/R02 now implemented:20 Reading/Writing semantic controls, default-preserving public mapping and exact three LP blank-line consumers; main Reading/LP prose indent/spacing, headings, code/math exclusions, opt-in CJK autospace, progressive pretty/balance. No Style Settings expansion.
+**Phase 5A + 5B Mid-cycle Integrated Desktop QA: PASS (bounded Windows environment).** Tested implementation `aeec39a0f1842406d50afc69fcc132a9635b972a`, including 5A `4e85ceecfbde45a85493fb4e6e46a60cbb1479db`, on `codex/p5-feature-completion`. See [integrated Desktop QA](P5_MID_CYCLE_DESKTOP_QA.md) for actual actions, computed-style evidence, environment and limits.
 
-P3.3 previous NO NEW CSS REQUIRED = no corrective rhythm CSS required. Phase5B adds optional/configurable capabilities and progressive long-form polish. Source native blank/caret/navigation and width chain unchanged; all new CM consumers require is-live-preview.5A/Card/Decision013/014 untouched. Check updated to new token mapping plus explicit legacy-default assertions, no Build script change.
+Obsidian 1.14.4 / Installer 1.10.6 / Windows 11 25H2 build 26200.8737 / Style Settings 1.0.9. Independent QA Vault only. Root/installed SHA256 `FBE0D2223FB9F1BA3582EFF74F45D993B908D61239C4299EEE38870AF268E8F4` matched before and after testing.
+
+5A Focus/chrome, ordinary/stacked tabs, Ribbon/Status, native Graph/nested resizing and 419px narrow pane were usable; inactive body and Card remained neutral/readable. Native Header keyboard focus/activation worked. Actual reduced-motion media activation disabled sampled new transitions, then emulation was cleared. Source/LP ordinary active line used actual `.cm-active`, with subtle 6% RGB Accent; special HyperMD blocks and Reading were preserved.
+
+5B Reading/LP prose selectors matched; nonzero indent/spacing/letter/word/heading size/weight and bold controls responded. LP heading-to-heading blank correctly fell back to paragraph spacing. Reading code/math/footnote exclusions held. Source new prose matches were zero and each real blank remained navigable at native 27.2px; no default redesign or width regression found. Pretty/balance supported; CJK autospace **UNSUPPORTED in tested Electron**.
 
 ## Limits and next step
 
-**Next gate: Phase5A +5B Mid-cycle Integrated Desktop QA**, not performed in this implementation task. Validate no-change defaults, nonzero capability values, actual Reading wrappers/inline math exclusions, Source caret/navigation, LP indent/wrap and selection, optional autospace support, Light/Dark,5A reveal/reduced-motion and Card/previous regressions. New tokens/defaults/selector checks and Build/Check/diff-check PASS, not Desktop PASS.
+**A=0 / B=0 / C=1. Next: maintainer review of the single Phase 5 Mid-cycle Fix Batch.** C-01: selected Sidebar tab keeps direct header opacity 1 via `:has(.is-active)`, even when main content is focused; decide whether this is the intended resting reveal policy before any tuning. No mandatory source fix established; no onsite implementation changes made. Exact held 1px press frame remains unverified, native tab/close sequential focus and unavailable plugin/bottom-action/metadata cases remain N/A. Existing NN/Radius20/header-hidden/pop-out/RTL/platform/accessibility limits persist.
 
-Inline Title skipped; native-equivalent CJK line-breaking skipped as redundant. No fixed width, content margin normalization, fonts, code/Callout/Table redesign or5C/5D implementation. Settings still four, no Preset/runtime. Existing NN/Radius20/header-hidden/platform/accessibility limits remain.
+QA fixtures archived/removed, temporary styles/class absent, reduced-motion override off, original configuration restored except the matching Phase 5 artifact; both original note hashes unchanged. Isolated-copy npm check PASS, build inputs identical and normalized generated output equal; staged five-document diff-check PASS. Only five QA/status/plan documents change. Decision013 Preset Documentation-only and Decision014 bounded Card unchanged. No 5C/5D, settings expansion, PR, merge or release was started.
 
 ## Historical evidence — retained for traceability
 
