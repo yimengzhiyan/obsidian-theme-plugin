@@ -231,3 +231,13 @@ Current next action is Chat acceptance/promotion review after P4.2d, superseding
 - [ ] Chat subsequent feature acceptance/promotion decision; no automatic PR/merge
 
 NN fixture drag/drop remains UNVERIFIED/non-blocking coverage limitation, not a completed move or Card-caused FAIL. Radius20 inspection bounded; pop-out/RTL/other DPI/platform/plugins/accessibility not certified. Only four requested docs are submitted; final diff-check/commit/push verified at closeout.
+
+## P4.2e — Promotion / Integration
+
+- [x] Chat independent implementation review PASS / Desktop QA review PASS
+- [x] Bounded Shell-level Card Layout COMPLETE / accepted for integration；Decision014
+- [x] Preserve Decision013、P4.1 historical FAIL/evidence；no failed Preset runtime in integration
+- [x] Build/Check/diff-check；runtime/settings/generatedCSS unchanged from99b7845
+- [ ] Integration PR Chat review；merge未授权
+
+本条为当前状态，supersedes历史pending promotion过程条目。仅ordinary main neutral A2 shell，stacked退出；Focus不变，zero geometry/overflow/newtoken/setting/runtime。NN3.4.3 Sidebar/main-host PASS；drag/drop UNVERIFIED，Radius20 bounded，header-hidden Focus已知限制及pop-outs/RTL/平台/accessibility未认证均保留。不代表完整Card系统；Focus Enhancement/Auto Hide/Effects继续Defer，Preset遵守Decision013。

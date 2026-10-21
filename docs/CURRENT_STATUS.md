@@ -4,20 +4,17 @@ Last Updated: 2026-10-21 (America/Los_Angeles)
 
 ## Current milestone
 
-**P4.2d Bounded Card Shell Desktop Acceptance QA — PASS within the tested scope.** Implementation review authorized this QA. This is not automatic feature promotion or release acceptance; no implementation change or new decision was made.
+**P4.2 Bounded Shell-level Card Layout COMPLETE / accepted for integration.** Chat independent implementation review与Desktop QA review均PASS；维护者已批准bounded promotion。Decision014记录正式范围，不是完整Card Layout System或release acceptance。
 
-- Branch: `codex/p4-card-shell-prototype`; tested implementation `935c8ed5b3cc24e74ad90c0134eb20e7f02b0bfe`, isolated no-Card parent `f25a03ece0dd165151f360d672a9fcc5c23d1cf6`.
-- [Desktop QA report](P4_2D_CARD_SHELL_DESKTOP_QA.md): Light/Dark, Source/LP/Reading, Radius0/8/20, left/right/top-bottom/nested/narrow, actual divider drag, three equal Card/f25 geometry pairs, formal stacked exit/scroll/return, header hide/restore, Graph and NN Sidebar/main-host QA completed.
-- Focus remains active-header Accent/inactive neutral; outer Card always neutral. Header-hidden has no added cue. No overflow/geometry/compatibility fix required.
-- NN3.4.3 was installed with user confirmation; main placement was performed by the user and then actually tested. No compatibility CSS required in tested scope. Drag/drop remains **UNVERIFIED**, not PASS; no Card causality established.
-- Cleanup: closed test Vault/DevTools; config restored from backup except approved Card artifact, fixture74 removed and archived, original2 note hashes unchanged. NN test install removed by restoration; original Style Settings enable list/data restored. Root/installed SHA256 both `2C87962A15A04DBBC75744F28CCA43432644619193F4E9CDF3EA3E14BFB70357`.
-- Validation: isolated-copy `npm run check` PASS (21sources);26 build inputs byte-identical to repo; normalized output equal. Final diff-check and docs commit/push verified in completion report. Only QA report/CURRENT_STATUS/AI_HANDOFF/TASKS change; implementation and DECISIONS preserved.
+- Branch `codex/p4-card-shell-prototype`；implementation `935c8ed5b3cc24e74ad90c0134eb20e7f02b0bfe`；Desktop QA `99b7845a66990664d82eef9a75a151968ce67b10`。
+- 接受唯一ordinary main direct-host A2 neutral outline/offset-1px/existing radius；stacked完全排除；Focus header Accent/neutral不变；zero geometry/overflow、新token/setting/runtime变化。
+- [Desktop QA](P4_2D_CARD_SHELL_DESKTOP_QA.md) PASS：Light/Dark、Source/LP/Reading、Graph、Radius0/8/20、split/nested/narrow、stacked off-state与NN3.4.3 Sidebar/main-host测试范围。NN drag/drop UNVERIFIED；Radius20 bounded；header-hidden Focus既有限制保留；pop-outs/RTL/其他DPI/平台/全插件/accessibility不认证。
+- Preset Documentation-only Decision013不变；失败实验源码/QA/RESET-01/closeout历史保留，活动runtime已隔离。Focus Enhancement / Auto Hide / Effects继续Defer。
+- 本轮仅DECISIONS/CURRENT_STATUS/AI_HANDOFF/TASKS；Build/Check/diff-check PASS；src/settings/theme/scripts与QA commit逐字不变。未重新Desktop QA，不扩大兼容范围。
 
 ## Limits and next step
 
-Return to Chat for the subsequent Card acceptance/promotion decision. NN drag/drop unverified; Radius20 is bounded visual/interaction coverage; pop-out/RTL/other DPI/platform/plugin and accessibility certification excluded. No confirmed Card blocker. Preserve earlier Phase2/3 limitations, Reading Decision012 and Preset Documentation-only Decision013. Do not repair RESET-01, expand Card, create PR or merge main automatically.
-
-QA commit identity is obtained from Git; this snapshot does not embed its own hash. Live remote branch935c8ed was verified before docs work; final push state is checked separately.
+创建Card branch→main integration PR并返回Chat review；不merge/squash/rebase。main基线a6a69c22184bb892cd121e210858354c31a0c745。PR身份以GitHub返回值为准；accepted for integration不是已合并。无后续功能实现授权。
 
 ## Historical evidence — retained for traceability
 

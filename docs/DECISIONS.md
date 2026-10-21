@@ -105,6 +105,30 @@ P4.1 Prototype 是失败实验：Desktop Acceptance FAIL、RESET-01 root cause C
 
 P4.2 shell-level Card Layout 是独立候选，不继承 Preset Prototype 的 class-select、状态或实现；本次仅 P4.2a Evidence / Design Review。没有 Card CSS、兼容 CSS、Prototype、PR、main 合并或 release acceptance 授权。Phase 2/3、Reading Decision012和Focus Decision010保持有效。
 
+## Decision 014 — Accept bounded neutral main-workspace Card shell
+
+P4.2 bounded Card shell **COMPLETE / accepted for integration**，依据维护者本轮正式产品决定、P4.2c implementation review PASS 与 P4.2d Desktop QA review PASS。[P4.2a DOM evidence](P4_2_CARD_SHELL_EVIDENCE.md) → [P4.2b A2 painter spike](P4_2B_CARD_BOUNDARY_SPIKE.md)（71363e7）→ [P4.2c implementation](P4_2C_CARD_SHELL_PROTOTYPE.md)（935c8ed5b3cc24e74ad90c0134eb20e7f02b0bfe）→ [P4.2d Desktop acceptance PASS](P4_2D_CARD_SHELL_DESKTOP_QA.md)（99b7845a66990664d82eef9a75a151968ce67b10）构成证据链。
+
+Exact accepted contract:
+
+```css
+.workspace-split.mod-root
+  .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *)
+  > .workspace-tab-container
+  > .workspace-leaf
+  > .workspace-leaf-content {
+  outline: 1px solid var(--theme-border);
+  outline-offset: -1px;
+  border-radius: var(--theme-workspace-control-radius);
+}
+```
+
+仅 ordinary main direct host 的 neutral inward outline 和 existing workspace radius；stacked groups intentional exclusion，无 fallback。No new token/setting、zero geometry/overflow change、no JS/runtime；无Sidebar Card、Markdown/content或plugin-internal cardification。Focus active header Accent / inactive neutral完全不变，outer Card始终neutral；header-hidden没有新增active cue。
+
+Desktop测试范围包括Light/Dark、Markdown Source/Live Preview/Reading、Core Graph、Radius0/8/20、split/nested/narrow、stacked off-state。Notebook Navigator3.4.3 Sidebar/main-host compatibility PASS，仅测试范围；无需compatibility CSS。NN drag/drop **UNVERIFIED**；Radius20为bounded覆盖，native现有overflow下角部曲率不等于全部overlay/selection位置认证。Pop-outs / RTL / other DPI/platforms / 全插件 / accessibility与screen-reader未认证；既有Phase2/3 N/A保留。
+
+**Accept bounded Card shell ≠ accept full Card Layout system.** Floating panels、content cards、stacked cards、layout engine不获批准；Focus Enhancement / Auto Hide / Effects继续Defer。Preset继续Decision013 Documentation-only；失败实验只保留历史证据，活动runtime已在f25a03e隔离。Decision013不变。Accepted for integration不等于已合并main或正式发布。
+
 ## Log
 
 ### P3.1a — Tabs implementation refinement
