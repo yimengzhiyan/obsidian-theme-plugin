@@ -28,3 +28,27 @@ body {
   --radius-l: var(--theme-radius-lg);
   --radius-xl: var(--theme-radius-xl);
 }
+
+/* Reading/writing consumers share body scope with user overrides. */
+body {
+  --theme-paragraph-spacing: var(--theme-space-sm);
+  --theme-heading-spacing: var(--theme-space-lg);
+  --theme-first-line-indent: 0em;
+  --theme-prose-letter-spacing: 0em;
+  --theme-prose-word-spacing: 0em;
+  --theme-heading-letter-spacing: 0em;
+  --theme-bold-modifier: 200;
+  --theme-emphasis-color: var(--theme-text-normal);
+  --theme-h1-size: 1.75em;
+  --theme-h1-weight: var(--font-bold);
+  --theme-h2-size: 1.50em;
+  --theme-h2-weight: var(--font-bold);
+  --theme-h3-size: 1.30em;
+  --theme-h3-weight: var(--font-semibold);
+  --theme-h4-size: 1.15em;
+  --theme-h4-weight: var(--font-semibold);
+  --theme-h5-size: 1.05em;
+  --theme-h5-weight: var(--font-medium);
+  --theme-h6-size: 1.00em;
+  --theme-h6-weight: var(--font-medium);
+}

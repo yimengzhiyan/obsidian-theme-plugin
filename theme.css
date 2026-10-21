@@ -98,6 +98,30 @@ body {
   --radius-xl: var(--theme-radius-xl);
 }
 
+/* Reading/writing consumers share body scope with user overrides. */
+body {
+  --theme-paragraph-spacing: var(--theme-space-sm);
+  --theme-heading-spacing: var(--theme-space-lg);
+  --theme-first-line-indent: 0em;
+  --theme-prose-letter-spacing: 0em;
+  --theme-prose-word-spacing: 0em;
+  --theme-heading-letter-spacing: 0em;
+  --theme-bold-modifier: 200;
+  --theme-emphasis-color: var(--theme-text-normal);
+  --theme-h1-size: 1.75em;
+  --theme-h1-weight: var(--font-bold);
+  --theme-h2-size: 1.50em;
+  --theme-h2-weight: var(--font-bold);
+  --theme-h3-size: 1.30em;
+  --theme-h3-weight: var(--font-semibold);
+  --theme-h4-size: 1.15em;
+  --theme-h4-weight: var(--font-semibold);
+  --theme-h5-size: 1.05em;
+  --theme-h5-weight: var(--font-medium);
+  --theme-h6-size: 1.00em;
+  --theme-h6-weight: var(--font-medium);
+}
+
 /* Source: src/base/colors.css */
 body {
   --background-primary: var(--theme-bg-primary);
@@ -223,8 +247,8 @@ body {
 
   /* Public typography variables preserve Obsidian's user font choices. */
   --heading-formatting: var(--theme-text-faint);
-  --heading-spacing: var(--theme-space-lg);
-  --p-spacing: var(--theme-space-sm);
+  --heading-spacing: var(--theme-heading-spacing);
+  --p-spacing: var(--theme-paragraph-spacing);
 
   --h1-color: var(--theme-text-normal);
   --h2-color: var(--theme-text-normal);
@@ -233,19 +257,19 @@ body {
   --h5-color: var(--theme-text-normal);
   --h6-color: var(--theme-text-normal);
 
-  --h1-size: 1.75em;
-  --h2-size: 1.50em;
-  --h3-size: 1.30em;
-  --h4-size: 1.15em;
-  --h5-size: 1.05em;
-  --h6-size: 1.00em;
+  --h1-size: var(--theme-h1-size);
+  --h2-size: var(--theme-h2-size);
+  --h3-size: var(--theme-h3-size);
+  --h4-size: var(--theme-h4-size);
+  --h5-size: var(--theme-h5-size);
+  --h6-size: var(--theme-h6-size);
 
-  --h1-weight: var(--font-bold);
-  --h2-weight: var(--font-bold);
-  --h3-weight: var(--font-semibold);
-  --h4-weight: var(--font-semibold);
-  --h5-weight: var(--font-medium);
-  --h6-weight: var(--font-medium);
+  --h1-weight: var(--theme-h1-weight);
+  --h2-weight: var(--theme-h2-weight);
+  --h3-weight: var(--theme-h3-weight);
+  --h4-weight: var(--theme-h4-weight);
+  --h5-weight: var(--theme-h5-weight);
+  --h6-weight: var(--theme-h6-weight);
 
   --h1-line-height: 1.20;
   --h2-line-height: 1.25;
@@ -254,9 +278,9 @@ body {
   --h5-line-height: 1.30;
   --h6-line-height: 1.30;
 
-  --bold-modifier: 200;
-  --bold-color: var(--theme-text-normal);
-  --italic-color: var(--theme-text-normal);
+  --bold-modifier: var(--theme-bold-modifier);
+  --bold-color: var(--theme-emphasis-color);
+  --italic-color: var(--theme-emphasis-color);
 }
 
 /* CodeMirror retains blank Markdown lines; rendered paragraphs use spacing instead.
@@ -264,23 +288,23 @@ body {
  * Source Mode retains native line geometry for caret and keyboard navigation. */
 .markdown-source-view.mod-cm6.is-live-preview
   .cm-line:not([class*="HyperMD-"]):is(:empty, :has(> br:only-child)) {
-  line-height: var(--theme-space-sm);
-  min-height: var(--theme-space-sm);
+  line-height: var(--theme-paragraph-spacing);
+  min-height: var(--theme-paragraph-spacing);
 }
 
 /* A blank line immediately before a heading uses the heading spacing contract. */
 .markdown-source-view.mod-cm6.is-live-preview
   .cm-line:not([class*="HyperMD-"]):is(:empty, :has(> br:only-child)):has(+ .cm-line.HyperMD-header) {
-  line-height: var(--theme-space-lg);
-  min-height: var(--theme-space-lg);
+  line-height: var(--theme-heading-spacing);
+  min-height: var(--theme-heading-spacing);
 }
 
 /* Between consecutive headings, avoid repeating the full heading spacing. */
 .markdown-source-view.mod-cm6.is-live-preview
   .cm-line.HyperMD-header
   + .cm-line:not([class*="HyperMD-"]):is(:empty, :has(> br:only-child)):has(+ .cm-line.HyperMD-header) {
-  line-height: var(--theme-space-sm);
-  min-height: var(--theme-space-sm);
+  line-height: var(--theme-paragraph-spacing);
+  min-height: var(--theme-paragraph-spacing);
 }
 
 /* Source: src/workspace/tabs.css */
@@ -681,6 +705,55 @@ body {
 
 .markdown-source-view.mod-cm6.is-live-preview .cm-hashtag.cm-quote:hover {
   color: var(--tag-color-hover);
+}
+
+/* Source: src/editor/reading-writing.css */
+/* Main-document prose only. Source has no consumers here; native width stays.
+ * Direct renderer sections exclude nested lists/quotes/callouts/embed content.
+ */
+.workspace-split.mod-root .workspace-leaf-content[data-type="markdown"][data-mode="preview"] > .view-content > .markdown-reading-view > .markdown-preview-view > .markdown-preview-sizer > div > p:not(:is(.footnotes *, .metadata-container *, .callout *, blockquote *, li *, td *, th *)),
+.workspace-split.mod-root .workspace-leaf-content[data-type="markdown"] > .view-content > .markdown-source-view.mod-cm6.is-live-preview .cm-content > .cm-line:not([class*="HyperMD-"]):not(:empty):not(:has(> br:only-child)) {
+  text-indent: var(--theme-first-line-indent);
+  letter-spacing: var(--theme-prose-letter-spacing);
+  word-spacing: var(--theme-prose-word-spacing);
+}
+
+.workspace-split.mod-root .workspace-leaf-content[data-type="markdown"][data-mode="preview"] > .view-content > .markdown-reading-view > .markdown-preview-view > .markdown-preview-sizer > div > :is(h1, h2, h3, h4, h5, h6),
+.workspace-split.mod-root .workspace-leaf-content[data-type="markdown"] > .view-content > .markdown-source-view.mod-cm6.is-live-preview .cm-content > .cm-line.HyperMD-header {
+  letter-spacing: var(--theme-heading-letter-spacing);
+}
+
+/* Inline code/math inside prose must not inherit optional prose spacing. */
+.workspace-split.mod-root .workspace-leaf-content[data-type="markdown"][data-mode="preview"] > .view-content > .markdown-reading-view > .markdown-preview-view > .markdown-preview-sizer > div > p:not(:is(.footnotes *, .metadata-container *, .callout *, blockquote *, li *, td *, th *)) :is(code, pre, .math, .MathJax, mjx-container, .cm-inline-code, .cm-math),
+.workspace-split.mod-root .workspace-leaf-content[data-type="markdown"] > .view-content > .markdown-source-view.mod-cm6.is-live-preview .cm-content > .cm-line:not([class*="HyperMD-"]):not(:empty):not(:has(> br:only-child)) :is(code, pre, .math, .MathJax, mjx-container, .cm-inline-code, .cm-math) {
+  text-indent: 0;
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+
+@supports (text-autospace: normal) {
+  body.fusion-cjk-autospace .workspace-split.mod-root .workspace-leaf-content[data-type="markdown"][data-mode="preview"] > .view-content > .markdown-reading-view > .markdown-preview-view > .markdown-preview-sizer > div > p:not(:is(.footnotes *, .metadata-container *, .callout *, blockquote *, li *, td *, th *)),
+  body.fusion-cjk-autospace .workspace-split.mod-root .workspace-leaf-content[data-type="markdown"] > .view-content > .markdown-source-view.mod-cm6.is-live-preview .cm-content > .cm-line:not([class*="HyperMD-"]):not(:empty):not(:has(> br:only-child)) {
+    text-autospace: normal;
+  }
+
+  body.fusion-cjk-autospace .workspace-split.mod-root .workspace-leaf-content[data-type="markdown"][data-mode="preview"] > .view-content > .markdown-reading-view > .markdown-preview-view > .markdown-preview-sizer > div > p:not(:is(.footnotes *, .metadata-container *, .callout *, blockquote *, li *, td *, th *)) :is(code, pre, .math, .MathJax, mjx-container, .cm-inline-code, .cm-math),
+  body.fusion-cjk-autospace .workspace-split.mod-root .workspace-leaf-content[data-type="markdown"] > .view-content > .markdown-source-view.mod-cm6.is-live-preview .cm-content > .cm-line:not([class*="HyperMD-"]):not(:empty):not(:has(> br:only-child)) :is(code, pre, .math, .MathJax, mjx-container, .cm-inline-code, .cm-math) {
+    text-autospace: no-autospace;
+  }
+}
+
+@supports (text-wrap: pretty) {
+  .workspace-split.mod-root .workspace-leaf-content[data-type="markdown"][data-mode="preview"] > .view-content > .markdown-reading-view > .markdown-preview-view > .markdown-preview-sizer > div > p:not(:is(.footnotes *, .metadata-container *, .callout *, blockquote *, li *, td *, th *)) {
+    text-wrap: pretty;
+  }
+}
+
+@supports (text-wrap: balance) {
+  .workspace-split.mod-root .workspace-leaf-content[data-type="markdown"][data-mode="preview"] > .view-content > .markdown-reading-view > .markdown-preview-view > .markdown-preview-sizer > div > :is(h1, h2, h3),
+  .workspace-split.mod-root .workspace-leaf-content[data-type="markdown"] > .view-content > .markdown-source-view.mod-cm6.is-live-preview .cm-content > .cm-line.HyperMD-header:is(.HyperMD-header-1, .HyperMD-header-2, .HyperMD-header-3) {
+    text-wrap: balance;
+  }
 }
 
 /* Source: src/navigation/file-explorer.css */

@@ -200,6 +200,26 @@ async function validateCss() {
   const colorsCss = await readFile(path.join(projectRoot, "src/base/colors.css"), "utf8");
   const typographyCss = await readFile(path.join(projectRoot, "src/base/typography.css"), "utf8");
   assertCoreTypographyContract(typographyCss);
+  const writingTokens = await readFile(path.join(projectRoot, "src/base/variables.css"), "utf8");
+  const writingDefaults = new Map([
+    ["paragraph-spacing", "var(--theme-space-sm)"], ["heading-spacing", "var(--theme-space-lg)"],
+    ["first-line-indent", "0em"], ["prose-letter-spacing", "0em"],
+    ["prose-word-spacing", "0em"], ["heading-letter-spacing", "0em"],
+    ["bold-modifier", "200"], ["emphasis-color", "var(--theme-text-normal)"]
+  ]);
+  const headingSizes = ["1.75em", "1.50em", "1.30em", "1.15em", "1.05em", "1.00em"];
+  const headingWeights = ["bold", "bold", "semibold", "semibold", "medium", "medium"];
+  headingSizes.forEach((size, i) => {
+    writingDefaults.set(`h${i + 1}-size`, size);
+    writingDefaults.set(`h${i + 1}-weight`, `var(--font-${headingWeights[i]})`);
+  });
+  for (const [name, value] of writingDefaults) {
+    const token = `--theme-${name}:`;
+    const declarations = writingTokens.split(";").filter((part) => part.includes(token));
+    if (declarations.length !== 1 || declarations[0].split(token)[1].trim() !== value) {
+      fail(`Reading/writing default ${name} must preserve the approved baseline.`);
+    }
+  }
   const inlineCss = await readFile(path.join(projectRoot, "src/editor/links-tags-highlight.css"), "utf8");
   assertLinksTagsHighlightContract(inlineCss);
   const blockCss = await readFile(path.join(projectRoot, "src/editor/code-quote-table.css"), "utf8");
@@ -335,9 +355,9 @@ function assertCoreTypographyContract(source) {
   const blank = '.cm-line:not([class*="HyperMD-"]):is(:empty, :has(> br:only-child))';
   const blankLine = `${editor} ${blank}`;
   const approvedSpacingRules = [
-    [blankLine, "line-height: var(--theme-space-sm); min-height: var(--theme-space-sm);"],
-    [`${blankLine}:has(+ .cm-line.HyperMD-header)`, "line-height: var(--theme-space-lg); min-height: var(--theme-space-lg);"],
-    [`${editor} .cm-line.HyperMD-header + ${blank}:has(+ .cm-line.HyperMD-header)`, "line-height: var(--theme-space-sm); min-height: var(--theme-space-sm);"]
+    [blankLine, "line-height: var(--theme-paragraph-spacing); min-height: var(--theme-paragraph-spacing);"],
+    [`${blankLine}:has(+ .cm-line.HyperMD-header)`, "line-height: var(--theme-heading-spacing); min-height: var(--theme-heading-spacing);"],
+    [`${editor} .cm-line.HyperMD-header + ${blank}:has(+ .cm-line.HyperMD-header)`, "line-height: var(--theme-paragraph-spacing); min-height: var(--theme-paragraph-spacing);"]
   ];
   for (const [index, [selector, declaration]] of approvedSpacingRules.entries()) {
     const rule = rules[index + 1];
@@ -364,20 +384,18 @@ function assertCoreTypographyContract(source) {
     ["--line-height-normal", "var(--theme-line-height)"],
     ["--file-line-width", "var(--theme-reading-width)"],
     ["--heading-formatting", "var(--theme-text-faint)"],
-    ["--heading-spacing", "var(--theme-space-lg)"],
-    ["--p-spacing", "var(--theme-space-sm)"],
-    ["--bold-modifier", "200"],
-    ["--bold-color", "var(--theme-text-normal)"],
-    ["--italic-color", "var(--theme-text-normal)"]
+    ["--heading-spacing", "var(--theme-heading-spacing)"],
+    ["--p-spacing", "var(--theme-paragraph-spacing)"],
+    ["--bold-modifier", "var(--theme-bold-modifier)"],
+    ["--bold-color", "var(--theme-emphasis-color)"],
+    ["--italic-color", "var(--theme-emphasis-color)"]
   ]);
-  const sizes = ["1.75em", "1.50em", "1.30em", "1.15em", "1.05em", "1.00em"];
-  const weights = ["bold", "bold", "semibold", "semibold", "medium", "medium"];
   const lineHeights = ["1.20", "1.25", "1.30", "1.30", "1.30", "1.30"];
   for (let index = 0; index < 6; index += 1) {
     const heading = `--h${index + 1}`;
     expected.set(`${heading}-color`, "var(--theme-text-normal)");
-    expected.set(`${heading}-size`, sizes[index]);
-    expected.set(`${heading}-weight`, `var(--font-${weights[index]})`);
+    expected.set(`${heading}-size`, `var(--theme-h${index + 1}-size)`);
+    expected.set(`${heading}-weight`, `var(--theme-h${index + 1}-weight)`);
     expected.set(`${heading}-line-height`, lineHeights[index]);
   }
 

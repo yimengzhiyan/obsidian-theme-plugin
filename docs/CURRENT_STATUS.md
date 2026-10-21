@@ -4,15 +4,15 @@ Last Updated: 2026-10-21 (America/Los_Angeles)
 
 ## Current milestone
 
-**Phase 5A Workspace Experience implemented / integrated QA pending.** Branch codex/p5-feature-completion from clean/synced main4cb19c4c90a870cbcab3fc145c204d25a2b5266d. W02/F01/F02/E01/E02 implemented as one batch; no Desktop PASS claim.
+**Phase5A + Phase5B implemented / integrated QA pending.** Branch codex/p5-feature-completion;5B baseline4e85ceecfbde45a85493fb4e6e46a60cbb1479db. R01/R02 now implemented:20 Reading/Writing semantic controls, default-preserving public mapping and exact three LP blank-line consumers; main Reading/LP prose indent/spacing, headings, code/math exclusions, opt-in CJK autospace, progressive pretty/balance. No Style Settings expansion.
 
-Focus title chrome only dims inactive ordinary pane; actions have active/inactive defaults and reveal on hover/focus/active controls. Ordinary close controls reveal on tab hover/active/focus. Ribbon actions and Status items softly dim without collapse; Sidebar direct header chrome only. New scoped effects/press/reduced-motion and narrow CM6 ordinary active-line6%Accent background; no content opacity, selection rules or geometry changes. Two shared opacity tokens, no settings expansion or Preset.
+P3.3 previous NO NEW CSS REQUIRED = no corrective rhythm CSS required. Phase5B adds optional/configurable capabilities and progressive long-form polish. Source native blank/caret/navigation and width chain unchanged; all new CM consumers require is-live-preview.5A/Card/Decision013/014 untouched. Check updated to new token mapping plus explicit legacy-default assertions, no Build script change.
 
 ## Limits and next step
 
-**Next: Phase 5B Reading & Writing implementation, not Desktop QA.** [Batch plan](P5_FEATURE_COMPLETION_PLAN.md) defines5A/5B mid-cycleQA then5C/5D/finalQA. No per-feature Desktop gates or automatic interruption for hypothetical visual risks. No QA/PR/merge in5A.
+**Next gate: Phase5A +5B Mid-cycle Integrated Desktop QA**, not performed in this implementation task. Validate no-change defaults, nonzero capability values, actual Reading wrappers/inline math exclusions, Source caret/navigation, LP indent/wrap and selection, optional autospace support, Light/Dark,5A reveal/reduced-motion and Card/previous regressions. New tokens/defaults/selector checks and Build/Check/diff-check PASS, not Desktop PASS.
 
-Existing Card neutral outline/stacked exclusion and Focus Accent/neutral border retained; Decision013/014 unchanged. Active-line state and new chrome/reveal/press actual appearance remain untested; Sidebar view-internal controls not targeted. Existing NN drag/drop UNVERIFIED, Radius20 bounded, header-hidden no extra Focus cue, pop-out/RTL/platform/accessibility uncertified remain. Build/Check/diff-check and static contract checks PASS; no integratedQA yet.
+Inline Title skipped; native-equivalent CJK line-breaking skipped as redundant. No fixed width, content margin normalization, fonts, code/Callout/Table redesign or5C/5D implementation. Settings still four, no Preset/runtime. Existing NN/Radius20/header-hidden/platform/accessibility limits remain.
 
 ## Historical evidence — retained for traceability
 

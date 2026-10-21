@@ -259,8 +259,18 @@ NN fixture drag/drop remains UNVERIFIED/non-blocking coverage limitation, not a 
 - [x] Chrome-only Focus/reveal, tab close, Ribbon/Status soft hide, direct Sidebar header chrome
 - [x] Basic transitions/press/reduced-motion; narrow ordinary CM6 active-line fallback
 - [x] Build/Check/diff-check + protected Card/settings/typography/Decision checks
-- [ ] **Next:5B Reading & Writing batch implementation**, same branch; no DesktopQA before this
+- [x] 5B Reading & Writing batch implemented, same branch; integratedQA pending
 - [ ] Mid-cycle integrated Desktop QA after5A+5B, concentrated fixes
 - [ ] 5C PKM surfaces;5D customization;final integratedQA
 
 [P5 plan](P5_FEATURE_COMPLETION_PLAN.md) replaces per-feature execution gates for authorized Phase5 work. Prior “Focus/soft reveal/basic Effects deferred” notes are historical for bounded5A scope; no full auto-collapse/runtime or advanced animation implied. Decision013/014 unchanged. No new settings/Preset, no QA/PR/merge in5A.
+
+## Phase5B checkpoint
+
+- [x] R01/R02 Phase5B implemented / integrated QA pending
+- [x] Semantic defaults/public mappings/LP spacing consumers; prose indent/letter/word, H1–H6 size/weight, neutral emphasis
+- [x] Progressive CJK autospace class + prose pretty/heading balance; code/math exclusions
+- [x] Build/Check/diff-check and default/Source/width/5A preservation checks
+- [ ] **Next:5A+5B Mid-cycle Integrated Desktop QA**; not started in implementation task
+
+P3.3 C=0 remains no corrective rhythm CSS needed;5B adds configurable capabilities. Native-equivalent CJK breaking and Inline Title polish skipped. No settings expansion/5C/5D/PR/merge. See P5 plan for limitations and pending integrated checks.

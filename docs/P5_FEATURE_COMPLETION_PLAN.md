@@ -12,7 +12,13 @@ Static/build checks cover contract preservation; opacity aesthetics, reveal usab
 
 ## 5B Reading & Writing
 
-Next implementation batch: CJK/English reading rhythm, first-line indent, paragraph/heading spacing, bold/italic hierarchy, optional letter/word spacing and long-form reading enhancements. Concrete changes must preserve native caret/navigation and state their interaction with existing Phase2/Reading contracts; this plan does not silently repeal Decision012. No 5B code in 5A.
+**Phase 5B implemented / integrated QA pending** (R01/R02). Added20 body-scoped semantic controls: paragraph/heading spacing, indent, prose letter/word spacing, heading letter spacing, bold modifier, shared emphasis color and H1–H6 size/weight. Defaults preserve old values; mappings and three exact LP-only blank rules consume controls directly. Native width unchanged.
+
+New editor/reading-writing.css: main Markdown Reading direct section paragraphs only, excluding nested special contexts; CM6 ordinary nonempty prose lines require is-live-preview and exclude HyperMD classes. Indent/letter/word spacing default0. Heading letter spacing in Reading and LP; inline code/math reset spacing/indent/autospace. fusion-cjk-autospace body class is opt-in behind @supports; no new setting/class producer yet. Reading pretty paragraphs and H1–H3 balance (LP H1–H3 also balanced) are progressive default polish. Inline Title skipped to preserve native hierarchy; native-equivalent CJK line-break/word-break/overflow-wrap declarations skipped as redundant.
+
+P3.3 previous NO NEW CSS REQUIRED = no corrective rhythm CSS required. Phase5B adds optional/configurable capabilities and progressive long-form polish, not new parity/margin normalization. Decision012/013/014 unchanged; no Source consumer or width selector. Body placement lets future user tokens resolve alongside public variables. Actual renderer section/inline math classes, indentation on wrapped paragraphs and selection/caret behavior await mid-cycleQA, not claimed Desktop PASS.
+
+scripts/check.mjs mechanically follows authorized token indirection while retaining exact LP selector/rule/order and direct semantic spacing gates; adds explicit default-value assertions so defaults cannot silently drift. Build script unchanged. Settings stay four;5A files unchanged. Next gate is Phase5A+5B Mid-cycle Integrated Desktop QA; do not start it inside this implementation task.
 
 ## Mid-cycle Desktop QA
 
