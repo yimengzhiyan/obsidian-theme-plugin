@@ -4,57 +4,395 @@ name: Obsidian Fusion Theme
 id: obsidian-fusion-theme
 settings:
   -
-    id: oft-appearance
-    title: Appearance
-    type: heading
-    level: 2
-    collapsed: false
+    id: "oft-appearance"
+    title: "Appearance"
+    type: "heading"
+    level: 1
+    collapsed: true
   -
-    id: theme-accent
-    title: Accent color
-    description: Primary interactive color as a hex or CSS color value.
-    type: variable-text
-    default: '#6750a4'
+    id: "theme-accent"
+    title: "Accent color"
+    description: "Primary interactive color as a hex or CSS color value."
+    type: "variable-text"
+    default: "#6750a4"
   -
-    id: theme-radius-md
-    title: Border radius
-    description: Default radius for controls and surfaces.
-    type: variable-number-slider
+    id: "theme-radius-md"
+    title: "Border radius"
+    description: "Default radius for controls and surfaces."
+    type: "variable-number-slider"
     default: 8
     min: 0
     max: 20
     step: 1
-    format: px
+    format: "px"
   -
-    id: oft-typography
-    title: Typography
-    type: heading
+    id: "oft-workspace"
+    title: "Workspace"
+    type: "heading"
+    level: 1
+    collapsed: true
+  -
+    id: "oft-chrome"
+    title: "Chrome"
+    type: "heading"
     level: 2
     collapsed: true
   -
-    id: theme-line-height
-    title: Line height
-    description: Reading line height for editor and preview.
-    type: variable-number-slider
+    id: "theme-workspace-chrome-dim-opacity"
+    title: "Quiet chrome opacity"
+    description: "Visibility of resting workspace controls."
+    type: "variable-number-slider"
+    default: 0.55
+    min: 0.25
+    max: 1
+    step: 0.05
+  -
+    id: "theme-workspace-chrome-muted-opacity"
+    title: "Muted chrome opacity"
+    description: "Visibility of quieter titles and status items."
+    type: "variable-number-slider"
+    default: 0.72
+    min: 0.4
+    max: 1
+    step: 0.05
+  -
+    id: "fusion-full-workspace-chrome"
+    title: "Always show workspace controls"
+    description: "Keeps workspace controls and titles fully visible."
+    type: "class-toggle"
+    default: false
+  -
+    id: "oft-effects"
+    title: "Focus & Effects"
+    type: "heading"
+    level: 2
+    collapsed: true
+  -
+    id: "theme-active-line-strength"
+    title: "Active line strength"
+    description: "Highlights the current Markdown line while editing."
+    type: "variable-number-slider"
+    default: 6
+    min: 0
+    max: 15
+    step: 1
+    format: "%"
+  -
+    id: "fusion-disable-active-line"
+    title: "Disable active line highlight"
+    description: "Removes the editing line highlight."
+    type: "class-toggle"
+    default: false
+  -
+    id: "fusion-disable-workspace-effects"
+    title: "Disable workspace motion"
+    description: "Turns off Fusion workspace transitions and press feedback."
+    type: "class-toggle"
+    default: false
+  -
+    id: "oft-layout"
+    title: "Layout"
+    type: "heading"
+    level: 2
+    collapsed: true
+  -
+    id: "fusion-native-pane-shell"
+    title: "Use native pane shell"
+    description: "Uses native pane appearance instead of the Fusion outline."
+    type: "class-toggle"
+    default: false
+  -
+    id: "oft-typography"
+    title: "Reading & Writing"
+    type: "heading"
+    level: 1
+    collapsed: true
+  -
+    id: "oft-rhythm"
+    title: "Rhythm"
+    type: "heading"
+    level: 2
+    collapsed: true
+  -
+    id: "theme-line-height"
+    title: "Line height"
+    description: "Reading line height for editor and preview."
+    type: "variable-number-slider"
     default: 1.7
     min: 1.2
     max: 2.2
     step: 0.05
   -
-    id: oft-layout
-    title: Layout
-    type: heading
-    level: 2
-    collapsed: true
-  -
-    id: theme-reading-width
-    title: Content width
-    description: Maximum line width when Obsidian's readable line length is enabled.
-    type: variable-number-slider
+    id: "theme-reading-width"
+    title: "Content width"
+    description: "Maximum line width when Obsidian's readable line length is enabled."
+    type: "variable-number-slider"
     default: 700
     min: 480
     max: 1200
     step: 20
-    format: px
+    format: "px"
+  -
+    id: "theme-paragraph-spacing"
+    title: "Paragraph spacing"
+    description: "Controls paragraph spacing in Reading and Live Preview."
+    type: "variable-number-slider"
+    default: 0.5
+    min: 0
+    max: 2
+    step: 0.125
+    format: "rem"
+  -
+    id: "theme-heading-spacing"
+    title: "Heading spacing"
+    description: "Controls heading spacing in Reading and Live Preview."
+    type: "variable-number-slider"
+    default: 1.5
+    min: 0.5
+    max: 3
+    step: 0.125
+    format: "rem"
+  -
+    id: "oft-text"
+    title: "Text"
+    type: "heading"
+    level: 2
+    collapsed: true
+  -
+    id: "theme-first-line-indent"
+    title: "First-line indent"
+    description: "Indents ordinary prose in Reading and Live Preview. Zero disables it."
+    type: "variable-number-slider"
+    default: 0
+    min: 0
+    max: 3
+    step: 0.25
+    format: "em"
+  -
+    id: "theme-prose-letter-spacing"
+    title: "Prose letter spacing"
+    description: "Adjusts letter spacing in ordinary prose."
+    type: "variable-number-slider"
+    default: 0
+    min: -0.03
+    max: 0.08
+    step: 0.005
+    format: "em"
+  -
+    id: "theme-prose-word-spacing"
+    title: "Prose word spacing"
+    description: "Adjusts word spacing in ordinary prose."
+    type: "variable-number-slider"
+    default: 0
+    min: -0.05
+    max: 0.2
+    step: 0.01
+    format: "em"
+  -
+    id: "theme-bold-modifier"
+    title: "Bold strength"
+    description: "Added to the surrounding font weight by Obsidian."
+    type: "variable-number-slider"
+    default: 200
+    min: 0
+    max: 300
+    step: 50
+  -
+    id: "fusion-disable-smart-wrap"
+    title: "Disable smart text wrapping"
+    description: "Uses normal wrapping instead of balanced headings and polished paragraphs."
+    type: "class-toggle"
+    default: false
+  -
+    id: "oft-headings"
+    title: "Headings"
+    type: "heading"
+    level: 2
+    collapsed: true
+  -
+    id: "theme-heading-letter-spacing"
+    title: "Heading letter spacing"
+    description: "Adjusts letter spacing in headings."
+    type: "variable-number-slider"
+    default: 0
+    min: -0.03
+    max: 0.1
+    step: 0.005
+    format: "em"
+  -
+    id: "oft-heading-sizes"
+    title: "Heading sizes"
+    type: "heading"
+    level: 3
+    collapsed: true
+  -
+    id: "theme-h1-size"
+    title: "H1 size"
+    description: "Size of level 1 headings."
+    type: "variable-number-slider"
+    default: 1.75
+    min: 1.2
+    max: 2.5
+    step: 0.05
+    format: "em"
+  -
+    id: "theme-h2-size"
+    title: "H2 size"
+    description: "Size of level 2 headings."
+    type: "variable-number-slider"
+    default: 1.5
+    min: 1.1
+    max: 2.2
+    step: 0.05
+    format: "em"
+  -
+    id: "theme-h3-size"
+    title: "H3 size"
+    description: "Size of level 3 headings."
+    type: "variable-number-slider"
+    default: 1.3
+    min: 1
+    max: 2
+    step: 0.05
+    format: "em"
+  -
+    id: "theme-h4-size"
+    title: "H4 size"
+    description: "Size of level 4 headings."
+    type: "variable-number-slider"
+    default: 1.15
+    min: 0.9
+    max: 1.8
+    step: 0.05
+    format: "em"
+  -
+    id: "theme-h5-size"
+    title: "H5 size"
+    description: "Size of level 5 headings."
+    type: "variable-number-slider"
+    default: 1.05
+    min: 0.9
+    max: 1.6
+    step: 0.05
+    format: "em"
+  -
+    id: "theme-h6-size"
+    title: "H6 size"
+    description: "Size of level 6 headings."
+    type: "variable-number-slider"
+    default: 1
+    min: 0.85
+    max: 1.5
+    step: 0.05
+    format: "em"
+  -
+    id: "oft-heading-weights"
+    title: "Advanced heading weights"
+    type: "heading"
+    level: 3
+    collapsed: true
+  -
+    id: "theme-h1-weight"
+    title: "H1 weight"
+    description: "Weight of level 1 headings."
+    type: "variable-number-slider"
+    default: 700
+    min: 400
+    max: 800
+    step: 100
+  -
+    id: "theme-h2-weight"
+    title: "H2 weight"
+    description: "Weight of level 2 headings."
+    type: "variable-number-slider"
+    default: 700
+    min: 400
+    max: 800
+    step: 100
+  -
+    id: "theme-h3-weight"
+    title: "H3 weight"
+    description: "Weight of level 3 headings."
+    type: "variable-number-slider"
+    default: 600
+    min: 400
+    max: 800
+    step: 100
+  -
+    id: "theme-h4-weight"
+    title: "H4 weight"
+    description: "Weight of level 4 headings."
+    type: "variable-number-slider"
+    default: 600
+    min: 400
+    max: 800
+    step: 100
+  -
+    id: "theme-h5-weight"
+    title: "H5 weight"
+    description: "Weight of level 5 headings."
+    type: "variable-number-slider"
+    default: 500
+    min: 400
+    max: 800
+    step: 100
+  -
+    id: "theme-h6-weight"
+    title: "H6 weight"
+    description: "Weight of level 6 headings."
+    type: "variable-number-slider"
+    default: 500
+    min: 400
+    max: 800
+    step: 100
+  -
+    id: "oft-pkm"
+    title: "PKM"
+    type: "heading"
+    level: 1
+    collapsed: true
+  -
+    id: "oft-embeds"
+    title: "Embeds"
+    type: "heading"
+    level: 2
+    collapsed: true
+  -
+    id: "fusion-native-embeds"
+    title: "Use native embed appearance"
+    description: "Uses native embedded-note and file styling."
+    type: "class-toggle"
+    default: false
+  -
+    id: "oft-navigation"
+    title: "Navigation"
+    type: "heading"
+    level: 2
+    collapsed: true
+  -
+    id: "fusion-rainbow-folders"
+    title: "Rainbow folders"
+    description: "Adds subtle colors to File Explorer folder names."
+    type: "class-toggle"
+    default: false
+    addCommand: true
+  -
+    id: "oft-apps"
+    title: "Canvas & Graph"
+    type: "heading"
+    level: 2
+    collapsed: true
+  -
+    id: "fusion-native-canvas"
+    title: "Use native Canvas appearance"
+    description: "Uses native Canvas styling instead of Fusion styling."
+    type: "class-toggle"
+    default: false
+  -
+    id: "fusion-native-graph"
+    title: "Use native Graph appearance"
+    description: "Uses native Graph styling instead of Fusion styling."
+    type: "class-toggle"
+    default: false
 
 */

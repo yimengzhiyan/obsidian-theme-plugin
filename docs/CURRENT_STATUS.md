@@ -4,15 +4,15 @@ Last Updated: 2026-10-21 (America/Los_Angeles)
 
 ## Current milestone
 
-**Phase5C PKM Surfaces implemented / integrated QA pending**. Branch codex/p5-feature-completion, baselineeb3bc1805ac5cb2c6226ebcaac1eca6622baaa70. Seamless Embed、optional Rainbow Folder、Canvas/Graph four modules complete; no new tokens/settings/runtime. Static/build validation PASS, no5C DesktopQA.
+**Phase5D Customization implemented / Final Integrated QA pending. 5A–5D feature implementation complete.** codex/p5-feature-completion from5D baseline6693706e820351cd911313be048045ef67cc3cfc.35 independent controls(26variable+9class), no Preset/runtime/customreset/CJKUI. Originalfour settings compatible; all no-plugin defaults preserved through negative gating; Rainbowdefaultoff. Only new token active-line-strength6%.
 
-5A/5B mid-cycle DesktopQA PASS, issue inventory A=0/B=0/C=1. No mid-cycle fix batch; C-01 Sidebar resting reveal stays Final Tuning Backlog, unchanged. New code does not modify5A/5B/Card/Decision012/013/014.
+5A/5B mid-cycle DesktopQA PASS A=0/B=0/C=1; C-01 Sidebar resting reveal unchanged Final Tuning Backlog.5C and5D await finalQA. Decision012/013/014 unchanged; no release/PR/main merge.
 
 ## Next step
 
-**Phase5D Customization**, not DesktopQA. Expanded user configuration later; current four settings unchanged. Full scope/limitations/static references in [P5 plan](P5_FEATURE_COMPLETION_PLAN.md#5c-implementation-checkpoint). Final integratedQA/concentrated tuning later; no PR/main merge now.
+**Chat Final Phase5 Code Review → Phase5 Final Integrated Desktop QA**. Do not auto-startQA. Verify setting combinations, defaults/storage/reset, no-plugin baseline, allsurface opt-outs, motion/accessibility and fullregression. CJKautospaceUI intentionally withheld for current unsupported runtime; capability retained. Details [P5 plan](P5_FEATURE_COMPLETION_PLAN.md#5d-customization-checkpoint).
 
-Embed limited to rendered shell/identity/link chrome; no nested typography/scroll/height overrides. Rainbow body-class-only folder titles, baseline unchanged withoutclass. Canvas native user palettes/background/borders retained, selectedoutline/controls unified; group boundary/chevron microfeatures conservatively inherited. Graph documentedvariables only, no physics/size. Actual new classes and rendering remain finalQA pending, not standalone research blockers. Existing NN/platform/accessibility limits remain.
+Build/Check/diff-check and static negativegate/default/protectedsource comparisons PASS. No desktop results inferred. No new visualfeature: only parameters/optouts for existingconsumers; Source LP-only contract and nativewidth unchanged. Native-* removes module styling, leaving existing Foundation/native inheritance.
 
 ## Historical evidence — retained for traceability
 

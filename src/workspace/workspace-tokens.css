@@ -12,3 +12,7 @@ body {
   --theme-workspace-chrome-dim-opacity: 0.55;
   --theme-workspace-chrome-muted-opacity: 0.72;
 }
+
+body {
+  --theme-active-line-strength: 6%;
+}

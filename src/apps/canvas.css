@@ -1,44 +1,28 @@
 /* Native dots and canvas-color/user palette remain owned by Obsidian.
  * Background inherits Fusion public surfaces; never replace colored nodes. */
-.workspace-leaf-content[data-type="canvas"] {
+/* Outline does not consume node interior; native user-colored border remains. */
+body:not(.fusion-native-canvas) .workspace-leaf-content[data-type="canvas"] {
   --canvas-background: var(--theme-bg-primary);
   --canvas-card-label-color: var(--theme-text-muted);
-}
-
-.canvas-wrapper .canvas-node-container {
+}body:not(.fusion-native-canvas) .canvas-wrapper .canvas-node-container {
   border-radius: var(--theme-workspace-control-radius);
-}
-
-/* Outline does not consume node interior; native user-colored border remains. */
-.canvas-wrapper .canvas-node.is-selected .canvas-node-container {
+}body:not(.fusion-native-canvas) .canvas-wrapper .canvas-node.is-selected .canvas-node-container {
   outline: 1px solid var(--theme-accent);
   outline-offset: -1px;
-}
-
-.canvas-wrapper .canvas-node-label {
+}body:not(.fusion-native-canvas) .canvas-wrapper .canvas-node-label {
   color: var(--theme-text-muted);
-}
-
-.canvas-wrapper .canvas-node-label:hover {
+}body:not(.fusion-native-canvas) .canvas-wrapper .canvas-node-label:hover {
   color: var(--theme-text-normal);
-}
-
-.canvas-wrapper :is(.canvas-controls-group, .canvas-menu) {
+}body:not(.fusion-native-canvas) .canvas-wrapper :is(.canvas-controls-group, .canvas-menu) {
   background-color: var(--theme-bg-card);
   border-color: var(--theme-border);
   border-radius: var(--theme-workspace-control-radius);
-}
-
-.canvas-wrapper :is(.canvas-control-item, .canvas-menu-item) {
+}body:not(.fusion-native-canvas) .canvas-wrapper :is(.canvas-control-item, .canvas-menu-item) {
   color: var(--theme-text-muted);
   transition: color var(--theme-transition-fast), background-color var(--theme-transition-fast);
-}
-
-.canvas-wrapper :is(.canvas-control-item, .canvas-menu-item):hover {
+}body:not(.fusion-native-canvas) .canvas-wrapper :is(.canvas-control-item, .canvas-menu-item):hover {
   color: var(--theme-text-normal);
   background-color: var(--theme-hover-bg);
-}
-
-.canvas-wrapper :is(.canvas-control-item, .canvas-menu-item):is(.is-active, :active) {
+}body:not(.fusion-native-canvas) .canvas-wrapper :is(.canvas-control-item, .canvas-menu-item):is(.is-active, :active) {
   background-color: var(--theme-active-bg);
 }

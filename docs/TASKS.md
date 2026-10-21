@@ -282,3 +282,15 @@ This single batch replaces per-issue Phase gates. PASS does not mean final Phase
 - [ ] Final integratedQA and concentrated tuning (includes C-01)
 
 Current batch authority lifts historical D01/D02/D04 deferrals for implementedscope, not plugin/data/layout engines. No new tokens/settings; source/width/Source/5A/B/Card unchanged. Scope and skips in P5 plan. NoPR/merge/DesktopQA in this task.
+
+## Phase5D — current checkpoint
+
+- [x] 35independent controls/26variables+9toggles; grouped UI, existingfour compatible
+- [x] Chrome/fullvisibility/Card/active-line/motion; Rhythm/Text/Headings; nativeEmbed/Canvas/Graph/Rainbow
+- [x] Negativegating keeps no-plugin defaults; oneactive-line-strengthtoken, noPreset/customreset/CJKUI
+- [x] Build/Check/diff-check and contract/default/source preservation
+- [x] 5A–5D featureimplementation complete / FinalIntegratedQA pending
+- [ ] **Next: Chat FinalPhase5 CodeReview**
+- [ ] Separately execute Phase5 FinalIntegrated DesktopQA/concentratedfixes
+
+NoQA/release/PR/mainmerge in5D。C-01 remainsFinalTuningBacklog；Decision012/013/014unchanged。Historical exactlyfoursettings refers pre5D；newUI35controls do not change originalfour savedkeys。CJKfuturecapabilityretained UIwithheld。

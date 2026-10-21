@@ -1,6 +1,6 @@
 /* Rendered Markdown contexts only; public embed variables preserve native
  * height/scroll ownership. The identity edge follows direction via start. */
-:is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed, .file-embed) {
+body:not(.fusion-native-embeds) :is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed, .file-embed) {
   --embed-background: transparent;
   --embed-border-start: 1px solid var(--theme-border);
   --embed-border-end: 0;
@@ -12,21 +12,13 @@
   border-block: 0;
   border-radius: var(--theme-workspace-control-radius);
   box-shadow: none;
-}
-
-:is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed, .file-embed):hover {
+}body:not(.fusion-native-embeds) :is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed, .file-embed):hover {
   --embed-border-start: 1px solid var(--theme-border-hover);
-}
-
-:is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed, .file-embed):focus-within {
+}body:not(.fusion-native-embeds) :is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed, .file-embed):focus-within {
   --embed-border-start: 1px solid var(--theme-accent);
-}
-
-:is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed-title, .markdown-embed-link, .file-embed-link) {
+}body:not(.fusion-native-embeds) :is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed-title, .markdown-embed-link, .file-embed-link) {
   color: var(--theme-text-muted);
   transition: color var(--theme-transition-fast);
-}
-
-:is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed, .file-embed):is(:hover, :focus-within) :is(.markdown-embed-title, .markdown-embed-link, .file-embed-link) {
+}body:not(.fusion-native-embeds) :is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed, .file-embed):is(:hover, :focus-within) :is(.markdown-embed-title, .markdown-embed-link, .file-embed-link) {
   color: var(--theme-text-normal);
 }

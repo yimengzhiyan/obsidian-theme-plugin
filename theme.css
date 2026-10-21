@@ -11,58 +11,396 @@ name: Obsidian Fusion Theme
 id: obsidian-fusion-theme
 settings:
   -
-    id: oft-appearance
-    title: Appearance
-    type: heading
-    level: 2
-    collapsed: false
+    id: "oft-appearance"
+    title: "Appearance"
+    type: "heading"
+    level: 1
+    collapsed: true
   -
-    id: theme-accent
-    title: Accent color
-    description: Primary interactive color as a hex or CSS color value.
-    type: variable-text
-    default: '#6750a4'
+    id: "theme-accent"
+    title: "Accent color"
+    description: "Primary interactive color as a hex or CSS color value."
+    type: "variable-text"
+    default: "#6750a4"
   -
-    id: theme-radius-md
-    title: Border radius
-    description: Default radius for controls and surfaces.
-    type: variable-number-slider
+    id: "theme-radius-md"
+    title: "Border radius"
+    description: "Default radius for controls and surfaces."
+    type: "variable-number-slider"
     default: 8
     min: 0
     max: 20
     step: 1
-    format: px
+    format: "px"
   -
-    id: oft-typography
-    title: Typography
-    type: heading
+    id: "oft-workspace"
+    title: "Workspace"
+    type: "heading"
+    level: 1
+    collapsed: true
+  -
+    id: "oft-chrome"
+    title: "Chrome"
+    type: "heading"
     level: 2
     collapsed: true
   -
-    id: theme-line-height
-    title: Line height
-    description: Reading line height for editor and preview.
-    type: variable-number-slider
+    id: "theme-workspace-chrome-dim-opacity"
+    title: "Quiet chrome opacity"
+    description: "Visibility of resting workspace controls."
+    type: "variable-number-slider"
+    default: 0.55
+    min: 0.25
+    max: 1
+    step: 0.05
+  -
+    id: "theme-workspace-chrome-muted-opacity"
+    title: "Muted chrome opacity"
+    description: "Visibility of quieter titles and status items."
+    type: "variable-number-slider"
+    default: 0.72
+    min: 0.4
+    max: 1
+    step: 0.05
+  -
+    id: "fusion-full-workspace-chrome"
+    title: "Always show workspace controls"
+    description: "Keeps workspace controls and titles fully visible."
+    type: "class-toggle"
+    default: false
+  -
+    id: "oft-effects"
+    title: "Focus & Effects"
+    type: "heading"
+    level: 2
+    collapsed: true
+  -
+    id: "theme-active-line-strength"
+    title: "Active line strength"
+    description: "Highlights the current Markdown line while editing."
+    type: "variable-number-slider"
+    default: 6
+    min: 0
+    max: 15
+    step: 1
+    format: "%"
+  -
+    id: "fusion-disable-active-line"
+    title: "Disable active line highlight"
+    description: "Removes the editing line highlight."
+    type: "class-toggle"
+    default: false
+  -
+    id: "fusion-disable-workspace-effects"
+    title: "Disable workspace motion"
+    description: "Turns off Fusion workspace transitions and press feedback."
+    type: "class-toggle"
+    default: false
+  -
+    id: "oft-layout"
+    title: "Layout"
+    type: "heading"
+    level: 2
+    collapsed: true
+  -
+    id: "fusion-native-pane-shell"
+    title: "Use native pane shell"
+    description: "Uses native pane appearance instead of the Fusion outline."
+    type: "class-toggle"
+    default: false
+  -
+    id: "oft-typography"
+    title: "Reading & Writing"
+    type: "heading"
+    level: 1
+    collapsed: true
+  -
+    id: "oft-rhythm"
+    title: "Rhythm"
+    type: "heading"
+    level: 2
+    collapsed: true
+  -
+    id: "theme-line-height"
+    title: "Line height"
+    description: "Reading line height for editor and preview."
+    type: "variable-number-slider"
     default: 1.7
     min: 1.2
     max: 2.2
     step: 0.05
   -
-    id: oft-layout
-    title: Layout
-    type: heading
-    level: 2
-    collapsed: true
-  -
-    id: theme-reading-width
-    title: Content width
-    description: Maximum line width when Obsidian's readable line length is enabled.
-    type: variable-number-slider
+    id: "theme-reading-width"
+    title: "Content width"
+    description: "Maximum line width when Obsidian's readable line length is enabled."
+    type: "variable-number-slider"
     default: 700
     min: 480
     max: 1200
     step: 20
-    format: px
+    format: "px"
+  -
+    id: "theme-paragraph-spacing"
+    title: "Paragraph spacing"
+    description: "Controls paragraph spacing in Reading and Live Preview."
+    type: "variable-number-slider"
+    default: 0.5
+    min: 0
+    max: 2
+    step: 0.125
+    format: "rem"
+  -
+    id: "theme-heading-spacing"
+    title: "Heading spacing"
+    description: "Controls heading spacing in Reading and Live Preview."
+    type: "variable-number-slider"
+    default: 1.5
+    min: 0.5
+    max: 3
+    step: 0.125
+    format: "rem"
+  -
+    id: "oft-text"
+    title: "Text"
+    type: "heading"
+    level: 2
+    collapsed: true
+  -
+    id: "theme-first-line-indent"
+    title: "First-line indent"
+    description: "Indents ordinary prose in Reading and Live Preview. Zero disables it."
+    type: "variable-number-slider"
+    default: 0
+    min: 0
+    max: 3
+    step: 0.25
+    format: "em"
+  -
+    id: "theme-prose-letter-spacing"
+    title: "Prose letter spacing"
+    description: "Adjusts letter spacing in ordinary prose."
+    type: "variable-number-slider"
+    default: 0
+    min: -0.03
+    max: 0.08
+    step: 0.005
+    format: "em"
+  -
+    id: "theme-prose-word-spacing"
+    title: "Prose word spacing"
+    description: "Adjusts word spacing in ordinary prose."
+    type: "variable-number-slider"
+    default: 0
+    min: -0.05
+    max: 0.2
+    step: 0.01
+    format: "em"
+  -
+    id: "theme-bold-modifier"
+    title: "Bold strength"
+    description: "Added to the surrounding font weight by Obsidian."
+    type: "variable-number-slider"
+    default: 200
+    min: 0
+    max: 300
+    step: 50
+  -
+    id: "fusion-disable-smart-wrap"
+    title: "Disable smart text wrapping"
+    description: "Uses normal wrapping instead of balanced headings and polished paragraphs."
+    type: "class-toggle"
+    default: false
+  -
+    id: "oft-headings"
+    title: "Headings"
+    type: "heading"
+    level: 2
+    collapsed: true
+  -
+    id: "theme-heading-letter-spacing"
+    title: "Heading letter spacing"
+    description: "Adjusts letter spacing in headings."
+    type: "variable-number-slider"
+    default: 0
+    min: -0.03
+    max: 0.1
+    step: 0.005
+    format: "em"
+  -
+    id: "oft-heading-sizes"
+    title: "Heading sizes"
+    type: "heading"
+    level: 3
+    collapsed: true
+  -
+    id: "theme-h1-size"
+    title: "H1 size"
+    description: "Size of level 1 headings."
+    type: "variable-number-slider"
+    default: 1.75
+    min: 1.2
+    max: 2.5
+    step: 0.05
+    format: "em"
+  -
+    id: "theme-h2-size"
+    title: "H2 size"
+    description: "Size of level 2 headings."
+    type: "variable-number-slider"
+    default: 1.5
+    min: 1.1
+    max: 2.2
+    step: 0.05
+    format: "em"
+  -
+    id: "theme-h3-size"
+    title: "H3 size"
+    description: "Size of level 3 headings."
+    type: "variable-number-slider"
+    default: 1.3
+    min: 1
+    max: 2
+    step: 0.05
+    format: "em"
+  -
+    id: "theme-h4-size"
+    title: "H4 size"
+    description: "Size of level 4 headings."
+    type: "variable-number-slider"
+    default: 1.15
+    min: 0.9
+    max: 1.8
+    step: 0.05
+    format: "em"
+  -
+    id: "theme-h5-size"
+    title: "H5 size"
+    description: "Size of level 5 headings."
+    type: "variable-number-slider"
+    default: 1.05
+    min: 0.9
+    max: 1.6
+    step: 0.05
+    format: "em"
+  -
+    id: "theme-h6-size"
+    title: "H6 size"
+    description: "Size of level 6 headings."
+    type: "variable-number-slider"
+    default: 1
+    min: 0.85
+    max: 1.5
+    step: 0.05
+    format: "em"
+  -
+    id: "oft-heading-weights"
+    title: "Advanced heading weights"
+    type: "heading"
+    level: 3
+    collapsed: true
+  -
+    id: "theme-h1-weight"
+    title: "H1 weight"
+    description: "Weight of level 1 headings."
+    type: "variable-number-slider"
+    default: 700
+    min: 400
+    max: 800
+    step: 100
+  -
+    id: "theme-h2-weight"
+    title: "H2 weight"
+    description: "Weight of level 2 headings."
+    type: "variable-number-slider"
+    default: 700
+    min: 400
+    max: 800
+    step: 100
+  -
+    id: "theme-h3-weight"
+    title: "H3 weight"
+    description: "Weight of level 3 headings."
+    type: "variable-number-slider"
+    default: 600
+    min: 400
+    max: 800
+    step: 100
+  -
+    id: "theme-h4-weight"
+    title: "H4 weight"
+    description: "Weight of level 4 headings."
+    type: "variable-number-slider"
+    default: 600
+    min: 400
+    max: 800
+    step: 100
+  -
+    id: "theme-h5-weight"
+    title: "H5 weight"
+    description: "Weight of level 5 headings."
+    type: "variable-number-slider"
+    default: 500
+    min: 400
+    max: 800
+    step: 100
+  -
+    id: "theme-h6-weight"
+    title: "H6 weight"
+    description: "Weight of level 6 headings."
+    type: "variable-number-slider"
+    default: 500
+    min: 400
+    max: 800
+    step: 100
+  -
+    id: "oft-pkm"
+    title: "PKM"
+    type: "heading"
+    level: 1
+    collapsed: true
+  -
+    id: "oft-embeds"
+    title: "Embeds"
+    type: "heading"
+    level: 2
+    collapsed: true
+  -
+    id: "fusion-native-embeds"
+    title: "Use native embed appearance"
+    description: "Uses native embedded-note and file styling."
+    type: "class-toggle"
+    default: false
+  -
+    id: "oft-navigation"
+    title: "Navigation"
+    type: "heading"
+    level: 2
+    collapsed: true
+  -
+    id: "fusion-rainbow-folders"
+    title: "Rainbow folders"
+    description: "Adds subtle colors to File Explorer folder names."
+    type: "class-toggle"
+    default: false
+    addCommand: true
+  -
+    id: "oft-apps"
+    title: "Canvas & Graph"
+    type: "heading"
+    level: 2
+    collapsed: true
+  -
+    id: "fusion-native-canvas"
+    title: "Use native Canvas appearance"
+    description: "Uses native Canvas styling instead of Fusion styling."
+    type: "class-toggle"
+    default: false
+  -
+    id: "fusion-native-graph"
+    title: "Use native Graph appearance"
+    description: "Uses native Graph styling instead of Fusion styling."
+    type: "class-toggle"
+    default: false
 
 */
 
@@ -611,6 +949,10 @@ body {
   --theme-workspace-chrome-muted-opacity: 0.72;
 }
 
+body {
+  --theme-active-line-strength: 6%;
+}
+
 /* Source: src/editor/callout.css */
 body {
   --callout-border-width: 1px;
@@ -744,14 +1086,14 @@ body {
 }
 
 @supports (text-wrap: pretty) {
-  .workspace-split.mod-root .workspace-leaf-content[data-type="markdown"][data-mode="preview"] > .view-content > .markdown-reading-view > .markdown-preview-view > .markdown-preview-sizer > div > p:not(:is(.footnotes *, .metadata-container *, .callout *, blockquote *, li *, td *, th *)) {
+  body:not(.fusion-disable-smart-wrap) .workspace-split.mod-root .workspace-leaf-content[data-type="markdown"][data-mode="preview"] > .view-content > .markdown-reading-view > .markdown-preview-view > .markdown-preview-sizer > div > p:not(:is(.footnotes *, .metadata-container *, .callout *, blockquote *, li *, td *, th *)) {
     text-wrap: pretty;
   }
 }
 
 @supports (text-wrap: balance) {
-  .workspace-split.mod-root .workspace-leaf-content[data-type="markdown"][data-mode="preview"] > .view-content > .markdown-reading-view > .markdown-preview-view > .markdown-preview-sizer > div > :is(h1, h2, h3),
-  .workspace-split.mod-root .workspace-leaf-content[data-type="markdown"] > .view-content > .markdown-source-view.mod-cm6.is-live-preview .cm-content > .cm-line.HyperMD-header:is(.HyperMD-header-1, .HyperMD-header-2, .HyperMD-header-3) {
+  body:not(.fusion-disable-smart-wrap) .workspace-split.mod-root .workspace-leaf-content[data-type="markdown"][data-mode="preview"] > .view-content > .markdown-reading-view > .markdown-preview-view > .markdown-preview-sizer > div > :is(h1, h2, h3),
+body:not(.fusion-disable-smart-wrap) .workspace-split.mod-root .workspace-leaf-content[data-type="markdown"] > .view-content > .markdown-source-view.mod-cm6.is-live-preview .cm-content > .cm-line.HyperMD-header:is(.HyperMD-header-1, .HyperMD-header-2, .HyperMD-header-3) {
     text-wrap: balance;
   }
 }
@@ -759,7 +1101,7 @@ body {
 /* Source: src/editor/seamless-embed.css */
 /* Rendered Markdown contexts only; public embed variables preserve native
  * height/scroll ownership. The identity edge follows direction via start. */
-:is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed, .file-embed) {
+body:not(.fusion-native-embeds) :is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed, .file-embed) {
   --embed-background: transparent;
   --embed-border-start: 1px solid var(--theme-border);
   --embed-border-end: 0;
@@ -771,22 +1113,14 @@ body {
   border-block: 0;
   border-radius: var(--theme-workspace-control-radius);
   box-shadow: none;
-}
-
-:is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed, .file-embed):hover {
+}body:not(.fusion-native-embeds) :is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed, .file-embed):hover {
   --embed-border-start: 1px solid var(--theme-border-hover);
-}
-
-:is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed, .file-embed):focus-within {
+}body:not(.fusion-native-embeds) :is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed, .file-embed):focus-within {
   --embed-border-start: 1px solid var(--theme-accent);
-}
-
-:is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed-title, .markdown-embed-link, .file-embed-link) {
+}body:not(.fusion-native-embeds) :is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed-title, .markdown-embed-link, .file-embed-link) {
   color: var(--theme-text-muted);
   transition: color var(--theme-transition-fast);
-}
-
-:is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed, .file-embed):is(:hover, :focus-within) :is(.markdown-embed-title, .markdown-embed-link, .file-embed-link) {
+}body:not(.fusion-native-embeds) :is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed, .file-embed):is(:hover, :focus-within) :is(.markdown-embed-title, .markdown-embed-link, .file-embed-link) {
   color: var(--theme-text-normal);
 }
 
@@ -854,7 +1188,7 @@ body.fusion-rainbow-folders .workspace-leaf-content[data-type="file-explorer"] .
 /* A2 painter: ordinary main shells only; native stacked/views own their layout.
  * Neutral inward outline; Focus Foundation retains active header ownership.
  */
-.workspace-split.mod-root
+body:not(.fusion-native-pane-shell) .workspace-split.mod-root
   .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *)
   > .workspace-tab-container
   > .workspace-leaf
@@ -885,10 +1219,10 @@ body.fusion-rainbow-folders .workspace-leaf-content[data-type="file-explorer"] .
  * established. Keep native selection layers, special blocks and Reading intact.
  * Obsidian's cm-active and upstream CM6 cm-activeLine are both state classes.
  */
-.workspace-split.mod-root .workspace-leaf-content[data-type="markdown"]
+body:not(.fusion-disable-active-line) .workspace-split.mod-root .workspace-leaf-content[data-type="markdown"]
   > .view-content > .markdown-source-view.mod-cm6
   .cm-content > .cm-line:is(.cm-active, .cm-activeLine):not([class*="HyperMD-"]) {
-  background-color: color-mix(in oklch, var(--theme-accent) 6%, transparent);
+  background-color: color-mix(in oklch, var(--theme-accent) var(--theme-active-line-strength), transparent);
 }
 
 /* Source: src/effects/focus.css */
@@ -919,13 +1253,13 @@ body.fusion-rainbow-folders .workspace-leaf-content[data-type="file-explorer"] .
 
 /* Source: src/effects/workspace-effects.css */
 /* Phase 5A motion is limited to explicit workspace chrome/control shells. */
-.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action,
-.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header-inner-close-button,
-.workspace-ribbon .side-dock-ribbon-action,
-.status-bar > .status-bar-item.mod-clickable,
-.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-header-title-container,
-.workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs > .workspace-tab-header-container,
-.status-bar > .status-bar-item {
+body:not(.fusion-disable-workspace-effects) .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action,
+body:not(.fusion-disable-workspace-effects) .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header-inner-close-button,
+body:not(.fusion-disable-workspace-effects) .workspace-ribbon .side-dock-ribbon-action,
+body:not(.fusion-disable-workspace-effects) .status-bar > .status-bar-item.mod-clickable,
+body:not(.fusion-disable-workspace-effects) .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-header-title-container,
+body:not(.fusion-disable-workspace-effects) .workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs > .workspace-tab-header-container,
+body:not(.fusion-disable-workspace-effects) .status-bar > .status-bar-item {
   transition:
     opacity var(--theme-transition-normal),
     color var(--theme-transition-fast),
@@ -933,83 +1267,85 @@ body.fusion-rainbow-folders .workspace-leaf-content[data-type="file-explorer"] .
     box-shadow var(--theme-transition-fast),
     outline-color var(--theme-transition-fast),
     transform var(--theme-transition-fast);
-}
-
-.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action:not(.is-disabled):not([aria-disabled="true"]):active,
-.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header-inner-close-button:not(.is-disabled):not([aria-disabled="true"]):active,
-.workspace-ribbon .side-dock-ribbon-action:not(.is-disabled):not([aria-disabled="true"]):active,
-.status-bar > .status-bar-item.mod-clickable:not(.is-disabled):not([aria-disabled="true"]):active {
+}body:not(.fusion-disable-workspace-effects) .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action:not(.is-disabled):not([aria-disabled="true"]):active,
+body:not(.fusion-disable-workspace-effects) .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header-inner-close-button:not(.is-disabled):not([aria-disabled="true"]):active,
+body:not(.fusion-disable-workspace-effects) .workspace-ribbon .side-dock-ribbon-action:not(.is-disabled):not([aria-disabled="true"]):active,
+body:not(.fusion-disable-workspace-effects) .status-bar > .status-bar-item.mod-clickable:not(.is-disabled):not([aria-disabled="true"]):active {
   transform: translateY(1px);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action,
-.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header-inner-close-button,
-.workspace-ribbon .side-dock-ribbon-action,
-.status-bar > .status-bar-item.mod-clickable,
-.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-header-title-container,
-.workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs > .workspace-tab-header-container,
-.status-bar > .status-bar-item {
+  body:not(.fusion-disable-workspace-effects) .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action,
+body:not(.fusion-disable-workspace-effects) .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header-inner-close-button,
+body:not(.fusion-disable-workspace-effects) .workspace-ribbon .side-dock-ribbon-action,
+body:not(.fusion-disable-workspace-effects) .status-bar > .status-bar-item.mod-clickable,
+body:not(.fusion-disable-workspace-effects) .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-header-title-container,
+body:not(.fusion-disable-workspace-effects) .workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs > .workspace-tab-header-container,
+body:not(.fusion-disable-workspace-effects) .status-bar > .status-bar-item {
     transition-duration: 0s;
-  }
-
-  .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action:not(.is-disabled):not([aria-disabled="true"]):active,
-.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header-inner-close-button:not(.is-disabled):not([aria-disabled="true"]):active,
-.workspace-ribbon .side-dock-ribbon-action:not(.is-disabled):not([aria-disabled="true"]):active,
-.status-bar > .status-bar-item.mod-clickable:not(.is-disabled):not([aria-disabled="true"]):active {
+  }body:not(.fusion-disable-workspace-effects) .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action:not(.is-disabled):not([aria-disabled="true"]):active,
+body:not(.fusion-disable-workspace-effects) .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header-inner-close-button:not(.is-disabled):not([aria-disabled="true"]):active,
+body:not(.fusion-disable-workspace-effects) .workspace-ribbon .side-dock-ribbon-action:not(.is-disabled):not([aria-disabled="true"]):active,
+body:not(.fusion-disable-workspace-effects) .status-bar > .status-bar-item.mod-clickable:not(.is-disabled):not([aria-disabled="true"]):active {
     transform: none;
   }
+}
+
+/* Accessibility convenience changes opacity only, not native visibility. */
+body.fusion-full-workspace-chrome .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf:not(.mod-active) > .workspace-leaf-content > .view-header > .view-header-title-container,
+body.fusion-full-workspace-chrome .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf.mod-active > .workspace-leaf-content > .view-header > .view-header-title-container,
+body.fusion-full-workspace-chrome .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header:is(:hover, :focus-within) > .view-header-title-container,
+body.fusion-full-workspace-chrome .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action,
+body.fusion-full-workspace-chrome .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf.mod-active > .workspace-leaf-content > .view-header > .view-actions > .view-action,
+body.fusion-full-workspace-chrome .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header:is(:hover, :focus-within) > .view-actions > .view-action,
+body.fusion-full-workspace-chrome .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action:is(.is-active, :active, :focus-visible),
+body.fusion-full-workspace-chrome .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header-inner-close-button,
+body.fusion-full-workspace-chrome .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner-close-button,
+body.fusion-full-workspace-chrome .workspace-ribbon .side-dock-ribbon-action,
+body.fusion-full-workspace-chrome .workspace-ribbon:is(:hover, :focus-within) .side-dock-ribbon-action,
+body.fusion-full-workspace-chrome .workspace-ribbon .side-dock-ribbon-action:is(.is-active, :active, :focus-visible),
+body.fusion-full-workspace-chrome .status-bar > .status-bar-item,
+body.fusion-full-workspace-chrome .status-bar:is(:hover, :focus-within) > .status-bar-item,
+body.fusion-full-workspace-chrome .status-bar > .status-bar-item.mod-clickable:hover,
+body.fusion-full-workspace-chrome .workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs > .workspace-tab-header-container,
+body.fusion-full-workspace-chrome .workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs > .workspace-tab-header-container:is(:hover, :focus-within),
+body.fusion-full-workspace-chrome .workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs > .workspace-tab-header-container:has(.workspace-tab-header:is(.is-active, :active)) {
+  opacity: 1;
 }
 
 /* Source: src/apps/canvas.css */
 /* Native dots and canvas-color/user palette remain owned by Obsidian.
  * Background inherits Fusion public surfaces; never replace colored nodes. */
-.workspace-leaf-content[data-type="canvas"] {
+/* Outline does not consume node interior; native user-colored border remains. */
+body:not(.fusion-native-canvas) .workspace-leaf-content[data-type="canvas"] {
   --canvas-background: var(--theme-bg-primary);
   --canvas-card-label-color: var(--theme-text-muted);
-}
-
-.canvas-wrapper .canvas-node-container {
+}body:not(.fusion-native-canvas) .canvas-wrapper .canvas-node-container {
   border-radius: var(--theme-workspace-control-radius);
-}
-
-/* Outline does not consume node interior; native user-colored border remains. */
-.canvas-wrapper .canvas-node.is-selected .canvas-node-container {
+}body:not(.fusion-native-canvas) .canvas-wrapper .canvas-node.is-selected .canvas-node-container {
   outline: 1px solid var(--theme-accent);
   outline-offset: -1px;
-}
-
-.canvas-wrapper .canvas-node-label {
+}body:not(.fusion-native-canvas) .canvas-wrapper .canvas-node-label {
   color: var(--theme-text-muted);
-}
-
-.canvas-wrapper .canvas-node-label:hover {
+}body:not(.fusion-native-canvas) .canvas-wrapper .canvas-node-label:hover {
   color: var(--theme-text-normal);
-}
-
-.canvas-wrapper :is(.canvas-controls-group, .canvas-menu) {
+}body:not(.fusion-native-canvas) .canvas-wrapper :is(.canvas-controls-group, .canvas-menu) {
   background-color: var(--theme-bg-card);
   border-color: var(--theme-border);
   border-radius: var(--theme-workspace-control-radius);
-}
-
-.canvas-wrapper :is(.canvas-control-item, .canvas-menu-item) {
+}body:not(.fusion-native-canvas) .canvas-wrapper :is(.canvas-control-item, .canvas-menu-item) {
   color: var(--theme-text-muted);
   transition: color var(--theme-transition-fast), background-color var(--theme-transition-fast);
-}
-
-.canvas-wrapper :is(.canvas-control-item, .canvas-menu-item):hover {
+}body:not(.fusion-native-canvas) .canvas-wrapper :is(.canvas-control-item, .canvas-menu-item):hover {
   color: var(--theme-text-normal);
   background-color: var(--theme-hover-bg);
-}
-
-.canvas-wrapper :is(.canvas-control-item, .canvas-menu-item):is(.is-active, :active) {
+}body:not(.fusion-native-canvas) .canvas-wrapper :is(.canvas-control-item, .canvas-menu-item):is(.is-active, :active) {
   background-color: var(--theme-active-bg);
 }
 
 /* Source: src/apps/graph.css */
 /* Documented Graph variables; no graph-controls-width or renderer dimensions. */
-.workspace-leaf-content:is([data-type="graph"], [data-type="localgraph"]) {
+body:not(.fusion-native-graph) .workspace-leaf-content:is([data-type="graph"], [data-type="localgraph"]) {
   --graph-text: var(--theme-text-normal);
   --graph-line: var(--theme-border);
   --graph-node: var(--theme-text-muted);
@@ -1018,9 +1354,7 @@ body.fusion-rainbow-folders .workspace-leaf-content[data-type="file-explorer"] .
   --graph-node-tag: color-mix(in oklch, var(--color-green) 65%, var(--theme-text-normal));
   --graph-node-attachment: color-mix(in oklch, var(--color-blue) 65%, var(--theme-text-normal));
   background-color: var(--theme-bg-primary);
-}
-
-.workspace-leaf-content:is([data-type="graph"], [data-type="localgraph"]) .graph-controls {
+}body:not(.fusion-native-graph) .workspace-leaf-content:is([data-type="graph"], [data-type="localgraph"]) .graph-controls {
   background-color: var(--theme-bg-card);
   border-color: var(--theme-border);
   border-radius: var(--theme-workspace-control-radius);

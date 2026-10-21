@@ -54,3 +54,7 @@ Phase5 follows batched implementation and integrated QA under the maintainer ins
 Phase5A scope: chrome-only Focus hierarchy, soft reveal without collapse, static/native active-line indication and reduced-motion-aware feedback. Decision013/014 remain effective.
 
 Phase5C authority restores D01 optional native-folder palette, D02 Canvas/Graph presentation and D04 seamless embed shells. Historical deferrals remain provenance; no data/interaction engine or plugin patch implied.
+
+## Phase5D Customization (current authority)
+
+Phase5D implemented / Final Integrated QA pending:35 independent controls,26 variables/9 class toggles, no Preset or CJK UI. 5A–5D implementation complete; no finalQA/release claim. Settings expose existing W02/F01/F02/E01/E02/R01/R02/D01/D02/D04 consumers, retaining their prior QA boundaries. See P5 plan; next Chat final code review then Final Integrated DesktopQA. C-01 stays Final Tuning Backlog; Decision013 Documentation-only unchanged.

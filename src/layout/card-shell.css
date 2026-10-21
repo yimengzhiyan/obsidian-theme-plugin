@@ -1,7 +1,7 @@
 /* A2 painter: ordinary main shells only; native stacked/views own their layout.
  * Neutral inward outline; Focus Foundation retains active header ownership.
  */
-.workspace-split.mod-root
+body:not(.fusion-native-pane-shell) .workspace-split.mod-root
   .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *)
   > .workspace-tab-container
   > .workspace-leaf

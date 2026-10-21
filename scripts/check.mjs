@@ -130,7 +130,7 @@ function extractStyleSettingEntries(css) {
     .slice(1)
     .map((entry) => Object.fromEntries(
       [...entry.matchAll(/^\s{4}([a-z][a-z0-9-]*):\s*(.*?)\s*$/gm)]
-        .map((match) => [match[1], match[2]])
+        .map((match) => [match[1], match[2].startsWith('"') ? JSON.parse(match[2]) : match[2]])
     ));
 }
 
@@ -193,6 +193,266 @@ async function validateManifest() {
   }
 }
 
+function assertCustomizationContract(entries, css) {
+  const approved = {
+  "theme-accent": {
+    "type": "variable-text",
+    "default": "#6750a4"
+  },
+  "theme-radius-md": {
+    "type": "variable-number-slider",
+    "default": 8,
+    "min": 0,
+    "max": 20,
+    "step": 1,
+    "format": "px"
+  },
+  "theme-workspace-chrome-dim-opacity": {
+    "type": "variable-number-slider",
+    "default": 0.55,
+    "min": 0.25,
+    "max": 1,
+    "step": 0.05
+  },
+  "theme-workspace-chrome-muted-opacity": {
+    "type": "variable-number-slider",
+    "default": 0.72,
+    "min": 0.4,
+    "max": 1,
+    "step": 0.05
+  },
+  "fusion-full-workspace-chrome": {
+    "type": "class-toggle",
+    "default": false
+  },
+  "theme-active-line-strength": {
+    "type": "variable-number-slider",
+    "default": 6,
+    "min": 0,
+    "max": 15,
+    "step": 1,
+    "format": "%"
+  },
+  "fusion-disable-active-line": {
+    "type": "class-toggle",
+    "default": false
+  },
+  "fusion-disable-workspace-effects": {
+    "type": "class-toggle",
+    "default": false
+  },
+  "fusion-native-pane-shell": {
+    "type": "class-toggle",
+    "default": false
+  },
+  "theme-line-height": {
+    "type": "variable-number-slider",
+    "default": 1.7,
+    "min": 1.2,
+    "max": 2.2,
+    "step": 0.05
+  },
+  "theme-reading-width": {
+    "type": "variable-number-slider",
+    "default": 700,
+    "min": 480,
+    "max": 1200,
+    "step": 20,
+    "format": "px"
+  },
+  "theme-paragraph-spacing": {
+    "type": "variable-number-slider",
+    "default": 0.5,
+    "min": 0,
+    "max": 2,
+    "step": 0.125,
+    "format": "rem"
+  },
+  "theme-heading-spacing": {
+    "type": "variable-number-slider",
+    "default": 1.5,
+    "min": 0.5,
+    "max": 3,
+    "step": 0.125,
+    "format": "rem"
+  },
+  "theme-first-line-indent": {
+    "type": "variable-number-slider",
+    "default": 0,
+    "min": 0,
+    "max": 3,
+    "step": 0.25,
+    "format": "em"
+  },
+  "theme-prose-letter-spacing": {
+    "type": "variable-number-slider",
+    "default": 0,
+    "min": -0.03,
+    "max": 0.08,
+    "step": 0.005,
+    "format": "em"
+  },
+  "theme-prose-word-spacing": {
+    "type": "variable-number-slider",
+    "default": 0,
+    "min": -0.05,
+    "max": 0.2,
+    "step": 0.01,
+    "format": "em"
+  },
+  "theme-bold-modifier": {
+    "type": "variable-number-slider",
+    "default": 200,
+    "min": 0,
+    "max": 300,
+    "step": 50
+  },
+  "fusion-disable-smart-wrap": {
+    "type": "class-toggle",
+    "default": false
+  },
+  "theme-heading-letter-spacing": {
+    "type": "variable-number-slider",
+    "default": 0,
+    "min": -0.03,
+    "max": 0.1,
+    "step": 0.005,
+    "format": "em"
+  },
+  "theme-h1-size": {
+    "type": "variable-number-slider",
+    "default": 1.75,
+    "min": 1.2,
+    "max": 2.5,
+    "step": 0.05,
+    "format": "em"
+  },
+  "theme-h2-size": {
+    "type": "variable-number-slider",
+    "default": 1.5,
+    "min": 1.1,
+    "max": 2.2,
+    "step": 0.05,
+    "format": "em"
+  },
+  "theme-h3-size": {
+    "type": "variable-number-slider",
+    "default": 1.3,
+    "min": 1,
+    "max": 2,
+    "step": 0.05,
+    "format": "em"
+  },
+  "theme-h4-size": {
+    "type": "variable-number-slider",
+    "default": 1.15,
+    "min": 0.9,
+    "max": 1.8,
+    "step": 0.05,
+    "format": "em"
+  },
+  "theme-h5-size": {
+    "type": "variable-number-slider",
+    "default": 1.05,
+    "min": 0.9,
+    "max": 1.6,
+    "step": 0.05,
+    "format": "em"
+  },
+  "theme-h6-size": {
+    "type": "variable-number-slider",
+    "default": 1,
+    "min": 0.85,
+    "max": 1.5,
+    "step": 0.05,
+    "format": "em"
+  },
+  "theme-h1-weight": {
+    "type": "variable-number-slider",
+    "default": 700,
+    "min": 400,
+    "max": 800,
+    "step": 100
+  },
+  "theme-h2-weight": {
+    "type": "variable-number-slider",
+    "default": 700,
+    "min": 400,
+    "max": 800,
+    "step": 100
+  },
+  "theme-h3-weight": {
+    "type": "variable-number-slider",
+    "default": 600,
+    "min": 400,
+    "max": 800,
+    "step": 100
+  },
+  "theme-h4-weight": {
+    "type": "variable-number-slider",
+    "default": 600,
+    "min": 400,
+    "max": 800,
+    "step": 100
+  },
+  "theme-h5-weight": {
+    "type": "variable-number-slider",
+    "default": 500,
+    "min": 400,
+    "max": 800,
+    "step": 100
+  },
+  "theme-h6-weight": {
+    "type": "variable-number-slider",
+    "default": 500,
+    "min": 400,
+    "max": 800,
+    "step": 100
+  },
+  "fusion-native-embeds": {
+    "type": "class-toggle",
+    "default": false
+  },
+  "fusion-rainbow-folders": {
+    "type": "class-toggle",
+    "default": false
+  },
+  "fusion-native-canvas": {
+    "type": "class-toggle",
+    "default": false
+  },
+  "fusion-native-graph": {
+    "type": "class-toggle",
+    "default": false
+  }
+};
+  const controls = entries.filter((entry) => entry.type !== "heading");
+  if (controls.length !== Object.keys(approved).length) fail("Unexpected customization control count.");
+  for (const [id, fields] of Object.entries(approved)) {
+    const found = controls.filter((entry) => entry.id === id);
+    if (found.length !== 1) fail(`Missing/duplicate customization id ${id}.`);
+    for (const [key, value] of Object.entries(fields)) {
+      if (String(found[0][key]) !== String(value)) fail(`Customization ${id} ${key} must preserve approved contract.`);
+    }
+    if (fields.type.startsWith("variable-") && !css.includes(`--${id}:`)) fail(`Undefined customization token ${id}.`);
+    if (fields.type === "class-toggle" && !css.includes(`.${id}`)) fail(`Missing class consumer ${id}.`);
+  }
+  if (entries.some((entry) => entry.type === "class-select" || entry.id === "fusion-cjk-autospace" || /preset/i.test(entry.id))) fail("Preset/CJK UI is not approved.");
+  for (const [file, id] of [
+    ["src/layout/card-shell.css", "fusion-native-pane-shell"],
+    ["src/editor/seamless-embed.css", "fusion-native-embeds"],
+    ["src/apps/canvas.css", "fusion-native-canvas"],
+    ["src/apps/graph.css", "fusion-native-graph"]
+  ]) {
+    // The generated section must retain a negative class gate on every rule.
+    const section = css.split(`/* Source: ${file} */`)[1]?.split("/* Source:")[0] || "";
+    const plain = section.replace(/\/\*[\s\S]*?\*\//g, "");
+    for (const [, selector] of plain.matchAll(/([^{}]+)\{/g)) {
+      if (!selector.trim().startsWith(`body:not(.${id}) `)) fail(`${file} must opt out by selector gating.`);
+    }
+  }
+}
+
 async function assertPkmBoundaries() {
   const modules = ["src/editor/seamless-embed.css", "src/navigation/rainbow-folders.css", "src/apps/canvas.css", "src/apps/graph.css"];
   for (const file of modules) {
@@ -209,7 +469,7 @@ async function assertPkmBoundaries() {
   }
   const settings = await readFile(path.join(projectRoot, "settings/style-settings.css"), "utf8");
   const entries = extractStyleSettingEntries(settings);
-  if (entries.filter((entry) => entry.type !== "heading").length !== 4) fail("Phase5C must retain four settings only.");
+  assertCustomizationContract(entries, await readFile(path.join(projectRoot, "theme.css"), "utf8"));
 }
 
 async function validateCss() {
