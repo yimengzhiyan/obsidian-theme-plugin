@@ -35,3 +35,12 @@ body {
   background-color: var(--theme-active-bg);
   color: var(--theme-indicator);
 }
+
+.workspace-ribbon .side-dock-ribbon-action {
+  opacity: var(--theme-workspace-chrome-dim-opacity);
+}
+
+.workspace-ribbon:is(:hover, :focus-within) .side-dock-ribbon-action,
+.workspace-ribbon .side-dock-ribbon-action:is(.is-active, :active, :focus-visible) {
+  opacity: 1;
+}

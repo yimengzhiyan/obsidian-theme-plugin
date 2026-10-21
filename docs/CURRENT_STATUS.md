@@ -4,19 +4,15 @@ Last Updated: 2026-10-21 (America/Los_Angeles)
 
 ## Current milestone
 
-**P4.2 bounded Card shell COMPLETE / merged to main.** PR #12 `feat: add bounded workspace card shell` MERGED with merge commit `c9c75c3f4f2aa4d53ae82b5e2ecebddb18ccf18c`. Reviewed head e1b37cad699c6bec4a9adaa03a44c4f640195a0a retained in history; no squash/rebase. Current branch main; post-merge docs checkpoint hash via git.
+**Phase 5A Workspace Experience implemented / integrated QA pending.** Branch codex/p5-feature-completion from clean/synced main4cb19c4c90a870cbcab3fc145c204d25a2b5266d. W02/F01/F02/E01/E02 implemented as one batch; no Desktop PASS claim.
 
-Decision014 remains unchanged: ordinary main neutral inward outline/offset-1px/existing radius only, stacked excluded, Focus active-header Accent/inactive neutral retained, no geometry/overflow/token/setting/runtime changes. Card implementation and all historical QA/evidence preserved. Failed Preset active runtime absent; Decision013 Preset Documentation-only remains effective.
+Focus title chrome only dims inactive ordinary pane; actions have active/inactive defaults and reveal on hover/focus/active controls. Ordinary close controls reveal on tab hover/active/focus. Ribbon actions and Status items softly dim without collapse; Sidebar direct header chrome only. New scoped effects/press/reduced-motion and narrow CM6 ordinary active-line6%Accent background; no content opacity, selection rules or geometry changes. Two shared opacity tokens, no settings expansion or Preset.
 
 ## Limits and next step
 
-NN3.4.3 Sidebar/main-host tested compatibility PASS; **NN drag/drop UNVERIFIED**, **Radius20 bounded**, **header-hidden no extra Focus cue**. Pop-outs / RTL / other DPI/platforms / all plugins / accessibility and screen-reader certification excluded. Existing Phase2/3 N/A retained.
+**Next: Phase 5B Reading & Writing implementation, not Desktop QA.** [Batch plan](P5_FEATURE_COMPLETION_PLAN.md) defines5A/5B mid-cycleQA then5C/5D/finalQA. No per-feature Desktop gates or automatic interruption for hypothetical visual risks. No QA/PR/merge in5A.
 
-Integration gate is closed; next gate is maintainer/Chat selection of a separately scoped review, not automatic feature implementation. Focus Enhancement / Auto Hide / Effects remain Defer; no new Phase4 feature, prototype or release is authorized. Card branch codex/p4-card-shell-prototype is retained as historical evidence, not deleted.
-
-## Post-merge documentation checkpoint
-
-PR #12 merge confirmed on GitHub; local main fast-forwarded to `c9c75c3f4f2aa4d53ae82b5e2ecebddb18ccf18c`. Post-merge Check (includes Build) / diff-check PASS; generated CSS synchronized and unchanged. This checkpoint updates only CURRENT_STATUS / AI_HANDOFF / TASKS, with Decision014 and all CSS/settings/build/runtime byte-for-byte unchanged. Check / diff-check rerun before committing and pushing main. No new Desktop QA claim.
+Existing Card neutral outline/stacked exclusion and Focus Accent/neutral border retained; Decision013/014 unchanged. Active-line state and new chrome/reveal/press actual appearance remain untested; Sidebar view-internal controls not targeted. Existing NN drag/drop UNVERIFIED, Radius20 bounded, header-hidden no extra Focus cue, pop-out/RTL/platform/accessibility uncertified remain. Build/Check/diff-check and static contract checks PASS; no integratedQA yet.
 
 ## Historical evidence — retained for traceability
 

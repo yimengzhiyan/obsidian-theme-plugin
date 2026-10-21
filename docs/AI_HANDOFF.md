@@ -1,11 +1,10 @@
 # AI Handoff
 
-- **Current**：P4.2 bounded Card shell COMPLETE / merged to main，Decision014；Chat implementation与Desktop QA review PASS。不是完整Card Layout System或release acceptance。
-- **Branch / evidence**：main；Card evidence branch codex/p4-card-shell-prototype retained；isolation f25a03e、implementation935c8ed5b3cc24e74ad90c0134eb20e7f02b0bfe、Desktop QA99b7845a66990664d82eef9a75a151968ce67b10。PR #12 MERGED，merge commit c9c75c3f4f2aa4d53ae82b5e2ecebddb18ccf18c；post-merge docs hash用git获取。
-- **Contract**：exact approved ordinary main direct leaf-content selector；neutral outline1px、offset-1px、existing workspace radius。Stacked完全退出；Focus active header Accent/inactive neutral不变。Zero geometry/overflow/newtoken/setting/JS/runtime；不含Sidebar/content/plugin-internal cards、floating panels或layout engine。
-- **Evidence**：[DOM](P4_2_CARD_SHELL_EVIDENCE.md)、[spike](P4_2B_CARD_BOUNDARY_SPIKE.md)、[implementation](P4_2C_CARD_SHELL_PROTOTYPE.md)、[Desktop QA](P4_2D_CARD_SHELL_DESKTOP_QA.md)。旧prototype/pending条目为历史，当前以Decision014与CURRENT_STATUS为准。
-- **QA / limits**：Light/Dark、Markdown三模式、Graph、Radius0/8/20、split/nested/narrow、stacked off-state、NN3.4.3 Sidebar/main-host PASS，仅测试范围。NN drag/drop UNVERIFIED；Radius20 bounded；header-hidden无额外Focus cue；pop-outs/RTL/其他DPI/平台/全插件/accessibility未认证。既有Phase2/3 N/A保留。
-- **Preset**：Decision013 Documentation-only已确认；P4.1 assisted FAIL/RESET-01证据与历史保留，不重开修复。当前四项正式settings，失败Preset runtime不进入integration。
-- **Next**：PR #12 integration gate已关闭；等待维护者/Chat选择并独立授权后续review，不自动启动Phase4功能。Focus Enhancement/Auto Hide/Effects继续Defer，Preset继续Decision013 Documentation-only。
-- **Validation**：合并后及docs checkpoint Check（内部Build）/diff-check PASS；当前只更新三份status/handoff/tasks文档，Decision014及全部CSS/settings/build/runtime不变，artifact同步；无新Desktop执行。main正常commit/push；本地/远端Card分支保留。
-- **Stable contracts**：Theme+optional Style Settings、token-first/public-variable-first；Reading Decision012有效，native width/Source caret保持。最终命名/署名待维护者发布决定，Accent text workaround保留。
+- **Current**：Phase5A Workspace Experience implemented / integrated QA pending；W02/F01/F02/E01/E02。No Desktop PASS。
+- **Branch**：codex/p5-feature-completion from main4cb19c4c90a870cbcab3fc145c204d25a2b5266d；后续5B默认同分支，commit/hash从git获取。
+- **Mode**：maintainer改为batched feature completion → integrated Desktop QA → concentrated fixes；不再逐视觉feature跑gate循环。真正runtime/DOM不可表达或稳定合同冲突才停对应子功能。
+- **5A**：ordinary pane inactive title dim；header actions default dim/active muted、hover/focus/active reveal；ordinary close、Ribbon actions、Status items soft reveal；Sidebar直属header chrome，内容不dim。workspace-effects含scoped transition/press/reduced-motion。active-line模块窄CM6普通行state fallback，Accent6%，特殊HyperMD排除。两项chrome opacity tokens .55/.72；四项settings不变。
+- **Preserve**：Card Decision014 source/neutral shell/stacked exclusion、既有Focus header边界、Phase2 typography/caret/public width、Decision013 Preset Documentation-only。无JS/DOM patch/plugin/geometry autohide、editor text opacity或Preset runtime。
+- **Validation**：Build/Check/diff-check和静态合同比较PASS；真实视觉/keyboard/reveal/active-line state和selection layering等待集成QA。不声称浏览器/Desktop通过。
+- **Next**：Phase5B Reading & Writing implementation，**不是测试**；5A+5B完成后mid-cycleQA。不得自行PR/merge。完整路线见[P5 plan](P5_FEATURE_COMPLETION_PLAN.md)。
+- **Limits**：未对Sidebar内容内部/插件controls增加selector，inactive tab titles保留既有颜色清晰度；旧NN拖拽/Radius20/header-hidden/pop-out/RTL/platform/accessibility限制仍有效。无新正式Decision。

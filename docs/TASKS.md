@@ -251,3 +251,16 @@ NN fixture drag/drop remains UNVERIFIED/non-blocking coverage limitation, not a 
 - [x] 仅CURRENT_STATUS/AI_HANDOFF/TASKS更新；main checkpoint正常commit/push
 
 当前integration待办关闭；Card历史分支保留。NN drag/drop UNVERIFIED、Radius20 bounded、header-hidden no extra Focus cue；pop-outs/RTL/其他平台/accessibility未认证，既有N/A保持。Focus Enhancement/Auto Hide/Effects继续Defer；等待独立授权的下一个review，不自动启动新Phase4功能或release。上方创建/审查PR的过程文字不再是当前待办。
+
+## Phase5 — Batched Feature Completion (current authority)
+
+- [x] Create codex/p5-feature-completion from synced main4cb19c4
+- [x] 5A W02/F01/F02/E01/E02 implemented / integrated QA pending
+- [x] Chrome-only Focus/reveal, tab close, Ribbon/Status soft hide, direct Sidebar header chrome
+- [x] Basic transitions/press/reduced-motion; narrow ordinary CM6 active-line fallback
+- [x] Build/Check/diff-check + protected Card/settings/typography/Decision checks
+- [ ] **Next:5B Reading & Writing batch implementation**, same branch; no DesktopQA before this
+- [ ] Mid-cycle integrated Desktop QA after5A+5B, concentrated fixes
+- [ ] 5C PKM surfaces;5D customization;final integratedQA
+
+[P5 plan](P5_FEATURE_COMPLETION_PLAN.md) replaces per-feature execution gates for authorized Phase5 work. Prior “Focus/soft reveal/basic Effects deferred” notes are historical for bounded5A scope; no full auto-collapse/runtime or advanced animation implied. Decision013/014 unchanged. No new settings/Preset, no QA/PR/merge in5A.

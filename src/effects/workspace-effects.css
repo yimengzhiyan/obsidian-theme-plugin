@@ -1,0 +1,42 @@
+/* Phase 5A motion is limited to explicit workspace chrome/control shells. */
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action,
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header-inner-close-button,
+.workspace-ribbon .side-dock-ribbon-action,
+.status-bar > .status-bar-item.mod-clickable,
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-header-title-container,
+.workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs > .workspace-tab-header-container,
+.status-bar > .status-bar-item {
+  transition:
+    opacity var(--theme-transition-normal),
+    color var(--theme-transition-fast),
+    background-color var(--theme-transition-fast),
+    box-shadow var(--theme-transition-fast),
+    outline-color var(--theme-transition-fast),
+    transform var(--theme-transition-fast);
+}
+
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action:not(.is-disabled):not([aria-disabled="true"]):active,
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header-inner-close-button:not(.is-disabled):not([aria-disabled="true"]):active,
+.workspace-ribbon .side-dock-ribbon-action:not(.is-disabled):not([aria-disabled="true"]):active,
+.status-bar > .status-bar-item.mod-clickable:not(.is-disabled):not([aria-disabled="true"]):active {
+  transform: translateY(1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action,
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header-inner-close-button,
+.workspace-ribbon .side-dock-ribbon-action,
+.status-bar > .status-bar-item.mod-clickable,
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-header-title-container,
+.workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs > .workspace-tab-header-container,
+.status-bar > .status-bar-item {
+    transition-duration: 0s;
+  }
+
+  .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action:not(.is-disabled):not([aria-disabled="true"]):active,
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header-inner-close-button:not(.is-disabled):not([aria-disabled="true"]):active,
+.workspace-ribbon .side-dock-ribbon-action:not(.is-disabled):not([aria-disabled="true"]):active,
+.status-bar > .status-bar-item.mod-clickable:not(.is-disabled):not([aria-disabled="true"]):active {
+    transform: none;
+  }
+}

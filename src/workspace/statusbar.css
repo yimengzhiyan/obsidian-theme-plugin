@@ -19,3 +19,12 @@ body {
   color: var(--theme-text-normal);
   background-color: var(--theme-hover-bg);
 }
+
+.status-bar > .status-bar-item {
+  opacity: var(--theme-workspace-chrome-muted-opacity);
+}
+
+.status-bar:is(:hover, :focus-within) > .status-bar-item,
+.status-bar > .status-bar-item.mod-clickable:hover {
+  opacity: 1;
+}

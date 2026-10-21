@@ -27,3 +27,13 @@ body {
   padding-inline: var(--theme-workspace-control-gap);
   box-shadow: inset 0 -1px 0 var(--theme-border);
 }
+
+/* Direct tab chrome only; File Explorer/NN/Search content is never dimmed. */
+.workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs > .workspace-tab-header-container {
+  opacity: var(--theme-workspace-chrome-muted-opacity);
+}
+
+.workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs > .workspace-tab-header-container:is(:hover, :focus-within),
+.workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs > .workspace-tab-header-container:has(.workspace-tab-header:is(.is-active, :active)) {
+  opacity: 1;
+}

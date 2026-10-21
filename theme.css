@@ -383,6 +383,15 @@ body {
     0 0 0 var(--tab-outline-width) var(--tab-outline-color);
 }
 
+/* Only ordinary main close chrome; native close visibility still owns display. */
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header-inner-close-button {
+  opacity: var(--theme-workspace-chrome-dim-opacity);
+}
+
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner-close-button {
+  opacity: 1;
+}
+
 /* Source: src/workspace/sidebar.css */
 body {
   --nav-item-color: var(--theme-text-muted);
@@ -412,6 +421,16 @@ body {
   background-color: var(--theme-bg-primary);
   padding-inline: var(--theme-workspace-control-gap);
   box-shadow: inset 0 -1px 0 var(--theme-border);
+}
+
+/* Direct tab chrome only; File Explorer/NN/Search content is never dimmed. */
+.workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs > .workspace-tab-header-container {
+  opacity: var(--theme-workspace-chrome-muted-opacity);
+}
+
+.workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs > .workspace-tab-header-container:is(:hover, :focus-within),
+.workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs > .workspace-tab-header-container:has(.workspace-tab-header:is(.is-active, :active)) {
+  opacity: 1;
 }
 
 /* Source: src/workspace/ribbon.css */
@@ -453,6 +472,15 @@ body {
   color: var(--theme-indicator);
 }
 
+.workspace-ribbon .side-dock-ribbon-action {
+  opacity: var(--theme-workspace-chrome-dim-opacity);
+}
+
+.workspace-ribbon:is(:hover, :focus-within) .side-dock-ribbon-action,
+.workspace-ribbon .side-dock-ribbon-action:is(.is-active, :active, :focus-visible) {
+  opacity: 1;
+}
+
 /* Source: src/workspace/statusbar.css */
 body {
   --status-bar-background: var(--theme-bg-secondary);
@@ -474,6 +502,15 @@ body {
 .status-bar > .status-bar-item.mod-clickable:hover {
   color: var(--theme-text-normal);
   background-color: var(--theme-hover-bg);
+}
+
+.status-bar > .status-bar-item {
+  opacity: var(--theme-workspace-chrome-muted-opacity);
+}
+
+.status-bar:is(:hover, :focus-within) > .status-bar-item,
+.status-bar > .status-bar-item.mod-clickable:hover {
+  opacity: 1;
 }
 
 /* Source: src/workspace/scrollbar.css */
@@ -520,6 +557,20 @@ body {
   background-color: var(--theme-active-bg);
 }
 
+/* Soft reduction preserves native targets and layout; keyboard entry reveals. */
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action {
+  opacity: var(--theme-workspace-chrome-dim-opacity);
+}
+
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf.mod-active > .workspace-leaf-content > .view-header > .view-actions > .view-action {
+  opacity: var(--theme-workspace-chrome-muted-opacity);
+}
+
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header:is(:hover, :focus-within) > .view-actions > .view-action,
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action:is(.is-active, :active, :focus-visible) {
+  opacity: 1;
+}
+
 /* Source: src/workspace/workspace-tokens.css */
 /* Workspace geometry aliases share the Foundation Radius / spacing contract.
  * Keep these on body so consumer variables resolve against the same scope,
@@ -528,6 +579,12 @@ body {
 body {
   --theme-workspace-control-radius: var(--theme-radius-md);
   --theme-workspace-control-gap: var(--theme-space-xs);
+}
+
+/* Reused chrome emphasis; content never inherits opacity from these values. */
+body {
+  --theme-workspace-chrome-dim-opacity: 0.55;
+  --theme-workspace-chrome-muted-opacity: 0.72;
 }
 
 /* Source: src/editor/callout.css */
@@ -679,6 +736,17 @@ body {
   gap: var(--theme-workspace-control-gap);
 }
 
+/* Source: src/effects/active-line.css */
+/* Narrow CM6 state fallback: no documented native active-line-bg consumer
+ * established. Keep native selection layers, special blocks and Reading intact.
+ * Obsidian's cm-active and upstream CM6 cm-activeLine are both state classes.
+ */
+.workspace-split.mod-root .workspace-leaf-content[data-type="markdown"]
+  > .view-content > .markdown-source-view.mod-cm6
+  .cm-content > .cm-line:is(.cm-active, .cm-activeLine):not([class*="HyperMD-"]) {
+  background-color: color-mix(in oklch, var(--theme-accent) 6%, transparent);
+}
+
 /* Source: src/effects/focus.css */
 /* Native active-leaf hierarchy, verified in P3_2C_FOCUS_DOM_EVIDENCE.md.
  * Only the public header boundary changes; preserve content, geometry,
@@ -693,4 +761,58 @@ body {
  */
 .workspace-split.mod-root .workspace-leaf:not(.mod-active) > .workspace-leaf-content > .view-header {
   --file-header-border: 1px solid var(--theme-border);
+}
+
+/* Phase 5A: quiet inactive ordinary chrome only, never view content. */
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf:not(.mod-active) > .workspace-leaf-content > .view-header > .view-header-title-container {
+  opacity: var(--theme-workspace-chrome-muted-opacity);
+}
+
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf.mod-active > .workspace-leaf-content > .view-header > .view-header-title-container,
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header:is(:hover, :focus-within) > .view-header-title-container {
+  opacity: 1;
+}
+
+/* Source: src/effects/workspace-effects.css */
+/* Phase 5A motion is limited to explicit workspace chrome/control shells. */
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action,
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header-inner-close-button,
+.workspace-ribbon .side-dock-ribbon-action,
+.status-bar > .status-bar-item.mod-clickable,
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-header-title-container,
+.workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs > .workspace-tab-header-container,
+.status-bar > .status-bar-item {
+  transition:
+    opacity var(--theme-transition-normal),
+    color var(--theme-transition-fast),
+    background-color var(--theme-transition-fast),
+    box-shadow var(--theme-transition-fast),
+    outline-color var(--theme-transition-fast),
+    transform var(--theme-transition-fast);
+}
+
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action:not(.is-disabled):not([aria-disabled="true"]):active,
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header-inner-close-button:not(.is-disabled):not([aria-disabled="true"]):active,
+.workspace-ribbon .side-dock-ribbon-action:not(.is-disabled):not([aria-disabled="true"]):active,
+.status-bar > .status-bar-item.mod-clickable:not(.is-disabled):not([aria-disabled="true"]):active {
+  transform: translateY(1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action,
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header-inner-close-button,
+.workspace-ribbon .side-dock-ribbon-action,
+.status-bar > .status-bar-item.mod-clickable,
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-header-title-container,
+.workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs > .workspace-tab-header-container,
+.status-bar > .status-bar-item {
+    transition-duration: 0s;
+  }
+
+  .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action:not(.is-disabled):not([aria-disabled="true"]):active,
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header-inner-close-button:not(.is-disabled):not([aria-disabled="true"]):active,
+.workspace-ribbon .side-dock-ribbon-action:not(.is-disabled):not([aria-disabled="true"]):active,
+.status-bar > .status-bar-item.mod-clickable:not(.is-disabled):not([aria-disabled="true"]):active {
+    transform: none;
+  }
 }

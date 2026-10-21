@@ -1,0 +1,9 @@
+/* Narrow CM6 state fallback: no documented native active-line-bg consumer
+ * established. Keep native selection layers, special blocks and Reading intact.
+ * Obsidian's cm-active and upstream CM6 cm-activeLine are both state classes.
+ */
+.workspace-split.mod-root .workspace-leaf-content[data-type="markdown"]
+  > .view-content > .markdown-source-view.mod-cm6
+  .cm-content > .cm-line:is(.cm-active, .cm-activeLine):not([class*="HyperMD-"]) {
+  background-color: color-mix(in oklch, var(--theme-accent) 6%, transparent);
+}
