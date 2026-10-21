@@ -207,8 +207,27 @@ Notebook Navigator仍NOT INSTALLED / NOT TESTED。不得为圆角补overflow hid
 - [x] Separate isolation commit: restoreabab4f5 settings; remove failed Preset active source/generated section; preserve old branch and all evidence/Decision013
 - [x] Implement exact approved A2 envelope with only neutral outline/offset/radius; stacked fully excluded, Focus unchanged
 - [x] Build / Check / diff-check; static contract and prior-section byte comparison
-- [ ] Chat implementation review
-- [ ] Separately authorized Desktop QA; NOT RUN in this task
+- [x] Chat implementation review PASS; authorized P4.2d Desktop acceptance
+- [x] Separately authorized Desktop QA completed in P4.2d; see report (not part of original P4.2c implementation task)
 - [ ] Subsequent Chat decision on Card feature acceptance; no automatic promotion
 
-Current next action is review only, superseding historical “spike only/no prototype yet” process notes. No new token/setting/geometry/overflow/Focus state. Do not start QA, add Card variants, repair Preset, create PR or merge main. Full scope/risks: [P4.2c prototype](P4_2C_CARD_SHELL_PROTOTYPE.md).
+Current next action is Chat acceptance/promotion review after P4.2d, superseding historical pending-QA process notes. No new token/setting/geometry/overflow/Focus state. Do not add Card variants, repair Preset, create PR or merge main automatically. Full scope/risks: [P4.2c prototype](P4_2C_CARD_SHELL_PROTOTYPE.md).
+
+## P4.2d — Bounded Card Shell Desktop Acceptance QA (2026-10-21)
+
+- [x] Resume935c8ed from handoff; clean branch and matching root/installed artifact verified
+- [x] Preset runtime isolation in real UI; four formal settings only
+- [x] Light/Dark, Source/LP/Reading, Radius0/8/20; no confirmed blocking clipping/interaction regression
+- [x] Left/right, top/bottom, nested/narrow; actual native divider drags
+- [x] Three Card/f25 same-state geometry/overflow/scroll/divider pairs exactly equal
+- [x] Formal ordinary→stacked→horizontal scroll→ordinary: none/0 radius then restored neutral Card
+- [x] Native View Header hide/restore and independent scrolling; existing hidden-header Focus limitation retained
+- [x] Core Graph pan/zoom/controls/resize/node opening; Markdown/Graph/NN Focus combinations
+- [x] NN3.4.3 Sidebar and actual main workspace host QA; internal scroll/resize/navigation/note opening; no compatibility CSS
+- [x] Markdown interactions and P2/P3 bounded smoke; width500/700 and readable line length off/on
+- [x] [QA report](P4_2D_CARD_SHELL_DESKTOP_QA.md): bounded Desktop acceptance **PASS**, not automatic feature promotion
+- [x] Close independent Vault; restore backup config except approved Card artifact, clean/archive74fixture, verify2 original-note hashes
+- [x] Isolated-copy npmcheck PASS;26 build inputs match repo, normalized generated output equal; implementation/DECISIONS unchanged
+- [ ] Chat subsequent feature acceptance/promotion decision; no automatic PR/merge
+
+NN fixture drag/drop remains UNVERIFIED/non-blocking coverage limitation, not a completed move or Card-caused FAIL. Radius20 inspection bounded; pop-out/RTL/other DPI/platform/plugins/accessibility not certified. Only four requested docs are submitted; final diff-check/commit/push verified at closeout.

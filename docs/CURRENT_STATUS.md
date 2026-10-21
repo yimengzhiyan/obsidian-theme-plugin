@@ -1,20 +1,27 @@
 # Current Status
 
-## Current Milestone
+Last Updated: 2026-10-21 (America/Los_Angeles)
 
-P4.2c bounded A2 Card shell prototype implemented / automated validation PASS / Desktop QA PENDING. Prototype implementation ≠ Card feature accepted. Failed Preset active runtime isolated only on new Card branch; Decision013 and evidence retained.
+## Current milestone
 
-## Foundation
+**P4.2d Bounded Card Shell Desktop Acceptance QA — PASS within the tested scope.** Implementation review authorized this QA. This is not automatic feature promotion or release acceptance; no implementation change or new decision was made.
 
-V0.1 Theme Foundation — Complete / Merged to `main`
+- Branch: `codex/p4-card-shell-prototype`; tested implementation `935c8ed5b3cc24e74ad90c0134eb20e7f02b0bfe`, isolated no-Card parent `f25a03ece0dd165151f360d672a9fcc5c23d1cf6`.
+- [Desktop QA report](P4_2D_CARD_SHELL_DESKTOP_QA.md): Light/Dark, Source/LP/Reading, Radius0/8/20, left/right/top-bottom/nested/narrow, actual divider drag, three equal Card/f25 geometry pairs, formal stacked exit/scroll/return, header hide/restore, Graph and NN Sidebar/main-host QA completed.
+- Focus remains active-header Accent/inactive neutral; outer Card always neutral. Header-hidden has no added cue. No overflow/geometry/compatibility fix required.
+- NN3.4.3 was installed with user confirmation; main placement was performed by the user and then actually tested. No compatibility CSS required in tested scope. Drag/drop remains **UNVERIFIED**, not PASS; no Card causality established.
+- Cleanup: closed test Vault/DevTools; config restored from backup except approved Card artifact, fixture74 removed and archived, original2 note hashes unchanged. NN test install removed by restoration; original Style Settings enable list/data restored. Root/installed SHA256 both `2C87962A15A04DBBC75744F28CCA43432644619193F4E9CDF3EA3E14BFB70357`.
+- Validation: isolated-copy `npm run check` PASS (21sources);26 build inputs byte-identical to repo; normalized output equal. Final diff-check and docs commit/push verified in completion report. Only QA report/CURRENT_STATUS/AI_HANDOFF/TASKS change; implementation and DECISIONS preserved.
 
-## Current Branch
+## Limits and next step
 
-`codex/p4-card-shell-prototype`
+Return to Chat for the subsequent Card acceptance/promotion decision. NN drag/drop unverified; Radius20 is bounded visual/interaction coverage; pop-out/RTL/other DPI/platform/plugin and accessibility certification excluded. No confirmed Card blocker. Preserve earlier Phase2/3 limitations, Reading Decision012 and Preset Documentation-only Decision013. Do not repair RESET-01, expand Card, create PR or merge main automatically.
 
-## Current Commit
+QA commit identity is obtained from Git; this snapshot does not embed its own hash. Live remote branch935c8ed was verified before docs work; final push state is checked separately.
 
-Evidence baseline `71363e733242b80dbf69e223ce3d97b7d2ed80b7`; isolation `f25a03ece0dd165151f360d672a9fcc5c23d1cf6`; Card implementation checkpoint hash via `git rev-parse HEAD`.
+## Historical evidence — retained for traceability
+
+The sections below are earlier checkpoints and include superseded process instructions. The current state and next step are above; historical P4.1 acceptance FAIL and its original evidence remain unchanged.
 
 ## Completed
 
