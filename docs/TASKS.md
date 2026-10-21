@@ -162,8 +162,82 @@ Focus System：CSS only；based on native `.workspace-leaf.mod-active`；no runt
 
 不创建 src/reading、reading-width.css、reading-spacing.css、Reading Boundary 或 Reading Focus enhancement。Reading / Live Preview / Source 均保留 native width behavior；embed/community contexts 未认证。
 
+## P4.1 Preset Prototype — Experiment Closed / Acceptance FAIL
+
+- [x] Architecture / feature / mechanism / UX / gate 文档完成；仅 candidate 与实验授权，不是正式 feature
+- [x] Writer Prototype 实现 `f50040a` 与静态验证保留
+- [x] P4.1.5 Desktop QA `7d89f34` 完成：整体 FAIL / RESET-01 blocker
+- [x] P4.1.6 调查 `14c5bc9` 完成：root cause CONFIRMED，未实施修复
+- [x] 实验记录 closeout、完整证据链与当前 disposition 已写入 CURRENT_STATUS；实现/报告保留
+- [x] 用户正式确认 Documentation-only，Decision013已落盘；结束assisted路线/RESET-01修复循环。失败证据保留；不立即编写recipes，不重开implementation。
+
+当前 assisted Prototype 未达验收门槛，不标记成功/正式功能。RESET-01 unresolved，promotion blocked；不自动修复、换控件、增profile或重开实验。缺陷保留为已收尾实验的未解决限制，不作为自动执行的修复待办。
+
 ## Next Step
 
-- [ ] Integration PR review：P3.1 / P3.2 已实现模块与 P3.3 evidence / final close；不自行 merge
+P4.2b Boundary Painter Spike已执行，见下方最新checkpoint。建议Proceed to bounded prototype，等待Chat审定ordinary neutral outline范围及host QA；没有Card Prototype/implementation执行授权。Focus Enhancement、Auto Hide、Effects继续Defer；Reading Decision012保持。不得创建PR/合并main。
 
-暂不开始 P4。只有出现新的、可复现且现有 public variable/token 无法表达的真实 gap，才重新开启 Reading implementation review；不以已接受 Source 差异或像素 parity 作为 gap。正常 push，不 rewrite/force-push。
+## P4.2a — Card Shell Evidence / Design Review
+
+- [x] 同步远端closeout694ff8c，记录P4.1正式Documentation-only决策013
+- [x] 独立Desktop采集三种Markdown模式、双向/nested split、hidden/stacked、header hidden及core Graph公共shell
+- [x] 审查Layout/View Header/Focus源码与现有surface/border/Radius/gap合同；无新token/geometry需求
+- [x] [Evidence report](P4_2_CARD_SHELL_EVIDENCE.md)：候选main ordinary leaf-content；neutral-only Card建议；**Needs more research**
+- [x] Notebook Navigator公开变量/官方source固定revision审查；作为重点后续兼容样本，当前独立Vault未安装，Desktop交互NOT TESTED
+- [x] Check/diff-check与implementation preservation；原生header恢复、测试Vault关闭后配置备份恢复
+- [x] 后续最小研究已由用户指定为P4.2b Non-layout Boundary Painter Spike；见下方，不代表Prototype授权
+
+不要将以上checkbox写成Card实现/验收通过。边界绘制/圆角裁切/stacked/社区host兼容仍需研究；本轮无Card CSS、兼容CSS、preset继承、新设置/token/runtime、PR或main合并。
+
+## P4.2b — Non-layout Boundary Painter Spike
+
+- [x] 独立Vault备份；只用临时snippet/read-only DOM，未改repo implementation
+- [x] Baseline/A1/A2/B1/B2覆盖single、左右、nested+Graph+narrow；17实验geometry/overflow/scroll-size比较相同
+- [x] Outline offset0/-1及Radius0/8/20对照；A2推荐，inset不推荐；角部限制保留
+- [x] A2原生ordinary→stacked→ordinary干净退出恢复、横滚；header隐藏/恢复；Source/LP/Reading/divider/pane/Graph/tab smoke
+- [x] [Spike report](P4_2B_CARD_BOUNDARY_SPIKE.md)：**Proceed to bounded prototype**研究建议，非Card Desktop PASS或实现授权
+- [x] 临时样式删除；关闭测试Vault后备份配置与两笔记hash核对；check/diff-check及implementation preservation
+- [ ] Chat审定下一bounded prototype范围及真实Notebook Navigator host兼容测试；本轮不执行
+
+Notebook Navigator仍NOT INSTALLED / NOT TESTED。不得为圆角补overflow hidden、geometry改动、descendant透明/重构或overlay；Focus header-only合同保留。未新增DECISION，不重开Preset实验。
+
+## P4.2c — Bounded Card Prototype checkpoint
+
+- [x] Verify synced71363e7 and create independent codex/p4-card-shell-prototype
+- [x] Separate isolation commit: restoreabab4f5 settings; remove failed Preset active source/generated section; preserve old branch and all evidence/Decision013
+- [x] Implement exact approved A2 envelope with only neutral outline/offset/radius; stacked fully excluded, Focus unchanged
+- [x] Build / Check / diff-check; static contract and prior-section byte comparison
+- [x] Chat implementation review PASS; authorized P4.2d Desktop acceptance
+- [x] Separately authorized Desktop QA completed in P4.2d; see report (not part of original P4.2c implementation task)
+- [ ] Subsequent Chat decision on Card feature acceptance; no automatic promotion
+
+Current next action is Chat acceptance/promotion review after P4.2d, superseding historical pending-QA process notes. No new token/setting/geometry/overflow/Focus state. Do not add Card variants, repair Preset, create PR or merge main automatically. Full scope/risks: [P4.2c prototype](P4_2C_CARD_SHELL_PROTOTYPE.md).
+
+## P4.2d — Bounded Card Shell Desktop Acceptance QA (2026-10-21)
+
+- [x] Resume935c8ed from handoff; clean branch and matching root/installed artifact verified
+- [x] Preset runtime isolation in real UI; four formal settings only
+- [x] Light/Dark, Source/LP/Reading, Radius0/8/20; no confirmed blocking clipping/interaction regression
+- [x] Left/right, top/bottom, nested/narrow; actual native divider drags
+- [x] Three Card/f25 same-state geometry/overflow/scroll/divider pairs exactly equal
+- [x] Formal ordinary→stacked→horizontal scroll→ordinary: none/0 radius then restored neutral Card
+- [x] Native View Header hide/restore and independent scrolling; existing hidden-header Focus limitation retained
+- [x] Core Graph pan/zoom/controls/resize/node opening; Markdown/Graph/NN Focus combinations
+- [x] NN3.4.3 Sidebar and actual main workspace host QA; internal scroll/resize/navigation/note opening; no compatibility CSS
+- [x] Markdown interactions and P2/P3 bounded smoke; width500/700 and readable line length off/on
+- [x] [QA report](P4_2D_CARD_SHELL_DESKTOP_QA.md): bounded Desktop acceptance **PASS**, not automatic feature promotion
+- [x] Close independent Vault; restore backup config except approved Card artifact, clean/archive74fixture, verify2 original-note hashes
+- [x] Isolated-copy npmcheck PASS;26 build inputs match repo, normalized generated output equal; implementation/DECISIONS unchanged
+- [ ] Chat subsequent feature acceptance/promotion decision; no automatic PR/merge
+
+NN fixture drag/drop remains UNVERIFIED/non-blocking coverage limitation, not a completed move or Card-caused FAIL. Radius20 inspection bounded; pop-out/RTL/other DPI/platform/plugins/accessibility not certified. Only four requested docs are submitted; final diff-check/commit/push verified at closeout.
+
+## P4.2e — Promotion / Integration
+
+- [x] Chat independent implementation review PASS / Desktop QA review PASS
+- [x] Bounded Shell-level Card Layout COMPLETE / accepted for integration；Decision014
+- [x] Preserve Decision013、P4.1 historical FAIL/evidence；no failed Preset runtime in integration
+- [x] Build/Check/diff-check；runtime/settings/generatedCSS unchanged from99b7845
+- [ ] Integration PR Chat review；merge未授权
+
+本条为当前状态，supersedes历史pending promotion过程条目。仅ordinary main neutral A2 shell，stacked退出；Focus不变，zero geometry/overflow/newtoken/setting/runtime。NN3.4.3 Sidebar/main-host PASS；drag/drop UNVERIFIED，Radius20 bounded，header-hidden Focus已知限制及pop-outs/RTL/平台/accessibility未认证均保留。不代表完整Card系统；Focus Enhancement/Auto Hide/Effects继续Defer，Preset遵守Decision013。

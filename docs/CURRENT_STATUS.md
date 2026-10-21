@@ -1,20 +1,24 @@
 # Current Status
 
-## Current Milestone
+Last Updated: 2026-10-21 (America/Los_Angeles)
 
-Phase 3.3 Reading Enhancement COMPLETE — P3.3a Width evidence / architecture review 与 P3.3b Rhythm audit 均为 NO NEW CSS REQUIRED（A=5、B=3、C=0）。Phase 2 / P3.1 / Phase 3.2 COMPLETE；进入 integration preparation。
+## Current milestone
 
-## Foundation
+**P4.2 Bounded Shell-level Card Layout COMPLETE / accepted for integration.** Chat independent implementation review与Desktop QA review均PASS；维护者已批准bounded promotion。Decision014记录正式范围，不是完整Card Layout System或release acceptance。
 
-V0.1 Theme Foundation — Complete / Merged to `main`
+- Branch `codex/p4-card-shell-prototype`；implementation `935c8ed5b3cc24e74ad90c0134eb20e7f02b0bfe`；Desktop QA `99b7845a66990664d82eef9a75a151968ce67b10`。
+- 接受唯一ordinary main direct-host A2 neutral outline/offset-1px/existing radius；stacked完全排除；Focus header Accent/neutral不变；zero geometry/overflow、新token/setting/runtime变化。
+- [Desktop QA](P4_2D_CARD_SHELL_DESKTOP_QA.md) PASS：Light/Dark、Source/LP/Reading、Graph、Radius0/8/20、split/nested/narrow、stacked off-state与NN3.4.3 Sidebar/main-host测试范围。NN drag/drop UNVERIFIED；Radius20 bounded；header-hidden Focus既有限制保留；pop-outs/RTL/其他DPI/平台/全插件/accessibility不认证。
+- Preset Documentation-only Decision013不变；失败实验源码/QA/RESET-01/closeout历史保留，活动runtime已隔离。Focus Enhancement / Auto Hide / Effects继续Defer。
+- 本轮仅DECISIONS/CURRENT_STATUS/AI_HANDOFF/TASKS；Build/Check/diff-check PASS；src/settings/theme/scripts与QA commit逐字不变。未重新Desktop QA，不扩大兼容范围。
 
-## Current Branch
+## Limits and next step
 
-`codex/p3-1-workspace-fusion`
+创建Card branch→main integration PR并返回Chat review；不merge/squash/rebase。main基线a6a69c22184bb892cd121e210858354c31a0c745。PR身份以GitHub返回值为准；accepted for integration不是已合并。无后续功能实现授权。
 
-## Current Commit
+## Historical evidence — retained for traceability
 
-Final close baseline：`b5d47ad`（Reading Rhythm audit）；Width corrective commit `865dcfda7b84ddb37606b3868808949e5d6bd692`。本次仅文档 checkpoint；最终提交以 `git rev-parse HEAD` 为准。
+The sections below are earlier checkpoints and include superseded process instructions. The current state and next step are above; historical P4.1 acceptance FAIL and its original evidence remain unchanged.
 
 ## Completed
 
@@ -96,16 +100,18 @@ Final close baseline：`b5d47ad`（Reading Rhythm audit）；Width corrective co
 
 ## In Progress
 
+- P4.1 实验已收尾，Reset gate FAIL / promotion blocked；Documentation-only 已由用户正式确认，无修复/换控件/重试任务。
 - 无进行中的 P3.3a CSS 实现；evidence / architecture review COMPLETE，结论是无需新增 CSS。
 - P3.3b audit COMPLETE；C=0，无 Reading Spacing implementation；详见 [Rhythm Audit](P3_3B_READING_RHYTHM_AUDIT.md)。
 - First-line indent、letter / word spacing、granular heading settings、bold / italic settings 继续 deferred
 
 ## Next Step
 
-准备将已完成 P3.1 / P3.2 与 P3.3 review 结果提交 integration PR，待独立审查；不自行 merge，不开始 P4。Reading implementation 仅在新的、可复现且现有 public variable/token 无法表达的真实 gap 出现后，进入独立 Chat Design Review。
+Chat review [P4.2c prototype](P4_2C_CARD_SHELL_PROTOTYPE.md), then separately authorized Desktop QA. Do not auto-start QA, expand Card scope, create PR or merge. Stacked fully excluded; Focus remains header-only. Preset Documentation-only per Decision013; no RESET-01 repair. Focus Enhancement / Auto Hide / Effects remain deferred.
 
 ## Known Issues / Blockers
 
+- P4.1.5 RESET-01：失败实验的未解决限制，Desktop acceptance FAIL / promotion blocked 保留；用户已结束 assisted 路线，不再作为自动修复待办。Documentation-only 决策见013。
 - Known decision：Source Mode visual rhythm may differ from Reading View；这是为保留原生 caret / keyboard navigation 而主动接受的 scope decision，不是 unresolved visual blocker
 - P2.2 无已知 blocker；撤回 Source normalization 后导航已由真实 Desktop 验证恢复
 - P2.3 无 unresolved blockers；Source unresolved-link presentation 可不同于 rendered views，Reading unresolved dotted decoration 主要 hover 可见，均接受为 native/public-variable differences，不增加 selector 覆盖
@@ -283,3 +289,195 @@ Limitations：embed/community contexts 未认证；audit 限已记录版本、fi
 Working tree reconciliation：同步 audit 后本机 `git status` 干净，`CURRENT_STATUS.md` 无历史未提交 diff，因此没有可整合或丢弃的本地 QA 日志。远端 durable evidence / audit 已保留；其他 checkout 的未提交记录不在本机验证范围。仅清理已撤回实现留下的空 `src/reading` 目录，无源码删除或新实现。
 
 Integration validation：`npm run build` / `npm run check` / `git diff --check` PASS；generated theme.css 与 source 同步且内容不变。相对本次 baseline，Phase 2 / P3.1 / P3.2 source、settings、scripts、manifest 与 evidence 均未修改，无 Reading Width/Spacing selectors。文档 checkpoint 正常 commit/push，后续 integration review，不自动 merge/P4。
+
+## P4.1.5 Desktop Preset Acceptance QA — 2026-10-15
+
+**Overall: FAIL — RESET-01 blocks acceptance and promotion.** 这是现有 Prototype 的验收记录，不改变架构，也不批准正式 Preset System。此前 P4.1.4 报告的 Desktop PENDING 由本记录更新；Phase 2/3 PASS 和既有 N/A 保留。
+
+### Environment / isolation
+
+- 测试日期：2026-10-15，America/Los_Angeles（本次客户端日期/时区）。
+- Obsidian 1.14.4 / Installer 1.10.6：本轮原生 About 界面确认。
+- Windows 25H2 / 26200.8737：本轮注册表确认。Style Settings 1.0.9：安装 manifest 与原生插件页确认。
+- Branch `codex/p4-preset-prototype`；tested commit `f50040a45c456693b603dc148445b33ea8eca2c1`。
+- 独立 checkout：`E:\codex-desktop\Codex_workspace\2026-10-11\obsidian-fusion-theme-desktop-qa-p2\work\p415-repo`。
+- 独立 Vault：同级 `P415-Preset-Acceptance`，仅含专用 `Preset Acceptance.md` / `QA Target.md`；日常 Vault 中不安装 Prototype、不执行 Reset。
+- 安装：手动复制该 checkout 的 manifest.json / theme.css 至测试 Vault `.obsidian/themes/Obsidian Fusion Theme/`。仅复制环境原有 Style Settings 1.0.9；无新插件或 Fusion runtime。
+- Root / installed theme.css SHA256 同为 `CB30DFB7C0E288EAC9DFEB03D51DD43CB62B6FCCE9957C62C80805C8B537DA90`，结束再次一致。
+- 字体大小 16，Line Height 默认 1.7，默认 Accent / Radius，无启用 snippets；原生 readable line length 开启。未重新设计 Reading 系统。
+- 启动前备份日常 app / appearance / workspace / community-plugins / Style Settings data、全局 Vault 注册配置，并备份独立测试 Vault 初始配置；备份位于同级 `p415-backup`，不入 Git。
+- 新 Vault 信任提示由用户手动处理；自动化没有代操作安全授权。窗口初始裁切，经用户手动调整后继续；不把裁切状态作为主题问题。
+
+### Pre-result UI understanding
+
+实际测试者为项目维护者，已经阅读当前 UX Contract；回答先于运行时结果展示，**不是盲测新手研究**。
+
+第一次原答：
+
+> 推荐。然后用户保存值 > Preset 推荐值 > 主题默认值。
+
+补充问题后明确回答（原意记录）：
+
+1. 保存 Content Width=500，选择 Writer 后仍为 500，因为用户保存值优先于 640 推荐。
+2. 随后选 Default 仍为 500；Default 仅取消推荐，不清除用户保存值。
+3. Reset 应删除单项覆盖；Writer 下应为 640，Default 下应为 700。Reset 不是关闭 Preset，也不是撤销。
+4. 测试者注明“以上均为测试前预期，尚未依据实际 UI 行为验证”。
+
+**Understanding PASS for this informed participant.** recommendation / override / Default / Reset 的理解正确。实际 Reset 未符合这份理解，不能因此推断产品 UI 已整体验收通过。
+
+### Method / runtime evidence
+
+选择、slider、Reset、停用/启用、模式切换均使用原生 Obsidian / 插件 UI。通过专用 Vault 的 DevTools Console 只读查询 body class、getComputedStyle 与可见 native sizer；没有 DOM mutation、style 注入、监听器或持久 helper。隐藏容器不算 visible width。控制台/UIA 有延迟，结果需同时核对完成的 class/mode 与截图。
+
+保存键：`obsidian-fusion-theme@@oft-preset-prototype`（下称 selection），`obsidian-fusion-theme@@theme-reading-width`（下称 width）。实际消费者为 Reading `.markdown-preview-sizer` 或 editor `.cm-sizer`；width 是原生上限，窄 pane 下可见尺寸可以更小。
+
+### PASS / FAIL matrix
+
+| Case | Selection / saved key | Actual class / effective variables / visible width | Result |
+| --- | --- | --- | --- |
+| D — Default, no saved width | 初始 data `{}`；UI Default；width absent | `fusion-preset-default`；theme-reading-width / file-line-width = 700px；充足空间下 Live Preview cm-sizer = 700px | PASS |
+| A — Default → Writer, no saved width | selection=writer；width absent | `fusion-writer-prototype`；两个变量 640px；Dark Reading sizer=640px。初次窄于上限的 LP 为604px、max-width640px；展开可用空间后Reading640px | PASS |
+| B — Writer, user 500 | selection=writer；width=500 | Writer class 保留；两个变量500px；Reading sizer=500px，可见正文变窄 | PASS |
+| C — Writer → Default, saved 500 | selection=default；width仍500 | Default class，Writer class移除；两个变量500px；Reading sizer=500px | PASS |
+| Saved value equals metadata default | Writer；width=700（Reset 后实际留下） | Writer仍在；两个变量 / sizer=700px。不会把“等于700”误判为unset；此优先级正确不代表Reset正确 | PASS for precedence |
+| Reset Content Width | 前：Writer / width500；后：Writer / width700，key未消失 | 实际700px，未回到640；Dark Reading与Light Source均采样确认 | **FAIL RESET-01** |
+| Application restart | Writer / saved500；全部Obsidian窗口关闭且进程退出，再启动 | selection/width文件逐字一致；Writer class恢复；两个变量及Reading sizer500px | PASS |
+| Disable Style Settings | 已保存Writer / 500；插件列表变空；data保留 | css-settings-manager和两种preset option class均无残留；两个变量和Reading sizer700px | PASS |
+| Re-enable Style Settings | 插件列表恢复；Writer / 500仍保存 | Writer class恢复；两个变量和Reading sizer500px | PASS |
+| Light / Dark | 两个模式内分别比较 Default500 与 Writer500；另查无override Writer | 同模式palette/border/typography样本一致；Light无override Writer的Source cm-sizer640px | PASS smoke |
+| Reading / Live Preview / Source | 同一专用笔记；Writer500，另Source640 | native切换、内容可读；Source caret /真实空行导航/Enter/Backspace正常 | PASS smoke |
+| Phase 2 regression | Typography、links/tags/highlight、quote/code/callout/table | Light Reading/LP与Dark已查看区域无新增污染；原生语义/表面/分组保留 | PASS smoke |
+| Phase 3 regression | Tabs/Sidebar/Ribbon/Status Bar/View Header/Focus | 多Tab Ctrl+Tab、左右split、active header边界移动、搜索、Ribbon quick switcher、窄pane独立scroll正常 | PASS smoke |
+
+### RESET-01 — reproducible acceptance blocker
+
+Expected：Reset删除width保存键，Writer推荐640重新生效；实际key保存为700，持续压过640。Prototype帮助文案写“Reset removes your saved override, exposing the recommendation”，与实际不符。
+
+复现：
+
+1. 独立Vault启用Fusion及Style Settings1.0.9，选择Writer。
+2. Content Width保存500，确认data中width=500、运行时500。
+3. 使用Content Width旁原生Reset。
+4. 等待后读取data：selection仍writer，width键存在且=700。
+5. body仍Writer；computed theme-reading-width / file-line-width及Reading sizer均700px。
+
+Dark设置窗口中重复两次，均为700。为排除鼠标定位/自动化setter误判，另在**Light / 插件自带Style Settings View**复测：点击原生slider聚焦，Home到480，Right到500；Tab使Reset出现焦点框；Enter触发Reset。结果仍保存700，回Source查询cm-sizer width/max-width/file-line-width均700px。此复核没有调用UIA set_value。
+
+实际Reset后保存内容：
+
+```json
+{
+  "obsidian-fusion-theme@@oft-preset-prototype": "fusion-writer-prototype",
+  "obsidian-fusion-theme@@theme-reading-width": 700
+}
+```
+
+只读查看安装的插件代码可见slider Reset调用setValue(default)及clearSetting，clearSetting定义含delete；这说明**不能仅凭源码意图认定runtime已清除**。未诊断到足以确定的调用/事件根因，不把具体上游缺陷归因当成已证事实。
+
+后半段无override Light样本通过**应用关闭时恢复已备份初始data `{}`**建立，然后正常UI重新选择Writer。这是测试基线恢复，不是Reset成功、用户可用修复或新产品机制。
+
+### Mode / typography protection samples
+
+| Body computed value | Dark Default / Writer（同为saved500） | Light Default / Writer（同为saved500） |
+| --- | --- | --- |
+| background-primary | #202024 / #202024 | #ffffff / #ffffff |
+| background-secondary | #17171a / #17171a | #f1f1f4 / #f1f1f4 |
+| text-normal | #e9e7ed / #e9e7ed | #242329 / #242329 |
+| background-modifier-border | #39383f / #39383f | #dedce3 / #dedce3 |
+| line-height-normal | 1.7 / 1.7 | 1.7 / 1.7 |
+| font-text-size | 16px / 16px | 16px / 16px |
+| p-spacing / heading-spacing | 0.5rem / 1.5rem，两选择相同 | 0.5rem / 1.5rem，两选择相同 |
+
+这些为实际只读样本与视觉smoke，不声称穷举全部palette/排版computed属性。
+
+### Editing / layout observations
+
+- 专用笔记含中文/英文长段落、长标题、连续H2/H3/H4、nested list、resolved/unresolved/external links、tag、highlight、inline/fenced code、Note Callout、Table。
+- Light Reading与LP逐区滚动查看特殊块；Dark初始LP中亦检查标题、段落、Code、Callout表面。未重开Source与Reading视觉parity。
+- Source：首部A与B之间两条真实空行；Down/Down分别进入、Up返回，caret可见。第二空行输入x后Backspace撤销；Enter增加空行、Backspace恢复，B位置随之下移/回归。无修改Source CSS。
+- Writer recommendation直接生效的Light Source640px另做caret/空行smoke；完整Enter/Backspace在Writer saved500下执行。
+- 左右split的窄pane内长标题/段落与Table正常换行，Code/Callout有独立表面，滚动一pane不移动另一pane。尝试divider drag未取得可确认比例变化，**不声称resize独立验收**。
+- 多Tab通过Quick Switcher Ctrl+Enter新开QA Target，Ctrl+Tab切回；active tab/selected file正常。点击两个pane，原有active header Accent边界随之移动。
+- Sidebar Search查询semantic返回两处匹配，恢复File Explorer；Ribbon quick switcher可打开/关闭。Status Bar词/字符数可见且随Source临时输入更新；header按钮保留。没有运行完整P2/P3历史QA清单。
+
+### Validation / restoration / disposition
+
+- `npm run check`：首次因新clone的CRLF生成文件freshness检查退出并重建；normalized CSS与已安装版本完全一致。第二次PASS（21source files）；随后恢复安装时的原始artifact字节，Git implementation diff为空。此换行观察不作为产品缺陷，也未提交重建输出。
+- `git diff --check`：提交前通过；commit只允许CURRENT_STATUS /必要AI_HANDOFF文档。
+- 没有CSS/theme/settings/token/runtime/依赖实现变化；DECISIONS未修改。本轮不修复RESET-01、不新增preset、不开始下一功能。
+- 日常Vault app.json、appearance.json、workspace.json、community-plugins.json与Style Settings data的结束hash均与任务前备份一致；没有在日常Vault安装Prototype。
+- 测试结束关闭Obsidian后恢复测试Vault的初始app/appearance/community/data配置。保留专用fixture及本地备份以便复测，不入Git。恢复原Vault注册/窗口配置并重新打开原日常Vault。
+- **不建议进入正式Phase 4。** 返回Chat Design Review评估Reset行为与静态UX承诺冲突，任何修订须另行授权和复测；本报告不作新的架构决策。
+- Remaining risks：一个已了解UX Contract的维护者样本，不代表新手理解；单一width轴不能推广到全Preset体系。section/all reset、selection reset的完整recovery、native readable-line-length off/on、pop-outs、所有社区view/其他平台及accessibility未完整认证。User instruction的核心用例已执行，Reset失败仍是blocker。
+
+## P4.1.6 RESET-01 Investigation — 2026-10-15
+
+- **Investigation COMPLETE / root cause CONFIRMED；P4.1.5 FAIL 保留。** [详细报告](P4_1_RESET_01_INVESTIGATION.md) 为本轮机制证据、A/B/C/D比较与限制；历史 P4.1.5 “根因未定”是当时诊断边界，由此调查补齐，原 Desktop 观察不变。
+- 保留 `codex/p4-preset-prototype` 的原 QA commit `7d89f34108beffea8ac4f30842e1f44c37ea6273` 与 implementation `f50040a45c456693b603dc148445b33ea8eca2c1`；未 cherry-pick / 重写历史。
+- 证据：Style Settings 1.0.9 固定源码 `4ebec6a`，与独立 Vault 已安装 release 执行内容核对一致；实际 updated Obsidian 1.14.4 app.js setter/debounce 源码；已有 Desktop 鼠标/键盘复现；新离线 exact-function replay 五项断言 / 四场景 PASS。
+- 根因：Reset 先 `Slider.setValue(700)`；值变化触发注册 callback，经 Obsidian trailing debounce 约250ms调用 setSetting；随后同步 clearSetting 的 delete 无法取消它，故保存键被重建为700。并非 CSS override 优先级故障。未把离线 timing 或 modeled persistence 当成 Desktop I/O trace。
+- A：原生删除存在，但二次 Reset 依赖当前值/队列、未新做 Desktop 验证；全主题 Reset 会清其他配置与 selection。B：没有合法 metadata Reset 行为开关。C：文本控件有 pending input race；select 需评估单位/保存值/UI兼容；未实现。D：建议冻结当前 promotion、保留 documentation-only，待 Chat 决策。
+- Contract：不把700解释成成功；不更改原 UX Contract / DECISIONS。需要 Chat 决定 D 或单独批准 C 研究、对应 contract 后续修订；不能据本报告启动修复或宣布正式 Phase 4 通过。
+- 验证：`npm run check` 在独立 tracked-file copy 第二次 PASS（首次仅该副本 freshness 重建）；仓库 theme.css 始终未写，SHA-256 `CB30DFB7C0E288EAC9DFEB03D51DD43CB62B6FCCE9957C62C80805C8B537DA90`；`git diff --check` PASS；与 QA HEAD 比较除本报告 / CURRENT_STATUS / AI_HANDOFF 外无 tracked 内容变化。
+- 本轮未操作日常或独立 Vault 设置。分析工具与提取的应用源码留在仓库外，不提交。Remaining unknowns：alternate control Desktop/迁移、pending input 全路径、真实保存完成时序、其他版本及未来上游修复；不构成现有 prototype PASS。
+- 按授权只提交调查与状态文档，推送前重新 fetch / 核对远端，正常 fast-forward 同步既有 QA 与本轮调查；不创建 PR、不合并 main。
+
+## P4.1 Preset Prototype Closeout
+
+**实验记录收尾完成 ≠ prototype 验收成功。** 当前 assisted Prototype 未达到 gate，Desktop QA FAIL、promotion blocked、RESET-01 未修复；不是正式 Preset System，不是 Phase 4 feature completion，也不推导为所有 Theme-first preset 都不可能。
+
+### Durable evidence chain
+
+| Stage | Commit | Evidence / conclusion |
+| --- | --- | --- |
+| Feature decision | `58dd713` | [Feature Decisions](P4_FEATURE_DECISIONS.md)：Prototype candidate，不是 implementation acceptance |
+| Architecture design | `b58fcf6` | [Preset Design](P4_1_PRESET_SYSTEM_DESIGN.md)：Needs more research |
+| Mechanism research | `d85fcd3` | [Mechanism Research](P4_1_PRESET_MECHANISM_RESEARCH.md)：Theme-only feasible with limitations；Reset 删除后稳定回退的推断已由 P4.1.6 纠正 |
+| UX Contract | `df742b1` | [UX Contract](P4_1_PRESET_UX_CONTRACT.md)：Style Settings assisted；User override > recommendation > default；尚未降级承诺以掩盖 FAIL |
+| Prototype gate | `abab4f5` | [Gate](P4_1_PRESET_PROTOTYPE_GATE.md)：Proceed to prototype，仅实验门槛 |
+| Implementation | `f50040a` | [Prototype Report](P4_1_PRESET_PROTOTYPE_REPORT.md)：Writer 640px、Default；本地静态通过/当时 Desktop pending，不是最新验收结果 |
+| P4.1.5 Desktop QA | `7d89f34108beffea8ac4f30842e1f44c37ea6273` | [本页原始 QA checkpoint](#p415-desktop-preset-acceptance-qa--2026-10-15)：整体 FAIL；Dark 鼠标和 Light 原生键盘均复现 RESET-01；其他局部 PASS 不消除 blocker |
+| P4.1.6 investigation | `14c5bc9` | [RESET-01 investigation](P4_1_RESET_01_INVESTIGATION.md)：root cause CONFIRMED；exact-function 离线 replay，不声称新 Desktop 修复验证 |
+
+确认机制：Style Settings 1.0.9 / Obsidian 1.14.4 的 Reset 调用 slider.setValue(700)，触发注册回调的 trailing save；clearSetting 删除后，pending callback 重建保存键700。saved700按用户优先级正确覆盖Writer640。不是 CSS 优先级失败，也不是删除调用根本未发生；不能把700重新解释为验收成功。
+
+### Disposition and reserved decisions
+
+- 冻结本次 assisted promotion，保留现有源码、settings、generated theme、历史报告与测试证据，不删除/回滚文件，不修复 RESET-01。
+- **Documentation-only = Chat 推荐方向 / 待用户确认**。没有已批准最终产品决策；不把推荐写成已采用方案，不新增/替换 DECISIONS，不自动制作新 Preset。
+- 是否批准 Documentation-only、是否正式修订 UX/feature 状态、如何处置保留的实验、是否另行重开有边界研究，均留待用户明确决定；没有自动重试任务。
+- 维护者预判、覆盖、重启、plugin off/on 与 P2/P3 smoke 的已记录 PASS 继续保留；单人样本、section/selection reset完整恢复、resize、native width开关、其他平台/插件和 accessibility 限制继续保留，不扩大认证。
+
+本轮仅 CURRENT_STATUS / AI_HANDOFF / TASKS 文档收尾；npm run check / git diff --check PASS，非文档内容与同步后的调查 baseline 完全一致。未重跑 Desktop、未操作 Vault、未创建 PR/合并 main，也未开始 Card Layout 或其他 Phase 4 实现。
+
+## P4.2a Card Shell Evidence / Design Review — 2026-10-17
+
+- **P4.1 正式产品方向已确认**：Decision013采用Documentation-only，结束assisted路线/RESET-01修复循环。失败实现f50040a、QA7d89f34、调查14c5bc9、closeout694ff8c和历史报告保留；上方“待用户确认”是历史checkpoint，不再代表当前决策。没有立即制作recipes的任务，也没有回滚/删除实验artifact。
+- **P4.2 独立候选 / disposition: Needs more research。** [Card Shell Evidence](P4_2_CARD_SHELL_EVIDENCE.md) 含Source/Live Preview/Reading、左右/上下nested、ordinary hidden tabs/stacked、native header hidden、core Graph的真实DOM与computed样本；不是Card Desktop QA PASS。
+- 候选优先main原生非stacked组下leaf直属leaf-content，避开native divider sibling；root/nested split的既有gap4px作用于groups之间。stacked同时存在多个非零尺寸leaf与兄弟竖向tab header，不能用inactive代替hidden；首个候选应排除stacked，不改其滚动/可见性。
+- No new token / no geometry change：复用既有surface/border/Radius/workspace aliases；pane尺寸、ratio、divider hit area、gap/padding、content width、scroll/overflow、header高度与Sidebar/Ribbon/Status Bar合同全部保留。物理border可能消耗空间；native hidden overflow下圆角可能收紧裁切；中性边界如何避免被opaque子内容盖住尚需证据。
+- Focus建议：neutral-only outer shell候选，Decision010 header active Accent/inactive neutral完全保持。禁止移动Focus信号或补造header-hidden active cue。原生header开关已恢复并读到show-view-header=true。
+- Notebook Navigator：优先社区兼容性样本；测试Vault只有Style Settings1.0.9，NN NOT INSTALLED / NOT TESTED，版本/布局N/A。官方guide+固定source667ece262dda7645c78a76812b12a70d788aae24（source manifest3.4.3）审查公开nn-theme变量、mode/user优先级、原生host与插件内部双栏/scroll边界；未安装/执行，不声称交互PASS，不复用源码或扩大Card范围。
+- 环境：独立P415-Preset-Acceptance Vault，当前Obsidian1.14.4、Style Settings1.0.9；Installer1.10.6/Windows25H2 26200.8737沿用记录。普通窗1024×800，main980×800，独立pane488px、stacked leaf408px；未独立调整800px全窗口或验收Card resize。
+- 结束：仅用native命令改变测试布局/模式与临时header配置；只读Console查询，无DOM/CSS修改、listener/helper/runtime。关闭测试Vault/DevTools后恢复备份配置并核对hash。日常Vault未用于本次实验；installed/root theme SHA256仍CB30DFB7C0E288EAC9DFEB03D51DD43CB62B6FCCE9957C62C80805C8B537DA90。
+- Validation：独立tracked-file副本npm run check第二次PASS（首次仅副本freshness重建）；git diff --check PASS。src/settings/theme.css/scripts与同步后694ff8c保持完全一致；仅本报告、DECISIONS/CURRENT_STATUS/TASKS/AI_HANDOFF五份文档进入同一checkpoint。历史P4.1报告未改；不创建PR，不合并main。
+- Next gate：Chat决定最小后续研究；圆角/非几何边界绘制、stacked off-state、custom/community/absent-header、RTL/pop-out/DPI及完整交互回归仍未知。不自动启动Prototype或compatibility实现。
+
+## P4.2b Non-layout Boundary Painter Spike — 2026-10-19
+
+- [Report](P4_2B_CARD_BOUNDARY_SPIKE.md)：**Proceed to bounded prototype** 是研究建议，不是正式 Card 实现/验收或新的产品决策；返回 Chat 审定下一范围，不自行实施。
+- 临时 snippet 仅作用于独立 Vault 的 ordinary main direct leaf-content，明确排除 stacked 和 view-owned nested hosts。A0 outward outline 不清楚；A1/A2 inward outline offset -1px 可见，A2 复用现有8px Radius，为首选。B1/B2 inset shadow 被 opaque children 遮盖，未形成可信连续外框，不推荐。
+- 固定布局20条有效记录：3 baseline +17实验，single / 左右 / nested+Graph+narrow 的 rect、divider、gap、overflow与scroll尺寸逐值相同。实际A2 divider drag成功，右窄pane约409px；主动resize和状态切换不混入 painter 几何比较。早期窗口尺寸/旧Console样本已排除。
+- Radius0/8/20的single geometry相同；A20 nested曲线真实可见。未新增overflow，但native hidden overflow已有，radius可能收紧原生角部clip；不声称20px角部/overlay全认证，不为新host增加clipping。
+- A2 ordinary→stacked→ordinary：stacked两leaf outline none0/radius0，native横滚329→79，409/738尺寸不变；ordinary恢复outline/radius，无stale。Header native隐藏时neutral outline仍在，Focus header-hidden限制保留；恢复后show-view-header存在、display flex。
+- Source空行caret/UpDown、LP多行selection、Reading独立scroll、pane/tab切换、实际divider resize、Graph pan smoke无明显副作用。不是完整P2/P3或Card QA。Dark为本轮模式；Light、Notebook Navigator（未安装/NOT TESTED）、其他community hosts/pop-out/RTL/DPI及极端角部仍未认证。
+- 测试结束关闭隔离Vault/DevTools，恢复备份并核对全部备份配置及两笔记hash；删除临时snippet，appearance无enable引用。root/installed theme SHA256仍CB30DFB7C0E288EAC9DFEB03D51DD43CB62B6FCCE9957C62C80805C8B537DA90。日常Vault未使用。
+- Validation：独立tracked-file副本npm run check第二次PASS，首次仅副本freshness重建，normalized输出与repo一致；git diff --check PASS。只提交本报告/CURRENT_STATUS/AI_HANDOFF/TASKS；src/settings/theme/scripts/DECISIONS和历史证据不改。当前分支正常commit/push，无PR/main合并。
+
+## P4.2c Bounded Card Shell Implementation Checkpoint
+
+From synced remote71363e7, created independent codex/p4-card-shell-prototype. First commit isolates failed Preset runtime: restores exact abab4f5 settings, deletes active preset-prototype.css, rebuilds theme. Old Preset branch/history and all reports/QA/RESET-01/closeout/Decision013/P4.2 evidence preserved. No new decision.
+
+Second commit adds exact A2 selector and only outline1px neutral / offset-1px / existing workspace radius in layout/card-shell.css; no geometry, overflow, background, shadow, active Card, Sidebar/content/plugin internals or setting/token/runtime expansion. Focus/Layout/View Header/build script unchanged. Stacked excluded without fallback.
+
+Build / Check / diff-check and exact static/source/generated-section comparisons PASS. Only Card generated section added after isolation. Desktop QA PENDING; spike results do not certify this artifact. Known limits and future QA risks in [prototype report](P4_2C_CARD_SHELL_PROTOTYPE.md). Prototype implementation ≠ Card feature accepted; no QA/PR/main merge in this task.
