@@ -1,0 +1,18 @@
+/* Documented Graph variables; no graph-controls-width or renderer dimensions. */
+.workspace-leaf-content:is([data-type="graph"], [data-type="localgraph"]) {
+  --graph-text: var(--theme-text-normal);
+  --graph-line: var(--theme-border);
+  --graph-node: var(--theme-text-muted);
+  --graph-node-unresolved: var(--theme-text-faint);
+  --graph-node-focused: var(--theme-accent);
+  --graph-node-tag: color-mix(in oklch, var(--color-green) 65%, var(--theme-text-normal));
+  --graph-node-attachment: color-mix(in oklch, var(--color-blue) 65%, var(--theme-text-normal));
+  background-color: var(--theme-bg-primary);
+}
+
+.workspace-leaf-content:is([data-type="graph"], [data-type="localgraph"]) .graph-controls {
+  background-color: var(--theme-bg-card);
+  border-color: var(--theme-border);
+  border-radius: var(--theme-workspace-control-radius);
+  color: var(--theme-text-muted);
+}

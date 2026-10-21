@@ -193,7 +193,27 @@ async function validateManifest() {
   }
 }
 
+async function assertPkmBoundaries() {
+  const modules = ["src/editor/seamless-embed.css", "src/navigation/rainbow-folders.css", "src/apps/canvas.css", "src/apps/graph.css"];
+  for (const file of modules) {
+    const source = await readFile(path.join(projectRoot, file), "utf8");
+    const plain = source.replace(/\/\*[\s\S]*?\*\//g, "");
+    if (/!important/.test(plain)) fail(`${file}: important is outside PKM scope.`);
+    if (/^\s*(?:width|height|min-width|max-width|min-height|max-height|position|transform|overflow(?:-[xy])?|flex(?:-[\w-]+)?|padding(?:-[\w-]+)?|margin(?:-[\w-]+)?)\s*:/m.test(plain)) fail(`${file}: geometry/scroll override is outside PKM scope.`);
+    if (file.endsWith("canvas.css") && plain.includes(":has(")) fail("Canvas must not use :has.");
+    if (file.includes("rainbow")) {
+      for (const rule of plain.matchAll(/([^{}]+)\{[^{}]*\}/g)) {
+        if (!rule[1].trim().startsWith("body.fusion-rainbow-folders ")) fail("Rainbow must be opt-in body-class gated.");
+      }
+    }
+  }
+  const settings = await readFile(path.join(projectRoot, "settings/style-settings.css"), "utf8");
+  const entries = extractStyleSettingEntries(settings);
+  if (entries.filter((entry) => entry.type !== "heading").length !== 4) fail("Phase5C must retain four settings only.");
+}
+
 async function validateCss() {
+  await assertPkmBoundaries();
   const css = await readFile(path.join(projectRoot, "theme.css"), "utf8");
   const lightCss = await readFile(path.join(projectRoot, "src/base/light.css"), "utf8");
   const darkCss = await readFile(path.join(projectRoot, "src/base/dark.css"), "utf8");

@@ -4,19 +4,15 @@ Last Updated: 2026-10-21 (America/Los_Angeles)
 
 ## Current milestone
 
-**Phase 5A + 5B Mid-cycle Integrated Desktop QA: PASS (bounded Windows environment).** Tested implementation `aeec39a0f1842406d50afc69fcc132a9635b972a`, including 5A `4e85ceecfbde45a85493fb4e6e46a60cbb1479db`, on `codex/p5-feature-completion`. See [integrated Desktop QA](P5_MID_CYCLE_DESKTOP_QA.md) for actual actions, computed-style evidence, environment and limits.
+**Phase5C PKM Surfaces implemented / integrated QA pending**. Branch codex/p5-feature-completion, baselineeb3bc1805ac5cb2c6226ebcaac1eca6622baaa70. Seamless Embed、optional Rainbow Folder、Canvas/Graph four modules complete; no new tokens/settings/runtime. Static/build validation PASS, no5C DesktopQA.
 
-Obsidian 1.14.4 / Installer 1.10.6 / Windows 11 25H2 build 26200.8737 / Style Settings 1.0.9. Independent QA Vault only. Root/installed SHA256 `FBE0D2223FB9F1BA3582EFF74F45D993B908D61239C4299EEE38870AF268E8F4` matched before and after testing.
+5A/5B mid-cycle DesktopQA PASS, issue inventory A=0/B=0/C=1. No mid-cycle fix batch; C-01 Sidebar resting reveal stays Final Tuning Backlog, unchanged. New code does not modify5A/5B/Card/Decision012/013/014.
 
-5A Focus/chrome, ordinary/stacked tabs, Ribbon/Status, native Graph/nested resizing and 419px narrow pane were usable; inactive body and Card remained neutral/readable. Native Header keyboard focus/activation worked. Actual reduced-motion media activation disabled sampled new transitions, then emulation was cleared. Source/LP ordinary active line used actual `.cm-active`, with subtle 6% RGB Accent; special HyperMD blocks and Reading were preserved.
+## Next step
 
-5B Reading/LP prose selectors matched; nonzero indent/spacing/letter/word/heading size/weight and bold controls responded. LP heading-to-heading blank correctly fell back to paragraph spacing. Reading code/math/footnote exclusions held. Source new prose matches were zero and each real blank remained navigable at native 27.2px; no default redesign or width regression found. Pretty/balance supported; CJK autospace **UNSUPPORTED in tested Electron**.
+**Phase5D Customization**, not DesktopQA. Expanded user configuration later; current four settings unchanged. Full scope/limitations/static references in [P5 plan](P5_FEATURE_COMPLETION_PLAN.md#5c-implementation-checkpoint). Final integratedQA/concentrated tuning later; no PR/main merge now.
 
-## Limits and next step
-
-**A=0 / B=0 / C=1. Next: maintainer review of the single Phase 5 Mid-cycle Fix Batch.** C-01: selected Sidebar tab keeps direct header opacity 1 via `:has(.is-active)`, even when main content is focused; decide whether this is the intended resting reveal policy before any tuning. No mandatory source fix established; no onsite implementation changes made. Exact held 1px press frame remains unverified, native tab/close sequential focus and unavailable plugin/bottom-action/metadata cases remain N/A. Existing NN/Radius20/header-hidden/pop-out/RTL/platform/accessibility limits persist.
-
-QA fixtures archived/removed, temporary styles/class absent, reduced-motion override off, original configuration restored except the matching Phase 5 artifact; both original note hashes unchanged. Isolated-copy npm check PASS, build inputs identical and normalized generated output equal; staged five-document diff-check PASS. Only five QA/status/plan documents change. Decision013 Preset Documentation-only and Decision014 bounded Card unchanged. No 5C/5D, settings expansion, PR, merge or release was started.
+Embed limited to rendered shell/identity/link chrome; no nested typography/scroll/height overrides. Rainbow body-class-only folder titles, baseline unchanged withoutclass. Canvas native user palettes/background/borders retained, selectedoutline/controls unified; group boundary/chevron microfeatures conservatively inherited. Graph documentedvariables only, no physics/size. Actual new classes and rendering remain finalQA pending, not standalone research blockers. Existing NN/platform/accessibility limits remain.
 
 ## Historical evidence — retained for traceability
 

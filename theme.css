@@ -756,6 +756,40 @@ body {
   }
 }
 
+/* Source: src/editor/seamless-embed.css */
+/* Rendered Markdown contexts only; public embed variables preserve native
+ * height/scroll ownership. The identity edge follows direction via start. */
+:is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed, .file-embed) {
+  --embed-background: transparent;
+  --embed-border-start: 1px solid var(--theme-border);
+  --embed-border-end: 0;
+  --embed-border-top: 0;
+  --embed-border-bottom: 0;
+  background-color: transparent;
+  border-inline-start: var(--embed-border-start);
+  border-inline-end: 0;
+  border-block: 0;
+  border-radius: var(--theme-workspace-control-radius);
+  box-shadow: none;
+}
+
+:is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed, .file-embed):hover {
+  --embed-border-start: 1px solid var(--theme-border-hover);
+}
+
+:is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed, .file-embed):focus-within {
+  --embed-border-start: 1px solid var(--theme-accent);
+}
+
+:is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed-title, .markdown-embed-link, .file-embed-link) {
+  color: var(--theme-text-muted);
+  transition: color var(--theme-transition-fast);
+}
+
+:is(.markdown-reading-view, .markdown-source-view.mod-cm6.is-live-preview) :is(.markdown-embed, .file-embed):is(:hover, :focus-within) :is(.markdown-embed-title, .markdown-embed-link, .file-embed-link) {
+  color: var(--theme-text-normal);
+}
+
 /* Source: src/navigation/file-explorer.css */
 body {
   --nav-item-size: 0.9em;
@@ -777,6 +811,43 @@ body {
 
   --nav-collapse-icon-color: var(--theme-text-faint);
   --nav-collapse-icon-color-collapsed: var(--theme-text-muted);
+}
+
+/* Source: src/navigation/rainbow-folders.css */
+/* Opt-in native folder titles only; files/backgrounds/selection stay native. */
+body.fusion-rainbow-folders .workspace-leaf-content[data-type="file-explorer"] .nav-folder:not(.mod-root):nth-child(7n + 1) > .nav-folder-title {
+  --nav-item-color: color-mix(in oklch, var(--color-red) 55%, var(--theme-text-normal));
+  --nav-item-color-hover: color-mix(in oklch, var(--color-red) 70%, var(--theme-text-normal));
+}
+
+body.fusion-rainbow-folders .workspace-leaf-content[data-type="file-explorer"] .nav-folder:not(.mod-root):nth-child(7n + 2) > .nav-folder-title {
+  --nav-item-color: color-mix(in oklch, var(--color-orange) 55%, var(--theme-text-normal));
+  --nav-item-color-hover: color-mix(in oklch, var(--color-orange) 70%, var(--theme-text-normal));
+}
+
+body.fusion-rainbow-folders .workspace-leaf-content[data-type="file-explorer"] .nav-folder:not(.mod-root):nth-child(7n + 3) > .nav-folder-title {
+  --nav-item-color: color-mix(in oklch, var(--color-yellow) 55%, var(--theme-text-normal));
+  --nav-item-color-hover: color-mix(in oklch, var(--color-yellow) 70%, var(--theme-text-normal));
+}
+
+body.fusion-rainbow-folders .workspace-leaf-content[data-type="file-explorer"] .nav-folder:not(.mod-root):nth-child(7n + 4) > .nav-folder-title {
+  --nav-item-color: color-mix(in oklch, var(--color-green) 55%, var(--theme-text-normal));
+  --nav-item-color-hover: color-mix(in oklch, var(--color-green) 70%, var(--theme-text-normal));
+}
+
+body.fusion-rainbow-folders .workspace-leaf-content[data-type="file-explorer"] .nav-folder:not(.mod-root):nth-child(7n + 5) > .nav-folder-title {
+  --nav-item-color: color-mix(in oklch, var(--color-cyan) 55%, var(--theme-text-normal));
+  --nav-item-color-hover: color-mix(in oklch, var(--color-cyan) 70%, var(--theme-text-normal));
+}
+
+body.fusion-rainbow-folders .workspace-leaf-content[data-type="file-explorer"] .nav-folder:not(.mod-root):nth-child(7n + 6) > .nav-folder-title {
+  --nav-item-color: color-mix(in oklch, var(--color-blue) 55%, var(--theme-text-normal));
+  --nav-item-color-hover: color-mix(in oklch, var(--color-blue) 70%, var(--theme-text-normal));
+}
+
+body.fusion-rainbow-folders .workspace-leaf-content[data-type="file-explorer"] .nav-folder:not(.mod-root):nth-child(7n + 7) > .nav-folder-title {
+  --nav-item-color: color-mix(in oklch, var(--color-purple) 55%, var(--theme-text-normal));
+  --nav-item-color-hover: color-mix(in oklch, var(--color-purple) 70%, var(--theme-text-normal));
 }
 
 /* Source: src/layout/card-shell.css */
@@ -888,4 +959,70 @@ body {
 .status-bar > .status-bar-item.mod-clickable:not(.is-disabled):not([aria-disabled="true"]):active {
     transform: none;
   }
+}
+
+/* Source: src/apps/canvas.css */
+/* Native dots and canvas-color/user palette remain owned by Obsidian.
+ * Background inherits Fusion public surfaces; never replace colored nodes. */
+.workspace-leaf-content[data-type="canvas"] {
+  --canvas-background: var(--theme-bg-primary);
+  --canvas-card-label-color: var(--theme-text-muted);
+}
+
+.canvas-wrapper .canvas-node-container {
+  border-radius: var(--theme-workspace-control-radius);
+}
+
+/* Outline does not consume node interior; native user-colored border remains. */
+.canvas-wrapper .canvas-node.is-selected .canvas-node-container {
+  outline: 1px solid var(--theme-accent);
+  outline-offset: -1px;
+}
+
+.canvas-wrapper .canvas-node-label {
+  color: var(--theme-text-muted);
+}
+
+.canvas-wrapper .canvas-node-label:hover {
+  color: var(--theme-text-normal);
+}
+
+.canvas-wrapper :is(.canvas-controls-group, .canvas-menu) {
+  background-color: var(--theme-bg-card);
+  border-color: var(--theme-border);
+  border-radius: var(--theme-workspace-control-radius);
+}
+
+.canvas-wrapper :is(.canvas-control-item, .canvas-menu-item) {
+  color: var(--theme-text-muted);
+  transition: color var(--theme-transition-fast), background-color var(--theme-transition-fast);
+}
+
+.canvas-wrapper :is(.canvas-control-item, .canvas-menu-item):hover {
+  color: var(--theme-text-normal);
+  background-color: var(--theme-hover-bg);
+}
+
+.canvas-wrapper :is(.canvas-control-item, .canvas-menu-item):is(.is-active, :active) {
+  background-color: var(--theme-active-bg);
+}
+
+/* Source: src/apps/graph.css */
+/* Documented Graph variables; no graph-controls-width or renderer dimensions. */
+.workspace-leaf-content:is([data-type="graph"], [data-type="localgraph"]) {
+  --graph-text: var(--theme-text-normal);
+  --graph-line: var(--theme-border);
+  --graph-node: var(--theme-text-muted);
+  --graph-node-unresolved: var(--theme-text-faint);
+  --graph-node-focused: var(--theme-accent);
+  --graph-node-tag: color-mix(in oklch, var(--color-green) 65%, var(--theme-text-normal));
+  --graph-node-attachment: color-mix(in oklch, var(--color-blue) 65%, var(--theme-text-normal));
+  background-color: var(--theme-bg-primary);
+}
+
+.workspace-leaf-content:is([data-type="graph"], [data-type="localgraph"]) .graph-controls {
+  background-color: var(--theme-bg-card);
+  border-color: var(--theme-border);
+  border-radius: var(--theme-workspace-control-radius);
+  color: var(--theme-text-muted);
 }

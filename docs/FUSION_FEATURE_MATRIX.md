@@ -40,10 +40,10 @@ Future module candidates do not lift existing deferrals automatically. Promote a
 
 | ID | Feature | Source / rationale | Priority | Status |
 | --- | --- | --- | --- | --- |
-| D01 | Advanced Rainbow Folder | Fusion earlier roadmap; unnecessary for completed native hierarchy | Deferred | Deferred; no color-coded folder system |
-| D02 | Canvas / Graph redesign | Fusion earlier roadmap; separate application surfaces | Deferred | Deferred |
+| D01 | Advanced Rainbow Folder | Fusion earlier roadmap; unnecessary for completed native hierarchy | Phase5C | Phase 5C implemented / integrated QA pending (historically Deferred; current maintainer batch authority) |
+| D02 | Canvas / Graph redesign | Fusion earlier roadmap; separate application surfaces | Phase5C | Phase 5C implemented / integrated QA pending (historically Deferred; current maintainer batch authority) |
 | D03 | Advanced Animation | Fusion scope boundary | Deferred | Deferred; E01 does not authorize it |
-| D04 | Seamless Embed | Fusion earlier roadmap; source/selector feasibility unverified | Deferred | Deferred; separate review required |
+| D04 | Seamless Embed | Fusion earlier roadmap; source/selector feasibility unverified | Phase5C | Phase 5C implemented / integrated QA pending (historically Deferred; current maintainer batch authority) |
 | D05 | Companion Plugin / runtime UI | Fusion architecture excludes runtime | Deferred | Deferred; not a CSS implementation route |
 | D06 | Wholesale source-theme CSS, settings or preset import | Conflicts with independent token/module contract | Deferred | Excluded approach |
 
@@ -52,3 +52,5 @@ Future module candidates do not lift existing deferrals automatically. Promote a
 Phase5 follows batched implementation and integrated QA under the maintainer instruction; implementation completion does not mean Desktop PASS. Update status only with evidence: source revision for upstream behavior, commit/check evidence for implementation, real Desktop results for QA and actual remote evidence for merge. New work must map to an existing ID or add a reviewed row; do not expand scope solely because a source theme contains a feature.
 
 Phase5A scope: chrome-only Focus hierarchy, soft reveal without collapse, static/native active-line indication and reduced-motion-aware feedback. Decision013/014 remain effective.
+
+Phase5C authority restores D01 optional native-folder palette, D02 Canvas/Graph presentation and D04 seamless embed shells. Historical deferrals remain provenance; no data/interaction engine or plugin patch implied.

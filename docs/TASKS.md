@@ -272,3 +272,13 @@ NN fixture drag/drop remains UNVERIFIED/non-blocking coverage limitation, not a 
 - [x] D limits retained: autospace unsupported, native tab/close sequential focus N/A, unavailable optional controls/plugins/metadata N/A, exact held press frame unverified
 
 This single batch replaces per-issue Phase gates. PASS does not mean final Phase5 completion, a new setting/runtime, PR/merge or expanded platform/plugin/accessibility certification. Decision013/014 unchanged. P3.3 C=0 remains the historical no-corrective-rhythm conclusion; 5B adds default-preserving optional capabilities. Delivery is five documents only on codex/p5-feature-completion; staged diff-check PASS; obtain exact QA commit/push from Git at closeout.
+
+## Phase5C current checkpoint
+
+- [x] Continueeb3bc18;5A/5B mid-cycle PASS A=0/B=0/C=1, C-01 moved to Final Tuning Backlog, no fixes
+- [x] Seamless Embed / optional Rainbow Folder / Canvas / Graph — Phase5C implemented / final integrated QA pending
+- [x] Build/Check/diff-check + PKM boundary guards / unchanged oldsource/settings/Decisions
+- [ ] **Next:5D Customization**, no DesktopQA now
+- [ ] Final integratedQA and concentrated tuning (includes C-01)
+
+Current batch authority lifts historical D01/D02/D04 deferrals for implementedscope, not plugin/data/layout engines. No new tokens/settings; source/width/Source/5A/B/Card unchanged. Scope and skips in P5 plan. NoPR/merge/DesktopQA in this task.
