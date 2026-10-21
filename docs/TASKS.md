@@ -238,6 +238,16 @@ NN fixture drag/drop remains UNVERIFIED/non-blocking coverage limitation, not a 
 - [x] Bounded Shell-level Card Layout COMPLETE / accepted for integration；Decision014
 - [x] Preserve Decision013、P4.1 historical FAIL/evidence；no failed Preset runtime in integration
 - [x] Build/Check/diff-check；runtime/settings/generatedCSS unchanged from99b7845
-- [ ] Integration PR Chat review；merge未授权
+- [x] PR #12 Chat final review PASS；用户授权merge commit合并
 
 本条为当前状态，supersedes历史pending promotion过程条目。仅ordinary main neutral A2 shell，stacked退出；Focus不变，zero geometry/overflow/newtoken/setting/runtime。NN3.4.3 Sidebar/main-host PASS；drag/drop UNVERIFIED，Radius20 bounded，header-hidden Focus已知限制及pop-outs/RTL/平台/accessibility未认证均保留。不代表完整Card系统；Focus Enhancement/Auto Hide/Effects继续Defer，Preset遵守Decision013。
+
+## P4.2 post-merge checkpoint
+
+- [x] PR #12 MERGED；merge commit `c9c75c3f4f2aa4d53ae82b5e2ecebddb18ccf18c`，历史commits保留
+- [x] P4.2 bounded Card shell COMPLETE / merged to main；Decision014未改
+- [x] Main包含Card/source/evidence，失败Preset runtime不存在；Decision013 Documentation-only有效
+- [x] 合并后及docs Check（含Build）/diff-check、生成同步与runtime preservation核对
+- [x] 仅CURRENT_STATUS/AI_HANDOFF/TASKS更新；main checkpoint正常commit/push
+
+当前integration待办关闭；Card历史分支保留。NN drag/drop UNVERIFIED、Radius20 bounded、header-hidden no extra Focus cue；pop-outs/RTL/其他平台/accessibility未认证，既有N/A保持。Focus Enhancement/Auto Hide/Effects继续Defer；等待独立授权的下一个review，不自动启动新Phase4功能或release。上方创建/审查PR的过程文字不再是当前待办。

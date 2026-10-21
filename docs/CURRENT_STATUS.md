@@ -4,17 +4,19 @@ Last Updated: 2026-10-21 (America/Los_Angeles)
 
 ## Current milestone
 
-**P4.2 Bounded Shell-level Card Layout COMPLETE / accepted for integration.** Chat independent implementation review与Desktop QA review均PASS；维护者已批准bounded promotion。Decision014记录正式范围，不是完整Card Layout System或release acceptance。
+**P4.2 bounded Card shell COMPLETE / merged to main.** PR #12 `feat: add bounded workspace card shell` MERGED with merge commit `c9c75c3f4f2aa4d53ae82b5e2ecebddb18ccf18c`. Reviewed head e1b37cad699c6bec4a9adaa03a44c4f640195a0a retained in history; no squash/rebase. Current branch main; post-merge docs checkpoint hash via git.
 
-- Branch `codex/p4-card-shell-prototype`；implementation `935c8ed5b3cc24e74ad90c0134eb20e7f02b0bfe`；Desktop QA `99b7845a66990664d82eef9a75a151968ce67b10`。
-- 接受唯一ordinary main direct-host A2 neutral outline/offset-1px/existing radius；stacked完全排除；Focus header Accent/neutral不变；zero geometry/overflow、新token/setting/runtime变化。
-- [Desktop QA](P4_2D_CARD_SHELL_DESKTOP_QA.md) PASS：Light/Dark、Source/LP/Reading、Graph、Radius0/8/20、split/nested/narrow、stacked off-state与NN3.4.3 Sidebar/main-host测试范围。NN drag/drop UNVERIFIED；Radius20 bounded；header-hidden Focus既有限制保留；pop-outs/RTL/其他DPI/平台/全插件/accessibility不认证。
-- Preset Documentation-only Decision013不变；失败实验源码/QA/RESET-01/closeout历史保留，活动runtime已隔离。Focus Enhancement / Auto Hide / Effects继续Defer。
-- 本轮仅DECISIONS/CURRENT_STATUS/AI_HANDOFF/TASKS；Build/Check/diff-check PASS；src/settings/theme/scripts与QA commit逐字不变。未重新Desktop QA，不扩大兼容范围。
+Decision014 remains unchanged: ordinary main neutral inward outline/offset-1px/existing radius only, stacked excluded, Focus active-header Accent/inactive neutral retained, no geometry/overflow/token/setting/runtime changes. Card implementation and all historical QA/evidence preserved. Failed Preset active runtime absent; Decision013 Preset Documentation-only remains effective.
 
 ## Limits and next step
 
-创建Card branch→main integration PR并返回Chat review；不merge/squash/rebase。main基线a6a69c22184bb892cd121e210858354c31a0c745。PR身份以GitHub返回值为准；accepted for integration不是已合并。无后续功能实现授权。
+NN3.4.3 Sidebar/main-host tested compatibility PASS; **NN drag/drop UNVERIFIED**, **Radius20 bounded**, **header-hidden no extra Focus cue**. Pop-outs / RTL / other DPI/platforms / all plugins / accessibility and screen-reader certification excluded. Existing Phase2/3 N/A retained.
+
+Integration gate is closed; next gate is maintainer/Chat selection of a separately scoped review, not automatic feature implementation. Focus Enhancement / Auto Hide / Effects remain Defer; no new Phase4 feature, prototype or release is authorized. Card branch codex/p4-card-shell-prototype is retained as historical evidence, not deleted.
+
+## Post-merge documentation checkpoint
+
+PR #12 merge confirmed on GitHub; local main fast-forwarded to `c9c75c3f4f2aa4d53ae82b5e2ecebddb18ccf18c`. Post-merge Check (includes Build) / diff-check PASS; generated CSS synchronized and unchanged. This checkpoint updates only CURRENT_STATUS / AI_HANDOFF / TASKS, with Decision014 and all CSS/settings/build/runtime byte-for-byte unchanged. Check / diff-check rerun before committing and pushing main. No new Desktop QA claim.
 
 ## Historical evidence — retained for traceability
 
