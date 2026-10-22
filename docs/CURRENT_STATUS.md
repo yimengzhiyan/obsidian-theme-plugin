@@ -1,18 +1,30 @@
 # Current Status
 
-Last Updated: 2026-10-21 (America/Los_Angeles)
+Last Updated: 2026-10-22 (America/Los_Angeles)
 
 ## Current milestone
 
-**Phase5D Customization implemented / Final Integrated QA pending. 5A–5D feature implementation complete.** codex/p5-feature-completion from5D baseline6693706e820351cd911313be048045ef67cc3cfc.35 independent controls(26variable+9class), no Preset/runtime/customreset/CJKUI. Originalfour settings compatible; all no-plugin defaults preserved through negative gating; Rainbowdefaultoff. Only new token active-line-strength6%.
+**Phase 5 Final Integrated Desktop QA completed — awaiting Chat final review**
 
-5A/5B mid-cycle DesktopQA PASS A=0/B=0/C=1; C-01 Sidebar resting reveal unchanged Final Tuning Backlog.5C and5D await finalQA. Decision012/013/014 unchanged; no release/PR/main merge.
+Branch `codex/p5-feature-completion`; tested implementation `b5443fe068b84a7358b4fe291d59c3d84cced7bd`. 5A–5D are implemented; final bounded Desktop QA disposition **PASS WITH FIXES**, A=0/B=3/C=2/D=6 categories. [Final integrated report](P5_FINAL_INTEGRATED_DESKTOP_QA.md) is the current QA authority; mid-cycle PASS is historical. No onsite implementation changes, release, PR or main merge.
 
-## Next step
+## Findings and next step
 
-**Chat Final Phase5 Code Review → Phase5 Final Integrated Desktop QA**. Do not auto-startQA. Verify setting combinations, defaults/storage/reset, no-plugin baseline, allsurface opt-outs, motion/accessibility and fullregression. CJKautospaceUI intentionally withheld for current unsupported runtime; capability retained. Details [P5 plan](P5_FEATURE_COMPLETION_PLAN.md#5d-customization-checkpoint).
+- B-01: Obsidian1.14.4 / Style Settings1.0.9 restores an open settings view with `view.setSettings is not a function`, preventing saved overrides/classes from applying. Closing the settings tab before restart restores the same data correctly. Relevant optional-plugin integration failure, not theme metadata/Pickr noise.
+- B-02: Canvas single-selection uses `is-focused`; Fusion inward outline only matches `is-selected`. Multi-selection works and user colors remain.
+- B-03: Graph host attachment variable is blue-mixed but rendered SVG remains native yellow. Observed paint discrepancy; renderer/scoping cause remains for review.
+- C-01 final recommendation **KEEP** selected Sidebar header reveal; C-02 muted default.72 versus native step/display.70 precision mismatch. No tuning applied.
+- D: autospace unsupported; exact held press frame, persistent Embed focus-within, interspersed folder/file sort, physical1000px width, and broader platform/control/surface combinations remain explicitly bounded.
 
-Build/Check/diff-check and static negativegate/default/protectedsource comparisons PASS. No desktop results inferred. No new visualfeature: only parameters/optouts for existingconsumers; Source LP-only contract and nativewidth unchanged. Native-* removes module styling, leaving existing Foundation/native inheritance.
+**Next: Chat final review → one authorized Final Fix / Tuning decision.** Do not implement automatically or declare Phase5 Complete. Preserve Decision012/013/014, Source/LP/native-width contracts and current scope.
+
+## Validation and cleanup
+
+Actual35controls/9toggles, no-plugin defaults, native fallback combinations, individual Reset/restart, Rainbow ON/OFF restart, saved-profile plugin disable/restart, Light/Dark, PKM interactions, layouts, Source stress and independent reduced-motion routes were exercised with qualifications in the report. Default Reset data{} and clean default restart confirmed.
+
+Independent Vault fixtures archived/removed; backup configuration restored except retained tested CSS/manifest, Dark/text16/plugin enabled/data{}, original2note hashes unchanged. Root/installed CSS SHA256 `EB33196C6805B8B954050E60A61D3068F034F17E59A12F4E27E60D5700A25DD5`; manifest `B810490B4E3C4DCAFF1C5DB0A23BF3718CDD0C0E044AB7C5F9321A406816887E`. No injected styles/classes; media emulation off; app closed.
+
+Direct npmcheck PASS after verifying CRLF/LF-only generated-file difference; tested artifact bytes restored/hash-checked. Isolated-copy check also PASS. Documentation-only five-file delivery; final diff-check/commit/push verified at closeout. Exact QA commit comes from Git, not the tested implementation hash.
 
 ## Historical evidence — retained for traceability
 

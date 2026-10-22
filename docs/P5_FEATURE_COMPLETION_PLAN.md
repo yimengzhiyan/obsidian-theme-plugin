@@ -1,5 +1,27 @@
 # Phase 5 Feature Completion Plan
 
+## Final integrated Desktop QA — current checkpoint, 2026-10-22
+
+**Phase 5 Final Integrated Desktop QA completed — awaiting Chat final review**
+
+Tested implementation b5443fe068b84a7358b4fe291d59c3d84cced7bd on codex/p5-feature-completion, following authorized Chat final code review. [Final QA report](P5_FINAL_INTEGRATED_DESKTOP_QA.md): **PASS WITH FIXES, A0/B3/C2/D6 categories**. 5A–5D implementation is present; final product acceptance is pending Chat review. Mid-cycle PASS and prior finalQA-pending wording below are historical.
+
+Actual35control UI and default/plugin-free baseline, all9toggle paths, Minimal/Full/Writing combinations, six nativeReset/restart cases, RainbowON/OFF restart, saved-profile disable/restart, real Embed/Canvas/Global+LocalGraph, Light/Dark, split/nested/narrow/stacked, Source physical stress, reduced-motion routes and bounded regression completed with report qualifications. No source fix, new runtime, preset system, PR or merge was introduced.
+
+### Concentrated Final Fix / Tuning decision
+
+- B-01: optional Style Settings1.0.9 view-restoration exception on Obsidian1.14.4 prevents applying saved overrides/classes when its view is restored open. Saved data remains; closing that tab/restart is the successful comparison. Decide dependency compatibility/upstream handling.
+- B-02: actual Canvas single selection uses is-focused, whereas the outline rule targets is-selected; multi-selection works. Review state coverage without overriding user colors or geometry.
+- B-03: actual SVG Graph attachment remains native yellow despite host blue-mixed variable; verify renderer consumption/scoping before accepting the category styling. Observed mismatch is evidence; internal cause remains an inference.
+- C-01 recommendation **KEEP** selected Sidebar header reveal. C-02 muted.72 default versus native min.4/step.05 display.70 is an optional precision tuning decision.
+- D categories remain explicit: autospace unsupported; held press frame, persistent Embed focus-within, arbitrary interspersed sorting, physical1000px text width and broader control/surface/platform/accessibility coverage not certified.
+
+**Next: Chat review → authorize one batch → focused implementation/retest. Do not auto-implement.** No Phase5 Complete until an acceptable final disposition is subsequently accepted. Preserve Decision012/013/014 and all Source/native-width/Card boundaries.
+
+QA cleanup restored backup config/appearance except retained tested artifacts, data{}, originalnotes unchanged, no temporary fixture/class/style, mediaoff. npmcheck passed after CRLF/LF-only generated-content verification; tested artifact hash unchanged. Delivery is exactly five documents, with final diff-check/docs-only commit/push confirmed at closeout.
+
+## Historical plan and implementation checkpoints
+
 Baseline: main `4cb19c4c90a870cbcab3fc145c204d25a2b5266d`; long-lived branch `codex/p5-feature-completion`. Maintainer route: **Feature Completion first → batched implementation → integrated Desktop QA → concentrated fixes**. Pure modular CSS, native interaction and generated artifact remain mandatory; no product runtime/DOM patch/plugin. Actual runtime requirements, unexpressible DOM or stable-contract conflicts stop only the affected subfeature.
 
 ## 5A Workspace Experience

@@ -1,5 +1,23 @@
 # Tasks
 
+## Phase 5 Final Integrated Desktop QA — current authority, 2026-10-22
+
+**Phase 5 Final Integrated Desktop QA completed — awaiting Chat final review**
+
+- [x] Test exact b5443fe on codex/p5-feature-completion in independent Vault; [final report](P5_FINAL_INTEGRATED_DESKTOP_QA.md).
+- [x] Actual35controls/9toggles; no-plugin baseline; defaults/customization/native fallbacks; Minimal/Full/Writing combinations; Reset/persistence/plugin-disabled restart; PKM interactions; Light/Dark/layouts/Source/reduced-motion/regression, with explicit D limits.
+- [x] Collect full inventory without onsite source fixes: **PASS WITH FIXES, A0/B3/C2/D6 categories**.
+- [x] B-01 settings-view restart integration failure; B-02 Canvas single-focus outline; B-03 Graph attachment palette consumption discrepancy, cause still for review.
+- [x] C-01 recommendation KEEP; C-02 muted range/default precision recorded; no tuning applied.
+- [x] Native default Reset + clean restart, fixture archive/removal, config/appearance restore, original-note and artifact hashes verified.
+- [x] npmcheck PASS with CRLF/LF-only comparison and tested-artifact preservation; five-document QA delivery, final diff-check/commit/push at closeout.
+- [ ] Chat final review / accept inventory, coverage limits and C-01 recommendation.
+- [ ] Authorize one Final Fix / Tuning batch; decide B-01 dependency handling, B-02 selector coverage, B-03 renderer category verification and optional C-02 precision change.
+- [ ] Implement only after authorization, then retest affected surfaces plus defaults/Reset/restart/regression.
+- [ ] Phase5 final acceptance/promotion only after Chat accepts the resulting disposition; no automatic PR/main merge/release.
+
+The historical checkpoints below retain their original process wording. Earlier “final QA pending / do not start QA” and mid-cycle-only counts are superseded by this current section; the historical implementation and failed Preset evidence remain unchanged.
+
 ## Milestone: V0.1 Foundation
 
 - [x] **Bootstrap** — Git、项目结构、manifest、文档、Build / Check 和 baseline

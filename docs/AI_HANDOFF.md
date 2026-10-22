@@ -1,10 +1,10 @@
 # AI Handoff
 
-- **Current**：Phase5D Customization implemented / Final Integrated QA pending；5A–5D featureimplementation complete，no finalQA/release/PR/mainmerge。
-- **Branch**：codex/p5-feature-completion，5D baseline6693706e820351cd911313be048045ef67cc3cfc，当前hash用git获取。
-- **Settings**：35independent controls，26variables+9class toggles；Appearance/Workspace/Reading & Writing/PKM嵌套分组；原four IDs/types/defaults/ranges不变。No Preset/classselect/customreset/JS/runtime。Onlynewtoken active-line-strength6%。
-- **Gates**：negativebody gates nativepane/activeline/motion/smartwrap/embeds/Canvas/Graph；fullworkspacechrome opacity-only覆盖；Rainbowpositive opt-in defaultfalse(允许插件command)。No-plugin baseline保留6693706默认。CSSheadingweights仍semantic references，UI700/700/600/600/500/500。
-- **Preserve**：Decision012/013/014不变，PresetDocumentation-only；Source/LP规则、widthchain、5A.55/.72、Cardpainter/geometry保持。C-01原Sidebar restingbehavior未修，FinalTuningBacklog。
-- **QA state**：5A/5B mid-cyclePASS A0/B0/C1；5C/5D finalQApending；CJKautospace currentruntimeunsupported，不暴露UI，保留futurecapability。No new Desktop execution。
-- **Checks**：Build/Check/diff-checkPASS，approvedsettings/defaults/formats/gates/token/PKMboundaries及无插件default静态核对。Slider reset/persistence完全依赖现有StyleSettings，不作P4.1式恢复承诺。
-- **Next**：Chat FinalPhase5 CodeReview → Phase5 FinalIntegrated DesktopQA；不要自动开始。完整scope见[P5 plan](P5_FEATURE_COMPLETION_PLAN.md)。
+- **Current**: **Phase 5 Final Integrated Desktop QA completed — awaiting Chat final review**. Final bounded disposition **PASS WITH FIXES**, A0/B3/C2/D6 categories; [full report](P5_FINAL_INTEGRATED_DESKTOP_QA.md). Not Phase5 Complete.
+- **Branch / implementation**: codex/p5-feature-completion; tested b5443fe068b84a7358b4fe291d59c3d84cced7bd. QA commit is docs-only; obtain its exact hash/push state from Git.
+- **B batch for Chat decision**: B-01 optional Style Settings1.0.9 / Obsidian1.14.4 open-view restart prevents applying saved config (data intact; close settings tab/restart works); B-02 Canvas single-focus outline missing while multi-select works; B-03 actual Graph SVG attachment remains yellow despite blue host variable, renderer consumption/scoping needs review. No source fix made.
+- **Tuning**: C-01 KEEP selected Sidebar direct-header reveal; C-02 muted default.72/native range.70 precision. Neither changed onsite.
+- **Evidence**: actual35UI controls, no-plugin defaults, all9toggle paths/combinations, individual6Reset + restart, RainbowON/OFF persistence, saved-profile disable/restart behavior, real embeds/Canvas/Global+LocalGraph, Light/Dark, narrow/nested/stacked, Source physical stress, independent+combined reduced motion. Report distinguishes measured, visual, inferred and unsupported coverage.
+- **Limits**: autospace=false/no UI; held-press frame, persistent Embed focus-within, interspersed native sort, physical1000px viewport, broader control/surface/platform/accessibility combinations not certified. No false blanket category-paint PASS.
+- **Validation / cleanup**: npmcheck PASS after CRLF/LF-only verification; tested artifact bytes retained. CSS root/installed EB33196C6805B8B954050E60A61D3068F034F17E59A12F4E27E60D5700A25DD5, manifest B810490B4E3C4DCAFF1C5DB0A23BF3718CDD0C0E044AB7C5F9321A406816887E. Fixtures archived/removed; original2notes unchanged; backup config restored except artifacts, Dark16/pluginenabled/data{}, no injected style/class, mediaoff/appclosed.
+- **Next**: Chat final review and one explicitly authorized Final Fix / Tuning batch, followed by affected retests. No automatic implementation/PR/release/main merge. Preserve Decision012/013/014, Source/native width and no-runtime scope. Earlier pending-finalQA instructions are superseded by this completed QA checkpoint.
