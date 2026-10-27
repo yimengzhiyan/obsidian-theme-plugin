@@ -2,7 +2,7 @@
 
 ## Status vocabulary
 
-Planning documents reviewed by Chat, as reported by the maintainer. Planning review alone does not authorize implementation. Source means design inspiration or evidence, not copied code. `Complete` describes the existing verified baseline; `Candidate` means documented but unapproved and unimplemented; `Deferred` remains outside current implementation scope. Latest instruction authorizes W01 workspace tokens + Tabs first milestone only; remaining implementation stops for review.
+Planning documents reviewed by Chat, as reported by the maintainer. Planning review alone does not authorize implementation. Source means design inspiration or evidence, not copied code. `Complete` describes the existing verified baseline; `Candidate` means documented but unapproved and unimplemented; `Deferred` remains outside current implementation scope. Current authority: Phase5 batched feature completion; W02/F01/F02/E01/E02 implemented pending integrated QA. Earlier per-feature deferrals are historical for these bounded5A capabilities.
 
 Priorities: **Baseline** = preserve existing capability; **P1** = first review candidate; **P2** = evaluate after baseline/shell contracts; **P3** = later optional investigation; **Deferred** = no implementation commitment. Priorities are proposals, not deadlines. Composer/Border references are summarized in [source analysis](SOURCE_THEME_ANALYSIS.md); detailed upstream selector analysis remains pending.
 
@@ -24,15 +24,15 @@ Priorities: **Baseline** = preserve existing capability; **P1** = first review c
 | ID | Module / feature | Source / confidence | Priority | Status | Dependency / review gate |
 | --- | --- | --- | --- | --- | --- |
 | W01 | Workspace: shell density and hierarchy refinement | Fusion baseline; Border customization documented | P1 | P3.1a Tab Shell refinement implemented; Desktop QA / final review pending; other modules untouched | [P3.1 plan](P3_1_WORKSPACE_FUSION_PLAN.md); preserve active/hover states and resizing |
-| W02 | Workspace: optional chrome reduction | Border auto-hide documented; Fusion design interpretation | P2 | Candidate; historically deferred | Define exactly which controls; keyboard/pointer recovery and CSS feasibility |
+| W02 | Workspace: optional chrome reduction | Border auto-hide documented; Fusion design interpretation | P2 | Phase 5A implemented / integrated QA pending | [Phase5 batch plan](P5_FEATURE_COMPLETION_PLAN.md); combined5A+5B Desktop QA, no per-feature gate |
 | L01 | Layout: optional card/panel separation | Border Card Layout documented | P2 | Candidate; historically deferred | W01 contract; split/stacked panes and constrained-window QA; baseline fallback |
-| F01 | Focus System: reversible content emphasis | Fusion synthesis; not asserted as an upstream named feature | P2 | Candidate; historically deferred | Specify activation/recovery; no hidden required control or Source geometry changes |
-| F02 | Focus System: optional auto-hide/reveal | Border auto-hide documented | P3 | Candidate; historically deferred | W02/F01; focus-within and pointer behavior evidence; no runtime dependency |
-| R01 | Reading Enhancement: opt-in mixed Chinese/English typography | Composer comfort goal documented; Fusion-specific interpretation | P2 | Candidate | Preserve user fonts, 1.5/2.0 line height and Source navigation; define actual consumer |
-| R02 | Reading Enhancement: first-line indent / granular spacing and emphasis | Fusion P2.2 deferred follow-up; upstream ownership unverified | P3 | Candidate; historically deferred | Opt-in proposal; document code/list/quote exclusions and reading-view scope |
+| F01 | Focus System: reversible content emphasis | Fusion synthesis; not asserted as an upstream named feature | P2 | Phase 5A implemented / integrated QA pending | [Phase5 batch plan](P5_FEATURE_COMPLETION_PLAN.md); combined5A+5B Desktop QA, no per-feature gate |
+| F02 | Focus System: optional auto-hide/reveal | Border auto-hide documented | P3 | Phase 5A implemented / integrated QA pending | [Phase5 batch plan](P5_FEATURE_COMPLETION_PLAN.md); combined5A+5B Desktop QA, no per-feature gate |
+| R01 | Reading Enhancement: opt-in mixed Chinese/English typography | Composer comfort goal documented; Fusion-specific interpretation | P2 | Phase 5B implemented / integrated QA pending | [Phase5 plan](P5_FEATURE_COMPLETION_PLAN.md); optional controls/progressive polish, native Source preserved |
+| R02 | Reading Enhancement: first-line indent / granular spacing and emphasis | Fusion P2.2 deferred follow-up; upstream ownership unverified | P3 | Phase 5B implemented / integrated QA pending | [Phase5 plan](P5_FEATURE_COMPLETION_PLAN.md); optional controls/progressive polish, native Source preserved |
 | P01 | Presets: semantic combinations and restoration model | Border preset mechanism and Composer color schemes documented | P2 | Candidate; historically deferred | Stable reviewed module contracts; define schema, override precedence and persistence first |
-| E01 | Effects: restrained optional feedback / surfaces | Border motion inspiration credits; Fusion-specific interpretation | P3 | Candidate | Reduced-motion, contrast, clipping and performance gates; off-by-default proposal |
-| E02 | Effects: hover-line indication | Border Hover line indicator documented | P3 | Candidate | Demonstrate value; preserve selection and caret readability |
+| E01 | Effects: restrained optional feedback / surfaces | Border motion inspiration credits; Fusion-specific interpretation | P3 | Phase 5A implemented / integrated QA pending | [Phase5 batch plan](P5_FEATURE_COMPLETION_PLAN.md); combined5A+5B Desktop QA, no per-feature gate |
+| E02 | Effects: hover-line indication | Border Hover line indicator documented | P3 | Phase 5A implemented / integrated QA pending | [Phase5 batch plan](P5_FEATURE_COMPLETION_PLAN.md); combined5A+5B Desktop QA, no per-feature gate |
 
 Future module candidates do not lift existing deferrals automatically. Promote a candidate only through Chat review and update TASKS with a bounded scope; keep the other candidates unimplemented. Presets follow the selected stable module contracts, not every candidate in this table.
 
@@ -40,13 +40,21 @@ Future module candidates do not lift existing deferrals automatically. Promote a
 
 | ID | Feature | Source / rationale | Priority | Status |
 | --- | --- | --- | --- | --- |
-| D01 | Advanced Rainbow Folder | Fusion earlier roadmap; unnecessary for completed native hierarchy | Deferred | Deferred; no color-coded folder system |
-| D02 | Canvas / Graph redesign | Fusion earlier roadmap; separate application surfaces | Deferred | Deferred |
+| D01 | Advanced Rainbow Folder | Fusion earlier roadmap; unnecessary for completed native hierarchy | Phase5C | Phase 5C implemented / integrated QA pending (historically Deferred; current maintainer batch authority) |
+| D02 | Canvas / Graph redesign | Fusion earlier roadmap; separate application surfaces | Phase5C | Phase 5C implemented / integrated QA pending (historically Deferred; current maintainer batch authority) |
 | D03 | Advanced Animation | Fusion scope boundary | Deferred | Deferred; E01 does not authorize it |
-| D04 | Seamless Embed | Fusion earlier roadmap; source/selector feasibility unverified | Deferred | Deferred; separate review required |
+| D04 | Seamless Embed | Fusion earlier roadmap; source/selector feasibility unverified | Phase5C | Phase 5C implemented / integrated QA pending (historically Deferred; current maintainer batch authority) |
 | D05 | Companion Plugin / runtime UI | Fusion architecture excludes runtime | Deferred | Deferred; not a CSS implementation route |
 | D06 | Wholesale source-theme CSS, settings or preset import | Conflicts with independent token/module contract | Deferred | Excluded approach |
 
 ## Maintenance rule
 
-Every promoted row needs a reviewed specification and QA gate before implementation. Update status only with evidence: source revision for upstream behavior, commit/check evidence for implementation, real Desktop results for QA and actual remote evidence for merge. New work must map to an existing ID or add a reviewed row; do not expand scope solely because a source theme contains a feature.
+Phase5 follows batched implementation and integrated QA under the maintainer instruction; implementation completion does not mean Desktop PASS. Update status only with evidence: source revision for upstream behavior, commit/check evidence for implementation, real Desktop results for QA and actual remote evidence for merge. New work must map to an existing ID or add a reviewed row; do not expand scope solely because a source theme contains a feature.
+
+Phase5A scope: chrome-only Focus hierarchy, soft reveal without collapse, static/native active-line indication and reduced-motion-aware feedback. Decision013/014 remain effective.
+
+Phase5C authority restores D01 optional native-folder palette, D02 Canvas/Graph presentation and D04 seamless embed shells. Historical deferrals remain provenance; no data/interaction engine or plugin patch implied.
+
+## Phase5D Customization (current authority)
+
+Phase5D implemented / Final Integrated QA pending:35 independent controls,26 variables/9 class toggles, no Preset or CJK UI. 5A–5D implementation complete; no finalQA/release claim. Settings expose existing W02/F01/F02/E01/E02/R01/R02/D01/D02/D04 consumers, retaining their prior QA boundaries. See P5 plan; next Chat final code review then Final Integrated DesktopQA. C-01 stays Final Tuning Backlog; Decision013 Documentation-only unchanged.

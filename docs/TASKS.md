@@ -1,5 +1,46 @@
 # Tasks
 
+<!-- P5 FINAL FIX CURRENT START -->
+## Final Fix + Tuning Batch — 2026-10-27 (Asia/Shanghai)
+
+**Final acceptance PASS; PR #13 is open and awaiting integration merge.** Focused Desktop retest PASS. Implementation commit **a0284df7c4ce961a9c45f00584c59592bc0ac378**, baseline bc181f0befb869a6695b7b33f50605a9afb94215, branch `codex/p5-feature-completion`. PR: [#13 — feat: complete Phase 5 Fusion theme experience](https://github.com/yimengzhiyan/obsidian-theme-plugin/pull/13). This current-status block supersedes the pending-review wording retained in the historical checkpoints below. The authorized PR has not yet been merged, and no release/tag is being made.
+
+| Item | Final focused disposition |
+| --- | --- |
+| B-01 | **External Style Settings / Obsidian restored-view compatibility limitation**, excluded from Theme B count; no Fusion source fix or workaround code. Normal session metadata loads and no new Theme-side error observed. Workaround: **Close the Style Settings view before restarting Obsidian if this upstream restoration issue occurs.** |
+| B-02 | **RESOLVED / PASS**: actual single .is-focused and multi .is-selected share one inward Accent outline, offset -1px. RGB Accent, native user-colored node/group, drag/resize and native Canvas ON/OFF passed. |
+| B-03 | **RESOLVED / PASS**: seven documented Graph variables are body-gated; real rendered SVG blue / mixed-green tags, muted unresolved, neutral lines and Accent focus passed in focused checks. Light/Dark, Local Graph smoke, native Graph ON/OFF, pan/zoom/open-note passed. Actual native transient body-child color helper identified; no renderer overrides. |
+| C-01 | **KEEP / accepted behavior**: selected Sidebar tab remains the persistent orientation/reveal cue; source unchanged. |
+| C-02 | **RESOLVED / PASS**: .01 step; visible .72 default, .71/.73 setting, Reset .72, runtime .72 and closed-settings-view restart .72 all confirmed. No delayed-save issue observed. |
+
+**Current issue inventory: Theme A=0, Theme B=0; C-01 accepted KEEP; C-02 resolved; B-01 external limitation; all original D-01–D-06 limitations retained.** No unsupported cross-platform/full-matrix claim.
+
+Build / Check / diff-check PASS; six negative static variants rejected. Exactly **35 controls / 26 variables / 9 toggles** remain. No new token/toggle/runtime JS/Presets, Decision012/013/014 or 5A/5B source changes. Changed implementation files: src/apps/canvas.css, src/apps/graph.css, settings/style-settings.css, scripts/check.mjs, generated theme.css. This focused-results commit updates only the same five durable docs.
+
+Independent Vault cleanup PASS: fixtures archived then removed, ten backed-up configuration files restored (Dark/Fusion/font16/Style Settings data{}), original two note hashes unchanged, tested CSS/manifest retained and equal to repository artifacts. theme.css SHA256 **7939A0C0AFA1AE20B10F44C25845627F7939523A45D18DB141693689F51BD6B3**. Desktop tool reconnect failure was recovered by reinitialization; remaining tests were subsequently completed.
+
+<!-- P5 FINAL FIX CURRENT END -->
+
+## Prior checkpoint / original observations — retained
+
+## Phase 5 Final Integrated Desktop QA — historical checkpoint, 2026-10-22 (superseded)
+
+At this checkpoint, Phase 5 Final Integrated Desktop QA had completed and was awaiting Chat final review. The final focused retest and PR #13 authorization are recorded in the current-status block above.
+
+- [x] Test exact b5443fe on codex/p5-feature-completion in independent Vault; [final report](P5_FINAL_INTEGRATED_DESKTOP_QA.md).
+- [x] Actual35controls/9toggles; no-plugin baseline; defaults/customization/native fallbacks; Minimal/Full/Writing combinations; Reset/persistence/plugin-disabled restart; PKM interactions; Light/Dark/layouts/Source/reduced-motion/regression, with explicit D limits.
+- [x] Collect full inventory without onsite source fixes: **PASS WITH FIXES, A0/B3/C2/D6 categories**.
+- [x] B-01 settings-view restart integration failure; B-02 Canvas single-focus outline; B-03 Graph attachment palette consumption discrepancy, cause still for review.
+- [x] C-01 recommendation KEEP; C-02 muted range/default precision recorded; no tuning applied.
+- [x] Native default Reset + clean restart, fixture archive/removal, config/appearance restore, original-note and artifact hashes verified.
+- [x] npmcheck PASS with CRLF/LF-only comparison and tested-artifact preservation; five-document QA delivery, final diff-check/commit/push at closeout.
+- [ ] Chat final review / accept inventory, coverage limits and C-01 recommendation.
+- [ ] Authorize one Final Fix / Tuning batch; decide B-01 dependency handling, B-02 selector coverage, B-03 renderer category verification and optional C-02 precision change.
+- [ ] Implement only after authorization, then retest affected surfaces plus defaults/Reset/restart/regression.
+- [ ] Phase5 final acceptance/promotion only after Chat accepts the resulting disposition; no automatic PR/main merge/release.
+
+The historical checkpoints below retain their original process wording. Earlier “final QA pending / do not start QA” and mid-cycle-only counts are superseded by this current section; the historical implementation and failed Preset evidence remain unchanged.
+
 ## Milestone: V0.1 Foundation
 
 - [x] **Bootstrap** — Git、项目结构、manifest、文档、Build / Check 和 baseline
@@ -251,3 +292,46 @@ NN fixture drag/drop remains UNVERIFIED/non-blocking coverage limitation, not a 
 - [x] 仅CURRENT_STATUS/AI_HANDOFF/TASKS更新；main checkpoint正常commit/push
 
 当前integration待办关闭；Card历史分支保留。NN drag/drop UNVERIFIED、Radius20 bounded、header-hidden no extra Focus cue；pop-outs/RTL/其他平台/accessibility未认证，既有N/A保持。Focus Enhancement/Auto Hide/Effects继续Defer；等待独立授权的下一个review，不自动启动新Phase4功能或release。上方创建/审查PR的过程文字不再是当前待办。
+
+## Phase5 — Batched Feature Completion (current authority)
+
+- [x] Create codex/p5-feature-completion from synced main4cb19c4
+- [x] 5A W02/F01/F02/E01/E02 implemented; 5B R01/R02 implemented on the same branch
+- [x] Build/Check/diff-check and protected Card/settings/typography/Decision contracts
+- [x] Mid-cycle integrated Desktop QA at aeec39a: **PASS**, bounded environment; [report](P5_MID_CYCLE_DESKTOP_QA.md)
+- [x] Actual workspace/chrome/native keyboard, ordinary/stacked, Graph/nested/narrow, reduced-motion activation and Source/LP active-line smoke
+- [x] Default/nonzero Reading/LP consumers, actual math/footnote exclusions, Source real-blank navigation, heading fallback, width/line-height and Light/Dark regression
+- [x] Archive/remove temporary fixtures; restore configuration except tested artifact; original-note hashes and root/installed SHA unchanged
+- [x] Isolated-copy npm check PASS; 28 inputs byte-identical and normalized generated output equal
+- [ ] Maintainer review of **Phase 5 Mid-cycle Fix Batch** below
+- [ ] 5C PKM surfaces; 5D customization; final integrated QA — not started by this task
+
+### Phase 5 Mid-cycle Fix Batch
+
+- [ ] C-01 policy/tuning review: selected Sidebar tab keeps direct header opacity 1 via :has(.is-active), even with main focus. Confirm whether this is desired; only adjust if maintainers choose a different resting policy. Preserve content opacity and plugin boundaries.
+- [x] No confirmed A blocker or B needs-fix item; no onsite source changes
+- [x] D limits retained: autospace unsupported, native tab/close sequential focus N/A, unavailable optional controls/plugins/metadata N/A, exact held press frame unverified
+
+This single batch replaces per-issue Phase gates. PASS does not mean final Phase5 completion, a new setting/runtime, PR/merge or expanded platform/plugin/accessibility certification. Decision013/014 unchanged. P3.3 C=0 remains the historical no-corrective-rhythm conclusion; 5B adds default-preserving optional capabilities. Delivery is five documents only on codex/p5-feature-completion; staged diff-check PASS; obtain exact QA commit/push from Git at closeout.
+
+## Phase5C current checkpoint
+
+- [x] Continueeb3bc18;5A/5B mid-cycle PASS A=0/B=0/C=1, C-01 moved to Final Tuning Backlog, no fixes
+- [x] Seamless Embed / optional Rainbow Folder / Canvas / Graph — Phase5C implemented / final integrated QA pending
+- [x] Build/Check/diff-check + PKM boundary guards / unchanged oldsource/settings/Decisions
+- [ ] **Next:5D Customization**, no DesktopQA now
+- [ ] Final integratedQA and concentrated tuning (includes C-01)
+
+Current batch authority lifts historical D01/D02/D04 deferrals for implementedscope, not plugin/data/layout engines. No new tokens/settings; source/width/Source/5A/B/Card unchanged. Scope and skips in P5 plan. NoPR/merge/DesktopQA in this task.
+
+## Phase5D — current checkpoint
+
+- [x] 35independent controls/26variables+9toggles; grouped UI, existingfour compatible
+- [x] Chrome/fullvisibility/Card/active-line/motion; Rhythm/Text/Headings; nativeEmbed/Canvas/Graph/Rainbow
+- [x] Negativegating keeps no-plugin defaults; oneactive-line-strengthtoken, noPreset/customreset/CJKUI
+- [x] Build/Check/diff-check and contract/default/source preservation
+- [x] 5A–5D featureimplementation complete / FinalIntegratedQA pending
+- [ ] **Next: Chat FinalPhase5 CodeReview**
+- [ ] Separately execute Phase5 FinalIntegrated DesktopQA/concentratedfixes
+
+NoQA/release/PR/mainmerge in5D。C-01 remainsFinalTuningBacklog；Decision012/013/014unchanged。Historical exactlyfoursettings refers pre5D；newUI35controls do not change originalfour savedkeys。CJKfuturecapabilityretained UIwithheld。

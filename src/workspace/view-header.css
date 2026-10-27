@@ -33,3 +33,17 @@
 .workspace-split.mod-root .workspace-leaf-content > .view-header > .view-actions > .view-action:not(.is-disabled):not([aria-disabled="true"]).is-active {
   background-color: var(--theme-active-bg);
 }
+
+/* Soft reduction preserves native targets and layout; keyboard entry reveals. */
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action {
+  opacity: var(--theme-workspace-chrome-dim-opacity);
+}
+
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf.mod-active > .workspace-leaf-content > .view-header > .view-actions > .view-action {
+  opacity: var(--theme-workspace-chrome-muted-opacity);
+}
+
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header:is(:hover, :focus-within) > .view-actions > .view-action,
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action:is(.is-active, :active, :focus-visible) {
+  opacity: 1;
+}

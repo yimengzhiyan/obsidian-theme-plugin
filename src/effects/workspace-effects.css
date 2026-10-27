@@ -1,0 +1,60 @@
+/* Phase 5A motion is limited to explicit workspace chrome/control shells. */
+body:not(.fusion-disable-workspace-effects) .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action,
+body:not(.fusion-disable-workspace-effects) .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header-inner-close-button,
+body:not(.fusion-disable-workspace-effects) .workspace-ribbon .side-dock-ribbon-action,
+body:not(.fusion-disable-workspace-effects) .status-bar > .status-bar-item.mod-clickable,
+body:not(.fusion-disable-workspace-effects) .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-header-title-container,
+body:not(.fusion-disable-workspace-effects) .workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs > .workspace-tab-header-container,
+body:not(.fusion-disable-workspace-effects) .status-bar > .status-bar-item {
+  transition:
+    opacity var(--theme-transition-normal),
+    color var(--theme-transition-fast),
+    background-color var(--theme-transition-fast),
+    box-shadow var(--theme-transition-fast),
+    outline-color var(--theme-transition-fast),
+    transform var(--theme-transition-fast);
+}body:not(.fusion-disable-workspace-effects) .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action:not(.is-disabled):not([aria-disabled="true"]):active,
+body:not(.fusion-disable-workspace-effects) .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header-inner-close-button:not(.is-disabled):not([aria-disabled="true"]):active,
+body:not(.fusion-disable-workspace-effects) .workspace-ribbon .side-dock-ribbon-action:not(.is-disabled):not([aria-disabled="true"]):active,
+body:not(.fusion-disable-workspace-effects) .status-bar > .status-bar-item.mod-clickable:not(.is-disabled):not([aria-disabled="true"]):active {
+  transform: translateY(1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body:not(.fusion-disable-workspace-effects) .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action,
+body:not(.fusion-disable-workspace-effects) .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header-inner-close-button,
+body:not(.fusion-disable-workspace-effects) .workspace-ribbon .side-dock-ribbon-action,
+body:not(.fusion-disable-workspace-effects) .status-bar > .status-bar-item.mod-clickable,
+body:not(.fusion-disable-workspace-effects) .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-header-title-container,
+body:not(.fusion-disable-workspace-effects) .workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs > .workspace-tab-header-container,
+body:not(.fusion-disable-workspace-effects) .status-bar > .status-bar-item {
+    transition-duration: 0s;
+  }body:not(.fusion-disable-workspace-effects) .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action:not(.is-disabled):not([aria-disabled="true"]):active,
+body:not(.fusion-disable-workspace-effects) .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header-inner-close-button:not(.is-disabled):not([aria-disabled="true"]):active,
+body:not(.fusion-disable-workspace-effects) .workspace-ribbon .side-dock-ribbon-action:not(.is-disabled):not([aria-disabled="true"]):active,
+body:not(.fusion-disable-workspace-effects) .status-bar > .status-bar-item.mod-clickable:not(.is-disabled):not([aria-disabled="true"]):active {
+    transform: none;
+  }
+}
+
+/* Accessibility convenience changes opacity only, not native visibility. */
+body.fusion-full-workspace-chrome .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf:not(.mod-active) > .workspace-leaf-content > .view-header > .view-header-title-container,
+body.fusion-full-workspace-chrome .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf.mod-active > .workspace-leaf-content > .view-header > .view-header-title-container,
+body.fusion-full-workspace-chrome .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header:is(:hover, :focus-within) > .view-header-title-container,
+body.fusion-full-workspace-chrome .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action,
+body.fusion-full-workspace-chrome .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf.mod-active > .workspace-leaf-content > .view-header > .view-actions > .view-action,
+body.fusion-full-workspace-chrome .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header:is(:hover, :focus-within) > .view-actions > .view-action,
+body.fusion-full-workspace-chrome .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header > .view-actions > .view-action:is(.is-active, :active, :focus-visible),
+body.fusion-full-workspace-chrome .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header-inner-close-button,
+body.fusion-full-workspace-chrome .workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner-close-button,
+body.fusion-full-workspace-chrome .workspace-ribbon .side-dock-ribbon-action,
+body.fusion-full-workspace-chrome .workspace-ribbon:is(:hover, :focus-within) .side-dock-ribbon-action,
+body.fusion-full-workspace-chrome .workspace-ribbon .side-dock-ribbon-action:is(.is-active, :active, :focus-visible),
+body.fusion-full-workspace-chrome .status-bar > .status-bar-item,
+body.fusion-full-workspace-chrome .status-bar:is(:hover, :focus-within) > .status-bar-item,
+body.fusion-full-workspace-chrome .status-bar > .status-bar-item.mod-clickable:hover,
+body.fusion-full-workspace-chrome .workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs > .workspace-tab-header-container,
+body.fusion-full-workspace-chrome .workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs > .workspace-tab-header-container:is(:hover, :focus-within),
+body.fusion-full-workspace-chrome .workspace-split:is(.mod-left-split, .mod-right-split) > .workspace-tabs > .workspace-tab-header-container:has(.workspace-tab-header:is(.is-active, :active)) {
+  opacity: 1;
+}

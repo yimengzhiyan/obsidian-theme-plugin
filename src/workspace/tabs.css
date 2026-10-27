@@ -96,3 +96,12 @@ body {
     inset 0 -2px 0 var(--theme-indicator),
     0 0 0 var(--tab-outline-width) var(--tab-outline-color);
 }
+
+/* Only ordinary main close chrome; native close visibility still owns display. */
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header-inner-close-button {
+  opacity: var(--theme-workspace-chrome-dim-opacity);
+}
+
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-header-container .workspace-tab-header:is(:hover, :focus-within, .is-active) .workspace-tab-header-inner-close-button {
+  opacity: 1;
+}

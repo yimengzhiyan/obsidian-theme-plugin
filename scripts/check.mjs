@@ -130,7 +130,7 @@ function extractStyleSettingEntries(css) {
     .slice(1)
     .map((entry) => Object.fromEntries(
       [...entry.matchAll(/^\s{4}([a-z][a-z0-9-]*):\s*(.*?)\s*$/gm)]
-        .map((match) => [match[1], match[2]])
+        .map((match) => [match[1], match[2].startsWith('"') ? JSON.parse(match[2]) : match[2]])
     ));
 }
 
@@ -193,13 +193,349 @@ async function validateManifest() {
   }
 }
 
+function assertCustomizationContract(entries, css) {
+  const approved = {
+  "theme-accent": {
+    "type": "variable-text",
+    "default": "#6750a4"
+  },
+  "theme-radius-md": {
+    "type": "variable-number-slider",
+    "default": 8,
+    "min": 0,
+    "max": 20,
+    "step": 1,
+    "format": "px"
+  },
+  "theme-workspace-chrome-dim-opacity": {
+    "type": "variable-number-slider",
+    "default": 0.55,
+    "min": 0.25,
+    "max": 1,
+    "step": 0.05
+  },
+  "theme-workspace-chrome-muted-opacity": {
+    "type": "variable-number-slider",
+    "default": 0.72,
+    "min": 0.4,
+    "max": 1,
+    "step": 0.01
+  },
+  "fusion-full-workspace-chrome": {
+    "type": "class-toggle",
+    "default": false
+  },
+  "theme-active-line-strength": {
+    "type": "variable-number-slider",
+    "default": 6,
+    "min": 0,
+    "max": 15,
+    "step": 1,
+    "format": "%"
+  },
+  "fusion-disable-active-line": {
+    "type": "class-toggle",
+    "default": false
+  },
+  "fusion-disable-workspace-effects": {
+    "type": "class-toggle",
+    "default": false
+  },
+  "fusion-native-pane-shell": {
+    "type": "class-toggle",
+    "default": false
+  },
+  "theme-line-height": {
+    "type": "variable-number-slider",
+    "default": 1.7,
+    "min": 1.2,
+    "max": 2.2,
+    "step": 0.05
+  },
+  "theme-reading-width": {
+    "type": "variable-number-slider",
+    "default": 700,
+    "min": 480,
+    "max": 1200,
+    "step": 20,
+    "format": "px"
+  },
+  "theme-paragraph-spacing": {
+    "type": "variable-number-slider",
+    "default": 0.5,
+    "min": 0,
+    "max": 2,
+    "step": 0.125,
+    "format": "rem"
+  },
+  "theme-heading-spacing": {
+    "type": "variable-number-slider",
+    "default": 1.5,
+    "min": 0.5,
+    "max": 3,
+    "step": 0.125,
+    "format": "rem"
+  },
+  "theme-first-line-indent": {
+    "type": "variable-number-slider",
+    "default": 0,
+    "min": 0,
+    "max": 3,
+    "step": 0.25,
+    "format": "em"
+  },
+  "theme-prose-letter-spacing": {
+    "type": "variable-number-slider",
+    "default": 0,
+    "min": -0.03,
+    "max": 0.08,
+    "step": 0.005,
+    "format": "em"
+  },
+  "theme-prose-word-spacing": {
+    "type": "variable-number-slider",
+    "default": 0,
+    "min": -0.05,
+    "max": 0.2,
+    "step": 0.01,
+    "format": "em"
+  },
+  "theme-bold-modifier": {
+    "type": "variable-number-slider",
+    "default": 200,
+    "min": 0,
+    "max": 300,
+    "step": 50
+  },
+  "fusion-disable-smart-wrap": {
+    "type": "class-toggle",
+    "default": false
+  },
+  "theme-heading-letter-spacing": {
+    "type": "variable-number-slider",
+    "default": 0,
+    "min": -0.03,
+    "max": 0.1,
+    "step": 0.005,
+    "format": "em"
+  },
+  "theme-h1-size": {
+    "type": "variable-number-slider",
+    "default": 1.75,
+    "min": 1.2,
+    "max": 2.5,
+    "step": 0.05,
+    "format": "em"
+  },
+  "theme-h2-size": {
+    "type": "variable-number-slider",
+    "default": 1.5,
+    "min": 1.1,
+    "max": 2.2,
+    "step": 0.05,
+    "format": "em"
+  },
+  "theme-h3-size": {
+    "type": "variable-number-slider",
+    "default": 1.3,
+    "min": 1,
+    "max": 2,
+    "step": 0.05,
+    "format": "em"
+  },
+  "theme-h4-size": {
+    "type": "variable-number-slider",
+    "default": 1.15,
+    "min": 0.9,
+    "max": 1.8,
+    "step": 0.05,
+    "format": "em"
+  },
+  "theme-h5-size": {
+    "type": "variable-number-slider",
+    "default": 1.05,
+    "min": 0.9,
+    "max": 1.6,
+    "step": 0.05,
+    "format": "em"
+  },
+  "theme-h6-size": {
+    "type": "variable-number-slider",
+    "default": 1,
+    "min": 0.85,
+    "max": 1.5,
+    "step": 0.05,
+    "format": "em"
+  },
+  "theme-h1-weight": {
+    "type": "variable-number-slider",
+    "default": 700,
+    "min": 400,
+    "max": 800,
+    "step": 100
+  },
+  "theme-h2-weight": {
+    "type": "variable-number-slider",
+    "default": 700,
+    "min": 400,
+    "max": 800,
+    "step": 100
+  },
+  "theme-h3-weight": {
+    "type": "variable-number-slider",
+    "default": 600,
+    "min": 400,
+    "max": 800,
+    "step": 100
+  },
+  "theme-h4-weight": {
+    "type": "variable-number-slider",
+    "default": 600,
+    "min": 400,
+    "max": 800,
+    "step": 100
+  },
+  "theme-h5-weight": {
+    "type": "variable-number-slider",
+    "default": 500,
+    "min": 400,
+    "max": 800,
+    "step": 100
+  },
+  "theme-h6-weight": {
+    "type": "variable-number-slider",
+    "default": 500,
+    "min": 400,
+    "max": 800,
+    "step": 100
+  },
+  "fusion-native-embeds": {
+    "type": "class-toggle",
+    "default": false
+  },
+  "fusion-rainbow-folders": {
+    "type": "class-toggle",
+    "default": false
+  },
+  "fusion-native-canvas": {
+    "type": "class-toggle",
+    "default": false
+  },
+  "fusion-native-graph": {
+    "type": "class-toggle",
+    "default": false
+  }
+};
+  const controls = entries.filter((entry) => entry.type !== "heading");
+  if (controls.length !== Object.keys(approved).length) fail("Unexpected customization control count.");
+  for (const [id, fields] of Object.entries(approved)) {
+    const found = controls.filter((entry) => entry.id === id);
+    if (found.length !== 1) fail(`Missing/duplicate customization id ${id}.`);
+    for (const [key, value] of Object.entries(fields)) {
+      if (String(found[0][key]) !== String(value)) fail(`Customization ${id} ${key} must preserve approved contract.`);
+    }
+    if (fields.type.startsWith("variable-") && !css.includes(`--${id}:`)) fail(`Undefined customization token ${id}.`);
+    if (fields.type === "class-toggle" && !css.includes(`.${id}`)) fail(`Missing class consumer ${id}.`);
+  }
+  if (entries.some((entry) => entry.type === "class-select" || entry.id === "fusion-cjk-autospace" || /preset/i.test(entry.id))) fail("Preset/CJK UI is not approved.");
+  for (const [file, id] of [
+    ["src/layout/card-shell.css", "fusion-native-pane-shell"],
+    ["src/editor/seamless-embed.css", "fusion-native-embeds"],
+    ["src/apps/canvas.css", "fusion-native-canvas"],
+    ["src/apps/graph.css", "fusion-native-graph"]
+  ]) {
+    // The generated section must retain a negative class gate on every rule.
+    const section = css.split(`/* Source: ${file} */`)[1]?.split("/* Source:")[0] || "";
+    const plain = section.replace(/\/\*[\s\S]*?\*\//g, "");
+    for (const [, selector] of plain.matchAll(/([^{}]+)\{/g)) {
+      const gate = `body:not(.${id})`;
+      const scoped = selector.trim();
+      const graphSemanticOwner = file === "src/apps/graph.css" && scoped === gate;
+      if (!graphSemanticOwner && !scoped.startsWith(gate + " ")) fail(`${file} must opt out by selector gating.`);
+    }
+  }
+}
+
+// Final QA fixes: semantic Graph ownership and native Canvas selection states.
+function assertPkmFinalFixContract(file, plain) {
+  const normalize = (value) => value.replace(/\s+/g, " ").trim();
+  const rules = [...plain.matchAll(/([^{}]+)\{([^{}]*)\}/g)].map((match) => ({
+    selector: normalize(match[1]), declarations: normalize(match[2])
+  }));
+  if (file.endsWith("canvas.css")) {
+    const selector = 'body:not(.fusion-native-canvas) .canvas-wrapper .canvas-node:is(.is-selected, .is-focused) .canvas-node-container';
+    const selected = rules.filter((rule) => rule.selector === selector);
+    if (selected.length !== 1 || selected[0].declarations !== "outline: 1px solid var(--theme-accent); outline-offset: -1px;") {
+      fail("Canvas single-focus/multi-selection must share only the approved inward outline.");
+    }
+  }
+  if (file.endsWith("graph.css")) {
+    const gate = "body:not(.fusion-native-graph)";
+    const host = gate + ' .workspace-leaf-content:is([data-type="graph"], [data-type="localgraph"])';
+    const approved = new Map([
+      [gate, "--graph-text: var(--theme-text-normal); --graph-line: var(--theme-border); --graph-node: var(--theme-text-muted); --graph-node-unresolved: var(--theme-text-faint); --graph-node-focused: var(--theme-accent); --graph-node-tag: color-mix(in oklch, var(--color-green) 65%, var(--theme-text-normal)); --graph-node-attachment: color-mix(in oklch, var(--color-blue) 65%, var(--theme-text-normal));"],
+      [host, "background-color: var(--theme-bg-primary);"],
+      [host + " .graph-controls", "background-color: var(--theme-bg-card); border-color: var(--theme-border); border-radius: var(--theme-workspace-control-radius); color: var(--theme-text-muted);"]
+    ]);
+    if (rules.length !== approved.size) fail("Graph must contain only its global semantic owner and two host-scoped presentation rules.");
+    const seen = new Set();
+    for (const rule of rules) {
+      if (seen.has(rule.selector) || approved.get(rule.selector) !== rule.declarations) {
+        fail("Graph documented variables must be body-gated; presentation must stay host-scoped without renderer overrides.");
+      }
+      seen.add(rule.selector);
+    }
+  }
+}
+
+async function assertPkmBoundaries() {
+  const modules = ["src/editor/seamless-embed.css", "src/navigation/rainbow-folders.css", "src/apps/canvas.css", "src/apps/graph.css"];
+  for (const file of modules) {
+    const source = await readFile(path.join(projectRoot, file), "utf8");
+    const plain = source.replace(/\/\*[\s\S]*?\*\//g, "");
+    if (/!important/.test(plain)) fail(`${file}: important is outside PKM scope.`);
+    if (/^\s*(?:width|height|min-width|max-width|min-height|max-height|position|transform|overflow(?:-[xy])?|flex(?:-[\w-]+)?|padding(?:-[\w-]+)?|margin(?:-[\w-]+)?)\s*:/m.test(plain)) fail(`${file}: geometry/scroll override is outside PKM scope.`);
+    if (file.endsWith("canvas.css") && plain.includes(":has(")) fail("Canvas must not use :has.");
+    assertPkmFinalFixContract(file, plain);
+    if (file.includes("rainbow")) {
+      for (const rule of plain.matchAll(/([^{}]+)\{[^{}]*\}/g)) {
+        if (!rule[1].trim().startsWith("body.fusion-rainbow-folders ")) fail("Rainbow must be opt-in body-class gated.");
+      }
+    }
+  }
+  const settings = await readFile(path.join(projectRoot, "settings/style-settings.css"), "utf8");
+  const entries = extractStyleSettingEntries(settings);
+  assertCustomizationContract(entries, await readFile(path.join(projectRoot, "theme.css"), "utf8"));
+}
+
 async function validateCss() {
+  await assertPkmBoundaries();
   const css = await readFile(path.join(projectRoot, "theme.css"), "utf8");
   const lightCss = await readFile(path.join(projectRoot, "src/base/light.css"), "utf8");
   const darkCss = await readFile(path.join(projectRoot, "src/base/dark.css"), "utf8");
   const colorsCss = await readFile(path.join(projectRoot, "src/base/colors.css"), "utf8");
   const typographyCss = await readFile(path.join(projectRoot, "src/base/typography.css"), "utf8");
   assertCoreTypographyContract(typographyCss);
+  const writingTokens = await readFile(path.join(projectRoot, "src/base/variables.css"), "utf8");
+  const writingDefaults = new Map([
+    ["paragraph-spacing", "var(--theme-space-sm)"], ["heading-spacing", "var(--theme-space-lg)"],
+    ["first-line-indent", "0em"], ["prose-letter-spacing", "0em"],
+    ["prose-word-spacing", "0em"], ["heading-letter-spacing", "0em"],
+    ["bold-modifier", "200"], ["emphasis-color", "var(--theme-text-normal)"]
+  ]);
+  const headingSizes = ["1.75em", "1.50em", "1.30em", "1.15em", "1.05em", "1.00em"];
+  const headingWeights = ["bold", "bold", "semibold", "semibold", "medium", "medium"];
+  headingSizes.forEach((size, i) => {
+    writingDefaults.set(`h${i + 1}-size`, size);
+    writingDefaults.set(`h${i + 1}-weight`, `var(--font-${headingWeights[i]})`);
+  });
+  for (const [name, value] of writingDefaults) {
+    const token = `--theme-${name}:`;
+    const declarations = writingTokens.split(";").filter((part) => part.includes(token));
+    if (declarations.length !== 1 || declarations[0].split(token)[1].trim() !== value) {
+      fail(`Reading/writing default ${name} must preserve the approved baseline.`);
+    }
+  }
   const inlineCss = await readFile(path.join(projectRoot, "src/editor/links-tags-highlight.css"), "utf8");
   assertLinksTagsHighlightContract(inlineCss);
   const blockCss = await readFile(path.join(projectRoot, "src/editor/code-quote-table.css"), "utf8");
@@ -335,9 +671,9 @@ function assertCoreTypographyContract(source) {
   const blank = '.cm-line:not([class*="HyperMD-"]):is(:empty, :has(> br:only-child))';
   const blankLine = `${editor} ${blank}`;
   const approvedSpacingRules = [
-    [blankLine, "line-height: var(--theme-space-sm); min-height: var(--theme-space-sm);"],
-    [`${blankLine}:has(+ .cm-line.HyperMD-header)`, "line-height: var(--theme-space-lg); min-height: var(--theme-space-lg);"],
-    [`${editor} .cm-line.HyperMD-header + ${blank}:has(+ .cm-line.HyperMD-header)`, "line-height: var(--theme-space-sm); min-height: var(--theme-space-sm);"]
+    [blankLine, "line-height: var(--theme-paragraph-spacing); min-height: var(--theme-paragraph-spacing);"],
+    [`${blankLine}:has(+ .cm-line.HyperMD-header)`, "line-height: var(--theme-heading-spacing); min-height: var(--theme-heading-spacing);"],
+    [`${editor} .cm-line.HyperMD-header + ${blank}:has(+ .cm-line.HyperMD-header)`, "line-height: var(--theme-paragraph-spacing); min-height: var(--theme-paragraph-spacing);"]
   ];
   for (const [index, [selector, declaration]] of approvedSpacingRules.entries()) {
     const rule = rules[index + 1];
@@ -364,20 +700,18 @@ function assertCoreTypographyContract(source) {
     ["--line-height-normal", "var(--theme-line-height)"],
     ["--file-line-width", "var(--theme-reading-width)"],
     ["--heading-formatting", "var(--theme-text-faint)"],
-    ["--heading-spacing", "var(--theme-space-lg)"],
-    ["--p-spacing", "var(--theme-space-sm)"],
-    ["--bold-modifier", "200"],
-    ["--bold-color", "var(--theme-text-normal)"],
-    ["--italic-color", "var(--theme-text-normal)"]
+    ["--heading-spacing", "var(--theme-heading-spacing)"],
+    ["--p-spacing", "var(--theme-paragraph-spacing)"],
+    ["--bold-modifier", "var(--theme-bold-modifier)"],
+    ["--bold-color", "var(--theme-emphasis-color)"],
+    ["--italic-color", "var(--theme-emphasis-color)"]
   ]);
-  const sizes = ["1.75em", "1.50em", "1.30em", "1.15em", "1.05em", "1.00em"];
-  const weights = ["bold", "bold", "semibold", "semibold", "medium", "medium"];
   const lineHeights = ["1.20", "1.25", "1.30", "1.30", "1.30", "1.30"];
   for (let index = 0; index < 6; index += 1) {
     const heading = `--h${index + 1}`;
     expected.set(`${heading}-color`, "var(--theme-text-normal)");
-    expected.set(`${heading}-size`, sizes[index]);
-    expected.set(`${heading}-weight`, `var(--font-${weights[index]})`);
+    expected.set(`${heading}-size`, `var(--theme-h${index + 1}-size)`);
+    expected.set(`${heading}-weight`, `var(--theme-h${index + 1}-weight)`);
     expected.set(`${heading}-line-height`, lineHeights[index]);
   }
 

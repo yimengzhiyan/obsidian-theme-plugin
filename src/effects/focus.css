@@ -12,3 +12,13 @@
 .workspace-split.mod-root .workspace-leaf:not(.mod-active) > .workspace-leaf-content > .view-header {
   --file-header-border: 1px solid var(--theme-border);
 }
+
+/* Phase 5A: quiet inactive ordinary chrome only, never view content. */
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf:not(.mod-active) > .workspace-leaf-content > .view-header > .view-header-title-container {
+  opacity: var(--theme-workspace-chrome-muted-opacity);
+}
+
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf.mod-active > .workspace-leaf-content > .view-header > .view-header-title-container,
+.workspace-split.mod-root .workspace-tabs:not(.mod-stacked):not(.workspace-leaf-content *) > .workspace-tab-container > .workspace-leaf > .workspace-leaf-content > .view-header:is(:hover, :focus-within) > .view-header-title-container {
+  opacity: 1;
+}

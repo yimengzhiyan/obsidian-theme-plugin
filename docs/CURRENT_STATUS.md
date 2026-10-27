@@ -1,22 +1,51 @@
 # Current Status
 
-Last Updated: 2026-10-21 (America/Los_Angeles)
+<!-- P5 FINAL FIX CURRENT START -->
+## Final Fix + Tuning Batch — 2026-10-27 (Asia/Shanghai)
 
-## Current milestone
+**Final acceptance PASS; PR #13 is open and awaiting integration merge.** Focused Desktop retest PASS. Implementation commit **a0284df7c4ce961a9c45f00584c59592bc0ac378**, baseline bc181f0befb869a6695b7b33f50605a9afb94215, branch `codex/p5-feature-completion`. PR: [#13 — feat: complete Phase 5 Fusion theme experience](https://github.com/yimengzhiyan/obsidian-theme-plugin/pull/13). This current-status block supersedes the pending-review wording retained in the historical checkpoints below. The authorized PR has not yet been merged, and no release/tag is being made.
 
-**P4.2 bounded Card shell COMPLETE / merged to main.** PR #12 `feat: add bounded workspace card shell` MERGED with merge commit `c9c75c3f4f2aa4d53ae82b5e2ecebddb18ccf18c`. Reviewed head e1b37cad699c6bec4a9adaa03a44c4f640195a0a retained in history; no squash/rebase. Current branch main; post-merge docs checkpoint hash via git.
+| Item | Final focused disposition |
+| --- | --- |
+| B-01 | **External Style Settings / Obsidian restored-view compatibility limitation**, excluded from Theme B count; no Fusion source fix or workaround code. Normal session metadata loads and no new Theme-side error observed. Workaround: **Close the Style Settings view before restarting Obsidian if this upstream restoration issue occurs.** |
+| B-02 | **RESOLVED / PASS**: actual single .is-focused and multi .is-selected share one inward Accent outline, offset -1px. RGB Accent, native user-colored node/group, drag/resize and native Canvas ON/OFF passed. |
+| B-03 | **RESOLVED / PASS**: seven documented Graph variables are body-gated; real rendered SVG blue / mixed-green tags, muted unresolved, neutral lines and Accent focus passed in focused checks. Light/Dark, Local Graph smoke, native Graph ON/OFF, pan/zoom/open-note passed. Actual native transient body-child color helper identified; no renderer overrides. |
+| C-01 | **KEEP / accepted behavior**: selected Sidebar tab remains the persistent orientation/reveal cue; source unchanged. |
+| C-02 | **RESOLVED / PASS**: .01 step; visible .72 default, .71/.73 setting, Reset .72, runtime .72 and closed-settings-view restart .72 all confirmed. No delayed-save issue observed. |
 
-Decision014 remains unchanged: ordinary main neutral inward outline/offset-1px/existing radius only, stacked excluded, Focus active-header Accent/inactive neutral retained, no geometry/overflow/token/setting/runtime changes. Card implementation and all historical QA/evidence preserved. Failed Preset active runtime absent; Decision013 Preset Documentation-only remains effective.
+**Current issue inventory: Theme A=0, Theme B=0; C-01 accepted KEEP; C-02 resolved; B-01 external limitation; all original D-01–D-06 limitations retained.** No unsupported cross-platform/full-matrix claim.
 
-## Limits and next step
+Build / Check / diff-check PASS; six negative static variants rejected. Exactly **35 controls / 26 variables / 9 toggles** remain. No new token/toggle/runtime JS/Presets, Decision012/013/014 or 5A/5B source changes. Changed implementation files: src/apps/canvas.css, src/apps/graph.css, settings/style-settings.css, scripts/check.mjs, generated theme.css. This focused-results commit updates only the same five durable docs.
 
-NN3.4.3 Sidebar/main-host tested compatibility PASS; **NN drag/drop UNVERIFIED**, **Radius20 bounded**, **header-hidden no extra Focus cue**. Pop-outs / RTL / other DPI/platforms / all plugins / accessibility and screen-reader certification excluded. Existing Phase2/3 N/A retained.
+Independent Vault cleanup PASS: fixtures archived then removed, ten backed-up configuration files restored (Dark/Fusion/font16/Style Settings data{}), original two note hashes unchanged, tested CSS/manifest retained and equal to repository artifacts. theme.css SHA256 **7939A0C0AFA1AE20B10F44C25845627F7939523A45D18DB141693689F51BD6B3**. Desktop tool reconnect failure was recovered by reinitialization; remaining tests were subsequently completed.
 
-Integration gate is closed; next gate is maintainer/Chat selection of a separately scoped review, not automatic feature implementation. Focus Enhancement / Auto Hide / Effects remain Defer; no new Phase4 feature, prototype or release is authorized. Card branch codex/p4-card-shell-prototype is retained as historical evidence, not deleted.
+<!-- P5 FINAL FIX CURRENT END -->
 
-## Post-merge documentation checkpoint
+## Prior checkpoint / original observations — retained
 
-PR #12 merge confirmed on GitHub; local main fast-forwarded to `c9c75c3f4f2aa4d53ae82b5e2ecebddb18ccf18c`. Post-merge Check (includes Build) / diff-check PASS; generated CSS synchronized and unchanged. This checkpoint updates only CURRENT_STATUS / AI_HANDOFF / TASKS, with Decision014 and all CSS/settings/build/runtime byte-for-byte unchanged. Check / diff-check rerun before committing and pushing main. No new Desktop QA claim.
+Last Updated: 2026-10-22 (America/Los_Angeles)
+
+## Prior milestone — historical checkpoint, superseded by final retest and PR #13
+
+At that earlier checkpoint, Phase 5 Final Integrated Desktop QA had completed and was awaiting Chat final review. The tested implementation was `b5443fe068b84a7358b4fe291d59c3d84cced7bd`, with the then-current bounded QA disposition **PASS WITH FIXES**, A=0/B=3/C=2/D=6 categories. The subsequent Final Fix + Tuning Batch and final focused retest are recorded above; PR #13 is now the authorized integration path.
+
+## Findings and next step
+
+- B-01: Obsidian1.14.4 / Style Settings1.0.9 restores an open settings view with `view.setSettings is not a function`, preventing saved overrides/classes from applying. Closing the settings tab before restart restores the same data correctly. Relevant optional-plugin integration failure, not theme metadata/Pickr noise.
+- B-02: Canvas single-selection uses `is-focused`; Fusion inward outline only matches `is-selected`. Multi-selection works and user colors remain.
+- B-03: Graph host attachment variable is blue-mixed but rendered SVG remains native yellow. Observed paint discrepancy; renderer/scoping cause remains for review.
+- C-01 final recommendation **KEEP** selected Sidebar header reveal; C-02 muted default.72 versus native step/display.70 precision mismatch. No tuning applied.
+- D: autospace unsupported; exact held press frame, persistent Embed focus-within, interspersed folder/file sort, physical1000px width, and broader platform/control/surface combinations remain explicitly bounded.
+
+**Next: Chat final review → one authorized Final Fix / Tuning decision.** Do not implement automatically or declare Phase5 Complete. Preserve Decision012/013/014, Source/LP/native-width contracts and current scope.
+
+## Validation and cleanup
+
+Actual35controls/9toggles, no-plugin defaults, native fallback combinations, individual Reset/restart, Rainbow ON/OFF restart, saved-profile plugin disable/restart, Light/Dark, PKM interactions, layouts, Source stress and independent reduced-motion routes were exercised with qualifications in the report. Default Reset data{} and clean default restart confirmed.
+
+Independent Vault fixtures archived/removed; backup configuration restored except retained tested CSS/manifest, Dark/text16/plugin enabled/data{}, original2note hashes unchanged. Root/installed CSS SHA256 `EB33196C6805B8B954050E60A61D3068F034F17E59A12F4E27E60D5700A25DD5`; manifest `B810490B4E3C4DCAFF1C5DB0A23BF3718CDD0C0E044AB7C5F9321A406816887E`. No injected styles/classes; media emulation off; app closed.
+
+Direct npmcheck PASS after verifying CRLF/LF-only generated-file difference; tested artifact bytes restored/hash-checked. Isolated-copy check also PASS. Documentation-only five-file delivery; final diff-check/commit/push verified at closeout. Exact QA commit comes from Git, not the tested implementation hash.
 
 ## Historical evidence — retained for traceability
 

@@ -6,3 +6,13 @@ body {
   --theme-workspace-control-radius: var(--theme-radius-md);
   --theme-workspace-control-gap: var(--theme-space-xs);
 }
+
+/* Reused chrome emphasis; content never inherits opacity from these values. */
+body {
+  --theme-workspace-chrome-dim-opacity: 0.55;
+  --theme-workspace-chrome-muted-opacity: 0.72;
+}
+
+body {
+  --theme-active-line-strength: 6%;
+}

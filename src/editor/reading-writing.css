@@ -1,0 +1,47 @@
+/* Main-document prose only. Source has no consumers here; native width stays.
+ * Direct renderer sections exclude nested lists/quotes/callouts/embed content.
+ */
+.workspace-split.mod-root .workspace-leaf-content[data-type="markdown"][data-mode="preview"] > .view-content > .markdown-reading-view > .markdown-preview-view > .markdown-preview-sizer > div > p:not(:is(.footnotes *, .metadata-container *, .callout *, blockquote *, li *, td *, th *)),
+.workspace-split.mod-root .workspace-leaf-content[data-type="markdown"] > .view-content > .markdown-source-view.mod-cm6.is-live-preview .cm-content > .cm-line:not([class*="HyperMD-"]):not(:empty):not(:has(> br:only-child)) {
+  text-indent: var(--theme-first-line-indent);
+  letter-spacing: var(--theme-prose-letter-spacing);
+  word-spacing: var(--theme-prose-word-spacing);
+}
+
+.workspace-split.mod-root .workspace-leaf-content[data-type="markdown"][data-mode="preview"] > .view-content > .markdown-reading-view > .markdown-preview-view > .markdown-preview-sizer > div > :is(h1, h2, h3, h4, h5, h6),
+.workspace-split.mod-root .workspace-leaf-content[data-type="markdown"] > .view-content > .markdown-source-view.mod-cm6.is-live-preview .cm-content > .cm-line.HyperMD-header {
+  letter-spacing: var(--theme-heading-letter-spacing);
+}
+
+/* Inline code/math inside prose must not inherit optional prose spacing. */
+.workspace-split.mod-root .workspace-leaf-content[data-type="markdown"][data-mode="preview"] > .view-content > .markdown-reading-view > .markdown-preview-view > .markdown-preview-sizer > div > p:not(:is(.footnotes *, .metadata-container *, .callout *, blockquote *, li *, td *, th *)) :is(code, pre, .math, .MathJax, mjx-container, .cm-inline-code, .cm-math),
+.workspace-split.mod-root .workspace-leaf-content[data-type="markdown"] > .view-content > .markdown-source-view.mod-cm6.is-live-preview .cm-content > .cm-line:not([class*="HyperMD-"]):not(:empty):not(:has(> br:only-child)) :is(code, pre, .math, .MathJax, mjx-container, .cm-inline-code, .cm-math) {
+  text-indent: 0;
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+
+@supports (text-autospace: normal) {
+  body.fusion-cjk-autospace .workspace-split.mod-root .workspace-leaf-content[data-type="markdown"][data-mode="preview"] > .view-content > .markdown-reading-view > .markdown-preview-view > .markdown-preview-sizer > div > p:not(:is(.footnotes *, .metadata-container *, .callout *, blockquote *, li *, td *, th *)),
+  body.fusion-cjk-autospace .workspace-split.mod-root .workspace-leaf-content[data-type="markdown"] > .view-content > .markdown-source-view.mod-cm6.is-live-preview .cm-content > .cm-line:not([class*="HyperMD-"]):not(:empty):not(:has(> br:only-child)) {
+    text-autospace: normal;
+  }
+
+  body.fusion-cjk-autospace .workspace-split.mod-root .workspace-leaf-content[data-type="markdown"][data-mode="preview"] > .view-content > .markdown-reading-view > .markdown-preview-view > .markdown-preview-sizer > div > p:not(:is(.footnotes *, .metadata-container *, .callout *, blockquote *, li *, td *, th *)) :is(code, pre, .math, .MathJax, mjx-container, .cm-inline-code, .cm-math),
+  body.fusion-cjk-autospace .workspace-split.mod-root .workspace-leaf-content[data-type="markdown"] > .view-content > .markdown-source-view.mod-cm6.is-live-preview .cm-content > .cm-line:not([class*="HyperMD-"]):not(:empty):not(:has(> br:only-child)) :is(code, pre, .math, .MathJax, mjx-container, .cm-inline-code, .cm-math) {
+    text-autospace: no-autospace;
+  }
+}
+
+@supports (text-wrap: pretty) {
+  body:not(.fusion-disable-smart-wrap) .workspace-split.mod-root .workspace-leaf-content[data-type="markdown"][data-mode="preview"] > .view-content > .markdown-reading-view > .markdown-preview-view > .markdown-preview-sizer > div > p:not(:is(.footnotes *, .metadata-container *, .callout *, blockquote *, li *, td *, th *)) {
+    text-wrap: pretty;
+  }
+}
+
+@supports (text-wrap: balance) {
+  body:not(.fusion-disable-smart-wrap) .workspace-split.mod-root .workspace-leaf-content[data-type="markdown"][data-mode="preview"] > .view-content > .markdown-reading-view > .markdown-preview-view > .markdown-preview-sizer > div > :is(h1, h2, h3),
+body:not(.fusion-disable-smart-wrap) .workspace-split.mod-root .workspace-leaf-content[data-type="markdown"] > .view-content > .markdown-source-view.mod-cm6.is-live-preview .cm-content > .cm-line.HyperMD-header:is(.HyperMD-header-1, .HyperMD-header-2, .HyperMD-header-3) {
+    text-wrap: balance;
+  }
+}
