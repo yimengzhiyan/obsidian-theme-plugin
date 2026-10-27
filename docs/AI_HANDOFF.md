@@ -1,5 +1,19 @@
 # AI Handoff
 
+> **Start here:** [PROJECT_MASTER_PLAN.md](PROJECT_MASTER_PLAN.md) is the comprehensive product/feature/architecture/onboarding guide. Read it before continuing the project. This file remains the concise execution handoff; the repository and current QA evidence are authoritative.
+
+## Current handoff — documentation master plan
+
+- Phase 5 PR #13 is merged into main; final acceptance PASS, focused Desktop retest PASS. Merge commit: `a76770e5949d6ef58a5135bef45f6a8f6d16e661`.
+- Project master plan created on `codex/project-master-plan`, based on main `4701522427388fd6e8feecace1cc0db5fb02ca1b`; this is a documentation-only branch, not a Phase 6 implementation branch.
+- README now links the master plan and no longer claims the project is still at Phase 2.
+- Phase 6A Surface Customization is a proposed next batch, not implemented and not yet a blanket authorization. Candidate scope: workspace pane surface intensity, Rainbow Folder strengths, Canvas selection outline strength, Graph category mix strengths. Recheck latest main and get/confirm scope authorization before implementation.
+- Preserve Decision012 (native Reading Width), Decision013 (assisted Preset experiment closed; documentation-only direction), and Decision014 (bounded neutral ordinary main-pane Card shell only).
+- No PR, merge, release or tag was created by this documentation task.
+- After any further edits, run the appropriate repository checks and update this handoff with actual commit/branch/test evidence.
+
+---
+
 <!-- P5 FINAL FIX CURRENT START -->
 ## Final Fix + Tuning Batch — 2026-10-27 (Asia/Shanghai)
 
