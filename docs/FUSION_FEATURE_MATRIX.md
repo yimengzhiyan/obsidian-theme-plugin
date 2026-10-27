@@ -2,7 +2,7 @@
 
 ## Status vocabulary
 
-Planning documents reviewed by Chat, as reported by the maintainer. Planning review alone does not authorize implementation. Source means design inspiration or evidence, not copied code. `Complete` describes the existing verified baseline; `Candidate` means documented but unapproved and unimplemented; `Deferred` remains outside current implementation scope. Current authority: Phase5 batched feature completion; W02/F01/F02/E01/E02 implemented pending integrated QA. Earlier per-feature deferrals are historical for these bounded5A capabilities.
+Current authority (2026-10-27): Phase 5 was accepted and merged through PR #13; final acceptance PASS and focused Desktop retest PASS are recorded in CURRENT_STATUS.md and P5_FEATURE_COMPLETION_PLAN.md. Older pending-QA wording below is historical and superseded. Planning review alone does not authorize implementation. Source means design inspiration or evidence, not copied code. `Complete` describes the existing verified baseline; `Candidate` means documented but unapproved and unimplemented; `Deferred` remains outside current implementation scope. Phase 5A–5D are implemented; do not describe them as pending integrated QA.
 
 Priorities: **Baseline** = preserve existing capability; **P1** = first review candidate; **P2** = evaluate after baseline/shell contracts; **P3** = later optional investigation; **Deferred** = no implementation commitment. Priorities are proposals, not deadlines. Composer/Border references are summarized in [source analysis](SOURCE_THEME_ANALYSIS.md); detailed upstream selector analysis remains pending.
 
@@ -46,6 +46,12 @@ Future module candidates do not lift existing deferrals automatically. Promote a
 | D04 | Seamless Embed | Fusion earlier roadmap; source/selector feasibility unverified | Phase5C | Phase 5C implemented / integrated QA pending (historically Deferred; current maintainer batch authority) |
 | D05 | Companion Plugin / runtime UI | Fusion architecture excludes runtime | Deferred | Deferred; not a CSS implementation route |
 | D06 | Wholesale source-theme CSS, settings or preset import | Conflicts with independent token/module contract | Deferred | Excluded approach |
+
+## Phase 6 candidates — planning only (2026-10-27)
+
+Phase 6A is proposed, not implemented or blanket-authorized. Candidate batch: (1) optional pane surface separation/intensity within Decision014's ordinary main-pane boundary; (2) configurable Rainbow Folder title/hover strengths while preserving current palette/defaults; (3) configurable Canvas selection outline strength; (4) configurable Graph tag/attachment category mix while preserving the current 65% default. Before execution, verify current main and related consumers, define exact settings contracts/defaults/fallbacks, and obtain/confirm a bounded implementation instruction. Do not reopen Decision012/013/014.
+
+Later candidates: Layout expansion; CSS-feasible Focus/visibility work; CJK autospace only when the runtime supports it; reading typography only after proving a concrete gap; documentation-only configuration recipes. True Auto Hide/panel collapse, advanced animation, runtime/companion plugin, full Card Layout/layout engine, and assisted Preset are not part of the Phase 6A batch.
 
 ## Maintenance rule
 
