@@ -3,19 +3,39 @@
 <!-- P5 FINAL FIX CURRENT START -->
 ## Final Fix + Tuning Batch — 2026-10-27 (Asia/Shanghai)
 
-**Final Fix implemented — focused Desktop retest pending. Phase 5 is not yet complete.** Baseline bc181f0befb869a6695b7b33f50605a9afb94215, branch codex/p5-feature-completion. This checkpoint records the user's Chat final review disposition and supersedes the prior pending-review process instructions, without rewriting the original QA observations/counts.
+**Focused Desktop retest PASS. Recommendation: Phase 5 Final Acceptance: PASS.** Implementation commit **a0284df7c4ce961a9c45f00584c59592bc0ac378**, baseline bc181f0befb869a6695b7b33f50605a9afb94215, branch codex/p5-feature-completion. This supersedes the prior pending-review disposition; historical observations/counts below remain unchanged. Phase 5 is **not marked complete**: return to Chat for final acceptance and integration authorization. No PR, main merge or release.
 
-| Item | Current disposition |
+| Item | Final focused disposition |
 | --- | --- |
-| B-01 | **External Style Settings / Obsidian restored-view compatibility limitation**; no Fusion source fix. Saved data remains intact. Workaround: **Close the Style Settings view before restarting Obsidian if this upstream restoration issue occurs.** Fusion remains usable without Style Settings. A saved-open-view restart PASS is not required. |
-| B-02 | Canvas selector now covers native single .is-focused and multi .is-selected with the same inward outline/offset; implementation complete, focused retest pending. |
-| B-03 | Seven documented Graph semantic variables moved to body:not(.fusion-native-graph); Graph/Local Graph background and controls remain host-scoped. No direct renderer override. Implementation complete, focused retest pending. |
-| C-01 | **KEEP / accepted behavior**: selected Sidebar tab remains a persistent orientation/reveal cue. Source unchanged. |
-| C-02 | Muted opacity step tuned .05→.01, preserving default.72/min.4/max1/token.72; focused display/Reset/restart retest pending. |
+| B-01 | **External Style Settings / Obsidian restored-view compatibility limitation**, excluded from Theme B count; no Fusion source fix or workaround code. Normal session metadata loads and no new Theme-side error observed. Workaround: **Close the Style Settings view before restarting Obsidian if this upstream restoration issue occurs.** |
+| B-02 | **RESOLVED / PASS**: actual single .is-focused and multi .is-selected share one inward Accent outline, offset -1px. RGB Accent, native user-colored node/group, drag/resize and native Canvas ON/OFF passed. |
+| B-03 | **RESOLVED / PASS**: seven documented Graph variables are body-gated; real rendered SVG blue / mixed-green tags, muted unresolved, neutral lines and Accent focus passed in focused checks. Light/Dark, Local Graph smoke, native Graph ON/OFF, pan/zoom/open-note passed. Actual native transient body-child color helper identified; no renderer overrides. |
+| C-01 | **KEEP / accepted behavior**: selected Sidebar tab remains the persistent orientation/reveal cue; source unchanged. |
+| C-02 | **RESOLVED / PASS**: .01 step; visible .72 default, .71/.73 setting, Reset .72, runtime .72 and closed-settings-view restart .72 all confirmed. No delayed-save issue observed. |
 
-Build / Check / diff-check PASS. Static contracts enforce Canvas selection-only inward outline, global gated Graph semantics plus host-scoped presentation, and muted .01 step. Six in-memory regressions (lost focus selector, physical border, geometry addition, host-only Graph variables, global background, renderer override) are rejected. Exactly35controls/26variables/9toggles remain; no new token, toggle, JS/runtime, Preset, Decision012/013/014 or 5A/5B source change.
+**Current issue inventory: Theme A=0, Theme B=0; C-01 accepted KEEP; C-02 resolved; B-01 external limitation; all original D-01–D-06 limitations retained.** No unsupported cross-platform/full-matrix claim.
 
-Next, within the already authorized batch: focused existing independent-Vault retest of B-02/B-03/C-02 and immediate regression only. Inspect actual Graph consumer/helper, body and host, real colors in Light/Dark, native toggles and Local Graph. If global variable scope still fails, collect exact evidence and return to Chat without speculative selectors. Preserve all original D limitations. No PR, main merge or release authorization.
+Build / Check / diff-check PASS; six negative static variants rejected. Exactly **35 controls / 26 variables / 9 toggles** remain. No new token/toggle/runtime JS/Presets, Decision012/013/014 or 5A/5B source changes. Changed implementation files: src/apps/canvas.css, src/apps/graph.css, settings/style-settings.css, scripts/check.mjs, generated theme.css. This focused-results commit updates only the same five durable docs.
+
+Independent Vault cleanup PASS: fixtures archived then removed, ten backed-up configuration files restored (Dark/Fusion/font16/Style Settings data{}), original two note hashes unchanged, tested CSS/manifest retained and equal to repository artifacts. theme.css SHA256 **7939A0C0AFA1AE20B10F44C25845627F7939523A45D18DB141693689F51BD6B3**. Desktop tool reconnect failure was recovered by reinitialization; remaining tests were subsequently completed.
+
+### Focused Desktop evidence and limits
+
+Environment: Windows, Obsidian **1.14.5**, existing independent **P415-Preset-Acceptance** Vault, Style Settings normal sessions. Only the requested focused fixes/immediate regressions were retested; the original full matrix is retained below.
+
+| Check | Observed evidence |
+| --- | --- |
+| Canvas native states | Dark real red text node class ends .is-focused; actual multi-selection gives .is-selected to all four nodes including group. Both states compute Accent solid outline and -1px offset; other nodes have no Fusion outline. Authored width remains 1px (initial fractional-DPR capture computed .666667px); later Light capture computes 1px. |
+| Canvas RGB + colors | Red single computes rgb(255,0,0); green/blue multi compute rgb(0,255,0)/rgb(0,0,255), all offset -1px. Single and multi were visually exercised for each RGB value. Native red border rgb(233,49,71) and group green rgb(8,185,78) remain in Light. No duplicate Fusion outline rule. |
+| Canvas geometry/interactions | Text fixture drag moves x/y -380/-180→-340/-160; resize 380×280→420×300. Group980×760/note400×340/image360×144 remain unchanged. Selection and native toggle add no size delta. Native Canvas ON gives outline none0/offset0 for all nodes; OFF restores blue1px/-1px. Native controls/connections remain usable. |
+| Graph rendered Light/Dark | Real global graph shows neutral resolved nodes/lines, fainter unresolved node, mixed-green tags and blue P5 QA Image.svg attachment. Actual hover on Embed Target changes focus to default Accent; scrolling changes zoom, background drag pans, clicking the real node opens Embed Target. Local Graph opens linked to that note and displays its native graph successfully. |
+| Graph body / host | Dark body and host inherit text#e9e7ed/line#39383f/node#aaa7b1/unresolved#77747f/focused#b9a1ff/tag mix(#44cf6e65%,#e9e7ed)/attachment mix(#027aff65%,#e9e7ed). Light body reads node#68666f/unresolved#96939d/focus#6750a4/line#dedce3/tag mix(#08b94e65%,#242329)/attachment mix(#086ddd65%,#242329). Host/iframe inherited values checked separately from body. |
+| Actual native Graph consumer | Installed renderer testCSS creates **document.body child div.graph-view.color-fill[-focused/-tag/-attachment/-unresolved]**, calls getComputedStyle for color/opacity, then immediately detaches it. Actual CSSOM maps those classes to documented --graph-* variables (unresolved opacity.5). The live snapshot contains Graph iframe canvas and host controls; helper is transient and not retained. Native consumer source, CSSOM, actual owner computed values and real rendered categories jointly verify the path; **no claim of a paused live-helper computed snapshot**, no synthetic DOM helper, no app-internal automation or renderer override. |
+| Graph native ON/OFF | ON adds fusion-native-graph to body: tag#08b94e, attachment#e0ac00, line#dadada; actual SVG turns yellow and tags native green. OFF removes gate and restores visible Fusion blue/mixed-green categories. Host-scoped background/control contract remains statically enforced. |
+| Muted opacity | UI default .72; clicking slider sets .71, Right→.72, Right→.73, individual Restore default→.72. Saved JSON .72 before close and after relaunch. Settings tab closed before restart. After restart normal settings UI again displays .72, native slider reports .7200000286102295, body token reads exactly0.72. |
+| B-01 sanity | Normal settings metadata loads/filters correctly in both sessions; normal console shows native timing/listener warnings, no new Theme error. Saved-open-view failure intentionally not repeated; exact upstream workaround above retained. |
+
+Local evidence archive (not a new production asset): C:/Users/Beizhuo Li/.codex/.chatgpt-projects/g-p-6aa4fdf4919481918a15307823df2e07/p5-fix-evidence/. Contains actual Canvas computed JSON, Graph consumer/variable readings, installed native helper source identification, post-restart UIA, static negative checks, fixture/config archive and cleanup verification. Earlier focused-progress.json records the temporary reconnect interruption; this completed section and focused-results.json supersede it. Original D limitations remain, including unsupported spacing case, held press frame, Embed persistent focus-within, interspersed file/folder sorting, physical 1000px viewport and broader platforms/combinations.
 
 <!-- P5 FINAL FIX CURRENT END -->
 

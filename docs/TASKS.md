@@ -3,19 +3,21 @@
 <!-- P5 FINAL FIX CURRENT START -->
 ## Final Fix + Tuning Batch — 2026-10-27 (Asia/Shanghai)
 
-**Final Fix implemented — focused Desktop retest pending. Phase 5 is not yet complete.** Baseline bc181f0befb869a6695b7b33f50605a9afb94215, branch codex/p5-feature-completion. This checkpoint records the user's Chat final review disposition and supersedes the prior pending-review process instructions, without rewriting the original QA observations/counts.
+**Focused Desktop retest PASS. Recommendation: Phase 5 Final Acceptance: PASS.** Implementation commit **a0284df7c4ce961a9c45f00584c59592bc0ac378**, baseline bc181f0befb869a6695b7b33f50605a9afb94215, branch codex/p5-feature-completion. This supersedes the prior pending-review disposition; historical observations/counts below remain unchanged. Phase 5 is **not marked complete**: return to Chat for final acceptance and integration authorization. No PR, main merge or release.
 
-| Item | Current disposition |
+| Item | Final focused disposition |
 | --- | --- |
-| B-01 | **External Style Settings / Obsidian restored-view compatibility limitation**; no Fusion source fix. Saved data remains intact. Workaround: **Close the Style Settings view before restarting Obsidian if this upstream restoration issue occurs.** Fusion remains usable without Style Settings. A saved-open-view restart PASS is not required. |
-| B-02 | Canvas selector now covers native single .is-focused and multi .is-selected with the same inward outline/offset; implementation complete, focused retest pending. |
-| B-03 | Seven documented Graph semantic variables moved to body:not(.fusion-native-graph); Graph/Local Graph background and controls remain host-scoped. No direct renderer override. Implementation complete, focused retest pending. |
-| C-01 | **KEEP / accepted behavior**: selected Sidebar tab remains a persistent orientation/reveal cue. Source unchanged. |
-| C-02 | Muted opacity step tuned .05→.01, preserving default.72/min.4/max1/token.72; focused display/Reset/restart retest pending. |
+| B-01 | **External Style Settings / Obsidian restored-view compatibility limitation**, excluded from Theme B count; no Fusion source fix or workaround code. Normal session metadata loads and no new Theme-side error observed. Workaround: **Close the Style Settings view before restarting Obsidian if this upstream restoration issue occurs.** |
+| B-02 | **RESOLVED / PASS**: actual single .is-focused and multi .is-selected share one inward Accent outline, offset -1px. RGB Accent, native user-colored node/group, drag/resize and native Canvas ON/OFF passed. |
+| B-03 | **RESOLVED / PASS**: seven documented Graph variables are body-gated; real rendered SVG blue / mixed-green tags, muted unresolved, neutral lines and Accent focus passed in focused checks. Light/Dark, Local Graph smoke, native Graph ON/OFF, pan/zoom/open-note passed. Actual native transient body-child color helper identified; no renderer overrides. |
+| C-01 | **KEEP / accepted behavior**: selected Sidebar tab remains the persistent orientation/reveal cue; source unchanged. |
+| C-02 | **RESOLVED / PASS**: .01 step; visible .72 default, .71/.73 setting, Reset .72, runtime .72 and closed-settings-view restart .72 all confirmed. No delayed-save issue observed. |
 
-Build / Check / diff-check PASS. Static contracts enforce Canvas selection-only inward outline, global gated Graph semantics plus host-scoped presentation, and muted .01 step. Six in-memory regressions (lost focus selector, physical border, geometry addition, host-only Graph variables, global background, renderer override) are rejected. Exactly35controls/26variables/9toggles remain; no new token, toggle, JS/runtime, Preset, Decision012/013/014 or 5A/5B source change.
+**Current issue inventory: Theme A=0, Theme B=0; C-01 accepted KEEP; C-02 resolved; B-01 external limitation; all original D-01–D-06 limitations retained.** No unsupported cross-platform/full-matrix claim.
 
-Next, within the already authorized batch: focused existing independent-Vault retest of B-02/B-03/C-02 and immediate regression only. Inspect actual Graph consumer/helper, body and host, real colors in Light/Dark, native toggles and Local Graph. If global variable scope still fails, collect exact evidence and return to Chat without speculative selectors. Preserve all original D limitations. No PR, main merge or release authorization.
+Build / Check / diff-check PASS; six negative static variants rejected. Exactly **35 controls / 26 variables / 9 toggles** remain. No new token/toggle/runtime JS/Presets, Decision012/013/014 or 5A/5B source changes. Changed implementation files: src/apps/canvas.css, src/apps/graph.css, settings/style-settings.css, scripts/check.mjs, generated theme.css. This focused-results commit updates only the same five durable docs.
+
+Independent Vault cleanup PASS: fixtures archived then removed, ten backed-up configuration files restored (Dark/Fusion/font16/Style Settings data{}), original two note hashes unchanged, tested CSS/manifest retained and equal to repository artifacts. theme.css SHA256 **7939A0C0AFA1AE20B10F44C25845627F7939523A45D18DB141693689F51BD6B3**. Desktop tool reconnect failure was recovered by reinitialization; remaining tests were subsequently completed.
 
 <!-- P5 FINAL FIX CURRENT END -->
 
