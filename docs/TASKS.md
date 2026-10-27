@@ -3,7 +3,7 @@
 <!-- P5 FINAL FIX CURRENT START -->
 ## Final Fix + Tuning Batch — 2026-10-27 (Asia/Shanghai)
 
-**Final acceptance PASS; PR #13 is open and awaiting integration merge.** Focused Desktop retest PASS. Implementation commit **a0284df7c4ce961a9c45f00584c59592bc0ac378**, baseline bc181f0befb869a6695b7b33f50605a9afb94215, branch `codex/p5-feature-completion`. PR: [#13 — feat: complete Phase 5 Fusion theme experience](https://github.com/yimengzhiyan/obsidian-theme-plugin/pull/13). This current-status block supersedes the pending-review wording retained in the historical checkpoints below. The authorized PR has not yet been merged, and no release/tag is being made.
+**Final acceptance PASS; PR #13 merged into `main`.** Focused Desktop retest PASS. Implementation commit **a0284df7c4ce961a9c45f00584c59592bc0ac378**, documentation-only status correction **192b7f3304d130f85905f7ecd92d6ab140321e2f**, branch `codex/p5-feature-completion`. [PR #13 — feat: complete Phase 5 Fusion theme experience](https://github.com/yimengzhiyan/obsidian-theme-plugin/pull/13) was merged with regular merge commit **a76770e5949d6ef58a5135bef45f6a8f6d16e661**. This current-status block supersedes pending-review and pre-merge wording retained in historical checkpoints below. No release or tag was created.
 
 | Item | Final focused disposition |
 | --- | --- |
