@@ -3,7 +3,7 @@
 <!-- P5 FINAL FIX CURRENT START -->
 ## Final Fix + Tuning Batch — 2026-10-27 (Asia/Shanghai)
 
-**Focused Desktop retest PASS. Recommendation: Phase 5 Final Acceptance: PASS.** Implementation commit **a0284df7c4ce961a9c45f00584c59592bc0ac378**, baseline bc181f0befb869a6695b7b33f50605a9afb94215, branch codex/p5-feature-completion. This supersedes the prior pending-review disposition; historical observations/counts below remain unchanged. Phase 5 is **not marked complete**: return to Chat for final acceptance and integration authorization. No PR, main merge or release.
+**Final acceptance PASS; PR #13 is open and awaiting integration merge.** Focused Desktop retest PASS. Implementation commit **a0284df7c4ce961a9c45f00584c59592bc0ac378**, baseline bc181f0befb869a6695b7b33f50605a9afb94215, branch `codex/p5-feature-completion`. PR: [#13 — feat: complete Phase 5 Fusion theme experience](https://github.com/yimengzhiyan/obsidian-theme-plugin/pull/13). This current-status block supersedes the pending-review wording retained in the historical checkpoints below. The authorized PR has not yet been merged, and no release/tag is being made.
 
 | Item | Final focused disposition |
 | --- | --- |
@@ -23,11 +23,11 @@ Independent Vault cleanup PASS: fixtures archived then removed, ten backed-up co
 
 ## Prior checkpoint / original observations — retained
 
-## Final integrated Desktop QA — current checkpoint, 2026-10-22
+## Final integrated Desktop QA — historical checkpoint, 2026-10-22 (superseded)
 
-**Phase 5 Final Integrated Desktop QA completed — awaiting Chat final review**
+At this checkpoint, Phase 5 Final Integrated Desktop QA had completed and was awaiting Chat final review. The final focused retest and PR #13 authorization are recorded in the current-status block above.
 
-Tested implementation b5443fe068b84a7358b4fe291d59c3d84cced7bd on codex/p5-feature-completion, following authorized Chat final code review. [Final QA report](P5_FINAL_INTEGRATED_DESKTOP_QA.md): **PASS WITH FIXES, A0/B3/C2/D6 categories**. 5A–5D implementation is present; final product acceptance is pending Chat review. Mid-cycle PASS and prior finalQA-pending wording below are historical.
+Tested implementation b5443fe068b84a7358b4fe291d59c3d84cced7bd on codex/p5-feature-completion, following authorized Chat final code review. [Final QA report](P5_FINAL_INTEGRATED_DESKTOP_QA.md): **PASS WITH FIXES, A0/B3/C2/D6 categories**. 5A–5D implementation was present; final product acceptance was pending Chat review at that historical checkpoint. Mid-cycle PASS and prior finalQA-pending wording below are historical.
 
 Actual35control UI and default/plugin-free baseline, all9toggle paths, Minimal/Full/Writing combinations, six nativeReset/restart cases, RainbowON/OFF restart, saved-profile disable/restart, real Embed/Canvas/Global+LocalGraph, Light/Dark, split/nested/narrow/stacked, Source physical stress, reduced-motion routes and bounded regression completed with report qualifications. No source fix, new runtime, preset system, PR or merge was introduced.
 

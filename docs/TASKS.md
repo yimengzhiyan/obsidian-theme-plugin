@@ -3,7 +3,7 @@
 <!-- P5 FINAL FIX CURRENT START -->
 ## Final Fix + Tuning Batch — 2026-10-27 (Asia/Shanghai)
 
-**Focused Desktop retest PASS. Recommendation: Phase 5 Final Acceptance: PASS.** Implementation commit **a0284df7c4ce961a9c45f00584c59592bc0ac378**, baseline bc181f0befb869a6695b7b33f50605a9afb94215, branch codex/p5-feature-completion. This supersedes the prior pending-review disposition; historical observations/counts below remain unchanged. Phase 5 is **not marked complete**: return to Chat for final acceptance and integration authorization. No PR, main merge or release.
+**Final acceptance PASS; PR #13 is open and awaiting integration merge.** Focused Desktop retest PASS. Implementation commit **a0284df7c4ce961a9c45f00584c59592bc0ac378**, baseline bc181f0befb869a6695b7b33f50605a9afb94215, branch `codex/p5-feature-completion`. PR: [#13 — feat: complete Phase 5 Fusion theme experience](https://github.com/yimengzhiyan/obsidian-theme-plugin/pull/13). This current-status block supersedes the pending-review wording retained in the historical checkpoints below. The authorized PR has not yet been merged, and no release/tag is being made.
 
 | Item | Final focused disposition |
 | --- | --- |
@@ -23,9 +23,9 @@ Independent Vault cleanup PASS: fixtures archived then removed, ten backed-up co
 
 ## Prior checkpoint / original observations — retained
 
-## Phase 5 Final Integrated Desktop QA — current authority, 2026-10-22
+## Phase 5 Final Integrated Desktop QA — historical checkpoint, 2026-10-22 (superseded)
 
-**Phase 5 Final Integrated Desktop QA completed — awaiting Chat final review**
+At this checkpoint, Phase 5 Final Integrated Desktop QA had completed and was awaiting Chat final review. The final focused retest and PR #13 authorization are recorded in the current-status block above.
 
 - [x] Test exact b5443fe on codex/p5-feature-completion in independent Vault; [final report](P5_FINAL_INTEGRATED_DESKTOP_QA.md).
 - [x] Actual35controls/9toggles; no-plugin baseline; defaults/customization/native fallbacks; Minimal/Full/Writing combinations; Reset/persistence/plugin-disabled restart; PKM interactions; Light/Dark/layouts/Source/reduced-motion/regression, with explicit D limits.

@@ -3,7 +3,7 @@
 <!-- P5 FINAL FIX CURRENT START -->
 ## Final Fix + Tuning Batch — 2026-10-27 (Asia/Shanghai)
 
-**Focused Desktop retest PASS. Recommendation: Phase 5 Final Acceptance: PASS.** Implementation commit **a0284df7c4ce961a9c45f00584c59592bc0ac378**, baseline bc181f0befb869a6695b7b33f50605a9afb94215, branch codex/p5-feature-completion. This supersedes the prior pending-review disposition; historical observations/counts below remain unchanged. Phase 5 is **not marked complete**: return to Chat for final acceptance and integration authorization. No PR, main merge or release.
+**Final acceptance PASS; PR #13 is open and awaiting integration merge.** Focused Desktop retest PASS. Implementation commit **a0284df7c4ce961a9c45f00584c59592bc0ac378**, baseline bc181f0befb869a6695b7b33f50605a9afb94215, branch `codex/p5-feature-completion`. PR: [#13 — feat: complete Phase 5 Fusion theme experience](https://github.com/yimengzhiyan/obsidian-theme-plugin/pull/13). This current-status block supersedes the pending-review wording retained in the historical checkpoints below. The authorized PR has not yet been merged, and no release/tag is being made.
 
 | Item | Final focused disposition |
 | --- | --- |
@@ -23,7 +23,7 @@ Independent Vault cleanup PASS: fixtures archived then removed, ten backed-up co
 
 ## Prior checkpoint / original observations — retained
 
-- **Current**: **Phase 5 Final Integrated Desktop QA completed — awaiting Chat final review**. Final bounded disposition **PASS WITH FIXES**, A0/B3/C2/D6 categories; [full report](P5_FINAL_INTEGRATED_DESKTOP_QA.md). Not Phase5 Complete.
+- **Historical checkpoint (superseded by the 2026-10-27 final retest and PR #13 authorization)**: Phase 5 Final Integrated Desktop QA completed — awaiting Chat final review. Final bounded disposition **PASS WITH FIXES**, A0/B3/C2/D6 categories; [full report](P5_FINAL_INTEGRATED_DESKTOP_QA.md). This was the status at that earlier checkpoint; see the current-status block above.
 - **Branch / implementation**: codex/p5-feature-completion; tested b5443fe068b84a7358b4fe291d59c3d84cced7bd. QA commit is docs-only; obtain its exact hash/push state from Git.
 - **B batch for Chat decision**: B-01 optional Style Settings1.0.9 / Obsidian1.14.4 open-view restart prevents applying saved config (data intact; close settings tab/restart works); B-02 Canvas single-focus outline missing while multi-select works; B-03 actual Graph SVG attachment remains yellow despite blue host variable, renderer consumption/scoping needs review. No source fix made.
 - **Tuning**: C-01 KEEP selected Sidebar direct-header reveal; C-02 muted default.72/native range.70 precision. Neither changed onsite.

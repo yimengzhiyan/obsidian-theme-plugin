@@ -3,7 +3,7 @@
 <!-- P5 FINAL FIX CURRENT START -->
 ## Final Fix + Tuning Batch — 2026-10-27 (Asia/Shanghai)
 
-**Focused Desktop retest PASS. Recommendation: Phase 5 Final Acceptance: PASS.** Implementation commit **a0284df7c4ce961a9c45f00584c59592bc0ac378**, baseline bc181f0befb869a6695b7b33f50605a9afb94215, branch codex/p5-feature-completion. This supersedes the prior pending-review disposition; historical observations/counts below remain unchanged. Phase 5 is **not marked complete**: return to Chat for final acceptance and integration authorization. No PR, main merge or release.
+**Final acceptance PASS; PR #13 is open and awaiting integration merge.** Focused Desktop retest PASS. Implementation commit **a0284df7c4ce961a9c45f00584c59592bc0ac378**, baseline bc181f0befb869a6695b7b33f50605a9afb94215, branch `codex/p5-feature-completion`. PR: [#13 — feat: complete Phase 5 Fusion theme experience](https://github.com/yimengzhiyan/obsidian-theme-plugin/pull/13). This current-status block supersedes the pending-review wording retained in the historical checkpoints below. The authorized PR has not yet been merged, and no release/tag is being made.
 
 | Item | Final focused disposition |
 | --- | --- |
@@ -43,7 +43,7 @@ Local evidence archive (not a new production asset): C:/Users/Beizhuo Li/.codex/
 
 **Phase 5 Final Integrated Desktop QA completed — awaiting Chat final review**
 
-Disposition: **PASS WITH FIXES** within the recorded desktop scope. **A=0; B=3; C=2; D=6 coverage/unsupported categories.** B items include one optional-plugin integration failure and one Graph rendering discrepancy whose implementation cause still needs review. No implementation fix was made. This is not Phase 5 acceptance, release approval, a PR, or a main merge.
+Disposition at that historical checkpoint: **PASS WITH FIXES** within the recorded desktop scope. **A=0; B=3; C=2; D=6 coverage/unsupported categories.** B items then included one optional-plugin integration failure and one Graph rendering discrepancy whose implementation cause still needed review. No implementation fix had been made at that point. The later Final Fix + Tuning Batch and focused retest are documented in the current-status block above; PR #13 now records the authorized integration review. This historical paragraph does not describe the current acceptance or merge state.
 
 ## 1. Environment
 
