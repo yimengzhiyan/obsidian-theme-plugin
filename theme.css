@@ -61,7 +61,7 @@ settings:
     default: 0.72
     min: 0.4
     max: 1
-    step: 0.05
+    step: 0.01
   -
     id: "fusion-full-workspace-chrome"
     title: "Always show workspace controls"
@@ -1322,7 +1322,7 @@ body:not(.fusion-native-canvas) .workspace-leaf-content[data-type="canvas"] {
   --canvas-card-label-color: var(--theme-text-muted);
 }body:not(.fusion-native-canvas) .canvas-wrapper .canvas-node-container {
   border-radius: var(--theme-workspace-control-radius);
-}body:not(.fusion-native-canvas) .canvas-wrapper .canvas-node.is-selected .canvas-node-container {
+}body:not(.fusion-native-canvas) .canvas-wrapper .canvas-node:is(.is-selected, .is-focused) .canvas-node-container {
   outline: 1px solid var(--theme-accent);
   outline-offset: -1px;
 }body:not(.fusion-native-canvas) .canvas-wrapper .canvas-node-label {
@@ -1345,7 +1345,7 @@ body:not(.fusion-native-canvas) .workspace-leaf-content[data-type="canvas"] {
 
 /* Source: src/apps/graph.css */
 /* Documented Graph variables; no graph-controls-width or renderer dimensions. */
-body:not(.fusion-native-graph) .workspace-leaf-content:is([data-type="graph"], [data-type="localgraph"]) {
+body:not(.fusion-native-graph) {
   --graph-text: var(--theme-text-normal);
   --graph-line: var(--theme-border);
   --graph-node: var(--theme-text-muted);
@@ -1353,6 +1353,8 @@ body:not(.fusion-native-graph) .workspace-leaf-content:is([data-type="graph"], [
   --graph-node-focused: var(--theme-accent);
   --graph-node-tag: color-mix(in oklch, var(--color-green) 65%, var(--theme-text-normal));
   --graph-node-attachment: color-mix(in oklch, var(--color-blue) 65%, var(--theme-text-normal));
+}
+body:not(.fusion-native-graph) .workspace-leaf-content:is([data-type="graph"], [data-type="localgraph"]) {
   background-color: var(--theme-bg-primary);
 }body:not(.fusion-native-graph) .workspace-leaf-content:is([data-type="graph"], [data-type="localgraph"]) .graph-controls {
   background-color: var(--theme-bg-card);

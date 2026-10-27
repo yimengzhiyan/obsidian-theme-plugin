@@ -54,7 +54,7 @@ settings:
     default: 0.72
     min: 0.4
     max: 1
-    step: 0.05
+    step: 0.01
   -
     id: "fusion-full-workspace-chrome"
     title: "Always show workspace controls"

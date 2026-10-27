@@ -219,7 +219,7 @@ function assertCustomizationContract(entries, css) {
     "default": 0.72,
     "min": 0.4,
     "max": 1,
-    "step": 0.05
+    "step": 0.01
   },
   "fusion-full-workspace-chrome": {
     "type": "class-toggle",
@@ -448,7 +448,42 @@ function assertCustomizationContract(entries, css) {
     const section = css.split(`/* Source: ${file} */`)[1]?.split("/* Source:")[0] || "";
     const plain = section.replace(/\/\*[\s\S]*?\*\//g, "");
     for (const [, selector] of plain.matchAll(/([^{}]+)\{/g)) {
-      if (!selector.trim().startsWith(`body:not(.${id}) `)) fail(`${file} must opt out by selector gating.`);
+      const gate = `body:not(.${id})`;
+      const scoped = selector.trim();
+      const graphSemanticOwner = file === "src/apps/graph.css" && scoped === gate;
+      if (!graphSemanticOwner && !scoped.startsWith(gate + " ")) fail(`${file} must opt out by selector gating.`);
+    }
+  }
+}
+
+// Final QA fixes: semantic Graph ownership and native Canvas selection states.
+function assertPkmFinalFixContract(file, plain) {
+  const normalize = (value) => value.replace(/\s+/g, " ").trim();
+  const rules = [...plain.matchAll(/([^{}]+)\{([^{}]*)\}/g)].map((match) => ({
+    selector: normalize(match[1]), declarations: normalize(match[2])
+  }));
+  if (file.endsWith("canvas.css")) {
+    const selector = 'body:not(.fusion-native-canvas) .canvas-wrapper .canvas-node:is(.is-selected, .is-focused) .canvas-node-container';
+    const selected = rules.filter((rule) => rule.selector === selector);
+    if (selected.length !== 1 || selected[0].declarations !== "outline: 1px solid var(--theme-accent); outline-offset: -1px;") {
+      fail("Canvas single-focus/multi-selection must share only the approved inward outline.");
+    }
+  }
+  if (file.endsWith("graph.css")) {
+    const gate = "body:not(.fusion-native-graph)";
+    const host = gate + ' .workspace-leaf-content:is([data-type="graph"], [data-type="localgraph"])';
+    const approved = new Map([
+      [gate, "--graph-text: var(--theme-text-normal); --graph-line: var(--theme-border); --graph-node: var(--theme-text-muted); --graph-node-unresolved: var(--theme-text-faint); --graph-node-focused: var(--theme-accent); --graph-node-tag: color-mix(in oklch, var(--color-green) 65%, var(--theme-text-normal)); --graph-node-attachment: color-mix(in oklch, var(--color-blue) 65%, var(--theme-text-normal));"],
+      [host, "background-color: var(--theme-bg-primary);"],
+      [host + " .graph-controls", "background-color: var(--theme-bg-card); border-color: var(--theme-border); border-radius: var(--theme-workspace-control-radius); color: var(--theme-text-muted);"]
+    ]);
+    if (rules.length !== approved.size) fail("Graph must contain only its global semantic owner and two host-scoped presentation rules.");
+    const seen = new Set();
+    for (const rule of rules) {
+      if (seen.has(rule.selector) || approved.get(rule.selector) !== rule.declarations) {
+        fail("Graph documented variables must be body-gated; presentation must stay host-scoped without renderer overrides.");
+      }
+      seen.add(rule.selector);
     }
   }
 }
@@ -461,6 +496,7 @@ async function assertPkmBoundaries() {
     if (/!important/.test(plain)) fail(`${file}: important is outside PKM scope.`);
     if (/^\s*(?:width|height|min-width|max-width|min-height|max-height|position|transform|overflow(?:-[xy])?|flex(?:-[\w-]+)?|padding(?:-[\w-]+)?|margin(?:-[\w-]+)?)\s*:/m.test(plain)) fail(`${file}: geometry/scroll override is outside PKM scope.`);
     if (file.endsWith("canvas.css") && plain.includes(":has(")) fail("Canvas must not use :has.");
+    assertPkmFinalFixContract(file, plain);
     if (file.includes("rainbow")) {
       for (const rule of plain.matchAll(/([^{}]+)\{[^{}]*\}/g)) {
         if (!rule[1].trim().startsWith("body.fusion-rainbow-folders ")) fail("Rainbow must be opt-in body-class gated.");

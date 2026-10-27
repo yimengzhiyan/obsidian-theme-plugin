@@ -1,5 +1,26 @@
 # Tasks
 
+<!-- P5 FINAL FIX CURRENT START -->
+## Final Fix + Tuning Batch — 2026-10-27 (Asia/Shanghai)
+
+**Final Fix implemented — focused Desktop retest pending. Phase 5 is not yet complete.** Baseline bc181f0befb869a6695b7b33f50605a9afb94215, branch codex/p5-feature-completion. This checkpoint records the user's Chat final review disposition and supersedes the prior pending-review process instructions, without rewriting the original QA observations/counts.
+
+| Item | Current disposition |
+| --- | --- |
+| B-01 | **External Style Settings / Obsidian restored-view compatibility limitation**; no Fusion source fix. Saved data remains intact. Workaround: **Close the Style Settings view before restarting Obsidian if this upstream restoration issue occurs.** Fusion remains usable without Style Settings. A saved-open-view restart PASS is not required. |
+| B-02 | Canvas selector now covers native single .is-focused and multi .is-selected with the same inward outline/offset; implementation complete, focused retest pending. |
+| B-03 | Seven documented Graph semantic variables moved to body:not(.fusion-native-graph); Graph/Local Graph background and controls remain host-scoped. No direct renderer override. Implementation complete, focused retest pending. |
+| C-01 | **KEEP / accepted behavior**: selected Sidebar tab remains a persistent orientation/reveal cue. Source unchanged. |
+| C-02 | Muted opacity step tuned .05→.01, preserving default.72/min.4/max1/token.72; focused display/Reset/restart retest pending. |
+
+Build / Check / diff-check PASS. Static contracts enforce Canvas selection-only inward outline, global gated Graph semantics plus host-scoped presentation, and muted .01 step. Six in-memory regressions (lost focus selector, physical border, geometry addition, host-only Graph variables, global background, renderer override) are rejected. Exactly35controls/26variables/9toggles remain; no new token, toggle, JS/runtime, Preset, Decision012/013/014 or 5A/5B source change.
+
+Next, within the already authorized batch: focused existing independent-Vault retest of B-02/B-03/C-02 and immediate regression only. Inspect actual Graph consumer/helper, body and host, real colors in Light/Dark, native toggles and Local Graph. If global variable scope still fails, collect exact evidence and return to Chat without speculative selectors. Preserve all original D limitations. No PR, main merge or release authorization.
+
+<!-- P5 FINAL FIX CURRENT END -->
+
+## Prior checkpoint / original observations — retained
+
 ## Phase 5 Final Integrated Desktop QA — current authority, 2026-10-22
 
 **Phase 5 Final Integrated Desktop QA completed — awaiting Chat final review**

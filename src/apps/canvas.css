@@ -6,7 +6,7 @@ body:not(.fusion-native-canvas) .workspace-leaf-content[data-type="canvas"] {
   --canvas-card-label-color: var(--theme-text-muted);
 }body:not(.fusion-native-canvas) .canvas-wrapper .canvas-node-container {
   border-radius: var(--theme-workspace-control-radius);
-}body:not(.fusion-native-canvas) .canvas-wrapper .canvas-node.is-selected .canvas-node-container {
+}body:not(.fusion-native-canvas) .canvas-wrapper .canvas-node:is(.is-selected, .is-focused) .canvas-node-container {
   outline: 1px solid var(--theme-accent);
   outline-offset: -1px;
 }body:not(.fusion-native-canvas) .canvas-wrapper .canvas-node-label {
