@@ -1,5 +1,7 @@
 # Current Status
 
+> Project-wide product and onboarding reference: [PROJECT_MASTER_PLAN.md](PROJECT_MASTER_PLAN.md). This file records the current implementation/QA checkpoint; older pending-state sections below may be historical and are superseded when explicitly stated by the latest checkpoint.
+
 <!-- P5 FINAL FIX CURRENT START -->
 ## Final Fix + Tuning Batch — 2026-10-27 (Asia/Shanghai)
 
